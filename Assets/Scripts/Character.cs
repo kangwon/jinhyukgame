@@ -39,7 +39,7 @@ public class CharacterBase
         get => hp <= 0;
     }
 
-    public Character(Stat stat)
+    public CharacterBase(Stat stat)
     {
         this.baseStat = stat;
         this.hp = this.baseStat.maxHp;
@@ -70,9 +70,9 @@ public class Player : CharacterBase
 
     public override Stat GetStat()
     {
-        Stat stat = this.baseStat;
-        stat = buffs.Aggregate(stat, (stat, buff) => stat + buff);
-        stat = items.Aggregate(stat, (stat, buff) => stat + buff);
-        return stat;
+        Stat currentstat = this.baseStat;
+        currentstat = buffs.Aggregate(currentstat, (stat, buff) => stat + buff);
+        currentstat = items.Aggregate(currentstat, (stat, buff) => stat + buff);
+        return currentstat;
     }
 }
