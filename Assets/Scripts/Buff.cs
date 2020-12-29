@@ -16,10 +16,7 @@ public class StatBuff : Stat
     {
         //*퍼센트로 붙은 버프를 적용하기전에 해당 캐릭터를 가져와 수치를 구한다.
         //반드시 적용하기 전에 이 함수를 써서 수치를 구해야함. 
-        maxHp = (int)(maxHpPercent * cb.baseStat.maxHp) + maxHpAbsolute;
-        attack = (int)(attackPercent * cb.baseStat.attack) + attackAbsolute;
-        defense = (int)(defensePercent * cb.baseStat.defense) + defenseAbsolute;
-        speed = (int)(speedPercent * cb.baseStat.speed) + speedAbsolute;
+        this.CalcStat(cb.baseStat);
     }
     public void CalcStat(Stat stat)
     {
