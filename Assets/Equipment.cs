@@ -7,11 +7,11 @@ using System.Linq;
 [System.Serializable]
 public class Equipment
 {
-    string type;
-    string name;
+    public string type;
+    public string name;
 
-    Stat effect;
-    int level;
+    public Stat effect;
+    public int level;
 }
 
 public class Weapon : Equipment {}
@@ -53,5 +53,17 @@ public class EquipmentSlot
             default:
                 throw new NotImplementedException($"Invalid equipment type: {equip.GetType().ToString()}");
         }
+    }
+
+    public Stat GetTotalStat()
+    {
+        Stat zeroStat = new Stat();
+        Stat totalStat = new Stat();
+        totalStat += weapon?.effect ?? zeroStat;
+        totalStat += armor?.effect ?? zeroStat;
+        totalStat += helmet?.effect ?? zeroStat;
+        totalStat += shoes?.effect ?? zeroStat;
+        totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.effect) ?? zeroStat;
+        return totalStat;
     }
 }
