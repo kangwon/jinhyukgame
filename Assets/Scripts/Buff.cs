@@ -2,6 +2,7 @@
 
 public class StatBuff : Stat
 {
+
     public float maxHpPercent = 0; // 퍼센트로 증가할때 필요. 30% = 0.3f
     public float attackPercent = 0;
     public float defensePercent = 0;
