@@ -11,7 +11,8 @@ public class Stat
     public int defense;
     public int speed;
     public int startSpeedGauge;
-
+    public float ciritical;
+    public float evasion;
 
     public static Stat operator +(Stat a, Stat b)
     {
@@ -21,7 +22,9 @@ public class Stat
             attack = a.attack + b.attack,
             defense = a.defense + b.defense,
             speed = a.speed + b.speed,
-            startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge
+            startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge,
+            ciritical = a.ciritical + b.ciritical,
+            evasion = a.evasion + b.evasion
         };
     }
     public override string ToString()
