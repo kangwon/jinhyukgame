@@ -74,4 +74,9 @@ public class Player : CharacterBase
         Stat currentstat = this.baseStat + buff + equipmentSlot.GetTotalStat();
         return currentstat;
     }
+
+    public void SetEquipment(Equipment equip)
+    {
+        equipmentSlot.SetEquipment(equip);
+    }
 }
