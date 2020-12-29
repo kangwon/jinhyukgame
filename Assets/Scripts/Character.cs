@@ -11,6 +11,8 @@ public class Stat
     public int defense;
     public int speed;
     public int startSpeedGauge;
+    public float ciritical;
+    public float evasion;
 
     public static Stat operator +(Stat a, Stat b)
     {
@@ -20,10 +22,11 @@ public class Stat
             attack = a.attack + b.attack,
             defense = a.defense + b.defense,
             speed = a.speed + b.speed,
-            startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge
+            startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge,
+            ciritical = a.ciritical + b.ciritical,
+            evasion = a.evasion + b.evasion
         };
     }
-
     public override string ToString()
     {
         return $"Stat(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
@@ -39,7 +42,7 @@ public class CharacterBase
         get => hp <= 0;
     }
 
-    public Character(Stat stat)
+    public CharacterBase(Stat stat)
     {
         this.baseStat = stat;
         this.hp = this.baseStat.maxHp;
@@ -51,28 +54,32 @@ public class CharacterBase
     }
 }
 
-public class Monster : CharacterBase 
-{ 
+public class Monster : CharacterBase
+{
     public Monster(Stat stat) : base(stat) { }
 }
 
 public class Player : CharacterBase
 {
-    List<Stat> buffs = new List<Stat>();
-    List<Stat> items = new List<Stat>();
+    StatBuff buff = new StatBuff();
+    EquipmentSlot equipmentSlot = new EquipmentSlot();
 
     public Player(Stat stat) : base(stat) { }
 
-    public void AddBuff(Stat buff)
+    public void AddBuff(StatBuff buff)
     {
-        buffs.Add(buff);
+        this.buff = buff;
     }
 
     public override Stat GetStat()
     {
-        Stat stat = this.baseStat;
-        stat = buffs.Aggregate(stat, (stat, buff) => stat + buff);
-        stat = items.Aggregate(stat, (stat, buff) => stat + buff);
-        return stat;
+        buff.CalcStat(this.baseStat);
+        Stat currentstat = this.baseStat + buff + equipmentSlot.GetTotalStat();
+        return currentstat;
+    }
+
+    public void SetEquipment(Equipment equip)
+    {
+        equipmentSlot.SetEquipment(equip);
     }
 }
