@@ -27,7 +27,7 @@ public class EquipmentSlot
     Armor armor;
     Helmet helmet;
     Shoes shoes;
-    List<Artifact> artifacts;
+    List<Artifact> artifacts = new List<Artifact>();
 
     public void SetEquipment(Equipment equip)
     {
