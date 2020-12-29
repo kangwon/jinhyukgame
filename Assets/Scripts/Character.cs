@@ -59,7 +59,7 @@ public class Monster : CharacterBase
 public class Player : CharacterBase
 {
     List<Stat> buffs = new List<Stat>();
-    List<Stat> items = new List<Stat>();
+    EquipmentSlot equipmentSlot = new EquipmentSlot();
 
     public Player(Stat stat) : base(stat) { }
 
