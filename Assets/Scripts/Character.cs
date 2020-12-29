@@ -62,7 +62,7 @@ public class Monster : CharacterBase
 public class Player : CharacterBase
 {
     StatBuff buff = new StatBuff();
-    List<Stat> items = new List<Stat>();
+    EquipmentSlot equipmentSlot = new EquipmentSlot();
 
     public Player(Stat stat) : base(stat) { }
 
@@ -73,11 +73,13 @@ public class Player : CharacterBase
 
     public override Stat GetStat()
     {
-        Stat currentstat = this.baseStat;
         buff.CalcStat(this.baseStat);
-        currentstat = currentstat + buff;
-        // currentstat = buffs.Aggregate(currentstat, (stat, buff) => stat + buff);
-        currentstat = items.Aggregate(currentstat, (stat, buff) => stat + buff);
+        Stat currentstat = this.baseStat + buff + equipmentSlot.GetTotalStat();
         return currentstat;
+    }
+
+    public void SetEquipment(Equipment equip)
+    {
+        equipmentSlot.SetEquipment(equip);
     }
 }
