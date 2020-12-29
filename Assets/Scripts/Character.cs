@@ -12,6 +12,7 @@ public class Stat
     public int speed;
     public int startSpeedGauge;
 
+
     public static Stat operator +(Stat a, Stat b)
     {
         return new Stat
@@ -23,7 +24,6 @@ public class Stat
             startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge
         };
     }
-
     public override string ToString()
     {
         return $"Stat(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
@@ -51,27 +51,29 @@ public class CharacterBase
     }
 }
 
-public class Monster : CharacterBase 
-{ 
+public class Monster : CharacterBase
+{
     public Monster(Stat stat) : base(stat) { }
 }
 
 public class Player : CharacterBase
 {
-    List<Stat> buffs = new List<Stat>();
+    StatBuff buff = new StatBuff();
     List<Stat> items = new List<Stat>();
 
     public Player(Stat stat) : base(stat) { }
 
-    public void AddBuff(Stat buff)
+    public void AddBuff(StatBuff buff)
     {
-        buffs.Add(buff);
+        this.buff = buff;
     }
 
     public override Stat GetStat()
     {
         Stat currentstat = this.baseStat;
-        currentstat = buffs.Aggregate(currentstat, (stat, buff) => stat + buff);
+        buff.CalcStat(this.baseStat);
+        currentstat = currentstat + buff;
+        // currentstat = buffs.Aggregate(currentstat, (stat, buff) => stat + buff);
         currentstat = items.Aggregate(currentstat, (stat, buff) => stat + buff);
         return currentstat;
     }
