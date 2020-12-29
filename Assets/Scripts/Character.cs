@@ -51,8 +51,8 @@ public class CharacterBase
     }
 }
 
-public class Monster : CharacterBase 
-{ 
+public class Monster : CharacterBase
+{
     public Monster(Stat stat) : base(stat) { }
 }
 
