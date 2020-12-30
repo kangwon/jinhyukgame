@@ -21,7 +21,7 @@ public class GameSceneUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player.SetEquipment(JsonDB.GetEquipment("sword1"));
     }
 
     // Update is called once per frame

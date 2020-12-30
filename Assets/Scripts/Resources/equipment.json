@@ -1,0 +1,10 @@
+{ "items": [
+    {
+        "id": "sword1",
+        "type": "weapon",
+        "name": "용사의 대검",
+        "statEffect": {
+            "attack": 8
+        }
+    }
+]}
