@@ -11,8 +11,8 @@ public class Stat
     public int defense;
     public int speed;
     public int startSpeedGauge;
-    public float critical =0.05f;
-    public float evasion =0.05f;
+    public float critical;
+    public float evasion;
 
     public static Stat operator +(Stat a, Stat b)
     {
