@@ -12,12 +12,7 @@ public class StatBuff : Stat
     public float hpDrainPercent = 0;
     public bool isDebuff = false;
     public bool debuffImmune = false;
-    public Stat GetTotalStat(CharacterBase cb)
-    {
-        //*퍼센트로 붙은 버프를 적용하기전에 해당 캐릭터를 가져와 수치를 구한다.
-        //반드시 적용하기 전에 이 함수를 써서 수치를 구해야함. 
-       return this.GetTotalStat(cb.baseStat);
-    }
+
     public Stat GetTotalStat(Stat stat)
     {
         //*퍼센트로 붙은 버프를 적용하기전에 해당 캐릭터의 baseStat을 가져와 수치를 구한다.
