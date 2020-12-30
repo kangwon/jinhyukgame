@@ -47,7 +47,7 @@ public class CombatController : MonoBehaviour
 
 /*---------공격 주고받기---------*/
 
-    public void CombatPhase(CharacterBase attacker, CharacterBase defender) {// IDEA : C# Delegate 여기 사용가능?
+    public void CombatPhase(CharacterBase attacker, CharacterBase defender) {// TODO : call-by-ref로 넘겨야할거같음 IDEA : C# Delegate 여기 사용가능?
         float Dmg = attacker.AttackFoe();
         defender.TakeHit(Dmg);
 
