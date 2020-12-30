@@ -7,7 +7,7 @@ public class StatBuff : Stat
     public float attackPercent = 0;
     public float defensePercent = 0;
     public float speedPercent = 0;
-    public float ciriticalPercent = 0;
+    public float criticalPercent = 0;
     public float evasionPercent = 0;
     public float discountPercent = 0;
     public float hpDrainPercent = 0;
@@ -15,10 +15,9 @@ public class StatBuff : Stat
     public int attackAbsolute = 0;
     public int defenseAbsolute = 0;
     public int speedAbsolute = 0;
-    public int startspeedGaugeAbsolute = 0;
+    public int startSpeedGaugeAbsolute = 0;
     public bool isDebuff = false;
     public bool debuffImmune = false;
-    public bool dotDamageImmune = false;
     public void CalcStat(CharacterBase cb)
     {
         //*퍼센트로 붙은 버프를 적용하기전에 해당 캐릭터를 가져와 수치를 구한다.
@@ -33,8 +32,9 @@ public class StatBuff : Stat
         attack = (int)(attackPercent * stat.attack) + attackAbsolute;
         defense = (int)(defensePercent * stat.defense) + defenseAbsolute;
         speed = (int)(speedPercent * stat.speed) + speedAbsolute;
+        startSpeedGauge = startSpeedGaugeAbsolute;
         evasion = evasionPercent;
-        ciritical = ciriticalPercent;
+        critical = criticalPercent;
     }
     public bool IsDebuff() => this.isDebuff;
     public bool IsBuff() => !this.isDebuff;
