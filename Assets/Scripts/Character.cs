@@ -63,7 +63,7 @@ public class Player : CharacterBase
 {
     StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
-    public float hpDrain = 0f; //일단 흡혈은 합연산
+    public float hpDrain = 0f; //일단은 곱연산
     public Player(Stat stat) : base(stat) { }
 
     public void AddBuff(StatBuff buff)
