@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class StatBuff : Stat
+public class StatBuff
 {
     public Stat baseBuffStat = new Stat(); //절대치 증가
     public int buffcount; // 스테이지마다 카운트되게 설정 -> buffcount-- //-1이면 무한지속.
