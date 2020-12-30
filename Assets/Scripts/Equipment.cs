@@ -3,15 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+[System.Serializable]
+public class EquipmentRank : JsonItem
+{
+    
+}
 
 [System.Serializable]
-public class Equipment
+public class EquipmentPrefix : JsonItem
+{
+    
+}
+
+[System.Serializable]
+public class Equipment : JsonItem
 {
     public string type;
     public string name;
 
-    public Stat effect;
-    public int level;
+    public Stat statEffect;
+    public EquipmentRank rank;
+    public EquipmentPrefix prefix;
+
+    public Weapon ToWeapon()
+        => new Weapon() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+    public Armor ToArmor()
+        => new Armor() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+    public Helmet ToHelmet()
+        => new Helmet() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+    public Shoes ToShoes()
+        => new Shoes() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+    public Artifact ToArtifact()
+        => new Artifact() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+    
 }
 
 public class Weapon : Equipment {}
@@ -59,11 +83,11 @@ public class EquipmentSlot
     {
         Stat zeroStat = new Stat();
         Stat totalStat = new Stat();
-        totalStat += weapon?.effect ?? zeroStat;
-        totalStat += armor?.effect ?? zeroStat;
-        totalStat += helmet?.effect ?? zeroStat;
-        totalStat += shoes?.effect ?? zeroStat;
-        totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.effect) ?? zeroStat;
+        totalStat += weapon?.statEffect ?? zeroStat;
+        totalStat += armor?.statEffect ?? zeroStat;
+        totalStat += helmet?.statEffect ?? zeroStat;
+        totalStat += shoes?.statEffect ?? zeroStat;
+        totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat;
         return totalStat;
     }
 }
