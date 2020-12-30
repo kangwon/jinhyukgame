@@ -77,9 +77,8 @@ public class Player : CharacterBase
     }
 
     public override Stat GetStat()
-    {
-        buff.CalcStat(this.baseStat);
-        Stat currentstat = this.baseStat + buff + equipmentSlot.GetTotalStat();
+    {      
+        Stat currentstat = this.baseStat + buff.GetTotalStat(this.baseStat) + equipmentSlot.GetTotalStat();
         return currentstat;
     }
 
