@@ -63,14 +63,14 @@ public class Player : CharacterBase
 {
     StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
-    public float hpDrain = 0f; //�ϴ��� ������
+    public float hpDrain = 0f; // 일단은 곱연산
     public int money = 100;
 
     public Player(Stat stat) : base(stat) { }
 
     public void AddBuff(StatBuff buff)
     {
-        if (this.buff.debuffImmune == true || buff.IsDebuff()) //1ȸ �������ȿȭ�� �ְ�, ������ ������ ������϶�. ������� ��ȿȭ�Ѵ�.
+        if (this.buff.debuffImmune == true || buff.IsDebuff()) // 1회 디버프무효화가 있고, 들어오는 버프가 디버프일때. 디버프를 무효화한다.
         {
             this.buff.debuffImmune = false;
             return;
