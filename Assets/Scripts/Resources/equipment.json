@@ -6,5 +6,21 @@
         "statEffect": {
             "attack": 8
         }
+    },
+    {
+        "id": "sword2",
+        "type": "weapon",
+        "name": "환자의 대검",
+        "statEffect": {
+            "attack": -3
+        }
+    },
+    {
+        "id": "sword3",
+        "type": "weapon",
+        "name": "진혁의 대검",
+        "statEffect": {
+            "attack": 100
+        }
     }
 ]}
