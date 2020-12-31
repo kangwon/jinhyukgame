@@ -36,6 +36,9 @@ public class GameSceneUIController : MonoBehaviour
             button.transform.Find("ItemPrice").GetComponent<Text>().text = $"{item.price}G";
             button.onClick.AddListener(() => player.BuyItem(item));
         }
+        Button buffButton = GameObject.Find("BuffButton").GetComponent<Button>(); 
+        StatBuff buff = JsonDB.GetBuff("buff01");
+        buffButton.onClick.AddListener(()=>player.AddBuff(buff));
     }
 
     // Update is called once per frame

@@ -29,12 +29,13 @@ class JsonCollection<T> where T : JsonItem
 class JsonDB
 {
     private JsonCollection<Equipment> equipmentCollection;
-
+    private JsonCollection<StatBuff> buffCollection;
     private static readonly JsonDB instance = new JsonDB();  
     static JsonDB() {}  
     private JsonDB() 
     {        
         equipmentCollection = new JsonCollection<Equipment>("equipment");
+        buffCollection = new JsonCollection<StatBuff>("buff");
     }
     public static JsonDB Instance  
     {  
@@ -59,5 +60,10 @@ class JsonDB
             default:
                 throw new NotImplementedException($"Invalid equipment type: {equip.type}");
         }
+    }
+    public static StatBuff GetBuff(string id)
+    {
+        StatBuff stat = Instance.buffCollection.GetItem(id);
+        return stat;
     }
 }
