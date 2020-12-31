@@ -30,10 +30,10 @@ public class CardType
 public class StageChoice : MonoBehaviour
 {
 
-    public int GameState = 0;
-    public int StageNum = 0;
-    public int WorldNum = 1;
-    public bool BossClear = false;
+    public static int GameState = 0;
+    public static int StageNum = 0;
+    public static int WorldNum = 1;
+    public static bool BossClear = false;
 
     List<int> WorldBossStage = new List<int>() { 0, 15, 15, 20, 20, 25, 25, 30, 30, 50 };
 
@@ -53,6 +53,7 @@ public class StageChoice : MonoBehaviour
 
     public GameObject card1, card2, card3;
     public GameObject nextcard1, nextcard2, nextcard3;
+    public GameObject UserScreen;
 
     public System.Random ran = new System.Random();
 

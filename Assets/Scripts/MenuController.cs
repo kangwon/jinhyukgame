@@ -19,7 +19,7 @@ public class MenuController : MonoBehaviour
 
     public void OnClickGameStartButton()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void OnClickRecordButton()
