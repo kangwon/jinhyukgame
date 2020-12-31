@@ -1,9 +1,9 @@
 ﻿using System;
 
-public class StatBuff
+[System.Serializable]
+public class StatBuff :JsonItem
 {
     public Stat baseBuffStat = new Stat(); //절대치 증가
-    public int buffcount; // 스테이지마다 카운트되게 설정 -> buffcount-- //-1이면 무한지속.
     public float maxHpPercent = 0; // 퍼센트로 증가할때 필요. 30% = 0.3f
     public float attackPercent = 0;
     public float defensePercent = 0;
@@ -30,19 +30,5 @@ public class StatBuff
     }
     public bool IsDebuff() => this.isDebuff;
     public bool IsBuff() => !this.isDebuff;
-    public bool IsEndBuff()
-    {
-        if (buffcount == 0) return true;
-        else return false;
-    }
 
-    public int CountBuff()
-    {
-        //스테이지가 지날때마다 지속시간이 감소.(스테이지 지날때 이 메서드를 넣으면 됨)
-        if (!IsEndBuff()||!(buffcount==-1))
-        {
-            buffcount--;
-        }
-        return buffcount;
-    }
 }

@@ -1,0 +1,14 @@
+{ "items": [
+  {
+      "id": "buff01",
+      "baseBuffStat": {
+        "maxHp": 10
+      }
+    },
+    {
+      "id": "buff02",
+      "baseBuffStat": {
+        "attack": 5
+      }
+    }
+]}
