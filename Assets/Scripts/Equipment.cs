@@ -20,21 +20,22 @@ public class Equipment : JsonItem
 {
     public string type;
     public string name;
+    public int price;
 
     public Stat statEffect;
     public EquipmentRank rank;
     public EquipmentPrefix prefix;
 
     public Weapon ToWeapon()
-        => new Weapon() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+        => new Weapon() {type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Armor ToArmor()
-        => new Armor() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+        => new Armor() {type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Helmet ToHelmet()
-        => new Helmet() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+        => new Helmet() {type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Shoes ToShoes()
-        => new Shoes() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+        => new Shoes() {type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Artifact ToArtifact()
-        => new Artifact() {type = type, name = name, statEffect = statEffect, rank = rank, prefix = prefix};
+        => new Artifact() {type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     
 }
 

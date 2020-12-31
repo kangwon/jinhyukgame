@@ -63,12 +63,14 @@ public class Player : CharacterBase
 {
     StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
-    public float hpDrain = 0f; //ÀÏ´ÜÀº °ö¿¬»ê
+    public float hpDrain = 0f; // ì¼ë‹¨ì€ ê³±ì—°ì‚°
+    public int money = 100;
+
     public Player(Stat stat) : base(stat) { }
 
     public void AddBuff(StatBuff buff)
     {
-        if (this.buff.debuffImmune == true || buff.IsDebuff()) //1È¸ µð¹öÇÁ¹«È¿È­°¡ ÀÖ°í, µé¾î¿À´Â ¹öÇÁ°¡ µð¹öÇÁÀÏ¶§. µð¹öÇÁ¸¦ ¹«È¿È­ÇÑ´Ù.
+        if (this.buff.debuffImmune == true || buff.IsDebuff()) // 1íšŒ ë””ë²„í”„ë¬´íš¨í™”ê°€ ìžˆê³ , ë“¤ì–´ì˜¤ëŠ” ë²„í”„ê°€ ë””ë²„í”„ì¼ë•Œ. ë””ë²„í”„ë¥¼ ë¬´íš¨í™”í•œë‹¤.
         {
             this.buff.debuffImmune = false;
             return;
@@ -85,5 +87,14 @@ public class Player : CharacterBase
     public void SetEquipment(Equipment equip)
     {
         equipmentSlot.SetEquipment(equip);
+    }
+
+    public void BuyItem(Equipment item)
+    {
+        if (money >= item.price)
+        {
+            money -= item.price;
+            this.SetEquipment(item);
+        }
     }
 }
