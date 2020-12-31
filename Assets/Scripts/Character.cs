@@ -63,12 +63,14 @@ public class Player : CharacterBase
 {
     StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
-    public float hpDrain = 0f; //ÀÏ´ÜÀº °ö¿¬»ê
+    public float hpDrain = 0f; //ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public int money = 100;
+
     public Player(Stat stat) : base(stat) { }
 
     public void AddBuff(StatBuff buff)
     {
-        if (this.buff.debuffImmune == true || buff.IsDebuff()) //1È¸ µð¹öÇÁ¹«È¿È­°¡ ÀÖ°í, µé¾î¿À´Â ¹öÇÁ°¡ µð¹öÇÁÀÏ¶§. µð¹öÇÁ¸¦ ¹«È¿È­ÇÑ´Ù.
+        if (this.buff.debuffImmune == true || buff.IsDebuff()) //1È¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¿È­ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿È­ï¿½Ñ´ï¿½.
         {
             this.buff.debuffImmune = false;
             return;
@@ -85,5 +87,14 @@ public class Player : CharacterBase
     public void SetEquipment(Equipment equip)
     {
         equipmentSlot.SetEquipment(equip);
+    }
+
+    public void BuyItem(Equipment item)
+    {
+        if (money >= item.price)
+        {
+            money -= item.price;
+            this.SetEquipment(item);
+        }
     }
 }
