@@ -56,18 +56,24 @@ public class StageChoice : MonoBehaviour
     Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
     public GameObject CardSelectPanel;
     public GameObject NpcPanel;
+    public GameObject BuffPanel;
 
     public System.Random ran = new System.Random();
 
     List<Card> CardStates = new List<Card>()
     {
+        new Card(CardLocation.Left, CardType.Buff),
+        new Card(CardLocation.Middle, CardType.Buff),
+        new Card(CardLocation.Right, CardType.Buff),
+
         new Card(CardLocation.Left, CardType.Npc), 
         new Card(CardLocation.Middle, CardType.Npc), 
         new Card(CardLocation.Right, CardType.Npc),
 
         new Card(CardLocation.Left, CardType.Undecided), 
         new Card(CardLocation.Middle, CardType.Undecided), 
-        new Card(CardLocation.Right, CardType.Undecided),
+        new Card(CardLocation.Right, CardType.Undecided)
+  
     };
 
     // Start is called before the first frame update
@@ -133,6 +139,7 @@ public class StageChoice : MonoBehaviour
     {
         CardSelectPanel.SetActive(false);
         NpcPanel.SetActive(false);
+        BuffPanel.SetActive(false);
     }
 
     public void UpdateGamePanel()
@@ -148,6 +155,8 @@ public class StageChoice : MonoBehaviour
             case CardType.Chest:
                 break;
             case CardType.Buff:
+                BuffPanel.SetActive(true);
+                BuffPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Random:
                 break;
@@ -155,6 +164,7 @@ public class StageChoice : MonoBehaviour
                 NpcPanel.SetActive(true);
                 NpcPanel.transform.localPosition = PanelDisplayPosition;
                 break;
+
         }
     }
 }
