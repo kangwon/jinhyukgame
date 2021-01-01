@@ -2,38 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardType
+// location 0 - 좌 / 1 - 중 / 2 - 우
+public enum CardLocation
 {
-    // location 0 - 좌 / 1 - 중 / 2 - 우
-    public int Location { get; set; }
-    // typeNum 0 - 미정 / 1 - 몬스터 / 2 - 보물
-    // 3 - 버프 / 4 - 이벤트 / 5 - 마을 / 6 - 보스
-    public int TypeNum { get; set; }
+    Left, Middle, Right,
+}
 
-    private void Clear()
-    {
-        Location = 0;
-        TypeNum = 0;
-    }
+// typeNum 0 - 미정 / 1 - 몬스터 / 2 - 보물
+// 3 - 버프 / 4 - 이벤트 / 5 - 마을 / 6 - 보스
+public enum CardType
+{
+    Undecided, Monster, Chest,
+    Buff, Random, Npc, Boss
+}
 
-    public CardType()
-    {
-        Clear();
-    }
-    public CardType(int location, int typeNum) : this()
+public class Card
+{
+    public CardLocation Location;
+    public CardType Type;
+
+    public Card(CardLocation location, CardType type)
     {
         Location = location;
-        TypeNum = typeNum;
+        Type = type;
     }
 }
 
 public class StageChoice : MonoBehaviour
 {
-
-    public static int GameState = 0;
-    public static int StageNum = 0;
-    public static int WorldNum = 1;
-    public static bool BossClear = false;
+    public int StageNum = 0;
+    public int WorldNum = 1;
+    public bool BossClear = false;
+    CardType CurrentCardType;
 
     List<int> WorldBossStage = new List<int>() { 0, 15, 15, 20, 20, 25, 25, 30, 30, 50 };
 
@@ -51,93 +51,110 @@ public class StageChoice : MonoBehaviour
         }
     }
 
-    public GameObject card1, card2, card3;
-    public GameObject nextcard1, nextcard2, nextcard3;
     public GameObject UserScreen;
+
+    Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
+    public GameObject CardSelectPanel;
+    public GameObject NpcPanel;
 
     public System.Random ran = new System.Random();
 
-    public GameObject cardtxt1, cardtxt2, cardtxt3;
-
-    List<CardType> Cards = new List<CardType>()
+    List<Card> CardStates = new List<Card>()
     {
-        new CardType(0,0), new CardType(1,0), new CardType(2,0),
-        new CardType(0,0), new CardType(1,0), new CardType(2,0)
+        new Card(CardLocation.Left, CardType.Npc), 
+        new Card(CardLocation.Middle, CardType.Npc), 
+        new Card(CardLocation.Right, CardType.Npc),
+
+        new Card(CardLocation.Left, CardType.Undecided), 
+        new Card(CardLocation.Middle, CardType.Undecided), 
+        new Card(CardLocation.Right, CardType.Undecided),
     };
-
-    void Active(bool B)
-    {
-        card1.SetActive(B);
-        card2.SetActive(B);
-        card3.SetActive(B);
-        nextcard1.SetActive(B);
-        nextcard2.SetActive(B);
-        nextcard3.SetActive(B);
-    }
-
-    public void Card1Click()
-    {
-        Active(false);
-        GameState = Cards[0].TypeNum;
-        Start();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (GameState == 0)
-        {
-            Active(true);
-            int typeInt;
-
-            Cards[0] = Cards[3];
-            Cards[1] = Cards[4];
-            Cards[2] = Cards[5];
-            Cards[3] = new CardType(0, 0);
-            Cards[4] = new CardType(1, 0);
-            Cards[5] = new CardType(2, 0);
-
-            for (int i = 0; i < 6; i++)
-            {
-                if (Cards[i].TypeNum == 0)
-                {
-                    if (StageNum < WorldBossStage[WorldNum])
-                    {
-                        typeInt = ran.Next(1, 101);
-                        if (typeInt <= 70) Cards[i].TypeNum = 1;
-                        else if (typeInt <= 75) Cards[i].TypeNum = 2;
-                        else if (typeInt <= 80) Cards[i].TypeNum = 3;
-                        else if (typeInt <= 90) Cards[i].TypeNum = 4;
-                        else if (typeInt <= 100) Cards[i].TypeNum = 5;
-                    }
-                    else if (Cards[i].Location == 1)
-                    {
-                        Cards[i].TypeNum = 6;
-                    }
-                    else
-                    {
-                        typeInt = ran.Next(1, 101);
-                        if (typeInt <= 73) Cards[i].TypeNum = 1;
-                        else if (typeInt <= 80) Cards[i].TypeNum = 2;
-                        else if (typeInt <= 87) Cards[i].TypeNum = 3;
-                        else if (typeInt <= 100) Cards[i].TypeNum = 4;
-                    }
-                }
-            }
-        }
-        else if (GameState == 1)
-        {
-
-        }
-        else
-        {
-
-        }
+        CurrentCardType = CardType.Undecided;
+        DeactiveAllPanel();
+        UpdateGamePanel();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void OnClickCard(int index)
+    {
+        CurrentCardType = CardStates[index].Type;
+        DeactiveAllPanel();
+        UpdateGamePanel();
+
+        // move forward
+        CardStates[0] = CardStates[3];
+        CardStates[1] = CardStates[4];
+        CardStates[2] = CardStates[5];
+        CardStates[3] = new Card(CardLocation.Left, CardType.Undecided);
+        CardStates[4] = new Card(CardLocation.Middle, CardType.Undecided);
+        CardStates[5] = new Card(CardLocation.Right, CardType.Undecided);
+
+        int typeInt;
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (CardStates[i].Type == CardType.Undecided)
+            {
+                if (StageNum < WorldBossStage[WorldNum])
+                {
+                    typeInt = ran.Next(1, 101);
+                    if (typeInt <= 70) CardStates[i].Type = CardType.Monster;
+                    else if (typeInt <= 75) CardStates[i].Type = CardType.Chest;
+                    else if (typeInt <= 80) CardStates[i].Type = CardType.Buff;
+                    else if (typeInt <= 90) CardStates[i].Type = CardType.Random;
+                    else if (typeInt <= 100) CardStates[i].Type = CardType.Npc;
+                }
+                else if (CardStates[i].Location == CardLocation.Middle)
+                {
+                    CardStates[i].Type = CardType.Boss;
+                }
+                else
+                {
+                    typeInt = ran.Next(1, 101);
+                    if (typeInt <= 73) CardStates[i].Type = CardType.Monster;
+                    else if (typeInt <= 80) CardStates[i].Type = CardType.Chest;
+                    else if (typeInt <= 87) CardStates[i].Type = CardType.Buff;
+                    else if (typeInt <= 100) CardStates[i].Type = CardType.Random;
+                }
+            }
+        }
+    }
+
+    void DeactiveAllPanel()
+    {
+        CardSelectPanel.SetActive(false);
+        NpcPanel.SetActive(false);
+    }
+
+    public void UpdateGamePanel()
+    {
+        switch (CurrentCardType)
+        {
+            case CardType.Undecided:
+                CardSelectPanel.SetActive(true);
+                CardSelectPanel.transform.localPosition = PanelDisplayPosition;
+                break;
+            case CardType.Monster:
+                break;
+            case CardType.Chest:
+                break;
+            case CardType.Buff:
+                break;
+            case CardType.Random:
+                break;
+            case CardType.Npc:
+                NpcPanel.SetActive(true);
+                NpcPanel.transform.localPosition = PanelDisplayPosition;
+                break;
+        }
     }
 }

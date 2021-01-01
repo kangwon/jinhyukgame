@@ -6,6 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneUIController : MonoBehaviour
 {
+    public GameObject NpcPanel;
+
+    public Player player = new Player
+    (
+        new Stat()
+        {
+            maxHp = 20,
+            attack = 5,
+            defense = 3,
+            speed = 2,
+            startSpeedGauge = 1,
+        }
+    );
     List<string> NpcItemIds = new List<string>()
     {
         "sword1", "sword2", "sword3"
@@ -27,6 +40,8 @@ public class GameSceneUIController : MonoBehaviour
         Button buffButton = GameObject.Find("BuffButton").GetComponent<Button>(); 
         StatBuff buff = JsonDB.GetBuff("buff01");
         buffButton.onClick.AddListener(()=>player.AddBuff(buff));
+
+        NpcPanel.transform.localPosition = new Vector3(0, 65, 0);
     }
 
     // Update is called once per frame
