@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffPanel: {fileID: 468903604}
-  cardSelectPanel: {fileID: 1186672454}
+  cardSelectPanel: {fileID: 1543311481}
 --- !u!1 &510873290
 GameObject:
   m_ObjectHideFlags: 0
