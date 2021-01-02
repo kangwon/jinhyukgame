@@ -62,18 +62,13 @@ public class StageChoice : MonoBehaviour
 
     List<Card> CardStates = new List<Card>()
     {
-        new Card(CardLocation.Left, CardType.Buff),
-        new Card(CardLocation.Middle, CardType.Buff),
-        new Card(CardLocation.Right, CardType.Buff),
-
-        new Card(CardLocation.Left, CardType.Npc), 
+        new Card(CardLocation.Left, CardType.Buff), 
         new Card(CardLocation.Middle, CardType.Npc), 
         new Card(CardLocation.Right, CardType.Npc),
 
         new Card(CardLocation.Left, CardType.Undecided), 
         new Card(CardLocation.Middle, CardType.Undecided), 
         new Card(CardLocation.Right, CardType.Undecided)
-  
     };
 
     // Start is called before the first frame update
@@ -97,6 +92,7 @@ public class StageChoice : MonoBehaviour
         UpdateGamePanel();
 
         // move forward
+        // TODO: Not yet completed
         CardStates[0] = CardStates[3];
         CardStates[1] = CardStates[4];
         CardStates[2] = CardStates[5];
@@ -164,7 +160,6 @@ public class StageChoice : MonoBehaviour
                 NpcPanel.SetActive(true);
                 NpcPanel.transform.localPosition = PanelDisplayPosition;
                 break;
-
         }
     }
 }
