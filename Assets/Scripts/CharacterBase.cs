@@ -6,11 +6,10 @@ using System.Linq;
 public class CharacterBase : MonoBehaviour
 {
     public Stat baseStat;
-    public float nowHp; //시작체력과 현재 체력
     public bool isMyTurn;
     public bool isDead
     {
-        get => nowHp <= 0;
+        get => baseStat.nowHp <= 0;
     }
     
     public CharacterBase(Stat stat)

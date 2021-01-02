@@ -26,9 +26,9 @@ public class Player : CharacterBase
     public override void TakeHit(float rawDamage) {
         float afterDamage = rawDamage; // TODO : 유물 등의 추가 방어 기믹 추후 추가 
         if(this.baseStat.defense >= afterDamage) {
-            nowHp = nowHp - 1;
+            baseStat.nowHp = baseStat.nowHp - 1;
         } else {
-            nowHp = nowHp + this.baseStat.defense - afterDamage;
+            baseStat.nowHp = baseStat.nowHp + this.baseStat.defense - (int)afterDamage;
         }
     }
 

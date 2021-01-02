@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    public bool isBattle = false;
+    public bool isBattle = true;
 
     public Player player;
     public Monster monster;
 
-    public const int MaxSpeedGauge = 1000;
+    public const float MaxSpeedGauge = 1000.0f;
 
-    private int playerGauge = 0;
-    private int monsterGauge = 0;
+    private float playerGauge = 0.0f;
+    private float monsterGauge = 0.0f;
 
     public enum combatState {
         Dead, //죽음
@@ -30,7 +30,6 @@ public class CombatController : MonoBehaviour
     public void UpdateState() {
         if(playerState == combatState.Idle && monsterState == combatState.Idle) { //둘 다 게이지 채우는 중일 때
             SpeedUntilTurn(); //행동게이지 증가, 둘 중 하나의 combatState가 Turn으로 변경.
-            Debug.Log("빠져나왔대");
         }
 
         if(playerState == combatState.Turn) { //player의 Turn 이 왔을 때
@@ -52,8 +51,8 @@ public class CombatController : MonoBehaviour
 
     public void CombatPhase(CharacterBase attacker, CharacterBase defender) {//IDEA : C# Delegate 여기 사용가능?
         float Dmg = attacker.AttackFoe();
-        //Debug.Log("attacker hp : " + attacker.nowHp);
         defender.TakeHit(Dmg);
+        //Debug.Log("defender hp : " + attacker.nowHp);
 
         if(player.isDead) {
             playerState = combatState.Dead;
@@ -68,18 +67,25 @@ public class CombatController : MonoBehaviour
     public void SpeedUntilTurn() { 
 
         float totalElapsedTime = 0.0f;
-        while(playerGauge <= MaxSpeedGauge && monsterGauge <= MaxSpeedGauge) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
+        while(playerGauge < MaxSpeedGauge && monsterGauge < MaxSpeedGauge) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
             
-            playerGauge += (int)(player.baseStat.speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
+            playerGauge += (player.baseStat.speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
             
-            //Debug.Log("playerGauge is :" + playerGauge);
-            monsterGauge += (int)(monster.baseStat.speed * Time.deltaTime);
+            Debug.Log("playerGauge is :" + playerGauge);
+
+            monsterGauge += (monster.baseStat.speed * Time.deltaTime);
+
+             Debug.Log("monsterGauge is :" + monsterGauge);
+
             totalElapsedTime += Time.deltaTime; // IDEA : 추후에 쓰일 걸릴시간?
         }
-        Debug.Log("3");
-        if(playerGauge > monsterGauge) {
+
+        if(playerGauge >= MaxSpeedGauge) {
+            playerGauge -= MaxSpeedGauge;
             playerState = combatState.Turn;
-        } else if(playerGauge < monsterGauge) {
+        }
+        if(monsterGauge >= MaxSpeedGauge) {
+            monsterGauge -= MaxSpeedGauge;
             monsterState = combatState.Turn;
         } else {
             //동시에 행동게이지 1000?
@@ -118,5 +124,13 @@ public class CombatController : MonoBehaviour
             Debug.Log("Battle Start!");
             UpdateState();
         }
+    }
+
+    public float getPlayerSpeedGaugeVal() {
+        return playerGauge;
+    }
+
+    public float getMonsterSpeedGaugeVal() {
+        return monsterGauge;
     }
 }

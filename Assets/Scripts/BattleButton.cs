@@ -19,7 +19,6 @@ public class BattleButton : MonoBehaviour
     }
 
     public void OnClickButton() {
-        cc.isBattle = !cc.isBattle;
-        Debug.Log("Button Clicked!");
+        cc.isBattle = true;
     }
 }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216d5cc5c8ea7bb48bafdfc780e10658, type: 3}
   m_Name: MonsterStat
   m_EditorClassIdentifier: 
-  maxHp: 500
+  maxHp: 50000
+  nowHp: 50000
   attack: 30
   defense: 0
-  speed: 80
+  speed: 10
   startSpeedGauge: 0

@@ -8,6 +8,7 @@ using UnityEngine;
 public class Stat : ScriptableObject
 {
     public int maxHp; //최대체력
+    public int nowHp; //현재체력
     public int attack; //공격력
     public int defense; //방어력
     public int speed; //속도

@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 179519584}
   - component: {fileID: 179519583}
   - component: {fileID: 179519585}
+  - component: {fileID: 179519586}
   m_Layer: 5
   m_Name: SpeedGauge
   m_TagString: Untagged
@@ -326,6 +327,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &179519586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179519581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3131ac0acb5babe4db7cb9ff9ecaa8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cmbt: {fileID: 288574955}
+  PlayerSpeedGaugeImage: {fileID: 1256925688}
+  MonsterSpeedGaugeImage: {fileID: 1947877105}
 --- !u!1 &186279149
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bff166d1540ce8498e807361a01a138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBattle: 0
+  isBattle: 1
   player: {fileID: 8527364037260039460, guid: 53055ff64c6055948804ea2a4a934ff3, type: 3}
   monster: {fileID: 6905293665544962684, guid: 36701e688428e1f4aabab75ac7448a48, type: 3}
 --- !u!4 &288574956
@@ -1146,7 +1162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c480b91b446f364f961668a4d8fe2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: a7811005aa5542e40bac4c267510d205, type: 2}
   character: {fileID: 1262585311}
   ATK: {fileID: 982176935}
   DEF: {fileID: 936194919}
@@ -1878,7 +1893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c480b91b446f364f961668a4d8fe2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: 796811a8278e6354ebcf88ca423416e0, type: 2}
   character: {fileID: 1598317927}
   ATK: {fileID: 1832333293}
   DEF: {fileID: 2067066311}

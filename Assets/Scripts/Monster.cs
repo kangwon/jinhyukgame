@@ -11,9 +11,9 @@ public class Monster : CharacterBase
     public override void TakeHit(float rawDamage) {
         float afterDamage = rawDamage; // TODO : 추가 몬스터 기믹 추후 추가 
         if(this.baseStat.defense >= rawDamage) {
-            nowHp = nowHp - 1;
+            baseStat.nowHp = baseStat.nowHp - 1;
         } else {
-            nowHp = nowHp + this.baseStat.defense - rawDamage;
+            baseStat.nowHp = baseStat.nowHp + this.baseStat.defense - (int)rawDamage;
         }
     }
 
