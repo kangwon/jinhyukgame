@@ -87,9 +87,7 @@ public class StageChoice : MonoBehaviour
 
     public void OnClickCard(int index)
     {
-        CurrentCardType = CardStates[index].Type;
-        DeactiveAllPanel();
-        UpdateGamePanel();
+        ActivatePannel(CardStates[index].Type);
 
         // move forward
         // TODO: Not yet completed
@@ -131,6 +129,13 @@ public class StageChoice : MonoBehaviour
         }
     }
 
+    public void ActivatePannel(CardType type)
+    {
+        CurrentCardType = type;
+        DeactiveAllPanel();
+        UpdateGamePanel();
+    }
+
     void DeactiveAllPanel()
     {
         CardSelectPanel.SetActive(false);
@@ -138,7 +143,7 @@ public class StageChoice : MonoBehaviour
         BuffPanel.SetActive(false);
     }
 
-    public void UpdateGamePanel()
+    void UpdateGamePanel()
     {
         switch (CurrentCardType)
         {

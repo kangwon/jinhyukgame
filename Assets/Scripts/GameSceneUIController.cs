@@ -7,18 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameSceneUIController : MonoBehaviour
 {
     public GameObject NpcPanel;
-
-    public Player player = new Player
-    (
-        new Stat()
-        {
-            maxHp = 20,
-            attack = 5,
-            defense = 3,
-            speed = 2,
-            startSpeedGauge = 1,
-        }
-    );
     List<string> NpcItemIds = new List<string>()
     {
         "sword1", "sword2", "sword3"
