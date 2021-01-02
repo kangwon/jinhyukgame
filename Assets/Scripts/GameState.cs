@@ -24,8 +24,10 @@ class GameState
                 defense = 3,
                 speed = 2,
                 startSpeedGauge = 1,
+                evasion = 0.05f,
+                critical =0.05f,
             }
-        );
+        ) ;
     }
     public static GameState Instance  
     {  
