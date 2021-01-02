@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffPanel: {fileID: 468903604}
-  cardSelectPanel: {fileID: 1543311481}
+  cardSelectPanel: {fileID: 1186672454}
 --- !u!1 &510873290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,7 +2454,7 @@ GameObject:
   - component: {fileID: 829732269}
   - component: {fileID: 829732268}
   m_Layer: 5
-  m_Name: TreasureType
+  m_Name: ChestType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4314,6 +4314,7 @@ MonoBehaviour:
   CardSelectPanel: {fileID: 1543311481}
   NpcPanel: {fileID: 1144839470}
   BuffPanel: {fileID: 468903604}
+  ChestPanel: {fileID: 2074765472}
 --- !u!1 &1233167275
 GameObject:
   m_ObjectHideFlags: 0
@@ -4960,7 +4961,7 @@ GameObject:
   - component: {fileID: 1697031100}
   - component: {fileID: 1697031099}
   m_Layer: 5
-  m_Name: TreasureDescription
+  m_Name: ChestDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5647,7 +5648,7 @@ GameObject:
   - component: {fileID: 2074765475}
   - component: {fileID: 2074765474}
   m_Layer: 5
-  m_Name: TreasurePanel
+  m_Name: ChestPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5689,9 +5690,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardSelectPanel: {fileID: 1543311481}
-  treasurePanel: {fileID: 2074765472}
-  treasureType: {fileID: 829732266}
-  treasureDescription: {fileID: 1697031097}
+  chestPanel: {fileID: 2074765472}
+  chestType: {fileID: 829732266}
+  chestDescription: {fileID: 1697031097}
 --- !u!114 &2074765475
 MonoBehaviour:
   m_ObjectHideFlags: 0
