@@ -57,14 +57,14 @@ public class StageChoice : MonoBehaviour
     public GameObject CardSelectPanel;
     public GameObject NpcPanel;
     public GameObject BuffPanel;
-
+    public GameObject ChestPanel;
     public System.Random ran = new System.Random();
 
     List<Card> CardStates = new List<Card>()
     {
         new Card(CardLocation.Left, CardType.Buff), 
         new Card(CardLocation.Middle, CardType.Npc), 
-        new Card(CardLocation.Right, CardType.Npc),
+        new Card(CardLocation.Right, CardType.Chest),
 
         new Card(CardLocation.Left, CardType.Undecided), 
         new Card(CardLocation.Middle, CardType.Undecided), 
@@ -149,6 +149,8 @@ public class StageChoice : MonoBehaviour
             case CardType.Monster:
                 break;
             case CardType.Chest:
+                ChestPanel.SetActive(true);
+                ChestPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Buff:
                 BuffPanel.SetActive(true);
