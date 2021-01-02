@@ -27,6 +27,7 @@ public class BuffPanelController : MonoBehaviour
         buffPanel.SetActive(false);
         cardSelectPanel.SetActive(true);
     }
+    
     // Update is called once per frame
     void Update()
     {
