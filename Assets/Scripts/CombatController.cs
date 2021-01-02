@@ -1,41 +1,44 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    Player player;
-    Monster monster;
+    public bool isBattle = false;
 
-    public const int SpeedGauge = 1000;
+    public Player player;
+    public Monster monster;
+
+    public const int MaxSpeedGauge = 1000;
 
     private int playerGauge = 0;
     private int monsterGauge = 0;
 
     public enum combatState {
-        Dead, //ì£½ìŒ
-        Idle, //ê²Œì´ì§€ ì±„ìš°ëŠ” ì¤‘
-        Turn, //í˜„ì¬ í„´
-        Unable // IDEA : ìŠ¤í„´ ë“±ì˜ í–‰ë™ë¶ˆê°€
+        Dead, //Á×À½
+        Idle, //°ÔÀÌÁö Ã¤¿ì´Â Áß
+        Turn, //ÇöÀç ÅÏ
+        Unable // IDEA : ½ºÅÏ µîÀÇ Çàµ¿ºÒ°¡
     }
 
     private combatState playerState = combatState.Idle;
     private combatState monsterState = combatState.Idle;
 
 
-/*---------ìƒíƒœ ë³€ê²½í•˜ë©° ì „íˆ¬ ì§„í–‰---------*/
+/*---------»óÅÂ º¯°æÇÏ¸ç ÀüÅõ ÁøÇà---------*/
 
     public void UpdateState() {
-        if(playerState == combatState.Idle && monsterState == combatState.Idle) { //ë‘˜ ë‹¤ ê²Œì´ì§€ ì±„ìš°ëŠ” ì¤‘ì¼ ë•Œ
-            SpeedUntilTurn(player, monster); //í–‰ë™ê²Œì´ì§€ ì¦ê°€, ë‘˜ ì¤‘ í•˜ë‚˜ì˜ combatStateê°€ Turnìœ¼ë¡œ ë³€ê²½.
+        if(playerState == combatState.Idle && monsterState == combatState.Idle) { //µÑ ´Ù °ÔÀÌÁö Ã¤¿ì´Â ÁßÀÏ ¶§
+            SpeedUntilTurn(); //Çàµ¿°ÔÀÌÁö Áõ°¡, µÑ Áß ÇÏ³ªÀÇ combatState°¡ TurnÀ¸·Î º¯°æ.
+            Debug.Log("ºüÁ®³ª¿Ô´ë");
         }
 
-        if(playerState == combatState.Turn) { //playerì˜ Turn ì´ ì™”ì„ ë•Œ
-            CombatPhase(player, monster); //ë•Œë¦¬ê³  ë§ê³ 
-            playerState = combatState.Idle; //ë‹¤ì‹œ ê²Œì´ì§€ ì±„ìš°ëŠ” ì¤‘ìœ¼ë¡œ
+        if(playerState == combatState.Turn) { //playerÀÇ Turn ÀÌ ¿ÔÀ» ¶§
+            CombatPhase(player, monster); //¶§¸®°í ¸Â°í
+            playerState = combatState.Idle; //´Ù½Ã °ÔÀÌÁö Ã¤¿ì´Â ÁßÀ¸·Î
         } 
 
-        else if (monsterState == combatState.Turn) { //monsterì˜ Turn ì´ ì™”ì„ ë•Œ
+        else if (monsterState == combatState.Turn) { //monsterÀÇ Turn ÀÌ ¿ÔÀ» ¶§
             CombatPhase(monster, player);
             monsterState = combatState.Idle;
         }
@@ -45,10 +48,11 @@ public class CombatController : MonoBehaviour
         }
     }
 
-/*---------ê³µê²© ì£¼ê³ ë°›ê¸°---------*/
+/*---------°ø°İ ÁÖ°í¹Ş±â---------*/
 
-    public void CombatPhase(CharacterBase attacker, CharacterBase defender) {// TODO : call-by-refë¡œ ë„˜ê²¨ì•¼í• ê±°ê°™ìŒ IDEA : C# Delegate ì—¬ê¸° ì‚¬ìš©ê°€ëŠ¥?
+    public void CombatPhase(CharacterBase attacker, CharacterBase defender) {//IDEA : C# Delegate ¿©±â »ç¿ë°¡´É?
         float Dmg = attacker.AttackFoe();
+        //Debug.Log("attacker hp : " + attacker.nowHp);
         defender.TakeHit(Dmg);
 
         if(player.isDead) {
@@ -60,43 +64,59 @@ public class CombatController : MonoBehaviour
         }        
     }
 
-/*---------ì–´ëŠ í•œ ìª½ì˜ ê²Œì´ì§€ê°€ 1000ì´ ë  ë•Œê¹Œì§€ ì§„í–‰---------*/
-    public void SpeedUntilTurn(Player p, Monster m) { 
-        //UpdateGaugeImage() // TODO : ìŠ¤í”¼ë“œê²Œì´ì§€ì˜ ì´ë¯¸ì§€ ì¡°ì •
-        
-        float totalElapsedTime = 0.0f;
-        
-        while(playerGauge <= SpeedGauge && monsterGauge <= SpeedGauge) { //ë‘˜ë‹¤ í–‰ë™ê²Œì´ì§€ê°€ ìµœëŒ€ ê²Œì´ì§€ì— ì´ë¥´ì§€ ëª»í–ˆì„ë•Œ
-            playerGauge += (int)(p.GetStat().speed * Time.deltaTime); //íë¥¸ ì‹œê°„ë§Œí¼ ì†ë„ì— ê³±í•´ ê²Œì´ì§€ë¥¼ ì±„ì›€
-            monsterGauge += (int)(m.GetStat().speed * Time.deltaTime);
-            totalElapsedTime += Time.deltaTime; // IDEA : ì¶”í›„ì— ì“°ì¼ ê±¸ë¦´ì‹œê°„?
-        }
+/*---------¾î´À ÇÑ ÂÊÀÇ °ÔÀÌÁö°¡ 1000ÀÌ µÉ ¶§±îÁö ÁøÇà---------*/
+    public void SpeedUntilTurn() { 
 
+        float totalElapsedTime = 0.0f;
+        while(playerGauge <= MaxSpeedGauge && monsterGauge <= MaxSpeedGauge) { //µÑ´Ù Çàµ¿°ÔÀÌÁö°¡ ÃÖ´ë °ÔÀÌÁö¿¡ ÀÌ¸£Áö ¸øÇßÀ»¶§
+            
+            playerGauge += (int)(player.baseStat.speed * Time.deltaTime); //Èå¸¥ ½Ã°£¸¸Å­ ¼Óµµ¿¡ °öÇØ °ÔÀÌÁö¸¦ Ã¤¿ò
+            
+            //Debug.Log("playerGauge is :" + playerGauge);
+            monsterGauge += (int)(monster.baseStat.speed * Time.deltaTime);
+            totalElapsedTime += Time.deltaTime; // IDEA : ÃßÈÄ¿¡ ¾²ÀÏ °É¸±½Ã°£?
+        }
+        Debug.Log("3");
         if(playerGauge > monsterGauge) {
             playerState = combatState.Turn;
         } else if(playerGauge < monsterGauge) {
             monsterState = combatState.Turn;
         } else {
-            //ë™ì‹œì— í–‰ë™ê²Œì´ì§€ 1000?
+            //µ¿½Ã¿¡ Çàµ¿°ÔÀÌÁö 1000?
         }
 
     }
 
-/*----------ì „íˆ¬ ë(ì •ì‚° ë“±?)----------*/
+/*----------ÀüÅõ ³¡(Á¤»ê µî?)----------*/
 
     public void EndCombat() {
-
+        isBattle = false;
+        Debug.Log("Battle Done!");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("CombatController called!");
+        if(player != null) {
+            playerGauge = player.baseStat.startSpeedGauge; //TODO : baseStatÀ» getStat()À¸·Î ¹Ù²Ù±â. Áö±İ Aggregate¿¡¼­ ArgumentNullException.
+        } else {
+            Debug.Log("No game object player found!");
+        }
+       
+        if(monster != null) {
+            monsterGauge = monster.baseStat.startSpeedGauge;
+        } else {
+            Debug.Log("No game object monster found!");
+        }   
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateState();
+        if(isBattle) {
+            Debug.Log("Battle Start!");
+            UpdateState();
+        }
     }
 }
