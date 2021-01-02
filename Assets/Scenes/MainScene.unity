@@ -1346,6 +1346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43632c8dcec8da4d80189cbe6d34bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buffPanel: {fileID: 468903604}
+  cardSelectPanel: {fileID: 1543311481}
 --- !u!1 &510873290
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,7 +4028,9 @@ MonoBehaviour:
   WorldNum: 1
   BossClear: 0
   UserScreen: {fileID: 0}
+  CardSelectPanel: {fileID: 1543311481}
   NpcPanel: {fileID: 1144839470}
+  BuffPanel: {fileID: 468903604}
 --- !u!1 &1233167275
 GameObject:
   m_ObjectHideFlags: 0
