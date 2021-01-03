@@ -122,8 +122,6 @@ public class StageChoice : MonoBehaviour
             }
         }
 
-        Debug.Log(CardStates[0].Type); 
-        
         card1_text.text = CardStates[0].Type.ToString();
         card2_text.text = CardStates[1].Type.ToString();
         card3_text.text = CardStates[2].Type.ToString();
@@ -152,6 +150,7 @@ public class StageChoice : MonoBehaviour
         CardSelectPanel.SetActive(false);
         NpcPanel.SetActive(false);
         BuffPanel.SetActive(false);
+        ChestPanel.SetActive(false);
     }
 
     public void UpdateGamePanel()
