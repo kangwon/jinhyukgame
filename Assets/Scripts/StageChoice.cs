@@ -4,36 +4,8 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
-// location 0 - 좌 / 1 - 중 / 2 - 우
-public enum CardLocation
-{
-    Left, Middle, Right,
-}
-
-// typeNum 0 - 미정 / 1 - 몬스터 / 2 - 보물
-// 3 - 버프 / 4 - 이벤트 / 5 - 마을 / 6 - 보스
-public enum CardType
-{
-    Undecided, Monster, Chest,
-    Buff, Random, Npc, Boss
-}
-
-public class Card
-{
-    public CardLocation Location;
-    public CardType Type;
-
-    public Card(CardLocation location, CardType type)
-    {
-        Location = location;
-        Type = type;
-    }
-}
-
 public class StageChoice : MonoBehaviour
 {
-    public int StageNum = 0;
-    public int WorldNum = 1;
     public bool BossClear = false;
     CardType CurrentCardType;
 
@@ -43,13 +15,13 @@ public class StageChoice : MonoBehaviour
     {
         if (BossClear)
         {
-            WorldNum += 1;
-            StageNum = 1;
+            GameState.Instance.WorldNum += 1;
+            GameState.Instance.StageNum = 1;
             BossClear = false;
         }
         else
         {
-            StageNum += 1;
+            GameState.Instance.StageNum += 1;
         }
     }
 
@@ -63,15 +35,15 @@ public class StageChoice : MonoBehaviour
     public GameObject BattlePanel;
     public System.Random ran = new System.Random();
 
-    List<Card> CardStates = new List<Card>()
+    List<StageCard> CardStates = new List<StageCard>()
     {
-        new Card(CardLocation.Left, CardType.Buff), 
-        new Card(CardLocation.Middle, CardType.Npc), 
-        new Card(CardLocation.Right, CardType.Chest),
+        new StageCard(CardLocation.Left, CardType.Buff), 
+        new StageCard(CardLocation.Middle, CardType.Npc), 
+        new StageCard(CardLocation.Right, CardType.Chest),
 
-        new Card(CardLocation.Left, CardType.Undecided), 
-        new Card(CardLocation.Middle, CardType.Undecided), 
-        new Card(CardLocation.Right, CardType.Undecided)
+        new StageCard(CardLocation.Left, CardType.Undecided), 
+        new StageCard(CardLocation.Middle, CardType.Undecided), 
+        new StageCard(CardLocation.Right, CardType.Undecided)
     };
 
     public Text card1_text;
@@ -90,9 +62,9 @@ public class StageChoice : MonoBehaviour
         CardStates[0] = CardStates[3];
         CardStates[1] = CardStates[4];
         CardStates[2] = CardStates[5];
-        CardStates[3] = new Card(CardLocation.Left, CardType.Undecided);
-        CardStates[4] = new Card(CardLocation.Middle, CardType.Undecided);
-        CardStates[5] = new Card(CardLocation.Right, CardType.Undecided);
+        CardStates[3] = new StageCard(CardLocation.Left, CardType.Undecided);
+        CardStates[4] = new StageCard(CardLocation.Middle, CardType.Undecided);
+        CardStates[5] = new StageCard(CardLocation.Right, CardType.Undecided);
 
         int typeInt;
 
@@ -100,7 +72,7 @@ public class StageChoice : MonoBehaviour
         {
             if (CardStates[i].Type == CardType.Undecided)
             {
-                if (StageNum < WorldBossStage[WorldNum])
+                if (GameState.Instance.StageNum < WorldBossStage[GameState.Instance.WorldNum])
                 {
                     typeInt = ran.Next(1, 101);
                     if (typeInt <= 70) CardStates[i].Type = CardType.Monster;
