@@ -22,18 +22,17 @@ public class StageCard
     public CardLocation Location;
     public CardType Type;
 
-    public StageCard(CardLocation location, CardType type)
+    public StageCard(CardType type)
     {
-        Location = location;
         Type = type;
     }
 }
 
 public class StageCardGenerator
 {
-    public StageCard GetRandomCard(CardLocation location)
+    public static StageCard GetRandomCard(int world, int stage, int location)
     {
-        int seed = GameState.Instance.StageSeed + (int)location;
+        int seed = GameState.Instance.GlobalSeed + world + stage + location;
         var rand = new Random(seed);
 
         CardType type;
@@ -49,6 +48,43 @@ public class StageCardGenerator
         else
             type = CardType.Npc;
 
-        return new StageCard(location, type);
+        return new StageCard(type);
+    }
+}
+
+public class WorldStage
+{
+    public static int NUM_OF_CARDS = 3;
+
+    public readonly int Number;
+    
+    public List<StageCard> Cards;
+
+    public WorldStage(int number)
+    {
+        this.Number = number;
+        this.Cards = new List<StageCard>();
+    }
+}
+
+public class World
+{
+    public readonly int Number;
+    public readonly string Name;
+
+    public World(int number, string name)
+    {
+        this.Number = number;
+        this.Name = name;
+    }
+
+    public WorldStage GetStage(int stageNum)
+    {
+        var stage = new WorldStage(stageNum);
+        for (int location = 0; location < WorldStage.NUM_OF_CARDS; location++)
+        {
+            stage.Cards.Add(StageCardGenerator.GetRandomCard(this.Number, stage.Number, location));
+        }
+        return stage;
     }
 }

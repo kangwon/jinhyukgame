@@ -12,8 +12,8 @@ class GameState
         get => this._player;
     }
 
-    public int StageNum = 0;
-    public int WorldNum = 1;
+    public World World;
+    public WorldStage Stage;
 
     private int _globalSeed;
     public int GlobalSeed
@@ -32,14 +32,6 @@ class GameState
             }
             return _globalSeed;
         }
-    }
-    public int WorldSeed
-    {
-        get => GlobalSeed + WorldNum;
-    }
-    public int StageSeed
-    {
-        get => WorldSeed + StageNum;
     }
     
     private static readonly GameState instance = new GameState();
