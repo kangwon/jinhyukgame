@@ -15,6 +15,7 @@ public class OptionSceneUIController : MonoBehaviour
     void Update()
     {
         
+
     }
 
     public void OnClickBackButton()

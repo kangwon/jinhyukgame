@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
-//Leftover
-//1. Initialize game related data
-public class BackButtonController : MonoBehaviour
+public class SettingController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -21,8 +18,8 @@ public class BackButtonController : MonoBehaviour
         
     }
 
-    public void OnClickBackButton()
+    public void OnClickReallyYes_Btn()
     {
-        SceneManager.LoadScene("MenuScene"); //Scene change to menu scene
+        SceneManager.LoadScene("MenuScene");
     }
 }

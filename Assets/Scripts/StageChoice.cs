@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // location 0 - 좌 / 1 - 중 / 2 - 우
 public enum CardLocation
@@ -71,23 +72,16 @@ public class StageChoice : MonoBehaviour
         new Card(CardLocation.Right, CardType.Undecided)
     };
 
+    public Text card1_text;
+    public Text card2_text;
+    public Text card3_text;    
+
     // Start is called before the first frame update
     void Start()
     {
         CurrentCardType = CardType.Undecided;
         DeactiveAllPanel();
         UpdateGamePanel();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void OnClickCard(int index)
-    {
-        ActivatePannel(CardStates[index].Type);
 
         // move forward
         // TODO: Not yet completed
@@ -127,8 +121,25 @@ public class StageChoice : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log(CardStates[0].Type); 
+        
+        card1_text.text = CardStates[0].Type.ToString();
+        card2_text.text = CardStates[1].Type.ToString();
+        card3_text.text = CardStates[2].Type.ToString();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void OnClickCard(int index)
+    {
+        ActivatePannel(CardStates[index].Type);
+    }
+    
     public void ActivatePannel(CardType type)
     {
         CurrentCardType = type;
@@ -143,7 +154,7 @@ public class StageChoice : MonoBehaviour
         BuffPanel.SetActive(false);
     }
 
-    void UpdateGamePanel()
+    public void UpdateGamePanel()
     {
         switch (CurrentCardType)
         {
