@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class OptionSceneUIController : MonoBehaviour
+
+//Leftover
+//1. Initialize game related data
+public class BackButtonController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,11 +19,10 @@ public class OptionSceneUIController : MonoBehaviour
     void Update()
     {
         
-
     }
 
     public void OnClickBackButton()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("MenuScene"); //Scene change to menu scene
     }
 }

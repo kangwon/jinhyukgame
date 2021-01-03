@@ -16,22 +16,18 @@ public class MenuController : MonoBehaviour
     {
         
     }
-
     public void OnClickGameStartButton()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("MainScene");
     }
-
     public void OnClickRecordButton()
     {
         SceneManager.LoadScene("RecordScene");
     }
-
     public void OnClickOptionButton()
     {
         SceneManager.LoadScene("OptionScene");
     }
-
     public void OnClickCreditButton()
     {
         SceneManager.LoadScene("CreditScene");

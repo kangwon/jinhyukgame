@@ -1,0 +1,18 @@
+﻿{ "items": [
+  {
+    "id": "buff1",
+    "name": "진혁의 축복",
+    "description":  "최대체력 10 증가",
+      "baseBuffStat": {
+        "maxHp": 10
+      }
+    },
+  {
+    "id": "buff2",
+    "name": "진혁의 분노",
+    "description": "공격력 5 증가",
+    "baseBuffStat": {
+      "attack": 5
+    }
+  }
+]}
