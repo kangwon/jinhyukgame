@@ -20,12 +20,14 @@ class GameState
             new Stat()
             {
                 maxHp = 20,
-                attack = 5,
+                attack = 10,
                 defense = 3,
-                speed = 2,
+                speed = 12,
                 startSpeedGauge = 1,
+                evasion = 0.05f,
+                critical =0.05f,
             }
-        );
+        ) ;
     }
     public static GameState Instance  
     {  

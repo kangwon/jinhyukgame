@@ -65,8 +65,8 @@ public class Player : CharacterBase
     EquipmentSlot equipmentSlot = new EquipmentSlot();
     public float hpDrain = 0f; // 일단은 곱연산
     public int money = 100;
-
-    public Player(Stat stat) : base(stat) { }
+    
+    public Player(Stat stat) : base(stat) {}
 
     public void AddBuff(StatBuff buff)
     {
