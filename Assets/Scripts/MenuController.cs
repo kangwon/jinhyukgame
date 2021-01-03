@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +28,6 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("OptionScene");
     }
-
     public void OnClickCreditButton()
     {
         SceneManager.LoadScene("CreditScene");

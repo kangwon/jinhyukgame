@@ -79,13 +79,11 @@ public class StageChoice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // card1_btn = GameObject.Find($"Card1").GetComponent<Button>();
-        // card1_text = card1_btn.transform.Find("card1_text").GetComponent<Text>();
         CurrentCardType = CardType.Undecided;
         DeactiveAllPanel();
         UpdateGamePanel();
 
-         // move forward
+        // move forward
         // TODO: Not yet completed
         CardStates[0] = CardStates[3];
         CardStates[1] = CardStates[4];
@@ -140,14 +138,9 @@ public class StageChoice : MonoBehaviour
     public void OnClickCard(int index)
     {
         ActivatePannel(CardStates[index].Type);
-        CurrentCardType = CardStates[index].Type;
-        DeactiveAllPanel();
-        UpdateGamePanel();
-
-       
-
     }
-     public void ActivatePannel(CardType type)
+    
+    public void ActivatePannel(CardType type)
     {
         CurrentCardType = type;
         DeactiveAllPanel();
