@@ -71,95 +71,33 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 {
     const int HAND_MAX = 4; //최대 핸드 수
     const int SELECT_MAX = 3; // 선택가능한 핸드의 카드 수
-    public GameObject handCard1;
-    public GameObject handCard2;
-    public GameObject handCard3;
-    public GameObject handCard4;
+    GameObject[] handCard = new GameObject[HAND_MAX] ;
     public GameObject deckCount;
     public bool[] selectCard = new bool[HAND_MAX];
     public List<Weapon> playerWeapons =new List<Weapon>();
     public Battle battle = new Battle();
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
-    public void OnClickHandCard1()
+    public void OnClickHandCard(int index)
     {
-        if ((from n in selectCard where n == true select n).Count() < SELECT_MAX || selectCard[0]==true)
+        if ((from n in selectCard where n == true select n).Count() < SELECT_MAX || selectCard[index] ==true)
         {
-            selectCard[0] = !(selectCard[0]);
+            selectCard[index] = !(selectCard[index]);
 
-            if (selectCard[0])
+            if (selectCard[index])
             {
-                ColorBlock colorBlock = handCard1.GetComponent<Button>().colors;
+                ColorBlock colorBlock = handCard[index].GetComponent<Button>().colors;
                 colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.gray;
-                handCard1.GetComponent<Button>().colors = colorBlock;
+                handCard[index].GetComponent<Button>().colors = colorBlock;
             }
             else
             {
-                ColorBlock colorBlock = handCard1.GetComponent<Button>().colors;
+                ColorBlock colorBlock = handCard[index].GetComponent<Button>().colors;
                 colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.white;
-                handCard1.GetComponent<Button>().colors = colorBlock;
+                handCard[index].GetComponent<Button>().colors = colorBlock;
             }
         }
      }
-    //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
-    public void OnClickHandCard2()
-    {
-        if ((from n in selectCard where n == true select n).Count() < SELECT_MAX || selectCard[1] == true)
-        {
-            selectCard[1] = !(selectCard[1]);
-            if (selectCard[1])
-            {
-                ColorBlock colorBlock = handCard2.GetComponent<Button>().colors;
-                colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.gray;
-                handCard2.GetComponent<Button>().colors = colorBlock;
-            }
-            else
-            {
-                ColorBlock colorBlock = handCard2.GetComponent<Button>().colors;
-                colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.white;
-                handCard2.GetComponent<Button>().colors = colorBlock;
-            }
-        }
-    }
-    //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
-    public void OnClickHandCard3()
-    {
-        if ((from n in selectCard where n == true select n).Count() < SELECT_MAX || selectCard[2] == true)
-        {
-            selectCard[2] = !(selectCard[2]);
-            if (selectCard[2])
-            {
-                ColorBlock colorBlock = handCard3.GetComponent<Button>().colors;
-                colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.gray;
-                handCard3.GetComponent<Button>().colors = colorBlock;
-            }
-            else
-            {
-                ColorBlock colorBlock = handCard3.GetComponent<Button>().colors;
-                colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.white;
-                handCard3.GetComponent<Button>().colors = colorBlock;
-            }
-        }
-    }
-    //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
-    public void OnClickHandCard4()
-    {
-        if ((from n in selectCard where n == true select n).Count() < SELECT_MAX || selectCard[3] == true)
-        {
-            selectCard[3] = !(selectCard[3]);
-            if (selectCard[3])
-            {
-                ColorBlock colorBlock = handCard4.GetComponent<Button>().colors;
-                colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.gray;
-                handCard4.GetComponent<Button>().colors = colorBlock;
-            }
-            else
-            {
-                ColorBlock colorBlock = handCard4.GetComponent<Button>().colors;
-                colorBlock.selectedColor = colorBlock.normalColor = colorBlock.highlightedColor = Color.white;
-                handCard4.GetComponent<Button>().colors = colorBlock;
-            }
-        }
-    }
+   
 
     public void OnClickAttack()
     {
@@ -172,21 +110,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
                 //정해진 카드를 모아서 attack매서드에 전달 후, 핸드에 있는 카드를 제거
                 sum += battle.CardHand.ElementAt(i).statEffect.attack;
                 battle.CardHand.RemoveAt(i); // 지금은 제거만 했음.
-                switch (i) { //선택된 버튼을 다시 눌러서 초기화
-                    case 0:
-                        OnClickHandCard1();
-                        break;
-                    case 1:
-                        OnClickHandCard2();
-                        break;
-                    case 2:
-                        OnClickHandCard3();
-                        break;
-                    case 3:
-                        OnClickHandCard4();
-                        break;
-                }
-
+                OnClickHandCard(i); //버튼을 다시 눌러서 초기화           
             }          
         }
         Debug.Log($"attack : {sum}");
@@ -230,16 +154,19 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        for (int i = 0; i < HAND_MAX; i++) 
+        {
+            handCard[i] = GameObject.Find($"HandCard{i + 1}");
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {                
-        handCard1.transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(0).statEffect}";
-        handCard2.transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(1).statEffect}";
-        handCard3.transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(2).statEffect}";
-        handCard4.transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(3).statEffect}";
+    {
+        for (int i = 0; i < HAND_MAX; i++)
+        {
+            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).statEffect}";
+        }
         deckCount.GetComponent<Text>().text = $"{battle.DeckCount()}";
     }
 }
