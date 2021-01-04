@@ -48,7 +48,7 @@ public class Artifact : Equipment {}
 [System.Serializable]
 public class EquipmentSlot
 {
-    Weapon weapon;
+    List<Weapon> weapons = new List<Weapon>();
     Armor armor;
     Helmet helmet;
     Shoes shoes;
@@ -58,8 +58,8 @@ public class EquipmentSlot
     {
         switch (equip)
         {
-            case Weapon w:
-                this.weapon = w;
+            case Weapon w: //10개 넘을시 따로 처리해주기
+                this.weapons.Add(w);             
                 break;
             case Armor a:
                 this.armor = a;
@@ -84,7 +84,6 @@ public class EquipmentSlot
     {
         Stat zeroStat = new Stat();
         Stat totalStat = new Stat();
-        totalStat += weapon?.statEffect ?? zeroStat;
         totalStat += armor?.statEffect ?? zeroStat;
         totalStat += helmet?.statEffect ?? zeroStat;
         totalStat += shoes?.statEffect ?? zeroStat;
