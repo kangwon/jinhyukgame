@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 [System.Serializable]
 public class StatBuff :JsonItem
@@ -11,9 +13,16 @@ public class StatBuff :JsonItem
     public float defensePercent = 0;
     public float speedPercent = 0;
     public float discountPercent = 0;
-    public float hpDrainPercent = 0;
+    public float evasionPercent = 0;
+    public float criticalPercent = 0;
+    public float vampirePercent = 0; // 흡혈 회복량 변수
+    public float stageHpDrainPercent = 0; // 스테이지 당 회복량 변수
+    public float hpDrainPercent = 0; // 회복용 변수
+    public float cashPercent = 0; // 전투 시 추가 재화용 변수
+    public float purchasePercent = 0; // 상점 할인용 변수
     public bool isDebuff = false;
     public bool debuffImmune = false;
+
 
     public Stat GetTotalStat(Stat stat)
     {
@@ -26,10 +35,12 @@ public class StatBuff :JsonItem
             defense = (int)(defensePercent * stat.defense) + baseBuffStat.defense,
             speed = (int)(speedPercent * stat.speed) + baseBuffStat.speed,
             startSpeedGauge = baseBuffStat.startSpeedGauge,
-            evasion = baseBuffStat.evasion,
-            critical = baseBuffStat.critical
+            evasion = evasionPercent + baseBuffStat.evasion,
+            critical = criticalPercent + baseBuffStat.critical,
+            vampire = vampirePercent + baseBuffStat.vampire
         };
     }
+
     public bool IsDebuff() => this.isDebuff;
     public bool IsBuff() => !this.isDebuff;
 

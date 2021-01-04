@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -123,9 +124,9 @@ public class StageChoice : MonoBehaviour
             }
         }
 
-        card1_text.text = CardStates[0].Type.ToString();
-        card2_text.text = CardStates[1].Type.ToString();
-        card3_text.text = CardStates[2].Type.ToString();
+         card1_text.text = CardStates[0].Type.ToString();
+         card2_text.text = CardStates[1].Type.ToString();
+         card3_text.text = CardStates[2].Type.ToString();
     }
 
     // Update is called once per frame

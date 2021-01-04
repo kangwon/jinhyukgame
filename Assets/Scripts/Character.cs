@@ -14,6 +14,7 @@ public class Stat : ScriptableObject
     public int startSpeedGauge;
     public float critical;
     public float evasion;
+    public float vampire = 0;       // 흡혈률
 
     public static Stat operator +(Stat a, Stat b)
     {
@@ -25,7 +26,8 @@ public class Stat : ScriptableObject
             speed = a.speed + b.speed,
             startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge,
             critical = a.critical + b.critical,
-            evasion = a.evasion + b.evasion
+            evasion = a.evasion + b.evasion,
+            vampire = a.vampire + b.vampire
         };
     }
     public override string ToString()
@@ -86,6 +88,7 @@ public class Monster : CharacterBase
 
 public class Player : CharacterBase
 {
+
     StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
     public float hpDrain = 0f; // 일단은 곱연산
@@ -95,6 +98,7 @@ public class Player : CharacterBase
 
     public void AddBuff(StatBuff buff)
     {
+
         if (this.buff.debuffImmune == true || buff.IsDebuff()) // 1회 디버프무효화가 있고, 들어오는 버프가 디버프일때. 디버프를 무효화한다.
         {
             this.buff.debuffImmune = false;

@@ -1,18 +1,207 @@
-﻿{ "items": [
-  {
-    "id": "buff1",
-    "name": "진혁의 축복",
-    "description":  "최대체력 10 증가",
+﻿{
+  "items": [
+    {
+      "id": "buff1",
+      "name": "스탯 [최대 체력]",
+      "description": "최대 체력 5% 증가",
       "baseBuffStat": {
-        "maxHp": 10
+        "maxHpPercent": 0.05
       }
     },
-  {
-    "id": "buff2",
-    "name": "진혁의 분노",
-    "description": "공격력 5 증가",
-    "baseBuffStat": {
-      "attack": 5
+    {
+      "id": "buff2",
+      "name": "스탯 [방어력]",
+      "description": "방어력 5 증가",
+      "baseBuffStat": {
+        "defense": 5
+      }
+    },
+    {
+      "id": "buff3",
+      "name": "스탯 [스피드]",
+      "description": "스피드 10% 증가",
+      "baseBuffStat": {
+        "speedPercent": 0.1
+      }
+    },
+    {
+      "id": "buff4",
+      "name": "스탯 [공격력]",
+      "description": "공격력 5 증가",
+      "baseBuffStat": {
+        "attack": 5
+      }
+    },
+    {
+      "id": "buff5",
+      "name": "디버프 1회 무효화",
+      "description": "디버프 들어왔을 때의 방지권 역할",
+      "baseBuffStat": {
+        "debuffImmune": true
+      }
+    },
+    {
+      "id": "buff6",
+      "name": "상점가 할인(%)",
+      "description": "상점가 20% 할인",
+      "baseBuffStat": {
+        "purchasePersent": 0.2
+      }
+    },
+    {
+      "id": "buff7",
+      "name": "다음 전투 시 선공",
+      "description": "시작 스피드 게이지 full",
+      "baseBuffStat": {
+
+      }
+    },
+    {
+      "id": "buff8",
+      "name": "크리 확률 증가",
+      "description": "크리 5% 증가",
+      "baseBuffStat": {
+        "criticalPercent": 0.05
+      }
+    },
+    {
+      "id": "buff9",
+      "name": "회피 확률 증가",
+      "description": "회피 5% 증가",
+      "baseBuffStat": {
+        "evasionPercent": 0.05
+      }
+    },
+    {
+      "id": "buff10",
+      "name": "흡혈",
+      "description": "가한 데미지의 5% 회복",
+      "baseBuffStat": {
+        "vampirePercent": 0.05
+      }
+    },
+    {
+      "id": "buff11",
+      "name": "스테이지 일정량 피 회복",
+      "description": "스테이지 클리어 시마다 최대 체력의 2% 회복",
+      "baseBuffStat": {
+        "stageHpDrainPercent": 0.02
+      }
+    },
+    {
+      "id": "buff12",
+      "name": "전투 보상 재화 증가",
+      "description": "전투 보상에 대한 재화 추가 20%",
+      "baseBuffStat": {
+        "cashPercent": 0.2
+      }
+    },
+    {
+      "id": "debuff1",
+      "name": "디버프 스탯 [최대 체력]",
+      "description": "최대 체력 5% 감소",
+      "baseBuffStat": {
+        "maxHpPercent": -0.05,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff2",
+      "name": "디버프 스탯 [방어력]",
+      "description": "방어력 5 감소",
+      "baseBuffStat": {
+        "defense": -5,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff3",
+      "name": "디버프 스탯 [스피드]",
+      "description": "스피드 10% 감소",
+      "baseBuffStat": {
+        "speedPercent": -0.1,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff4",
+      "name": "디버프 스탯 [공격력]",
+      "description": "공격력 5 감소",
+      "baseBuffStat": {
+        "attack": -5,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff5",
+      "name": "콤보 데미지 불가",
+      "description": "콤보 사용 불가",
+      "baseBuffStat": {
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff6",
+      "name": "상점가 할인(%)",
+      "description": "상점가 20% 증가",
+      "baseBuffStat": {
+        "purchasePersent": -0.2,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff7",
+      "name": "다음 전투 시 선공",
+      "description": "몬스터 시작 스피드 게이지 full",
+      "baseBuffStat": {
+
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff8",
+      "name": "크리 확률 감소",
+      "description": "크리 안 터짐",
+      "baseBuffStat": {
+        "criticalPercent": -0.05,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff9",
+      "name": "회피 확률 감소",
+      "description": "회피 불가",
+      "baseBuffStat": {
+        "evasionPercent": -0.05,
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff10",
+      "name": "핸드 자동 리롤",
+      "description": "핸드의 모든 카드 버리기",
+      "baseBuffStat": {
+
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff11",
+      "name": "스테이지 일정량 피 감소 (독)",
+      "description": "스테이지 클리어 시마다 체력의 5% 감소",
+      "baseBuffStat": {
+
+        "isDebuff": true
+      }
+    },
+    {
+      "id": "debuff12",
+      "name": "전투 보상 재화 감소",
+      "description": "전투 보상에 대한 재화 감소 20%",
+      "baseBuffStat": {
+        "cashPercent": -0.2,
+        "isDebuff": true
+      }
     }
-  }
-]}
+  ]
+}
