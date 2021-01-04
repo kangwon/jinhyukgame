@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class StatUI : MonoBehaviour
 {
-    //public Stat stat;
     public CharacterBase character;
     public Text ATK, DEF, HP, SPD;
 

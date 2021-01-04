@@ -6770,10 +6770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd3672306a62d241a665148086a2d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handCard1: {fileID: 1145485625}
-  handCard2: {fileID: 1490778127}
-  handCard3: {fileID: 260106159}
-  handCard4: {fileID: 2125184053}
   deckCount: {fileID: 26617691}
   selectCard: 00000000
 --- !u!114 &1664559586

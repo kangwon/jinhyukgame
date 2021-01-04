@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName= "Stat")]
 [System.Serializable]
-public class Stat : ScriptableObject
+public class Stat : MonoBehaviour
 {
     public int maxHp;
     public int attack;
