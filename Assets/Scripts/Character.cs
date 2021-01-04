@@ -71,6 +71,7 @@ public class Monster : CharacterBase
         } else {
             hp = hp + this.GetStat().defense - (int)afterDamage;
         }
+        Debug.Log($"이제 몬스터 피 : {hp}임.");
     }
 
     public override float AttackFoe() {
@@ -129,6 +130,7 @@ public class Player : CharacterBase
         } else {
             hp = hp + this.GetStat().defense - (int)afterDamage;
         }
+        Debug.Log($"이제 플레이어 피 : {hp}임.");
     }
 
     public override float AttackFoe() {

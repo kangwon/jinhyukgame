@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 
 //TODO:아직 배틀 클래스가 없어서 임시로 만듬 나중에 정섭이 코드 나오면 합쳐야함
-public partial class Battle 
+public class Battle 
 {
     const int HAND_MAX = 4; //최대 핸드 수
     public List<Weapon> CardList = new List<Weapon>(); //CardList는 플레이어의 웨폰리스트를 가져와야함.
@@ -77,6 +77,40 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public List<Weapon> playerWeapons =new List<Weapon>();
     public Battle battle = new Battle();
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
+
+    /*------------------Down 기존 CombatController부분 병합----------------*/
+
+    public bool isBattle = false; //private으로 숨기기?
+
+    Player player = GameState.Instance.player;
+    Monster monster = new Monster(new Stat() 
+    { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
+        maxHp = 120,
+        attack = 6,
+        defense = 10,
+        speed = 15}
+    );
+
+    public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
+
+    private float playerGauge, monsterGauge; //플레이어와 몬스터의 현재 스피드게이지
+
+    public enum combatState {
+        Dead, //죽음
+        Idle, //게이지 채우는 중
+        Turn, //현재 턴
+        Unable // IDEA : 스턴 등의 행동불가
+    }
+
+    private combatState playerState, monsterState;
+
+    /*------------------Up 기존 CombatController부분 병합----------------*/
+
+    private int damageSum; // 카드 선택한것 총 데미지
+    private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
+
+     /*------------------Up 새로 추가한 코드----------------*/
+
     public void OnClickHandCard(int index)
     {
         if ((from n in selectCard where n == true select n).Count() < SELECT_MAX || selectCard[index] ==true)
@@ -96,12 +130,11 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
                 handCard[index].GetComponent<Button>().colors = colorBlock;
             }
         }
-     }
+    }
    
-
     public void OnClickAttack()
     {
-        int sum = 0;
+        damageSum = 0;
         int maxCount = (from n in selectCard where n == true select n).Count();
         for(int i= HAND_MAX-1; i>=0;i--)
         {
@@ -109,12 +142,12 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             {
                 //TODO: 나중에 데미지 관련(시너지)하여 추가해야함
                 //정해진 카드를 모아서 attack매서드에 전달 후, 핸드에 있는 카드를 제거
-                sum += battle.CardHand.ElementAt(i).statEffect.attack;
+                damageSum += battle.CardHand.ElementAt(i).statEffect.attack;
                 battle.CardHand.RemoveAt(i); // 지금은 제거만 했음.
                 OnClickHandCard(i); //버튼을 다시 눌러서 초기화           
             }          
         }
-        Debug.Log($"attack : {sum}");
+        //Debug.Log($"attack : {damageSum}");
         int checkDraw = 0;      
         checkDraw =Battle.Draw(battle.CardDeck,battle.CardHand,maxCount);
         if (0 != checkDraw)
@@ -123,7 +156,99 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             Battle.Shuffle(battle.CardDeck);
             Battle.Draw(battle.CardDeck, battle.CardHand, checkDraw);
         }
+        OnClickAttackPressed = true;
     }
+    
+     /*------------------Down CombatController부분 병합----------------*/
+
+    public void UpdateBattleState() {
+        if(playerState == combatState.Idle && monsterState == combatState.Idle) { //둘 다 게이지 채우는 중일 때
+            SpeedUntilTurn(); //행동게이지 증가, 둘 중 하나의 combatState가 Turn으로 변경.
+        }
+
+        if(playerState == combatState.Turn) { //player의 Turn 이 왔을 때
+            PlayerAttackPhase(); //때리고 맞고
+            Bury();
+        } else if (monsterState == combatState.Turn) { //monster의 Turn 이 왔을 때
+            MonsterAttackPhase();
+            Bury();
+        }
+
+        if(playerState == combatState.Dead || monsterState == combatState.Dead) {
+            EndCombat();
+        }
+    }
+
+    public void PlayerAttackPhase() {
+        if(OnClickAttackPressed) {
+            Debug.Log($"PlayerAttackPhase에서 {damageSum}만큼 때린다!");
+            monster.TakeHit(damageSum);
+            playerState = combatState.Idle; //다시 게이지 채우는 중으로
+            OnClickAttackPressed = false; // 다시 초기화.
+        }
+    }
+
+    public void MonsterAttackPhase() {//IDEA : C# Delegate 여기 사용가능?
+        float Dmg = monster.AttackFoe();
+        player.TakeHit(Dmg);
+        monsterState = combatState.Idle;
+    }
+
+    public void Bury() {
+        if(player.isDead) {
+            playerState = combatState.Dead;
+            Debug.Log("플레이어 죽음");
+        }
+
+        if(monster.isDead) {
+            monsterState = combatState.Dead;
+            Debug.Log("몬스터 죽음");
+        }    
+    }
+
+    public void SpeedUntilTurn() { 
+
+        float totalElapsedTime = 0.0f;
+        while(playerGauge < MaxSpeedGauge && monsterGauge < MaxSpeedGauge) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
+            
+            playerGauge += (player.GetStat().speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
+            
+            //Debug.Log("playerGauge is :" + playerGauge);
+
+            monsterGauge += (monster.GetStat().speed * Time.deltaTime);
+
+            //Debug.Log("monsterGauge is :" + monsterGauge);
+
+            totalElapsedTime += Time.deltaTime; // IDEA : 추후에 쓰일 걸릴시간?
+        }
+
+        if(playerGauge >= MaxSpeedGauge) {
+            playerGauge -= MaxSpeedGauge;
+            playerState = combatState.Turn;
+        }
+        if(monsterGauge >= MaxSpeedGauge) {
+            monsterGauge -= MaxSpeedGauge;
+            monsterState = combatState.Turn;
+        } else {
+            //동시에 행동게이지 1000?
+        }
+    }
+
+    public void PlayerMonsterInit() {
+            playerState = combatState.Idle;
+            monsterState = combatState.Idle;
+            playerGauge = player.GetStat().startSpeedGauge;
+            monsterGauge = monster.GetStat().startSpeedGauge;
+    }
+
+
+    public void EndCombat() {
+        isBattle = false;
+        Debug.Log("Battle Done!");
+    }
+
+     /*------------------Up 기존 CombatController부분 병합----------------*/
+
     //해당 패널이 활성화 될때 실행되는 메서드
     private void OnEnable()
     {
@@ -150,11 +275,21 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }
 
         battle.CardList = playerWeapons;
+        PlayerMonsterInit();
         battle.BattleStart();      
+
     }
     // Start is called before the first frame update
     void Start()
     {
+        /*------------------Down 기존 CombatController부분 병합----------------*/
+        if(player != null && monster != null) {
+            isBattle = true;
+        } else {
+            Debug.Log("No game objects found!");
+        }
+        /*------------------Up 기존 CombatController부분 병합----------------*/
+
         for (int i = 0; i < HAND_MAX; i++) 
         {
             handCard[i] = GameObject.Find($"HandCard{i + 1}");
@@ -169,5 +304,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).statEffect}";
         }
         deckCount.GetComponent<Text>().text = $"{battle.DeckCount()}";
+        UpdateBattleState();
     }
 }
