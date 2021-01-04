@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class Stat : MonoBehaviour
+public class Stat
 {
     public int maxHp;
     public int attack;
