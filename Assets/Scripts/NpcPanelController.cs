@@ -26,7 +26,7 @@ public class NpcPanelController : MonoBehaviour
             button.transform.Find("ItemPrice").GetComponent<Text>().text = $"{item.price}G";
             button.onClick.AddListener(() => {
                 player.BuyItem(item);
-                stageChoice.ActivatePannel(CardType.Undecided);
+                stageChoice.MoveToNextStage();
             });
         }
     }

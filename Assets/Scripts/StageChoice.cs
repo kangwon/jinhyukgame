@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -18,6 +18,8 @@ public class StageChoice : MonoBehaviour
     public GameObject ChestPanel;
     public GameObject BattlePanel;
 
+    Text StageText { get => GameObject.Find("Stage Text").GetComponent<Text>(); }
+
     public Text card1_text;
     public Text card2_text;
     public Text card3_text;    
@@ -25,15 +27,20 @@ public class StageChoice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentStage = 1;
         GameState.Instance.World = new World(1, "테스트 월드");
-        GameState.Instance.Stage = GameState.Instance.World.GetStage(currentStage);
-        ActivatePannel(CardType.Undecided);
+        currentStage = 0;
+        MoveToNextStage();
         
         var stageCards = GameState.Instance.Stage.Cards;
         card1_text.text = stageCards[0].Type.ToString();
         card2_text.text = stageCards[1].Type.ToString();
         card3_text.text = stageCards[2].Type.ToString();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     public void OnClickCard(int index)
@@ -42,13 +49,15 @@ public class StageChoice : MonoBehaviour
         ActivatePannel(selectedCard.Type);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveToNextStage()
     {
-
+        currentStage += 1;
+        StageText.text = $"Stage {currentStage}";
+        GameState.Instance.Stage = GameState.Instance.World.GetStage(currentStage);
+        ActivatePannel(CardType.Undecided);
     }
     
-    public void ActivatePannel(CardType type)
+    void ActivatePannel(CardType type)
     {
         CurrentCardType = type;
         DeactiveAllPanel();
@@ -66,7 +75,7 @@ public class StageChoice : MonoBehaviour
 
     public void UpdateGamePanel()
     {
-        Debug.Log($"{CurrentCardType}");
+        Debug.Log($"UpdateGamePanel: {CurrentCardType}");
         switch (CurrentCardType)
         {
             case CardType.Undecided:
