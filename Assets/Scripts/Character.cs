@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
-
+[CreateAssetMenu(menuName= "Stat")]
 [System.Serializable]
-public class Stat
+public class Stat : ScriptableObject
 {
     public int maxHp;
     public int attack;
@@ -52,11 +53,35 @@ public class CharacterBase
     {
         return baseStat;
     }
+
+    public virtual float AttackFoe() {return 0;} // 공격하는 함수
+
+    public virtual void TakeHit(float rawDamage) {} // 데미지 받는 함수 TODO : IntFloat 해결
 }
 
 public class Monster : CharacterBase
 {
     public Monster(Stat stat) : base(stat) { }
+    public string monsterName {get; set;}
+    public bool isBoss;
+
+    public override void TakeHit(float rawDamage) {
+        float afterDamage = CalcDamage(rawDamage); 
+        if(this.GetStat().defense >= afterDamage) {
+            hp = hp - 1;
+        } else {
+            hp = hp + this.GetStat().defense - (int)afterDamage;
+        }
+    }
+
+    public override float AttackFoe() {
+        float finalDamage = this.GetStat().attack; //TODO : 공격 기믹 추가
+        return finalDamage;
+    }
+
+    float CalcDamage(float incomingDmg) {
+        return incomingDmg; // TODO : 몬스터 데미지 계산식
+    }
 }
 
 public class Player : CharacterBase
@@ -96,5 +121,23 @@ public class Player : CharacterBase
             money -= item.price;
             this.SetEquipment(item);
         }
+    }
+
+    public override void TakeHit(float rawDamage) {
+        float afterDamage = CalcDamage(rawDamage);
+        if(this.GetStat().defense >= afterDamage) {
+            hp = hp - 1;
+        } else {
+            hp = hp + this.GetStat().defense - (int)afterDamage;
+        }
+    }
+
+    public override float AttackFoe() {
+        float finalDamage = this.GetStat().attack;  //TODO : 공격 기믹 추가
+        return finalDamage;
+    }
+
+    float CalcDamage(float incomingDmg) {
+        return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
     }
 }

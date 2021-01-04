@@ -24,11 +24,9 @@ public class StatUI : MonoBehaviour
     }
 
     void UpdateText() {
-        //ATK.text = "공 : " + character.GetStat().attack; //character stat과 연동
-        ATK.text = "공 : " + character.baseStat.attack;
-        DEF.text = "방 : " + character.baseStat.defense;
-        HP.text = "현재체력 : " + character.baseStat.nowHp;
-        SPD.text = "속 : " + character.baseStat.speed;
-        Debug.Log("와우시발");
+        ATK.text = "공 : " + character.GetStat().attack;
+        DEF.text = "방 : " + character.GetStat().defense;
+        HP.text = "현재체력 : " + character.hp;
+        SPD.text = "속 : " + character.GetStat().speed;
     }
 }

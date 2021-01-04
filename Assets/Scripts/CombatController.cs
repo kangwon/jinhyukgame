@@ -9,7 +9,7 @@ public class CombatController : MonoBehaviour
     public Player player;
     public Monster monster;
 
-    public const float MaxSpeedGauge = 1000.0f;
+    public const float MaxSpeedGauge = 200.0f;
 
     private float playerGauge = 0.0f;
     private float monsterGauge = 0.0f;
@@ -69,11 +69,11 @@ public class CombatController : MonoBehaviour
         float totalElapsedTime = 0.0f;
         while(playerGauge < MaxSpeedGauge && monsterGauge < MaxSpeedGauge) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
             
-            playerGauge += (player.baseStat.speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
+            playerGauge += (player.GetStat().speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
             
             Debug.Log("playerGauge is :" + playerGauge);
 
-            monsterGauge += (monster.baseStat.speed * Time.deltaTime);
+            monsterGauge += (monster.GetStat().speed * Time.deltaTime);
 
              Debug.Log("monsterGauge is :" + monsterGauge);
 
@@ -105,13 +105,13 @@ public class CombatController : MonoBehaviour
     {
         Debug.Log("CombatController called!");
         if(player != null) {
-            playerGauge = player.baseStat.startSpeedGauge; //TODO : baseStat을 getStat()으로 바꾸기. 지금 Aggregate에서 ArgumentNullException.
+            playerGauge = player.GetStat().startSpeedGauge;
         } else {
             Debug.Log("No game object player found!");
         }
        
         if(monster != null) {
-            monsterGauge = monster.baseStat.startSpeedGauge;
+            monsterGauge = monster.GetStat().startSpeedGauge;
         } else {
             Debug.Log("No game object monster found!");
         }   

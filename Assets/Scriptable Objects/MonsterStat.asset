@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 216d5cc5c8ea7bb48bafdfc780e10658, type: 3}
+  m_Script: {fileID: 0}
   m_Name: MonsterStat
-  m_EditorClassIdentifier: 
-  maxHp: 50000
-  nowHp: 50000
-  attack: 30
+  m_EditorClassIdentifier: Assembly-CSharp::Stat
+  maxHp: 0
+  attack: 0
   defense: 0
-  speed: 10
+  speed: 0
   startSpeedGauge: 0
+  critical: 0
+  evasion: 0
