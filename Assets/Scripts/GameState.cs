@@ -12,7 +12,7 @@ class GameState
     }
     
     private static readonly GameState instance = new GameState();  
-    static GameState() {}  
+    static GameState() {}
     private GameState() 
     {
         this._player = new Player

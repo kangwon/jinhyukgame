@@ -59,6 +59,7 @@ public class StageChoice : MonoBehaviour
     public GameObject NpcPanel;
     public GameObject BuffPanel;
     public GameObject ChestPanel;
+    public GameObject BattlePanel;
     public System.Random ran = new System.Random();
 
     List<Card> CardStates = new List<Card>()
@@ -122,8 +123,6 @@ public class StageChoice : MonoBehaviour
             }
         }
 
-        Debug.Log(CardStates[0].Type); 
-        
         card1_text.text = CardStates[0].Type.ToString();
         card2_text.text = CardStates[1].Type.ToString();
         card3_text.text = CardStates[2].Type.ToString();
@@ -152,6 +151,8 @@ public class StageChoice : MonoBehaviour
         CardSelectPanel.SetActive(false);
         NpcPanel.SetActive(false);
         BuffPanel.SetActive(false);
+        ChestPanel.SetActive(false);
+        BattlePanel.SetActive(false);
     }
 
     public void UpdateGamePanel()
@@ -163,6 +164,8 @@ public class StageChoice : MonoBehaviour
                 CardSelectPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Monster:
+                BattlePanel.SetActive(true);
+                BattlePanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Chest:
                 ChestPanel.SetActive(true);
