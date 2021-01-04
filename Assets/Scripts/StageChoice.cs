@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -6,25 +6,8 @@ using UnityEngine.UI;
 
 public class StageChoice : MonoBehaviour
 {
-    public bool BossClear = false;
     CardType CurrentCardType;
     int currentStage;
-
-    List<int> WorldBossStage = new List<int>() { 0, 15, 15, 20, 20, 25, 25, 30, 30, 50 };
-
-    void StageCheck()
-    {
-        if (BossClear)
-        {
-            // GameState.Instance.WorldNum += 1;
-            // GameState.Instance.StageNum = 1;
-            BossClear = false;
-        }
-        else
-        {
-            // GameState.Instance.StageNum += 1;
-        }
-    }
 
     public GameObject UserScreen;
 
@@ -34,7 +17,6 @@ public class StageChoice : MonoBehaviour
     public GameObject BuffPanel;
     public GameObject ChestPanel;
     public GameObject BattlePanel;
-    public System.Random ran = new System.Random();
 
     public Text card1_text;
     public Text card2_text;

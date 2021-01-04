@@ -5923,8 +5923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a3d51cfb81bf641af1e5cd84259645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageNum: 0
-  WorldNum: 1
   BossClear: 0
   UserScreen: {fileID: 0}
   CardSelectPanel: {fileID: 1543311481}
