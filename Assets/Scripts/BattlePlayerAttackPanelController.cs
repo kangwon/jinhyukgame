@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-//아직 배틀 클래스가 없어서 임시로 만듬 나중에 정섭이 코드 나오면 합쳐야함
+//TODO:아직 배틀 클래스가 없어서 임시로 만듬 나중에 정섭이 코드 나오면 합쳐야함
 public partial class Battle 
 {
     const int HAND_MAX = 4; //최대 핸드 수
@@ -107,6 +107,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         {
             if (selectCard[i] == true) //손에서 정해진 카드를 battle 클래스에 전달
             {
+                //TODO: 나중에 데미지 관련(시너지)하여 추가해야함
                 //정해진 카드를 모아서 attack매서드에 전달 후, 핸드에 있는 카드를 제거
                 sum += battle.CardHand.ElementAt(i).statEffect.attack;
                 battle.CardHand.RemoveAt(i); // 지금은 제거만 했음.
@@ -126,8 +127,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     //해당 패널이 활성화 될때 실행되는 메서드
     private void OnEnable()
     {
-        //*나중에 플레이어 클래스에 웨폰리스트가 추가되면 이 코드 삭제하기*
-      var stat = new Stat()
+        // TODO:나중에 플레이어 클래스에 웨폰리스트가 추가되면 이 코드 삭제하기
+        var stat = new Stat()
         {
             attack = 5
         };
