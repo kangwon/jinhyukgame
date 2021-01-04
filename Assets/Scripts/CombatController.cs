@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    public bool isBattle = true;
+    public bool isBattle = false; //private으로 숨기기?
 
-    public Player player;
-    public Monster monster;
+    Player player = GameState.Instance.player;
 
-    public const float MaxSpeedGauge = 200.0f;
+    Monster monster = new Monster(new Stat() 
+    { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
+        maxHp = 120,
+        attack = 6,
+        defense = 10,
+        speed = 15}
+    );
 
-    private float playerGauge = 0.0f;
-    private float monsterGauge = 0.0f;
+    public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
+
+    private float playerGauge, monsterGauge; //플레이어와 몬스터의 현재 스피드게이지
 
     public enum combatState {
         Dead, //죽음
@@ -21,8 +27,7 @@ public class CombatController : MonoBehaviour
         Unable // IDEA : 스턴 등의 행동불가
     }
 
-    private combatState playerState = combatState.Idle;
-    private combatState monsterState = combatState.Idle;
+    private combatState playerState, monsterState;
 
 
 /*---------상태 변경하며 전투 진행---------*/
@@ -104,17 +109,15 @@ public class CombatController : MonoBehaviour
     void Start()
     {
         Debug.Log("CombatController called!");
-        if(player != null) {
+        if(player != null && monster != null) {
+            isBattle = true;
+            playerState = combatState.Idle;
+            monsterState = combatState.Idle;
             playerGauge = player.GetStat().startSpeedGauge;
-        } else {
-            Debug.Log("No game object player found!");
-        }
-       
-        if(monster != null) {
             monsterGauge = monster.GetStat().startSpeedGauge;
         } else {
-            Debug.Log("No game object monster found!");
-        }   
+            Debug.Log("No game objects found!");
+        }
     }
 
     // Update is called once per frame
