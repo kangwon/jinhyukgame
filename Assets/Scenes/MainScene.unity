@@ -2288,7 +2288,7 @@ GameObject:
   - component: {fileID: 575380912}
   - component: {fileID: 575380911}
   m_Layer: 5
-  m_Name: card3_text
+  m_Name: Card3 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3637,7 +3637,7 @@ GameObject:
   - component: {fileID: 796716635}
   - component: {fileID: 796716634}
   m_Layer: 5
-  m_Name: Stage Txt
+  m_Name: Stage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4972,7 +4972,7 @@ GameObject:
   - component: {fileID: 972353968}
   - component: {fileID: 972353967}
   m_Layer: 5
-  m_Name: card1_text
+  m_Name: Card1 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5923,16 +5923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a3d51cfb81bf641af1e5cd84259645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossClear: 0
   UserScreen: {fileID: 0}
-  CardSelectPanel: {fileID: 1543311481}
-  NpcPanel: {fileID: 1144839470}
-  BuffPanel: {fileID: 468903604}
-  ChestPanel: {fileID: 761889046}
-  BattlePanel: {fileID: 1664559584}
-  card1_text: {fileID: 972353967}
-  card2_text: {fileID: 1933146089}
-  card3_text: {fileID: 575380911}
 --- !u!1 &1211386216
 GameObject:
   m_ObjectHideFlags: 0
@@ -7929,7 +7920,7 @@ GameObject:
   - component: {fileID: 1933146090}
   - component: {fileID: 1933146089}
   m_Layer: 5
-  m_Name: card2_text
+  m_Name: Card2 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

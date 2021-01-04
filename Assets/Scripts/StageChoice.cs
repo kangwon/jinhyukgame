@@ -9,32 +9,45 @@ public class StageChoice : MonoBehaviour
     CardType CurrentCardType;
     int currentStage;
 
-    public GameObject UserScreen;
-
     Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
-    public GameObject CardSelectPanel;
-    public GameObject NpcPanel;
-    public GameObject BuffPanel;
-    public GameObject ChestPanel;
-    public GameObject BattlePanel;
+    
+    GameObject CardSelectPanel;
+    GameObject NpcPanel;
+    GameObject BuffPanel;
+    GameObject ChestPanel;
+    GameObject BattlePanel;
 
-    Text StageText { get => GameObject.Find("Stage Text").GetComponent<Text>(); }
+    Text StageText;
 
-    public Text card1_text;
-    public Text card2_text;
-    public Text card3_text;    
+    Text CardText1;
+    Text CardText2;
+    Text CardText3;
 
     // Start is called before the first frame update
     void Start()
     {
+        CardSelectPanel = GameObject.Find("CardSelectPanel");
+        NpcPanel = GameObject.Find("NpcPanel");
+        BuffPanel = GameObject.Find("BuffPanel");
+        ChestPanel = GameObject.Find("ChestPanel");
+        BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
+
+        StageText = GameObject.Find("Stage Text").GetComponent<Text>();
+
+        CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
+        CardText2 = GameObject.Find("Card2 Text").GetComponent<Text>();
+        CardText3 = GameObject.Find("Card3 Text").GetComponent<Text>();
+
         GameState.Instance.World = new World(1, "테스트 월드");
         currentStage = 0;
         MoveToNextStage();
+
+        Debug.Log($"{GameObject.Find("CardSelectPanel")}");
         
         var stageCards = GameState.Instance.Stage.Cards;
-        card1_text.text = stageCards[0].Type.ToString();
-        card2_text.text = stageCards[1].Type.ToString();
-        card3_text.text = stageCards[2].Type.ToString();
+        CardText1.text = stageCards[0].Type.ToString();
+        CardText2.text = stageCards[1].Type.ToString();
+        CardText3.text = stageCards[2].Type.ToString();
     }
 
     // Update is called once per frame
