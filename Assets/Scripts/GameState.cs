@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PlayerPrefs = UnityEngine.PlayerPrefs;
 
 class GameState
 {
@@ -10,9 +11,31 @@ class GameState
     {
         get => this._player;
     }
+
+    public World World;
+    public WorldStage Stage;
+
+    private int _globalSeed;
+    public int GlobalSeed
+    {
+        get
+        {
+            if (_globalSeed == 0)
+            {
+                string PREF_KEY = "GlobalSeed";
+                if (!PlayerPrefs.HasKey(PREF_KEY))
+                {
+                    var rand = new Random();
+                    PlayerPrefs.SetInt(PREF_KEY, rand.Next(100000000));
+                }
+                _globalSeed = PlayerPrefs.GetInt(PREF_KEY);
+            }
+            return _globalSeed;
+        }
+    }
     
-    private static readonly GameState instance = new GameState();  
-    static GameState() {}
+    private static readonly GameState instance = new GameState();
+    static GameState() {}  
     private GameState() 
     {
         this._player = new Player
