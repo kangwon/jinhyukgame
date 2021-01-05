@@ -86,7 +86,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Player player = GameState.Instance.player;
     Monster monster = new Monster(new Stat() 
     { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
-        maxHp = 15,
+        maxHp = 5,
         attack = 6,
         defense = 10,
         speed = 10}
