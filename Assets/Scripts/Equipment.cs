@@ -17,11 +17,11 @@ public class EquipmentRank : JsonItem
 [System.Serializable]
 public class EquipmentPrefix : JsonItem
 {
-    public static Prefix prefix;
-    public enum Prefix
-    {
+   public static Prefix prefix;
+   public enum Prefix
+   {
         broken,weak,normal,strong,amazing
-    }
+   }
 }
 
 [System.Serializable]
@@ -48,7 +48,13 @@ public class Equipment : JsonItem
     
 }
 
-public class Weapon : Equipment {}
+public class Weapon : Equipment 
+{
+    public enum WeaponType{
+    sword,blunt,spear,dagger,wand
+    }
+    public WeaponType weaponType;
+}
 public class Armor : Equipment {}
 public class Helmet : Equipment {}
 public class Shoes : Equipment {}

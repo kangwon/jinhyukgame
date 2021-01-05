@@ -2197,7 +2197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffView: {fileID: 0}
   buffPanel: {fileID: 468903604}
-  cardSelectPanel: {fileID: 1543311481}
+  stageChoice: {fileID: 1186672459}
   buffSummary: {fileID: 91948238}
   buffUpdate: 0
   str: "\uBC84\uD504 \uC5C6\uC74C"
@@ -3506,10 +3506,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4106975501135484f9a1ca9c2eeced9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSelectPanel: {fileID: 1543311481}
   chestPanel: {fileID: 761889046}
   chestType: {fileID: 1211386216}
   chestDescription: {fileID: 772557087}
+  stageChoice: {fileID: 1186672459}
 --- !u!114 &761889049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5923,7 +5923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a3d51cfb81bf641af1e5cd84259645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UserScreen: {fileID: 0}
 --- !u!1 &1211386216
 GameObject:
   m_ObjectHideFlags: 0
@@ -6875,6 +6874,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCount: {fileID: 26617691}
   selectCard: 00000000
+  stageChoice: {fileID: 1186672459}
+  isBattle: 0
 --- !u!114 &1664559586
 MonoBehaviour:
   m_ObjectHideFlags: 0

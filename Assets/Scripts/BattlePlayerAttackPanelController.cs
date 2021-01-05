@@ -76,6 +76,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public bool[] selectCard = new bool[HAND_MAX];
     public List<Weapon> playerWeapons =new List<Weapon>();
     public Battle battle = new Battle();
+    public StageChoice stageChoice;
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
 
     /*------------------Down 기존 CombatController부분 병합----------------*/
@@ -85,10 +86,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Player player = GameState.Instance.player;
     Monster monster = new Monster(new Stat() 
     { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
-        maxHp = 120,
+        maxHp = 15,
         attack = 6,
         defense = 10,
-        speed = 15}
+        speed = 10}
     );
 
     public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
@@ -203,6 +204,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         if(monster.isDead) {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
+            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 
         }    
     }
 

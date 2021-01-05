@@ -2,7 +2,8 @@
     {
         "id": "sword1",
         "type": "weapon",
-        "name": "용사의 대검",
+       "name": "용사의 모형검",
+      "weaponType": "sword",    
         "price": 10,
         "statEffect": {
             "attack": 8
