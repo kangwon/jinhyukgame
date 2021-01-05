@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CreditScene.unity
     guid: 01ece6ad78c494150a1dd0c31c72bc2b
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: faa0cd52a1998a344b5e4d5efff22304
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
