@@ -248,7 +248,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         playerWeapons.Clear();
         playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
-
         monster = new Monster(new Stat() 
         { //TODO : 임시코드. 몬스터 리스트 받아오기.
         maxHp = 5,
@@ -256,10 +255,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         defense = 10,
         speed = 10}
         );
-
         PlayerMonsterInit();
         battle.BattleStart();
-
     }
     // Start is called before the first frame update
     void Start()

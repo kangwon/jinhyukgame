@@ -98,6 +98,11 @@ public class Player : CharacterBase
     {
        return equipmentSlot.GetWeaponsList();
     }
+    public void ResetWeaponList()
+    {
+        equipmentSlot.ResetWeaponsList();
+    }
+
     public Player(Stat stat) : base(stat) {}
 
     public void AddBuff(StatBuff buff)

@@ -8,6 +8,7 @@ public class PlayerBeginnerWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player.ResetWeaponList();
         for (int i = 0; i < 5; i++)
         {
             player.SetEquipment(JsonDB.GetEquipment($"weapon_{i}00"));

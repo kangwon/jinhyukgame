@@ -72,6 +72,10 @@ public class EquipmentSlot
     {
         return weapons;
     }
+    public void ResetWeaponsList()
+    {
+        weapons.Clear();
+    }
     public void SetEquipment(Equipment equip)
     {
         switch (equip)
