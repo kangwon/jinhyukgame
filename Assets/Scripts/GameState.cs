@@ -49,9 +49,8 @@ class GameState
                 startSpeedGauge = 1,
                 evasion = 0.05f,
                 critical = 0.05f,
-            }
+            }         
         );
-     //        this._player.SetEquipment(JsonDB.GetEquipment($"weapon_000"));
     }
     public static GameState Instance  
     {  
