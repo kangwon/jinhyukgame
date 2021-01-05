@@ -6,13 +6,22 @@ using System.Linq;
 [System.Serializable]
 public class EquipmentRank : JsonItem
 {
-    
+   public static Rank rank;
+   public enum Rank
+    {
+        //TODO: 미스틱나오면 추가하기
+        uncommon,common,rare,unique,legendary,
+    }
 }
 
 [System.Serializable]
 public class EquipmentPrefix : JsonItem
 {
-    
+    public static Prefix prefix;
+    public enum Prefix
+    {
+        broken,weak,normal,strong,amazing
+    }
 }
 
 [System.Serializable]
