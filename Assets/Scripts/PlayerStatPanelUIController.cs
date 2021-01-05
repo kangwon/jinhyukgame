@@ -23,7 +23,7 @@ public class PlayerStatPanelUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UpdateStat();
     }
 
     void UpdateStat()
