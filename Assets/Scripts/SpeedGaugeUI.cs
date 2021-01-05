@@ -2,16 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SpeedGaugeUI : MonoBehaviour
+
+public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
 {
-    //public CombatController cmbt;
+    BattlePlayerAttackPanelController BPAPC;
+    
+    [HideInInspector]
+    public RectTransform rectTran;
+    [HideInInspector]
     public Image PlayerSpeedGaugeImage, MonsterSpeedGaugeImage;
-    //public static float GAUGE_SIZE = 200.0f;
+
+    public const int GAUGE_SIZE = 200;
+    private float SpeedGaugeWidth, SpeedGaugeHeight; //스피드게이지 UI의 넓이와 길이(높이)
+
+    private float playerGaugeRatio;
+    private float monsterGaugeRatio;
+
+    void Awake() {
+
+        BPAPC = this.transform.parent.GetComponent<BattlePlayerAttackPanelController>();
+
+        rectTran = this.GetComponent<RectTransform>();
+
+        PlayerSpeedGaugeImage = rectTran.transform.Find("PlayerGauge").GetComponent<Image>();
+        MonsterSpeedGaugeImage = rectTran.transform.Find("MonsterGauge").GetComponent<Image>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        SpeedGaugeWidth = rectTran.rect.width;
+        SpeedGaugeHeight = rectTran.rect.height;
 
+        PlayerSpeedGaugeImage.transform.localPosition = new Vector3(0,SpeedGaugeHeight/2,0);
+        MonsterSpeedGaugeImage.transform.localPosition = new Vector3(0,SpeedGaugeHeight/2,0);
     }
 
     // Update is called once per frame
@@ -20,12 +44,12 @@ public class SpeedGaugeUI : MonoBehaviour
         UpdateSpeedGaugeImage();
     }
     void UpdateSpeedGaugeImage() {
-        /*
-        float playerGaugeRatio = cmbt.getPlayerSpeedGaugeVal() / 200.0f;
-        PlayerSpeedGaugeImage.transform.localPosition = new Vector3((playerGaugeRatio * -400) + 200f,0f,0f); //TODO : 스피드게이지 사이즈 함수
+        
+        playerGaugeRatio = BPAPC.playerGauge / GAUGE_SIZE;
+        monsterGaugeRatio = BPAPC.monsterGauge / GAUGE_SIZE; //비율계산
 
-        float monsterGaugeRatio = cmbt.getMonsterSpeedGaugeVal() / 200.0f;
-        MonsterSpeedGaugeImage.transform.localPosition = new Vector3((monsterGaugeRatio * -400) + 200f,0f,0f);
-      */
+        PlayerSpeedGaugeImage.transform.localPosition = new Vector3(0,SpeedGaugeHeight/2 - playerGaugeRatio * SpeedGaugeHeight,0);
+        MonsterSpeedGaugeImage.transform.localPosition = new Vector3(0,SpeedGaugeHeight/2 - monsterGaugeRatio * SpeedGaugeHeight,0);
+      
     }
 }
