@@ -68,7 +68,10 @@ public class EquipmentSlot
     Helmet helmet;
     Shoes shoes;
     List<Artifact> artifacts = new List<Artifact>();
-
+    public List<Weapon> GetWeaponsList()
+    {
+        return weapons;
+    }
     public void SetEquipment(Equipment equip)
     {
         switch (equip)

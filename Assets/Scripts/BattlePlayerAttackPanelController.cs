@@ -254,28 +254,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     //해당 패널이 활성화 될때 실행되는 메서드
     private void OnEnable()
     {
-        // TODO:나중에 플레이어 클래스에 웨폰리스트가 추가되면 이 코드 삭제하기
-        var stat = new Stat()
-        {
-            attack = 5
-        };
-        var weapon = new Weapon() { statEffect = stat };
-
+        //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
         playerWeapons.Clear();
-        for (int i = 0; i < 5; i++)
-        {
-            playerWeapons.Add(weapon);
-        }
-        var stat1 = new Stat()
-        {
-            attack = 10
-        };
-        var weapon1 = new Weapon() { statEffect = stat1 };
-        for (int i = 0; i < 5; i++)
-        {
-            playerWeapons.Add(weapon1);
-        }
-
+        playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
         PlayerMonsterInit();
         battle.BattleStart();      
@@ -303,7 +284,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     {
         for (int i = 0; i < HAND_MAX; i++)
         {
-            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).statEffect}";
+            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
         deckCount.GetComponent<Text>().text = $"{battle.DeckCount()}";
         UpdateBattleState();

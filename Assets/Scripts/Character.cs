@@ -94,6 +94,10 @@ public class Player : CharacterBase
     public float hpDrain = 0f; // 일단은 곱연산
     public int money = 100;
     
+    public List<Weapon> GetWeaponList()
+    {
+       return equipmentSlot.GetWeaponsList();
+    }
     public Player(Stat stat) : base(stat) {}
 
     public void AddBuff(StatBuff buff)
