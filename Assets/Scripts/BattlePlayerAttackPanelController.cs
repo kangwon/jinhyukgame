@@ -84,13 +84,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public bool isBattle = false; //private으로 숨기기?
 
     Player player = GameState.Instance.player;
-    Monster monster = new Monster(new Stat() 
-    { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
-        maxHp = 5,
-        attack = 6,
-        defense = 10,
-        speed = 10}
-    );
+    Monster monster;
 
     public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
 
@@ -258,8 +252,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         playerWeapons.Clear();
         playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
+
+        monster = new Monster(new Stat() 
+        { //TODO : 임시코드. 몬스터 리스트 받아오기.
+        maxHp = 5,
+        attack = 6,
+        defense = 10,
+        speed = 10}
+        );
+
         PlayerMonsterInit();
-        battle.BattleStart();      
+        battle.BattleStart();
 
     }
     // Start is called before the first frame update
