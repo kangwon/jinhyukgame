@@ -32,7 +32,7 @@ public class StageCardGenerator
 {
     public static StageCard GetRandomCard(int world, int stage, int location)
     {
-        int seed = 14 + GameState.Instance.GlobalSeed + world + stage + location;
+        int seed = GameState.Instance.GlobalSeed + world + stage + location;
         var rand = new Random(seed);
 
         CardType type;
