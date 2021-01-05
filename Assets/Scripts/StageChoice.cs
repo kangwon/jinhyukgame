@@ -16,7 +16,7 @@ public class StageChoice : MonoBehaviour
     GameObject BuffPanel;
     GameObject ChestPanel;
     GameObject BattlePanel;
-
+    GameObject RandomPanel;
     Text StageText;
 
     Text CardText1;
@@ -31,7 +31,7 @@ public class StageChoice : MonoBehaviour
         BuffPanel = GameObject.Find("BuffPanel");
         ChestPanel = GameObject.Find("ChestPanel");
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
-
+        RandomPanel = GameObject.Find("RandomPanel");
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
@@ -87,6 +87,7 @@ public class StageChoice : MonoBehaviour
         BuffPanel.SetActive(false);
         ChestPanel.SetActive(false);
         BattlePanel.SetActive(false);
+        RandomPanel.SetActive(false);
     }
 
     public void UpdateGamePanel()
@@ -111,6 +112,8 @@ public class StageChoice : MonoBehaviour
                 BuffPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Random:
+                RandomPanel.SetActive(true);
+                RandomPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Npc:
                 NpcPanel.SetActive(true);
