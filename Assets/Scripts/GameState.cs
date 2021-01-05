@@ -35,8 +35,8 @@ class GameState
     }
     
     private static readonly GameState instance = new GameState();
-    static GameState() {}  
-    private GameState() 
+    static GameState() {}
+    private GameState()
     {
         this._player = new Player
         (
@@ -48,9 +48,10 @@ class GameState
                 speed = 12,
                 startSpeedGauge = 1,
                 evasion = 0.05f,
-                critical =0.05f,
+                critical = 0.05f,
             }
-        ) ;
+        );
+     //        this._player.SetEquipment(JsonDB.GetEquipment($"weapon_000"));
     }
     public static GameState Instance  
     {  

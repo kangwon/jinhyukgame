@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "id": "sword1_common_broken",
+      "id": "weapon_000",
       "type": "weapon",
       "name": "용사의 모형검",
       "price": 10,
@@ -10,7 +10,7 @@
       }
     },
     {
-      "id": "blunt1_common_broken",
+      "id": "weapon_100",
       "type": "weapon",
       "name": "뿅망치",
       "price": 10,
@@ -19,7 +19,7 @@
       }
     },
     {
-      "id": "spear1_common_broken",
+      "id": "weapon_200",
       "type": "weapon",
       "name": "스펀지 삼지창",
       "price": 10,
@@ -28,7 +28,7 @@
       }
     },
     {
-      "id": "dagger1_common_broken",
+      "id": "weapon_300",
       "type": "weapon",
       "name": "해적의 단검",
       "price": 10,
@@ -37,7 +37,7 @@
       }
     },
     {
-      "id": "wand1_common_broken",
+      "id": "weapon_400",
       "type": "weapon",
       "name": "요술봉",
       "price": 10,
