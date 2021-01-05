@@ -84,17 +84,11 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public bool isBattle = false; //private으로 숨기기?
 
     Player player = GameState.Instance.player;
-    Monster monster = new Monster(new Stat() 
-    { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
-        maxHp = 5,
-        attack = 6,
-        defense = 10,
-        speed = 10}
-    );
+    Monster monster;
 
     public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
 
-    private float playerGauge, monsterGauge; //플레이어와 몬스터의 현재 스피드게이지
+    public float playerGauge, monsterGauge; //플레이어와 몬스터의 현재 스피드게이지
 
     public enum combatState {
         Dead, //죽음
@@ -214,12 +208,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         while(playerGauge < MaxSpeedGauge && monsterGauge < MaxSpeedGauge) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
             
             playerGauge += (player.GetStat().speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
-            
-            //Debug.Log("playerGauge is :" + playerGauge);
 
             monsterGauge += (monster.GetStat().speed * Time.deltaTime);
-
-            //Debug.Log("monsterGauge is :" + monsterGauge);
 
             totalElapsedTime += Time.deltaTime; // IDEA : 추후에 쓰일 걸릴시간?
         }
@@ -258,8 +248,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         playerWeapons.Clear();
         playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
+
+        monster = new Monster(new Stat() 
+        { //TODO : 임시코드. 몬스터 리스트 받아오기.
+        maxHp = 5,
+        attack = 6,
+        defense = 10,
+        speed = 10}
+        );
+
         PlayerMonsterInit();
-        battle.BattleStart();      
+        battle.BattleStart();
 
     }
     // Start is called before the first frame update
