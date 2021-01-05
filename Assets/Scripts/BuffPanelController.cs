@@ -12,8 +12,7 @@ public class BuffPanelController : MonoBehaviour
     GameObject buffDescription;
     public GameObject buffView;
     public GameObject buffPanel;
-    public GameObject cardSelectPanel;
-
+    public StageChoice stageChoice;
     public GameObject buffSummary;
 
     public bool buffUpdate = false;
@@ -36,8 +35,7 @@ public class BuffPanelController : MonoBehaviour
         buffUpdate = false;
         buffView.GetComponent<Text>().text = str;
         buffSummary.GetComponent<Text>().text = str2;
-        buffPanel.SetActive(false);
-        cardSelectPanel.SetActive(true);
+        stageChoice.MoveToNextStage();
     }
     
     // Update is called once per frame

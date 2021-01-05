@@ -53,7 +53,10 @@ public class StageChoice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        var stageCards = GameState.Instance.Stage.Cards;
+        CardText1.text = stageCards[0].Type.ToString();
+        CardText2.text = stageCards[1].Type.ToString();
+        CardText3.text = stageCards[2].Type.ToString();
     }
 
     public void OnClickCard(int index)

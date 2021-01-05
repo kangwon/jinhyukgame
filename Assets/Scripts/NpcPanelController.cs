@@ -21,7 +21,6 @@ public class NpcPanelController : MonoBehaviour
         {
             Button button = GameObject.Find($"NpcItemButton{i + 1}").GetComponent<Button>();
             Equipment item = JsonDB.GetEquipment(NpcItemIds[i]);
-            
             button.transform.Find("ItemName").GetComponent<Text>().text = item.name;
             button.transform.Find("ItemPrice").GetComponent<Text>().text = $"{item.price}G";
             button.onClick.AddListener(() => {

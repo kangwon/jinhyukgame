@@ -76,6 +76,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public bool[] selectCard = new bool[HAND_MAX];
     public List<Weapon> playerWeapons =new List<Weapon>();
     public Battle battle = new Battle();
+    public StageChoice stageChoice;
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
 
     /*------------------Down 기존 CombatController부분 병합----------------*/
@@ -85,10 +86,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Player player = GameState.Instance.player;
     Monster monster = new Monster(new Stat() 
     { //보스 1의 스탯. 추후에 몬스터 리스트 받아오기로.
-        maxHp = 120,
+        maxHp = 5,
         attack = 6,
         defense = 10,
-        speed = 15}
+        speed = 10}
     );
 
     public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
@@ -203,6 +204,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         if(monster.isDead) {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
+            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 
         }    
     }
 
@@ -252,28 +254,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     //해당 패널이 활성화 될때 실행되는 메서드
     private void OnEnable()
     {
-        // TODO:나중에 플레이어 클래스에 웨폰리스트가 추가되면 이 코드 삭제하기
-        var stat = new Stat()
-        {
-            attack = 5
-        };
-        var weapon = new Weapon() { statEffect = stat };
-
+        //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
         playerWeapons.Clear();
-        for (int i = 0; i < 5; i++)
-        {
-            playerWeapons.Add(weapon);
-        }
-        var stat1 = new Stat()
-        {
-            attack = 10
-        };
-        var weapon1 = new Weapon() { statEffect = stat1 };
-        for (int i = 0; i < 5; i++)
-        {
-            playerWeapons.Add(weapon1);
-        }
-
+        playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
         PlayerMonsterInit();
         battle.BattleStart();      
@@ -301,7 +284,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     {
         for (int i = 0; i < HAND_MAX; i++)
         {
-            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).statEffect}";
+            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
         deckCount.GetComponent<Text>().text = $"{battle.DeckCount()}";
         UpdateBattleState();

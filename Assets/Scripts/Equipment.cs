@@ -6,13 +6,22 @@ using System.Linq;
 [System.Serializable]
 public class EquipmentRank : JsonItem
 {
-    
+   public static Rank rank;
+   public enum Rank
+    {
+        //TODO: 미스틱나오면 추가하기
+        uncommon,common,rare,unique,legendary,
+    }
 }
 
 [System.Serializable]
 public class EquipmentPrefix : JsonItem
 {
-    
+   public static Prefix prefix;
+   public enum Prefix
+   {
+        broken,weak,normal,strong,amazing
+   }
 }
 
 [System.Serializable]
@@ -39,7 +48,13 @@ public class Equipment : JsonItem
     
 }
 
-public class Weapon : Equipment {}
+public class Weapon : Equipment 
+{
+    public enum WeaponType{
+    sword,blunt,spear,dagger,wand
+    }
+    public WeaponType weaponType;
+}
 public class Armor : Equipment {}
 public class Helmet : Equipment {}
 public class Shoes : Equipment {}
@@ -53,7 +68,10 @@ public class EquipmentSlot
     Helmet helmet;
     Shoes shoes;
     List<Artifact> artifacts = new List<Artifact>();
-
+    public List<Weapon> GetWeaponsList()
+    {
+        return weapons;
+    }
     public void SetEquipment(Equipment equip)
     {
         switch (equip)

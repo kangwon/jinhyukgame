@@ -4,15 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ChestPanelController : MonoBehaviour
 {
-    public GameObject cardSelectPanel;
     public GameObject chestPanel;
     public GameObject chestType;
     public GameObject chestDescription;
-
+    public StageChoice stageChoice;
     public void OnClickTreasureButton()
     {
-        chestPanel.SetActive(false);
-        cardSelectPanel.SetActive(true);
+        stageChoice.MoveToNextStage();
     }
     // Start is called before the first frame update
     void Start()
