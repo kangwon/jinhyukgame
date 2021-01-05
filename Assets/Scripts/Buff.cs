@@ -22,7 +22,14 @@ public class StatBuff :JsonItem
     public float purchasePercent = 0; // 상점 할인용 변수
     public bool isDebuff = false;
     public bool debuffImmune = false;
+    public bool iCantUsedCombo = false;
+    public int preemptiveUserTurn = 0;
+    public int preemptiveMonTurn = 0;
 
+    public float GetHP(CharacterBase characterBase)       // 스테이지마다 함수 구현 필요
+    {
+        return characterBase.baseStat.maxHp*stageHpDrainPercent + characterBase.hp;
+    }
 
     public Stat GetTotalStat(Stat stat)
     {
@@ -34,7 +41,7 @@ public class StatBuff :JsonItem
             attack = (int)(attackPercent * stat.attack) + baseBuffStat.attack,
             defense = (int)(defensePercent * stat.defense) + baseBuffStat.defense,
             speed = (int)(speedPercent * stat.speed) + baseBuffStat.speed,
-            startSpeedGauge = baseBuffStat.startSpeedGauge,
+            startSpeedGauge = baseBuffStat.startSpeedGauge + preemptiveUserTurn*(200 - baseBuffStat.startSpeedGauge),
             evasion = evasionPercent + baseBuffStat.evasion,
             critical = criticalPercent + baseBuffStat.critical,
             vampire = vampirePercent + baseBuffStat.vampire
