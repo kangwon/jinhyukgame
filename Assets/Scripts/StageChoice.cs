@@ -13,6 +13,9 @@ public class StageChoice : MonoBehaviour
     
     GameObject CardSelectPanel;
     GameObject NpcPanel;
+    GameObject NpcPanel_Merchant;
+    GameObject NpcPanel_Healer;
+    GameObject NpcPanel_Enchanter;
     GameObject BuffPanel;
     GameObject ChestPanel;
     GameObject BattlePanel;
@@ -28,6 +31,9 @@ public class StageChoice : MonoBehaviour
     {
         CardSelectPanel = GameObject.Find("CardSelectPanel");
         NpcPanel = GameObject.Find("NpcPanel");
+        NpcPanel_Merchant = GameObject.Find("NpcPanel_Merchant");
+        NpcPanel_Healer = GameObject.Find("NpcPanel_Healer");
+        NpcPanel_Enchanter = GameObject.Find("NpcPanel_Enchanter");
         BuffPanel = GameObject.Find("BuffPanel");
         ChestPanel = GameObject.Find("ChestPanel");
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
@@ -84,6 +90,9 @@ public class StageChoice : MonoBehaviour
     {
         CardSelectPanel.SetActive(false);
         NpcPanel.SetActive(false);
+        NpcPanel_Merchant.SetActive(false);
+        NpcPanel_Healer.SetActive(false);
+        NpcPanel_Enchanter.SetActive(false);
         BuffPanel.SetActive(false);
         ChestPanel.SetActive(false);
         BattlePanel.SetActive(false);
@@ -118,6 +127,9 @@ public class StageChoice : MonoBehaviour
             case CardType.Npc:
                 NpcPanel.SetActive(true);
                 NpcPanel.transform.localPosition = PanelDisplayPosition;
+                NpcPanel_Merchant.transform.localPosition = PanelDisplayPosition;
+                NpcPanel_Healer.transform.localPosition = PanelDisplayPosition;
+                NpcPanel_Enchanter.transform.localPosition = PanelDisplayPosition;
                 break;
         }
     }
