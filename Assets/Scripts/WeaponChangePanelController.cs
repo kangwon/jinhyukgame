@@ -64,7 +64,8 @@ public class WeaponChangePanelController : MonoBehaviour
             });
         }
         changeCard = GameObject.Find("ChangeCard");
-
+        ChangePanel.transform.localPosition = StageChoice.PanelDisplayPosition;
+        ChangePanel.SetActive(false);
     }
     private void OnEnable()
     {

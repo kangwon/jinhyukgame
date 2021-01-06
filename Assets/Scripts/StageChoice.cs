@@ -9,7 +9,7 @@ public class StageChoice : MonoBehaviour
     CardType CurrentCardType;
     int currentStage;
 
-    Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
+    public static Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
     
     GameObject CardSelectPanel;
     GameObject NpcPanel;
@@ -99,8 +99,6 @@ public class StageChoice : MonoBehaviour
         ChestPanel.SetActive(false);
         BattlePanel.SetActive(false);
         RandomPanel.SetActive(false);
-        WeaponChangePanel.SetActive(false);
-        WeaponChangePanel.transform.localPosition = PanelDisplayPosition; //이 패널은 선택할때 나오는게 아니라서 여기서 미리 포지션 정하도록 함.
     }
 
     public void UpdateGamePanel()
