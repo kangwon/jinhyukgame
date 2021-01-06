@@ -13,11 +13,15 @@ public class WeaponChangePanelController : MonoBehaviour
     public GameObject ChangePanel;
     int changeCardIndex=0;
     bool firstActive = false;
+
+
+
     void PrintCard()
     {
         for (int i = 0; i < 11; i++)
         {
-            card[i].transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(i).name}\n{weaponList.ElementAt(i).statEffect.attack}";
+            int temp = i;
+            card[temp].transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(temp).name}\n{weaponList.ElementAt(temp).statEffect.attack}";
         }
         changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
     }
@@ -27,7 +31,7 @@ public class WeaponChangePanelController : MonoBehaviour
         changeCardIndex = index;
         changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(index).name}\n{weaponList.ElementAt(index).statEffect.attack}";
     }
-    void OnClickOkButton()
+    public void OnClickOkButton()
     {
         weaponList.RemoveAt(changeCardIndex);
         if (weaponList.Count <= 10)
@@ -35,22 +39,20 @@ public class WeaponChangePanelController : MonoBehaviour
             player.SetWeaponList(weaponList);
             ChangePanel.SetActive(false);
         }
-        PrintCard();
+       else PrintCard();
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-    }
-    private void Awake()
-    {
         for (int i = 0; i < 11; i++)
         {
-            card[i] = GameObject.Find($"WeaponCard{i + 1}");
-            card[i].GetComponent<Button>().onClick.AddListener(() =>
-            {
-                OnClickCard(i);
+            int temp = i;
+            card[temp] = GameObject.Find($"WeaponCard{temp + 1}");
+            card[temp].GetComponent<Button>().onClick.AddListener(() =>
+            { 
+                OnClickCard(temp);
             });
         }
         changeCard = GameObject.Find("ChangeCard");

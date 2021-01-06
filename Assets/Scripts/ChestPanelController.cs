@@ -8,14 +8,22 @@ public class ChestPanelController : MonoBehaviour
     public GameObject chestType;
     public GameObject chestDescription;
     public StageChoice stageChoice;
+    GameObject weaponChangePanel;
+    Player player = GameState.Instance.player;
     public void OnClickTreasureButton()
     {
-        stageChoice.MoveToNextStage();
+        player.SetEquipment(JsonDB.GetEquipment("weapon_000"));
+        if (player.GetWeaponList().Count > 10)
+        {
+            Debug.Log("무기 10장 넘었어요.");
+            weaponChangePanel.SetActive(true);
+        }
+       else stageChoice.MoveToNextStage();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        weaponChangePanel = GameObject.Find("WeaponChangePanel");
     }
 
     // Update is called once per frame

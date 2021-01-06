@@ -77,6 +77,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public List<Weapon> playerWeapons =new List<Weapon>();
     public Battle battle = new Battle();
     public StageChoice stageChoice;
+    bool firstActive = false;
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
 
     /*------------------Down 기존 CombatController부분 병합----------------*/
@@ -244,19 +245,24 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     //해당 패널이 활성화 될때 실행되는 메서드
     private void OnEnable()
     {
-        //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
-        playerWeapons.Clear();
-        playerWeapons.AddRange(player.GetWeaponList());
-        battle.CardList = playerWeapons;
-        monster = new Monster(new Stat() 
-        { //TODO : 임시코드. 몬스터 리스트 받아오기.
-        maxHp = 3,
-        attack = 5,
-        defense = 0,
-        speed = 10}
-        );
-        PlayerMonsterInit();
-        battle.BattleStart();
+        if (firstActive)
+        {
+            //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
+            playerWeapons.Clear();
+            playerWeapons.AddRange(player.GetWeaponList());
+            battle.CardList = playerWeapons;
+            monster = new Monster(new Stat()
+            { //TODO : 임시코드. 몬스터 리스트 받아오기.
+                maxHp = 3,
+                attack = 5,
+                defense = 0,
+                speed = 10
+            }
+            );
+            PlayerMonsterInit();
+            battle.BattleStart();
+        }
+        firstActive = true;
     }
     // Start is called before the first frame update
     void Start()
