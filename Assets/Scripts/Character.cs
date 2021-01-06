@@ -38,7 +38,7 @@ public class Stat
 [System.Serializable]
 public class CharacterBase : JsonItem
 {
-    public readonly Stat baseStat;
+    public Stat baseStat;
     public int hp;
     public bool isDead
     {

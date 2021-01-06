@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class StageChoice : MonoBehaviour
 {
-    CardType CurrentCardType;
+    StageCard selectedCard;
     int currentStage;
 
     public static Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
@@ -21,6 +21,7 @@ public class StageChoice : MonoBehaviour
     GameObject BattlePanel;
     GameObject RandomPanel;
     GameObject WeaponChangePanel;
+
     Text StageText;
 
     Text CardText1;
@@ -40,6 +41,7 @@ public class StageChoice : MonoBehaviour
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
         RandomPanel = GameObject.Find("RandomPanel");
         WeaponChangePanel = GameObject.Find("WeaponChangePanel");
+
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
@@ -49,13 +51,6 @@ public class StageChoice : MonoBehaviour
         GameState.Instance.World = new World(1, "테스트 월드");
         currentStage = 0;
         MoveToNextStage();
-
-        Debug.Log($"{GameObject.Find("CardSelectPanel")}");
-        
-        var stageCards = GameState.Instance.Stage.Cards;
-        CardText1.text = stageCards[0].Type.ToString();
-        CardText2.text = stageCards[1].Type.ToString();
-        CardText3.text = stageCards[2].Type.ToString();
     }
 
     // Update is called once per frame
@@ -69,21 +64,21 @@ public class StageChoice : MonoBehaviour
 
     public void OnClickCard(int index)
     {
-        var selectedCard = GameState.Instance.Stage.Cards[index];
-        ActivatePannel(selectedCard.Type);
+        selectedCard = GameState.Instance.Stage.Cards[index];
+        ActivatePannel();
     }
 
     public void MoveToNextStage()
     {
+        selectedCard = null;
         currentStage += 1;
         StageText.text = $"Stage {currentStage}";
         GameState.Instance.Stage = GameState.Instance.World.GetStage(currentStage);
-        ActivatePannel(CardType.Undecided);
+        ActivatePannel();
     }
     
-    void ActivatePannel(CardType type)
+    void ActivatePannel()
     {
-        CurrentCardType = type;
         DeactiveAllPanel();
         UpdateGamePanel();
     }
@@ -103,14 +98,15 @@ public class StageChoice : MonoBehaviour
 
     public void UpdateGamePanel()
     {
-        Debug.Log($"UpdateGamePanel: {CurrentCardType}");
-        switch (CurrentCardType)
+        switch (selectedCard?.Type ?? null)
         {
-            case CardType.Undecided:
+            case null:
                 CardSelectPanel.SetActive(true);
                 CardSelectPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Monster:
+                var controller = BattlePanel.GetComponent<BattlePlayerAttackPanelController>();
+                controller.MonsterCard = (selectedCard as MonsterCard);
                 BattlePanel.SetActive(true);
                 BattlePanel.transform.localPosition = PanelDisplayPosition;
                 break;
