@@ -1,0 +1,29 @@
+{
+    "items": [
+      {
+        "id": "flower_fairy",
+        "name": "꽃의 요정",
+        "worldNumber": 1,
+        "isBoss": false,
+        "stat": {
+          "maxHp": 25,
+          "attack": 4,
+          "defense": 1,
+          "speed": 10
+        }
+      },
+      {
+        "id": "bee",
+        "name": "벌",
+        "worldNumber": 1,
+        "isBoss": false,
+        "stat": {
+          "maxHp": 20,
+          "attack": 2,
+          "defense": 0,
+          "speed": 14
+        }
+      }
+    ]
+  }
+  

@@ -30,7 +30,11 @@ public class StageCard
 
 public class MonsterCard : StageCard 
 {
-    public MonsterCard(CardType type) : base(type) {}
+    public Monster Monster;
+    public MonsterCard(CardType type, Monster monster) : base(type) 
+    {
+        this.Monster = monster;
+    }
 }
 public class ChestCard : StageCard 
 {
@@ -89,7 +93,14 @@ public class World
         switch (type)
         {
             case CardType.Monster:
-                return new MonsterCard(type);
+                var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
+                var monster = CustomRandom<Monster>.WeightedChoice
+                (
+                    worldMonsters,
+                    Enumerable.Repeat(1.0, worldMonsters.Count).ToList(),
+                    this.Random
+                );
+                return new MonsterCard(type, monster);
             case CardType.Chest:
                 return new ChestCard(type);
             case CardType.Buff:

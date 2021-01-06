@@ -14,11 +14,12 @@ class JsonCollection<T> where T : JsonItem
     [System.Serializable]
     class RawData { public List<T> items; }
 
+    public List<T> itemList;
     Dictionary<string, T> itemDict = new Dictionary<string, T>();
     public JsonCollection(string resourcePath) 
     {        
         TextAsset jsonFile = Resources.Load<TextAsset>(resourcePath);
-        List<T> itemList = JsonUtility.FromJson<RawData>(jsonFile.text).items;
+        itemList = JsonUtility.FromJson<RawData>(jsonFile.text).items;
         foreach (T item in itemList)
             itemDict.Add(item.id, item);
     }
@@ -30,12 +31,14 @@ class JsonDB
 {
     private JsonCollection<Equipment> equipmentCollection;
     private JsonCollection<StatBuff> buffCollection;
+    private JsonCollection<Monster> monsterCollection;
     private static readonly JsonDB instance = new JsonDB();  
     static JsonDB() {}  
     private JsonDB() 
     {        
         equipmentCollection = new JsonCollection<Equipment>("equipment");
         buffCollection = new JsonCollection<StatBuff>("buff");
+        monsterCollection = new JsonCollection<Monster>("monster");
     }
     public static JsonDB Instance  
     {  
@@ -61,9 +64,12 @@ class JsonDB
                 throw new NotImplementedException($"Invalid equipment type: {equip.type}");
         }
     }
+
     public static StatBuff GetBuff(string id)
-    {
-        StatBuff stat = Instance.buffCollection.GetItem(id);
-        return stat;
-    }
+        => Instance.buffCollection.GetItem(id);
+    
+    public static Monster GetMonster(string id)
+        => Instance.monsterCollection.GetItem(id);
+    public static List<Monster> GetWorldMonsters(int worldNumber)
+        => Instance.monsterCollection.itemList.FindAll(m => m.worldNumber == worldNumber);
 }
