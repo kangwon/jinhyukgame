@@ -28,6 +28,27 @@ public class StageCard
     }
 }
 
+public class MonsterCard : StageCard 
+{
+    public MonsterCard(CardType type) : base(type) {}
+}
+public class ChestCard : StageCard 
+{
+    public ChestCard(CardType type) : base(type) {}
+}
+public class BuffCard : StageCard 
+{
+    public BuffCard(CardType type) : base(type) {}
+}
+public class NpcCard : StageCard 
+{
+    public NpcCard(CardType type) : base(type) {}
+}
+public class RandomCard : StageCard 
+{
+    public RandomCard(CardType type) : base(type) {}
+}
+
 public class StageCardGenerator
 {
     public static StageCard GetRandomCard(int world, int stage, int location)
@@ -35,26 +56,34 @@ public class StageCardGenerator
         int seed = GameState.Instance.GlobalSeed + world + stage + location;
         var rand = new Random(seed);
 
-        CardType type;
-        double typeProb = rand.NextDouble();
-        if (typeProb < 0.7)
-            type = CardType.Monster;
-        else if (typeProb < 0.75)
-            type = CardType.Chest;
-        else if (typeProb < 0.8)
-            type = CardType.Buff;
-        else if (typeProb < 0.9)
-            type = CardType.Random;
-        else
-            type = CardType.Npc;
-
-        return new StageCard(type);
+        var type = CustomRandom<CardType>.WeightedChoice
+        (
+            Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
+            new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1 },
+            seed
+        );
+        
+        switch (type)
+        {
+            case CardType.Monster:
+                return new MonsterCard(type);
+            case CardType.Chest:
+                return new ChestCard(type);
+            case CardType.Buff:
+                return new BuffCard(type);
+            case CardType.Npc:
+                return new NpcCard(type);
+            case CardType.Random:
+                return new RandomCard(type);
+            default:
+                throw new NotImplementedException($"Invalid card type: {type.GetType().ToString()}");
+        }
     }
 }
 
 public class WorldStage
 {
-    public static int NUM_OF_CARDS = 3;
+    public const int NUM_OF_CARDS = 3;
 
     public readonly int Number;
     
