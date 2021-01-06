@@ -75,6 +75,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public GameObject deckCount;
     public bool[] selectCard = new bool[HAND_MAX];
     public List<Weapon> playerWeapons =new List<Weapon>();
+    
     public Battle battle = new Battle();
     public StageChoice stageChoice;
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
@@ -84,7 +85,11 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public bool isBattle = false; //private으로 숨기기?
 
     Player player = GameState.Instance.player;
+
+    public MonsterCard MonsterCard;
     Monster monster;
+    Text MonsterName;
+    Text MonsterHp;
 
     public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
 
@@ -131,7 +136,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     {
         damageSum = 0;
         int maxCount = (from n in selectCard where n == true select n).Count();
-        for(int i= HAND_MAX-1; i>=0;i--)
+        for(int i = HAND_MAX - 1; i >= 0; i--)
         {
             if (selectCard[i] == true) //손에서 정해진 카드를 battle 클래스에 전달
             {
@@ -227,10 +232,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     }
 
     public void PlayerMonsterInit() {
-            playerState = combatState.Idle;
-            monsterState = combatState.Idle;
-            playerGauge = player.GetStat().startSpeedGauge;
-            monsterGauge = monster.GetStat().startSpeedGauge;
+        playerState = combatState.Idle;
+        monsterState = combatState.Idle;
+        playerGauge = player?.GetStat().startSpeedGauge ?? 0;
+        monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
     }
 
 
@@ -248,19 +253,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         playerWeapons.Clear();
         playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
-        monster = new Monster(new Stat() 
-        { //TODO : 임시코드. 몬스터 리스트 받아오기.
-        maxHp = 3,
-        attack = 5,
-        defense = 0,
-        speed = 10}
-        );
+        monster = MonsterCard?.monster;
         PlayerMonsterInit();
         battle.BattleStart();
     }
+
     // Start is called before the first frame update
     void Start()
     {
+        MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
+        MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
+
         /*------------------Down 기존 CombatController부분 병합----------------*/
         if(player != null && monster != null) {
             isBattle = true;
@@ -278,11 +281,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (monster != null)
+        {
+            MonsterName.text = monster.name;
+            MonsterHp.text = $"{monster.hp} / {monster.GetStat().maxHp}";
+        }
+
         for (int i = 0; i < HAND_MAX; i++)
         {
             handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
-        deckCount.GetComponent<Text>().text = $"{battle.DeckCount()}";
+        deckCount.GetComponent<Text>().text = $"남은 덱: {battle.DeckCount()}";
         UpdateBattleState();
     }
 }

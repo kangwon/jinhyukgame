@@ -9,12 +9,13 @@ public enum CardLocation
     Left, Middle, Right,
 }
 
-// typeNum 0 - 미정 / 1 - 몬스터 / 2 - 보물
-// 3 - 버프 / 4 - 이벤트 / 5 - 마을 / 6 - 보스
+// typeNum 
+// 0 - 몬스터 / 1 - 보물 / 2 - 버프
+// 3 - 마을 / 4 - 이벤트 / 5 - 보스
 public enum CardType
 {
-    Undecided, Monster, Chest,
-    Buff, Random, Npc, Boss
+    Monster, Chest, Buff,
+    Npc, Random, Boss
 }
 
 public class StageCard
@@ -30,10 +31,10 @@ public class StageCard
 
 public class MonsterCard : StageCard 
 {
-    public Monster Monster;
+    public Monster monster;
     public MonsterCard(CardType type, Monster monster) : base(type) 
     {
-        this.Monster = monster;
+        this.monster = monster;
     }
 }
 public class ChestCard : StageCard 
@@ -86,7 +87,7 @@ public class World
         var type = CustomRandom<CardType>.WeightedChoice
         (
             Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
-            new List<double> { 0, 0.7, 0.05, 0.05, 0.1, 0.1, 0 },
+            new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 },
             this.Random
         );
         
