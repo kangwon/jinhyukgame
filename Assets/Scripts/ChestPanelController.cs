@@ -15,7 +15,6 @@ public class ChestPanelController : MonoBehaviour
         player.SetEquipment(JsonDB.GetEquipment("weapon_000"));
         if (player.GetWeaponList().Count > 10)
         {
-            Debug.Log("무기 10장 넘었어요.");
             weaponChangePanel.SetActive(true);
         }
        stageChoice.MoveToNextStage();

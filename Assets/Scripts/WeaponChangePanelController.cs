@@ -33,9 +33,7 @@ public class WeaponChangePanelController : MonoBehaviour
     }
     void OnClickOkButton()
     {
-        Debug.Log($"제거전 카드 수{weaponList.Count}");
         weaponList.RemoveAt(changeCardIndex);
-        Debug.Log($"제거후 카드 수{weaponList.Count}");
         if (weaponList.Count <= 10)
         {
            
