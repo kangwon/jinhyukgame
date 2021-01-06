@@ -11,14 +11,15 @@ public class WeaponChangePanelController : MonoBehaviour
     GameObject changeCard;
     GameObject okButton;
     public GameObject ChangePanel;
-    int changeCardIndex;
-    
+    int changeCardIndex=0;
+    bool firstActive = false;
     void PrintCard()
     {
         for (int i = 0; i < 11; i++)
         {
             card[i].transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(i).name}\n{weaponList.ElementAt(i).statEffect.attack}";
         }
+        changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
     }
 
     void OnClickCard(int index)
@@ -37,18 +38,16 @@ public class WeaponChangePanelController : MonoBehaviour
         PrintCard();
     }
 
-    private void OnEnable()
-    {
-       weaponList = GameState.Instance.player.GetWeaponList();
-       PrintCard();
-    }
+
     // Start is called before the first frame update
     void Start()
-    {      
-       
+    {
+    }
+    private void Awake()
+    {
         for (int i = 0; i < 11; i++)
         {
-            card[i] = GameObject.Find($"Card{i + 1}");
+            card[i] = GameObject.Find($"WeaponCard{i + 1}");
             card[i].GetComponent<Button>().onClick.AddListener(() =>
             {
                 OnClickCard(i);
@@ -61,7 +60,12 @@ public class WeaponChangePanelController : MonoBehaviour
             OnClickOkButton();
         });
     }
-
+    private void OnEnable()
+    {
+        weaponList = GameState.Instance.player.GetWeaponList();
+        if (firstActive) PrintCard(); //맨 처음에 onEnable 될 때, 11번째 카드는 없으므로 이 함수가 호출 안되게 했음.
+        firstActive = true;
+    }
     // Update is called once per frame
     void Update()
     {

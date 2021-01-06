@@ -3172,6 +3172,7 @@ GameObject:
   - component: {fileID: 312411452}
   - component: {fileID: 312411454}
   - component: {fileID: 312411453}
+  - component: {fileID: 312411455}
   m_Layer: 5
   m_Name: WeaponChangePanel
   m_TagString: Untagged
@@ -3207,7 +3208,7 @@ RectTransform:
   - {fileID: 1028208918}
   - {fileID: 1859620608}
   m_Father: {fileID: 1186672458}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -3251,6 +3252,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312411451}
   m_CullTransparentMesh: 0
+--- !u!114 &312411455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312411451}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4036ef22cff574bace005b07ae7ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChangePanel: {fileID: 312411451}
 --- !u!1 &358379985
 GameObject:
   m_ObjectHideFlags: 0
@@ -9334,7 +9348,7 @@ GameObject:
   - component: {fileID: 1028208920}
   - component: {fileID: 1028208919}
   m_Layer: 5
-  m_Name: Button
+  m_Name: OkButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10584,8 +10598,8 @@ RectTransform:
   - {fileID: 761889047}
   - {fileID: 594447442}
   - {fileID: 1784660138}
-  - {fileID: 1308726067}
   - {fileID: 312411452}
+  - {fileID: 1308726067}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11186,7 +11200,7 @@ RectTransform:
   - {fileID: 385546367}
   - {fileID: 1918254848}
   m_Father: {fileID: 1186672458}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
