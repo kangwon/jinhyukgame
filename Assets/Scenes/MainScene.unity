@@ -4663,7 +4663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8113208, g: 0.36356357, b: 0.4066632, a: 1}
+  m_Color: {r: 0.8113208, g: 0.36356357, b: 0.4066632, a: 0.78431374}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6965,6 +6965,7 @@ MonoBehaviour:
   isBattle: 0
   playerGauge: 0
   monsterGauge: 0
+  turnTriggered: 0
 --- !u!114 &1664559586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8127,7 +8128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.46907264, b: 0.8352941, a: 1}
+  m_Color: {r: 0.1764706, g: 0.46907264, b: 0.8352941, a: 0.78431374}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

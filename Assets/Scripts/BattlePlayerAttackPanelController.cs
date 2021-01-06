@@ -86,7 +86,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Player player = GameState.Instance.player;
     Monster monster;
 
-    public const float MaxSpeedGauge = 200.0f; //스피드게이지 최댓값
+    public float GAUGE_SIZE = 200.0f; //스피드게이지 고정값
 
     public float playerGauge, monsterGauge; //플레이어와 몬스터의 현재 스피드게이지
 
@@ -103,6 +103,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     private int damageSum; // 카드 선택한것 총 데미지
     private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
+    public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
 
      /*------------------Up 새로 추가한 코드----------------*/
 
@@ -176,15 +177,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     public void PlayerAttackPhase() {
         if(OnClickAttackPressed) {
-            Debug.Log($"PlayerAttackPhase에서 {damageSum}만큼 때린다!");
+            //Debug.Log($"PlayerAttackPhase에서 {damageSum}만큼 때린다!");
+            playerGauge -= GAUGE_SIZE; //게이지 소비.
             monster.TakeHit(damageSum);
             playerState = combatState.Idle; //다시 게이지 채우는 중으로
-            OnClickAttackPressed = false; // 다시 초기화.
+            OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
         }
     }
 
-    public void MonsterAttackPhase() {//IDEA : C# Delegate 여기 사용가능?
+    public void MonsterAttackPhase() {
         float Dmg = monster.AttackFoe();
+        monsterGauge -= GAUGE_SIZE; //게이지 소비.
         player.TakeHit(Dmg);
         monsterState = combatState.Idle;
     }
@@ -204,24 +207,25 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     public void SpeedUntilTurn() { 
 
-        float totalElapsedTime = 0.0f;
-        while(playerGauge < MaxSpeedGauge && monsterGauge < MaxSpeedGauge) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
+        //float totalElapsedTime = 0.0f;
+        while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
             
             playerGauge += (player.GetStat().speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
 
             monsterGauge += (monster.GetStat().speed * Time.deltaTime);
-
-            totalElapsedTime += Time.deltaTime; // IDEA : 추후에 쓰일 걸릴시간?
+            
+            //totalElapsedTime += Time.deltaTime; // IDEA : 추후에 쓰일 걸릴시간?
         }
 
-        if(playerGauge >= MaxSpeedGauge) {
-            playerGauge -= MaxSpeedGauge;
+        if(playerGauge >= GAUGE_SIZE) {
             playerState = combatState.Turn;
+            turnTriggered = true;
         }
-        if(monsterGauge >= MaxSpeedGauge) {
-            monsterGauge -= MaxSpeedGauge;
+        if(monsterGauge >= GAUGE_SIZE) {
             monsterState = combatState.Turn;
+            turnTriggered = true;
         } else {
+            turnTriggered = true;
             //동시에 행동게이지 1000?
         }
     }
@@ -229,8 +233,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public void PlayerMonsterInit() {
             playerState = combatState.Idle;
             monsterState = combatState.Idle;
-            playerGauge = player.GetStat().startSpeedGauge;
+            playerGauge = player.GetStat().startSpeedGauge; //
             monsterGauge = monster.GetStat().startSpeedGauge;
+
+            turnTriggered = false;
     }
 
 
@@ -286,6 +292,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
         deckCount.GetComponent<Text>().text = $"{battle.DeckCount()}";
+        if(turnTriggered) {
+            turnTriggered = false;
+        }
         UpdateBattleState();
     }
 }
