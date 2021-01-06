@@ -49,38 +49,6 @@ public class RandomCard : StageCard
     public RandomCard(CardType type) : base(type) {}
 }
 
-public class StageCardGenerator
-{
-    public static StageCard GetRandomCard(int world, int stage, int location)
-    {
-        int seed = GameState.Instance.GlobalSeed + world + stage + location;
-        var rand = new Random(seed);
-
-        var type = CustomRandom<CardType>.WeightedChoice
-        (
-            Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
-            new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1 },
-            seed
-        );
-        
-        switch (type)
-        {
-            case CardType.Monster:
-                return new MonsterCard(type);
-            case CardType.Chest:
-                return new ChestCard(type);
-            case CardType.Buff:
-                return new BuffCard(type);
-            case CardType.Npc:
-                return new NpcCard(type);
-            case CardType.Random:
-                return new RandomCard(type);
-            default:
-                throw new NotImplementedException($"Invalid card type: {type.GetType().ToString()}");
-        }
-    }
-}
-
 public class WorldStage
 {
     public const int NUM_OF_CARDS = 3;
@@ -100,11 +68,39 @@ public class World
 {
     public readonly int Number;
     public readonly string Name;
+    public readonly Random Random;
 
     public World(int number, string name)
     {
         this.Number = number;
         this.Name = name;
+        this.Random = new Random();
+    }
+
+    public StageCard GetRandomCard()
+    {
+        var type = CustomRandom<CardType>.WeightedChoice
+        (
+            Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
+            new List<double> { 0, 0.7, 0.05, 0.05, 0.1, 0.1, 0 },
+            this.Random
+        );
+        
+        switch (type)
+        {
+            case CardType.Monster:
+                return new MonsterCard(type);
+            case CardType.Chest:
+                return new ChestCard(type);
+            case CardType.Buff:
+                return new BuffCard(type);
+            case CardType.Npc:
+                return new NpcCard(type);
+            case CardType.Random:
+                return new RandomCard(type);
+            default:
+                throw new NotImplementedException($"Invalid card type: {type.GetType().ToString()}");
+        }
     }
 
     public WorldStage GetStage(int stageNum)
@@ -112,7 +108,7 @@ public class World
         var stage = new WorldStage(stageNum);
         for (int location = 0; location < WorldStage.NUM_OF_CARDS; location++)
         {
-            stage.Cards.Add(StageCardGenerator.GetRandomCard(this.Number, stage.Number, location));
+            stage.Cards.Add(this.GetRandomCard());
         }
         return stage;
     }
