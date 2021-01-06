@@ -21,19 +21,27 @@ public class WeaponChangePanelController : MonoBehaviour
         for (int i = 0; i < 11; i++)
         {
             int temp = i;
-            card[temp].transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(temp).name}\n{weaponList.ElementAt(temp).statEffect.attack}";
+            if(temp < weaponList.Count)
+                card[temp].transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(temp).name}\n{weaponList.ElementAt(temp).statEffect.attack}";
+            else
+                card[temp].transform.GetChild(0).GetComponent<Text>().text = $"카드 없음";
         }
-        changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
+     if(changeCardIndex<weaponList.Count)   changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
+    else changeCard.transform.GetChild(0).GetComponent<Text>().text = $"선택된 \n 카드 없음";
     }
 
     void OnClickCard(int index)
     {
         changeCardIndex = index;
-        changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(index).name}\n{weaponList.ElementAt(index).statEffect.attack}";
+        if (index < weaponList.Count)  
+            changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(index).name}\n{weaponList.ElementAt(index).statEffect.attack}";
+        else 
+            changeCard.transform.GetChild(0).GetComponent<Text>().text = $"선택된 \n 카드 없음";
     }
     void OnClickOkButton()
     {
-        weaponList.RemoveAt(changeCardIndex);
+        if(changeCardIndex<weaponList.Count)
+            weaponList.RemoveAt(changeCardIndex);
         if (weaponList.Count <= 10)
         {
            
