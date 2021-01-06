@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 81681275}
   - component: {fileID: 81681274}
   m_Layer: 5
-  m_Name: Card10
+  m_Name: WeaponCard10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3259,7 +3259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312411451}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a4036ef22cff574bace005b07ae7ce5, type: 3}
   m_Name: 
@@ -4382,7 +4382,7 @@ GameObject:
   - component: {fileID: 503839708}
   - component: {fileID: 503839707}
   m_Layer: 5
-  m_Name: Card9
+  m_Name: WeaponCard9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5167,7 +5167,7 @@ GameObject:
   - component: {fileID: 610212945}
   - component: {fileID: 610212944}
   m_Layer: 5
-  m_Name: Card3
+  m_Name: WeaponCard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6441,7 +6441,7 @@ GameObject:
   - component: {fileID: 748155531}
   - component: {fileID: 748155530}
   m_Layer: 5
-  m_Name: Card2
+  m_Name: WeaponCard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10863,7 +10863,7 @@ GameObject:
   - component: {fileID: 1266252451}
   - component: {fileID: 1266252450}
   m_Layer: 5
-  m_Name: Card1
+  m_Name: WeaponCard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11060,7 +11060,7 @@ GameObject:
   - component: {fileID: 1281170188}
   - component: {fileID: 1281170187}
   m_Layer: 5
-  m_Name: Card11
+  m_Name: WeaponCard11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11709,7 +11709,7 @@ GameObject:
   - component: {fileID: 1442816540}
   - component: {fileID: 1442816539}
   m_Layer: 5
-  m_Name: Card6
+  m_Name: WeaponCard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13536,7 +13536,7 @@ GameObject:
   - component: {fileID: 1744600477}
   - component: {fileID: 1744600476}
   m_Layer: 5
-  m_Name: Card4
+  m_Name: WeaponCard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13655,7 +13655,7 @@ GameObject:
   - component: {fileID: 1745532525}
   - component: {fileID: 1745532524}
   m_Layer: 5
-  m_Name: Card5
+  m_Name: WeaponCard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15208,7 +15208,7 @@ GameObject:
   - component: {fileID: 1952538025}
   - component: {fileID: 1952538024}
   m_Layer: 5
-  m_Name: Card8
+  m_Name: WeaponCard8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15483,7 +15483,7 @@ GameObject:
   - component: {fileID: 1987503150}
   - component: {fileID: 1987503149}
   m_Layer: 5
-  m_Name: Card7
+  m_Name: WeaponCard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

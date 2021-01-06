@@ -31,11 +31,14 @@ public class WeaponChangePanelController : MonoBehaviour
         changeCardIndex = index;
         changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(index).name}\n{weaponList.ElementAt(index).statEffect.attack}";
     }
-    public void OnClickOkButton()
+    void OnClickOkButton()
     {
+        Debug.Log($"제거전 카드 수{weaponList.Count}");
         weaponList.RemoveAt(changeCardIndex);
+        Debug.Log($"제거후 카드 수{weaponList.Count}");
         if (weaponList.Count <= 10)
         {
+           
             player.SetWeaponList(weaponList);
             ChangePanel.SetActive(false);
         }
@@ -46,6 +49,11 @@ public class WeaponChangePanelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        okButton = GameObject.Find("OkButton");
+        okButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            OnClickOkButton();
+        });
         for (int i = 0; i < 11; i++)
         {
             int temp = i;
@@ -56,11 +64,7 @@ public class WeaponChangePanelController : MonoBehaviour
             });
         }
         changeCard = GameObject.Find("ChangeCard");
-        okButton = GameObject.Find("OkButton");
-        okButton.GetComponent<Button>().onClick.AddListener(() =>
-        {
-            OnClickOkButton();
-        });
+
     }
     private void OnEnable()
     {
