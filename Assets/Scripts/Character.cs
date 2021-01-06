@@ -101,6 +101,10 @@ public class Player : CharacterBase
     {
        return equipmentSlot.GetWeaponsList();
     }
+    public void SetWeaponList(List<Weapon> weapons)
+    {
+        equipmentSlot.SetWeaponsList(weapons);
+    }
     public void ResetWeaponList()
     {
         equipmentSlot.ResetWeaponsList();

@@ -20,6 +20,7 @@ public class StageChoice : MonoBehaviour
     GameObject ChestPanel;
     GameObject BattlePanel;
     GameObject RandomPanel;
+    GameObject WeaponChangePanel;
     Text StageText;
 
     Text CardText1;
@@ -38,6 +39,7 @@ public class StageChoice : MonoBehaviour
         ChestPanel = GameObject.Find("ChestPanel");
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
         RandomPanel = GameObject.Find("RandomPanel");
+        WeaponChangePanel = GameObject.Find("WeaponChangePanel");
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
@@ -97,6 +99,8 @@ public class StageChoice : MonoBehaviour
         ChestPanel.SetActive(false);
         BattlePanel.SetActive(false);
         RandomPanel.SetActive(false);
+        WeaponChangePanel.SetActive(false);
+        WeaponChangePanel.transform.localPosition = PanelDisplayPosition; //이 패널은 선택할때 나오는게 아니라서 여기서 미리 포지션 정하도록 함.
     }
 
     public void UpdateGamePanel()
