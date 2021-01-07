@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +30,13 @@ public class Stat
             vampire = a.vampire + b.vampire
         };
     }
+
     public override string ToString()
     {
         return $"Stat(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
     }
+
+    public Stat DeepCopy() => (Stat)this.MemberwiseClone();
 }
 
 [System.Serializable]
@@ -64,27 +68,43 @@ public class CharacterBase : JsonItem
 [System.Serializable]
 public class Monster : CharacterBase
 {
-    public Monster(Stat stat) : base(stat) { }
     public string name;
     public bool isBoss;
     public int worldNumber;
 
-    public override void TakeHit(float rawDamage) {
+    public Monster(Stat stat) : base(stat) { }
+    public Monster(string name, Stat stat) : base(stat)
+    {
+        this.name = name;
+    }
+
+    public Monster DeepCopy()
+    {
+       return new Monster(this.name, this.baseStat.DeepCopy());
+    }
+
+    public override void TakeHit(float rawDamage) 
+    {
         float afterDamage = CalcDamage(rawDamage); 
-        if(this.GetStat().defense >= afterDamage) {
+        if(this.GetStat().defense >= afterDamage) 
+        {
             hp = hp - 1;
-        } else {
+        } 
+        else 
+        {
             hp = hp + this.GetStat().defense - (int)afterDamage;
         }
         //Debug.Log($"이제 몬스터 피 : {hp}임.");
     }
 
-    public override float AttackFoe() {
+    public override float AttackFoe() 
+    {
         float finalDamage = this.GetStat().attack; // TODO : 공격 기믹 추가
         return finalDamage;
     }
 
-    float CalcDamage(float incomingDmg) {
+    float CalcDamage(float incomingDmg) 
+    {
         return incomingDmg; // TODO : 몬스터 데미지 계산식
     }
 }
@@ -147,22 +167,28 @@ public class Player : CharacterBase
         }
     }
 
-    public override void TakeHit(float rawDamage) {
+    public override void TakeHit(float rawDamage) 
+    {
         float afterDamage = CalcDamage(rawDamage);
-        if(this.GetStat().defense >= afterDamage) {
+        if(this.GetStat().defense >= afterDamage) 
+        {
             hp = hp - 1;
-        } else {
+        } 
+        else 
+        {
             hp = hp + this.GetStat().defense - (int)afterDamage;
         }
         //Debug.Log($"이제 플레이어 피 : {hp}임.");
     }
 
-    public override float AttackFoe() {
+    public override float AttackFoe() 
+    {
         float finalDamage = this.GetStat().attack;  //TODO : 공격 기믹 추가
         return finalDamage;
     }
 
-    float CalcDamage(float incomingDmg) {
+    float CalcDamage(float incomingDmg) 
+    {
         return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
     }
 }

@@ -94,7 +94,10 @@ public class World
         switch (type)
         {
             case CardType.Monster:
-                var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
+                var worldMonsters = JsonDB
+                    .GetWorldMonsters(this.Number)
+                    .Select(m => m.DeepCopy())
+                    .ToList();
                 var monster = CustomRandom<Monster>.WeightedChoice
                 (
                     worldMonsters,
