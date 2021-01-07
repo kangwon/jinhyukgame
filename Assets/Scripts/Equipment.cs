@@ -72,6 +72,10 @@ public class EquipmentSlot
     {
         return weapons;
     }
+    public void SetWeaponsList(List<Weapon> weapons)
+    {
+        this.weapons = weapons;
+    }
     public void ResetWeaponsList()
     {
         weapons.Clear();

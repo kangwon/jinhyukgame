@@ -9,7 +9,7 @@ public class StageChoice : MonoBehaviour
     StageCard selectedCard;
     int currentStage;
 
-    Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
+    public static Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
     
     GameObject CardSelectPanel;
     GameObject NpcPanel;
@@ -20,6 +20,7 @@ public class StageChoice : MonoBehaviour
     GameObject ChestPanel;
     GameObject BattlePanel;
     GameObject RandomPanel;
+    GameObject WeaponChangePanel;
 
     Text StageText;
 
@@ -39,7 +40,8 @@ public class StageChoice : MonoBehaviour
         ChestPanel = GameObject.Find("ChestPanel");
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
         RandomPanel = GameObject.Find("RandomPanel");
-        
+        WeaponChangePanel = GameObject.Find("WeaponChangePanel");
+
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();

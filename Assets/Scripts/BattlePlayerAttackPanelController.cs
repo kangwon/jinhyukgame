@@ -78,6 +78,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     
     public Battle battle = new Battle();
     public StageChoice stageChoice;
+    bool firstActive = false;
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
 
     /*------------------Down 기존 CombatController부분 병합----------------*/
@@ -250,12 +251,16 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     private void OnEnable()
     {
         //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
+        if (firstActive)
+        {
         playerWeapons.Clear();
         playerWeapons.AddRange(player.GetWeaponList());
         battle.CardList = playerWeapons;
         monster = MonsterCard?.monster;
         PlayerMonsterInit();
         battle.BattleStart();
+        }
+                firstActive = true;
     }
 
     // Start is called before the first frame update
