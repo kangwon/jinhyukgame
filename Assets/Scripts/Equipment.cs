@@ -4,24 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 
 [System.Serializable]
-public class EquipmentRank : JsonItem
+public enum Rank
 {
-   public static Rank rank;
-   public enum Rank
-    {
-        //TODO: 미스틱나오면 추가하기
-        uncommon,common,rare,unique,legendary,
-    }
+     //TODO: 미스틱나오면 추가하기
+    uncommon,common,rare,unique,legendary,
 }
 
 [System.Serializable]
-public class EquipmentPrefix : JsonItem
+public enum Prefix
 {
-   public static Prefix prefix;
-   public enum Prefix
-   {
-        broken,weak,normal,strong,amazing
-   }
+   broken,weak,normal,strong,amazing
 }
 
 [System.Serializable]
@@ -32,8 +24,8 @@ public class Equipment : JsonItem
     public int price;
 
     public Stat statEffect;
-    public EquipmentRank rank;
-    public EquipmentPrefix prefix;
+    public Rank rank;
+    public Prefix prefix;
 
     public Weapon ToWeapon()
         => new Weapon() {type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
