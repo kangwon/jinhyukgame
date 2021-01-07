@@ -14,8 +14,6 @@ public class WeaponChangePanelController : MonoBehaviour
     int changeCardIndex=0;
     bool firstActive = false;
 
-
-
     void PrintCard()
     {
         for (int i = 0; i < 11; i++)
@@ -26,8 +24,10 @@ public class WeaponChangePanelController : MonoBehaviour
             else
                 card[temp].transform.GetChild(0).GetComponent<Text>().text = $"카드 없음";
         }
-     if(changeCardIndex<weaponList.Count)   changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
-    else changeCard.transform.GetChild(0).GetComponent<Text>().text = $"선택된 \n 카드 없음";
+        if(changeCardIndex<weaponList.Count)
+            changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
+        else 
+            changeCard.transform.GetChild(0).GetComponent<Text>().text = $"선택된 \n 카드 없음";
     }
 
     void OnClickCard(int index)
@@ -43,8 +43,7 @@ public class WeaponChangePanelController : MonoBehaviour
         if(changeCardIndex<weaponList.Count)
             weaponList.RemoveAt(changeCardIndex);
         if (weaponList.Count <= 10)
-        {
-           
+        {           
             player.SetWeaponList(weaponList);
             ChangePanel.SetActive(false);
         }
