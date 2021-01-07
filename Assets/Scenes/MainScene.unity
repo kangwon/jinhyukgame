@@ -3179,7 +3179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &312411452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14248,10 +14248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageChoice: {fileID: 1186672459}
-  reward:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1784660140
 MonoBehaviour:
   m_ObjectHideFlags: 0
