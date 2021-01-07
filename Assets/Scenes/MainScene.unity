@@ -3277,7 +3277,7 @@ GameObject:
   - component: {fileID: 318941151}
   - component: {fileID: 318941150}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MonsterHp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
