@@ -26,11 +26,12 @@ public class NpcPanelController : MonoBehaviour
         };
 
         Player player = GameState.Instance.player;
-        Button button = GameObject.Find($"NpcButton1").GetComponent<Button>();
-        button.onClick.AddListener(() => {
+
+        Button button1 = GameObject.Find($"NpcButton1").GetComponent<Button>();
+        button1.onClick.AddListener(() => {
             NpcPanel.SetActive(false);
             NpcPanel_Merchant.SetActive(true);
-                // stageChoice.MoveToNextStage();
+            // stageChoice.MoveToNextStage();
         });
 
         Button button2 = GameObject.Find($"NpcButton2").GetComponent<Button>();
@@ -46,7 +47,7 @@ public class NpcPanelController : MonoBehaviour
             NpcPanel_Enchanter.SetActive(true);
             // stageChoice.MoveToNextStage();
         });
-
+        
     }
 
     void Update()
