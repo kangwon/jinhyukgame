@@ -6384,8 +6384,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -406, y: -294}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -404.8, y: -291.99988}
+  m_SizeDelta: {x: 202.38297, y: 46.000137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &715352341
 MonoBehaviour:
@@ -6413,11 +6413,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uC0C8\uB85C\uC6B4 \uCE74\uB4DC"
 --- !u!222 &715352342
@@ -8127,7 +8127,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: [{fileID: 233986838}]
+  m_Children:
+  - {fileID: 233986838}
   m_Father: {fileID: 1502824054}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8980,7 +8981,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: [{fileID: 1336862648}]
+  m_Children:
+  - {fileID: 1336862648}
   m_Father: {fileID: 1502824054}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13107,6 +13109,7 @@ MonoBehaviour:
   selectCard: 00000000
   stageChoice: {fileID: 1186672459}
   isBattle: 0
+  GAUGE_SIZE: 200
   playerGauge: 0
   monsterGauge: 0
   turnTriggered: 0
@@ -14021,7 +14024,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: [{fileID: 1957286868}]
+  m_Children:
+  - {fileID: 1957286868}
   m_Father: {fileID: 1502824054}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14780,7 +14784,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uBC14\uAFC0 \uCE74\uB4DC"
 --- !u!222 &1859620610

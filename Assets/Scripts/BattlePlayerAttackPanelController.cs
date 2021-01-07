@@ -107,7 +107,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     /*------------------Up 기존 CombatController부분 병합----------------*/
 
-    private int damageSum; // 카드 선택한것 총 데미지
+    private int cardDamageSum; // 카드 선택한것 총 데미지
     private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
     public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
 
@@ -136,7 +136,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
    
     public void OnClickAttack()
     {
-        damageSum = 0;
+        cardDamageSum = 0;
         int maxCount = (from n in selectCard where n == true select n).Count();
         for(int i = HAND_MAX - 1; i >= 0; i--)
         {
@@ -144,7 +144,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             {
                 //TODO: 나중에 데미지 관련(시너지)하여 추가해야함
                 //정해진 카드를 모아서 attack매서드에 전달 후, 핸드에 있는 카드를 제거
-                damageSum += battle.CardHand.ElementAt(i).statEffect.attack;
+                cardDamageSum += battle.CardHand.ElementAt(i).statEffect.attack;
                 battle.CardHand.RemoveAt(i); // 지금은 제거만 했음.
                 OnClickHandCard(i); //버튼을 다시 눌러서 초기화           
             }          
@@ -185,7 +185,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         if(OnClickAttackPressed) {
             //Debug.Log($"PlayerAttackPhase에서 {damageSum}만큼 때린다!");
             playerGauge -= GAUGE_SIZE; //게이지 소비.
-            monster.TakeHit(damageSum);
+            Stat tempStat = new Stat();
+            tempStat.attack = cardDamageSum + player.GetStat().attack;
+            monster.TakeHit(player.GetBuff().GetTotalStat(tempStat).attack+tempStat.attack); //TODO: 시너지대미지넣기
             playerState = combatState.Idle; //다시 게이지 채우는 중으로
             OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
         }

@@ -112,6 +112,10 @@ public class Player : CharacterBase
 
     public Player(Stat stat) : base(stat) {}
 
+    public StatBuff GetBuff()
+    {
+        return buff;
+    }
     public void AddBuff(StatBuff buff)
     {
 
