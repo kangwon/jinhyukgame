@@ -35,9 +35,10 @@ public class Stat
     }
 }
 
-public class CharacterBase
+[System.Serializable]
+public class CharacterBase : JsonItem
 {
-    public readonly Stat baseStat;
+    public Stat baseStat;
     public int hp;
     public bool isDead
     {
@@ -60,11 +61,13 @@ public class CharacterBase
     public virtual void TakeHit(float rawDamage) {} // 데미지 받는 함수 TODO : IntFloat 해결
 }
 
+[System.Serializable]
 public class Monster : CharacterBase
 {
     public Monster(Stat stat) : base(stat) { }
-    public string monsterName {get; set;}
+    public string name;
     public bool isBoss;
+    public int worldNumber;
 
     public override void TakeHit(float rawDamage) {
         float afterDamage = CalcDamage(rawDamage); 
@@ -77,7 +80,7 @@ public class Monster : CharacterBase
     }
 
     public override float AttackFoe() {
-        float finalDamage = this.GetStat().attack; //TODO : 공격 기믹 추가
+        float finalDamage = this.GetStat().attack; // TODO : 공격 기믹 추가
         return finalDamage;
     }
 
@@ -98,6 +101,15 @@ public class Player : CharacterBase
     {
        return equipmentSlot.GetWeaponsList();
     }
+    public void SetWeaponList(List<Weapon> weapons)
+    {
+        equipmentSlot.SetWeaponsList(weapons);
+    }
+    public void ResetWeaponList()
+    {
+        equipmentSlot.ResetWeaponsList();
+    }
+
     public Player(Stat stat) : base(stat) {}
 
     public void AddBuff(StatBuff buff)

@@ -53,7 +53,7 @@
       "name": "다음 전투 시 선공",
       "description": "시작 스피드 게이지 full",
       "baseBuffStat": {
-
+        "preemptiveUserTurn": 1
       }
     },
     {
@@ -137,6 +137,7 @@
       "name": "콤보 데미지 불가",
       "description": "콤보 사용 불가",
       "baseBuffStat": {
+        "iCantUsedCombo": true,
         "isDebuff": true
       }
     },
@@ -154,7 +155,7 @@
       "name": "다음 전투 시 선공",
       "description": "몬스터 시작 스피드 게이지 full",
       "baseBuffStat": {
-
+        "preemptiveMonTurn": 1,
         "isDebuff": true
       }
     },
@@ -188,9 +189,9 @@
     {
       "id": "debuff11",
       "name": "스테이지 일정량 피 감소 (독)",
-      "description": "스테이지 클리어 시마다 체력의 5% 감소",
+      "description": "스테이지 클리어 시마다 최대 체력의 2% 감소",
       "baseBuffStat": {
-
+        "stageHpDrainPercent": -0.02,
         "isDebuff": true
       }
     },

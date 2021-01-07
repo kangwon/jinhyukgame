@@ -5,29 +5,48 @@ using UnityEngine.UI;
 
 public class NpcPanelController : MonoBehaviour
 {
-    public List<string> NpcItemIds;
+    public List<string> NpcJobs;
+    // public StageChoice stageChoice;
 
-    public StageChoice stageChoice;
+    GameObject NpcPanel;
+    GameObject NpcPanel_Merchant;
+    GameObject NpcPanel_Healer;
+    GameObject NpcPanel_Enchanter;
 
     void Start()
     {
-        NpcItemIds = new List<string>()
+        NpcPanel = GameObject.Find("NpcPanel");
+        NpcPanel_Merchant = GameObject.Find("NpcPanel_Merchant");
+        NpcPanel_Healer = GameObject.Find("NpcPanel_Healer");
+        NpcPanel_Enchanter = GameObject.Find("NpcPanel_Enchanter");
+
+        List<string> NpcJobs = new List<string>()
         {
-            "sword1", "sword2", "sword3"
+            "Merchant", "Healer", "Enchanter"
         };
 
         Player player = GameState.Instance.player;
-        for (int i = 0; i < NpcItemIds.Count; i++)
-        {
-            Button button = GameObject.Find($"NpcItemButton{i + 1}").GetComponent<Button>();
-            Equipment item = JsonDB.GetEquipment(NpcItemIds[i]);
-            button.transform.Find("ItemName").GetComponent<Text>().text = item.name;
-            button.transform.Find("ItemPrice").GetComponent<Text>().text = $"{item.price}G";
-            button.onClick.AddListener(() => {
-                player.BuyItem(item);
-                stageChoice.MoveToNextStage();
-            });
-        }
+        Button button = GameObject.Find($"NpcButton1").GetComponent<Button>();
+        button.onClick.AddListener(() => {
+            NpcPanel.SetActive(false);
+            NpcPanel_Merchant.SetActive(true);
+                // stageChoice.MoveToNextStage();
+        });
+
+        Button button2 = GameObject.Find($"NpcButton2").GetComponent<Button>();
+        button2.onClick.AddListener(() => {
+            NpcPanel.SetActive(false);
+            NpcPanel_Healer.SetActive(true);
+            // stageChoice.MoveToNextStage();
+        });
+
+        Button button3 = GameObject.Find($"NpcButton3").GetComponent<Button>();
+        button3.onClick.AddListener(() => {
+            NpcPanel.SetActive(false);
+            NpcPanel_Enchanter.SetActive(true);
+            // stageChoice.MoveToNextStage();
+        });
+
     }
 
     void Update()

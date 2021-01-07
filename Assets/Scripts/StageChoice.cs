@@ -6,16 +6,21 @@ using UnityEngine.UI;
 
 public class StageChoice : MonoBehaviour
 {
-    CardType CurrentCardType;
+    StageCard selectedCard;
     int currentStage;
 
-    Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
+    public static Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
     
     GameObject CardSelectPanel;
     GameObject NpcPanel;
+    GameObject NpcPanel_Merchant;
+    GameObject NpcPanel_Healer;
+    GameObject NpcPanel_Enchanter;
     GameObject BuffPanel;
     GameObject ChestPanel;
     GameObject BattlePanel;
+    GameObject RandomPanel;
+    GameObject WeaponChangePanel;
 
     Text StageText;
 
@@ -28,9 +33,14 @@ public class StageChoice : MonoBehaviour
     {
         CardSelectPanel = GameObject.Find("CardSelectPanel");
         NpcPanel = GameObject.Find("NpcPanel");
+        NpcPanel_Merchant = GameObject.Find("NpcPanel_Merchant");
+        NpcPanel_Healer = GameObject.Find("NpcPanel_Healer");
+        NpcPanel_Enchanter = GameObject.Find("NpcPanel_Enchanter");
         BuffPanel = GameObject.Find("BuffPanel");
         ChestPanel = GameObject.Find("ChestPanel");
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
+        RandomPanel = GameObject.Find("RandomPanel");
+        WeaponChangePanel = GameObject.Find("WeaponChangePanel");
 
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
@@ -41,13 +51,6 @@ public class StageChoice : MonoBehaviour
         GameState.Instance.World = new World(1, "테스트 월드");
         currentStage = 0;
         MoveToNextStage();
-
-        Debug.Log($"{GameObject.Find("CardSelectPanel")}");
-        
-        var stageCards = GameState.Instance.Stage.Cards;
-        CardText1.text = stageCards[0].Type.ToString();
-        CardText2.text = stageCards[1].Type.ToString();
-        CardText3.text = stageCards[2].Type.ToString();
     }
 
     // Update is called once per frame
@@ -61,21 +64,21 @@ public class StageChoice : MonoBehaviour
 
     public void OnClickCard(int index)
     {
-        var selectedCard = GameState.Instance.Stage.Cards[index];
-        ActivatePannel(selectedCard.Type);
+        selectedCard = GameState.Instance.Stage.Cards[index];
+        ActivatePannel();
     }
 
     public void MoveToNextStage()
     {
+        selectedCard = null;
         currentStage += 1;
         StageText.text = $"Stage {currentStage}";
         GameState.Instance.Stage = GameState.Instance.World.GetStage(currentStage);
-        ActivatePannel(CardType.Undecided);
+        ActivatePannel();
     }
     
-    void ActivatePannel(CardType type)
+    void ActivatePannel()
     {
-        CurrentCardType = type;
         DeactiveAllPanel();
         UpdateGamePanel();
     }
@@ -84,21 +87,26 @@ public class StageChoice : MonoBehaviour
     {
         CardSelectPanel.SetActive(false);
         NpcPanel.SetActive(false);
+        NpcPanel_Merchant.SetActive(false);
+        NpcPanel_Healer.SetActive(false);
+        NpcPanel_Enchanter.SetActive(false);
         BuffPanel.SetActive(false);
         ChestPanel.SetActive(false);
         BattlePanel.SetActive(false);
+        RandomPanel.SetActive(false);
     }
 
     public void UpdateGamePanel()
     {
-        Debug.Log($"UpdateGamePanel: {CurrentCardType}");
-        switch (CurrentCardType)
+        switch (selectedCard?.Type ?? null)
         {
-            case CardType.Undecided:
+            case null:
                 CardSelectPanel.SetActive(true);
                 CardSelectPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Monster:
+                var controller = BattlePanel.GetComponent<BattlePlayerAttackPanelController>();
+                controller.MonsterCard = (selectedCard as MonsterCard);
                 BattlePanel.SetActive(true);
                 BattlePanel.transform.localPosition = PanelDisplayPosition;
                 break;
@@ -111,10 +119,15 @@ public class StageChoice : MonoBehaviour
                 BuffPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Random:
+                RandomPanel.SetActive(true);
+                RandomPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Npc:
                 NpcPanel.SetActive(true);
                 NpcPanel.transform.localPosition = PanelDisplayPosition;
+                NpcPanel_Merchant.transform.localPosition = PanelDisplayPosition;
+                NpcPanel_Healer.transform.localPosition = PanelDisplayPosition;
+                NpcPanel_Enchanter.transform.localPosition = PanelDisplayPosition;
                 break;
         }
     }

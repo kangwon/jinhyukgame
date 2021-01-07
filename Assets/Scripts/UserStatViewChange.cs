@@ -7,7 +7,7 @@ public class UserStatViewChange : MonoBehaviour
     int userStatnum = 0;
 
     public GameObject ATKview, ATKicon, DEFview, DEFicon, SPDview, SPDicon, BFview, BFicon;
-    public GameObject jb1, jb2, jb3, jb4, at1, at2, at3;
+    public GameObject jb1, jb2, jb3, at1, at2, at3;
 
     void ScreenoneView(bool torf)
     {
@@ -26,7 +26,6 @@ public class UserStatViewChange : MonoBehaviour
         jb1.SetActive(torf);
         jb2.SetActive(torf);
         jb3.SetActive(torf);
-        jb4.SetActive(torf);
         at1.SetActive(torf);
         at2.SetActive(torf);
         at3.SetActive(torf);
