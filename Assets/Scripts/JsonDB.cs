@@ -32,6 +32,7 @@ class JsonDB
     private JsonCollection<Equipment> equipmentCollection;
     private JsonCollection<StatBuff> buffCollection;
     private JsonCollection<Monster> monsterCollection;
+    private JsonCollection<Weapon> weaponCollection;
     private static readonly JsonDB instance = new JsonDB();  
     static JsonDB() {}  
     private JsonDB() 
@@ -39,6 +40,7 @@ class JsonDB
         equipmentCollection = new JsonCollection<Equipment>("equipment");
         buffCollection = new JsonCollection<StatBuff>("buff");
         monsterCollection = new JsonCollection<Monster>("monster");
+        weaponCollection = new JsonCollection<Weapon>("weapon");
     }
     public static JsonDB Instance  
     {  
@@ -50,8 +52,6 @@ class JsonDB
         Equipment equip = Instance.equipmentCollection.GetItem(id);
         switch (equip.type)
         {
-            case "weapon":
-                return equip.ToWeapon();
             case "armor":
                 return equip.ToArmor();
             case "helmet":
@@ -64,6 +64,8 @@ class JsonDB
                 throw new NotImplementedException($"Invalid equipment type: {equip.type}");
         }
     }
+    public static Weapon GetWeapon(string id)
+        => Instance.weaponCollection.GetItem(id);        
 
     public static StatBuff GetBuff(string id)
         => Instance.buffCollection.GetItem(id);

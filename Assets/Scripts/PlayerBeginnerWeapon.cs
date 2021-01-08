@@ -11,8 +11,8 @@ public class PlayerBeginnerWeapon : MonoBehaviour
         player.ResetWeaponList();
         for (int i = 0; i < 5; i++)
         {
-            player.SetEquipment(JsonDB.GetEquipment($"weapon_{i}00"));
-            player.SetEquipment(JsonDB.GetEquipment($"weapon_{i}00"));
+            player.SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
+            player.SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
         }
     }
 

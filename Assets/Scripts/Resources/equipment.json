@@ -1,87 +1,37 @@
 {
   "items": [
     {
-      "id": "weapon_000",
-      "type": "weapon",
-      "name": "용사의 모형검",
-      "prefix": "broken",
-      "rank": "uncommon",
+      "id": "helmet0_00",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 0,
+      "rank": 0,
       "price": 10,
       "statEffect": {
-        "attack": 1
+        "defense": 0
       }
     },
     {
-      "id": "weapon_100",
-      "type": "weapon",
-      "name": "뿅망치",
-      "prefix": "broken",
-      "rank": "uncommon",
+      "id": "armor0_00",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 0,
+      "rank": 0,
       "price": 10,
       "statEffect": {
-        "attack": 1
+        "maxHp": 0
       }
     },
     {
-      "id": "weapon_200",
-      "type": "weapon",
-      "name": "스펀지 삼지창",
-      "prefix": "broken",
-      "rank": "uncommon",
+      "id": "shoes0_00",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 0,
+      "rank": 0,
       "price": 10,
       "statEffect": {
-        "attack": 1
-      }
-    },
-    {
-      "id": "weapon_300",
-      "type": "weapon",
-      "name": "해적의 단검",
-      "prefix": "broken",
-      "rank": "uncommon",
-      "price": 10,
-      "statEffect": {
-        "attack": 1
-      }
-    },
-    {
-      "id": "weapon_400",
-      "type": "weapon",
-      "name": "요술봉",
-      "prefix": "broken",
-      "rank": "uncommon",
-      "price": 10,
-      "statEffect": {
-        "attack": 1
-      }
-    },
-    {
-      "id": "sword1",
-      "type": "weapon",
-      "name": "용사의 대검",
-      "price": 10,
-      "statEffect": {
-        "attack": 10
-      }
-    },
-    {
-      "id": "sword2",
-      "type": "weapon",
-      "name": "환자의 대검",
-      "price": 20,
-      "statEffect": {
-        "attack": -3
-      }
-    },
-    {
-      "id": "sword3",
-      "type": "weapon",
-      "name": "진혁의 대검",
-      "price": 100,
-      "statEffect": {
-        "attack": 100
+        "speed": 0
       }
     }
-
   ]
 }

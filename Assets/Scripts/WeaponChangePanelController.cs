@@ -45,6 +45,10 @@ public class WeaponChangePanelController : MonoBehaviour
         if (weaponList.Count <= 10)
         {
             var sortList = weaponList.OrderBy(x => x.id).ToList();
+            foreach(var weapon in sortList)
+            {
+                Debug.Log($"{weapon.weaponType}");
+            }
             player.SetWeaponList(sortList);
             ChangePanel.SetActive(false);
         }

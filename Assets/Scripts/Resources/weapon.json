@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "weapon_000",
+      "type": "weapon",
+      "name": "용사의 모형검",
+      "weaponType": 0,
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "attack": 1
+      }
+    },
+    {
+      "id": "weapon_100",
+      "type": "weapon",
+      "name": "뿅망치",
+      "weaponType": 1,
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "attack": 1
+      }
+    },
+    {
+      "id": "weapon_200",
+      "type": "weapon",
+      "name": "스펀지 삼지창",
+      "weaponType": 2,
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "attack": 1
+      }
+    },
+    {
+      "id": "weapon_300",
+      "type": "weapon",
+      "name": "해적의 단검",
+      "weaponType": 3,
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "attack": 1
+      }
+    },
+    {
+      "id": "weapon_400",
+      "type": "weapon",
+      "name": "요술봉",
+      "weaponType": 4,
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "attack": 1
+      }
+    }
+  ]
+}

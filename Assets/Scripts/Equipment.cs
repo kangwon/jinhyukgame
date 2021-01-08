@@ -13,7 +13,11 @@ public enum Rank
 [System.Serializable]
 public enum Prefix
 {
-   broken,weak,normal,strong,amazing
+   broken,weak,normal,strong,amazing,
+}
+public enum WeaponType
+{
+    sword,blunt,spear,dagger,wand,
 }
 
 [System.Serializable]
@@ -22,13 +26,12 @@ public class Equipment : JsonItem
     public string type;
     public string name;
     public int price;
-
     public Stat statEffect;
     public Rank rank;
     public Prefix prefix;
 
-    public Weapon ToWeapon()
-        => new Weapon() {id=id,type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
+    public Weapon ToWeapon(WeaponType weaponType)
+        => new Weapon() {id=id,type=type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix,weaponType= weaponType };
     public Armor ToArmor()
         => new Armor() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Helmet ToHelmet()
@@ -40,11 +43,15 @@ public class Equipment : JsonItem
     
 }
 
-public class Weapon : Equipment 
+[System.Serializable]
+public class Weapon : JsonItem
 {
-    public enum WeaponType{
-    sword,blunt,spear,dagger,wand
-    }
+    public string type;
+    public string name;
+    public int price;
+    public Stat statEffect;
+    public Rank rank;
+    public Prefix prefix;
     public WeaponType weaponType;
 }
 public class Armor : Equipment {}
@@ -76,9 +83,9 @@ public class EquipmentSlot
     {
         switch (equip)
         {
-            case Weapon w: //10개 넘을시 따로 처리해주기
-                this.weapons.Add(w);             
-                break;
+        //    case Weapon w: //10개 넘을시 따로 처리해주기
+           //     this.weapons.Add(w);             
+           //     break;
             case Armor a:
                 this.armor = a;
                 break;
@@ -97,7 +104,11 @@ public class EquipmentSlot
                 throw new NotImplementedException($"Invalid equipment type: {equip.GetType().ToString()}");
         }
     }
-
+    public void SetEquipment(Weapon weapon)
+    {
+         //10개 넘을시 따로 처리해주기
+        this.weapons.Add(weapon);
+    }
     public Stat GetTotalStat()
     {
         Stat zeroStat = new Stat();
