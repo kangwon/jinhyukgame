@@ -226,14 +226,8 @@ public class Player : CharacterBase
     public override void TakeHit(float rawDamage) 
     {
         float afterDamage = CalcDamage(rawDamage);
-        if(this.GetStat().defense >= afterDamage) 
-        {
-            hp = hp - 1;
-        } 
-        else 
-        {
-            hp = hp + this.GetStat().defense - (int)afterDamage;
-        }
+        int damage = Math.Max((int)afterDamage - this.GetStat().defense, 1);
+        this.hp = Math.Max(this.hp - damage, 0);
         //Debug.Log($"이제 플레이어 피 : {hp}임.");
     }
 
