@@ -3,12 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-// location 0 - 좌 / 1 - 중 / 2 - 우
-public enum CardLocation
-{
-    Left, Middle, Right,
-}
-
 // typeNum 
 // 0 - 몬스터 / 1 - 보물 / 2 - 버프
 // 3 - 마을 / 4 - 이벤트 / 5 - 보스
@@ -18,41 +12,42 @@ public enum CardType
     Npc, Random, Boss
 }
 
+public enum ChestType
+{
+    Equipment, Heal, Dispel, Damage, Debuff
+}
+
 public class StageCard
 {
-    public CardLocation Location;
     public CardType Type;
-
-    public StageCard(CardType type)
-    {
-        Type = type;
-    }
 }
 
 public class MonsterCard : StageCard 
 {
     public Monster monster;
-    public MonsterCard(CardType type, Monster monster) : base(type) 
+    
+    public MonsterCard(Monster monster)
     {
+        this.Type = CardType.Monster;
         this.monster = monster;
     }
 }
 public class ChestCard : StageCard 
 {
-    public ChestCard(CardType type) : base(type) {}
+    public ChestType ChestType;
+
+    public float HealPercent;
+    public float DamagePercent;
+
+    public ChestCard(ChestType chestType)
+    {
+        this.Type = CardType.Chest;
+        this.ChestType = chestType;
+    }
 }
-public class BuffCard : StageCard 
-{
-    public BuffCard(CardType type) : base(type) {}
-}
-public class NpcCard : StageCard 
-{
-    public NpcCard(CardType type) : base(type) {}
-}
-public class RandomCard : StageCard 
-{
-    public RandomCard(CardType type) : base(type) {}
-}
+public class BuffCard : StageCard {}
+public class NpcCard : StageCard {}
+public class RandomCard : StageCard {}
 
 public class WorldStage
 {
@@ -104,17 +99,46 @@ public class World
                     Enumerable.Repeat(1.0, worldMonsters.Count).ToList(),
                     this.Random
                 );
-                return new MonsterCard(type, monster);
+                return new MonsterCard(monster);
             case CardType.Chest:
-                return new ChestCard(type);
+                var chestType = CustomRandom<ChestType>.WeightedChoice
+                (
+                    Enum.GetValues(typeof(ChestType)).Cast<ChestType>().ToList(),
+                    new List<double> { 0.5, 0.3, 0.1, 0.075, 0.025 },
+                    this.Random
+                );
+                switch (chestType)
+                {
+                    case ChestType.Equipment:
+                        // TODO: 몬스터 보상과 동일
+                        return new ChestCard(chestType);
+                    case ChestType.Heal:
+                        return new ChestCard(chestType) { HealPercent = 0.3f };
+                    case ChestType.Dispel:
+                        return new ChestCard(chestType);
+                    case ChestType.Damage:
+                        return new ChestCard(chestType) 
+                        { 
+                            DamagePercent = CustomRandom<float>.WeightedChoice
+                            (
+                                new List<float> { 0.1f, 0.05f },
+                                new List<double> { 1.0, 1.0 },
+                                this.Random
+                            )
+                        };
+                    case ChestType.Debuff:
+                        return new ChestCard(chestType);
+                    default:
+                        throw new NotImplementedException($"Invalid chest type: {chestType.ToString()}");
+                }
             case CardType.Buff:
-                return new BuffCard(type);
+                return new BuffCard();
             case CardType.Npc:
-                return new NpcCard(type);
+                return new NpcCard();
             case CardType.Random:
-                return new RandomCard(type);
+                return new RandomCard();
             default:
-                throw new NotImplementedException($"Invalid card type: {type.GetType().ToString()}");
+                throw new NotImplementedException($"Invalid card type: {type.ToString()}");
         }
     }
 
