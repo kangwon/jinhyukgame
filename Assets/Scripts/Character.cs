@@ -247,4 +247,9 @@ public class Player : CharacterBase
     {
         return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
     }
+
+    public void Heal(int amount)
+    {
+        this.hp = Math.Min(this.hp + amount, this.GetStat().maxHp);
+    }
 }
