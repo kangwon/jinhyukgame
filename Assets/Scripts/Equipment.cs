@@ -44,14 +44,8 @@ public class Equipment : JsonItem
 }
 
 [System.Serializable]
-public class Weapon : JsonItem
+public class Weapon : Equipment
 {
-    public string type;
-    public string name;
-    public int price;
-    public Stat statEffect;
-    public Rank rank;
-    public Prefix prefix;
     public WeaponType weaponType;
 }
 public class Armor : Equipment {}
@@ -83,9 +77,9 @@ public class EquipmentSlot
     {
         switch (equip)
         {
-        //    case Weapon w: //10개 넘을시 따로 처리해주기
-           //     this.weapons.Add(w);             
-           //     break;
+            case Weapon w:
+                this.weapons.Add(w);
+                break;
             case Armor a:
                 this.armor = a;
                 break;
@@ -103,11 +97,6 @@ public class EquipmentSlot
             default:
                 throw new NotImplementedException($"Invalid equipment type: {equip.GetType().ToString()}");
         }
-    }
-    public void SetEquipment(Weapon weapon)
-    {
-         //10개 넘을시 따로 처리해주기
-        this.weapons.Add(weapon);
     }
     public Stat GetTotalStat()
     {

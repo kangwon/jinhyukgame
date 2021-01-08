@@ -157,10 +157,7 @@ public class Player : CharacterBase
     {
         equipmentSlot.SetEquipment(equip);
     }
-    public void SetEquipment(Weapon weapon)
-    {
-        equipmentSlot.SetEquipment(weapon);
-    }
+
     public void BuyItem(Equipment item)
     {
         if (money >= item.price)
