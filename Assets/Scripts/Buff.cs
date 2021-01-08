@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
+using UnityEngine;
 
 [System.Serializable]
 public class StatBuff :JsonItem
@@ -25,6 +25,7 @@ public class StatBuff :JsonItem
     public bool iCantUsedCombo = false;
     public int preemptiveUserTurn = 0;
     public int preemptiveMonTurn = 0;
+    public bool handReroll = false;
 
     public float GetHP(CharacterBase characterBase)       // 스테이지마다 함수 구현 필요
     {
@@ -34,7 +35,7 @@ public class StatBuff :JsonItem
     public Stat GetTotalStat(Stat stat)
     {
         //*퍼센트로 붙은 버프를 적용하기전에 해당 캐릭터의 baseStat을 가져와 수치를 구한다.
-        //반드시 적용하기 전에 이 함수를 써서 수치를 구해야함. 
+        //반드시 적용하기 전에 이 함수를 써서 수치를 구해야함.
         return new Stat
         {
             maxHp = (int)(maxHpPercent * stat.maxHp) + baseBuffStat.maxHp,

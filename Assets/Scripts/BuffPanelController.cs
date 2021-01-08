@@ -45,6 +45,8 @@ public class BuffPanelController : MonoBehaviour
         {
             int i = Random.Range(1, 11); // json 파일 버프 수가 늘어나면 바꾸기
             StatBuff buff = JsonDB.GetBuff($"buff{i}");
+            Debug.Log(buff.speedPercent);
+            GameState.Instance.player.AddBuff(buff);
             str = buff.name;
             str2 = buff.description;
             buffName.GetComponent<Text>().text = buff.name;
