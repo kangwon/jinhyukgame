@@ -189,6 +189,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             Stat tempStat = new Stat();
             tempStat.attack = cardDamageSum + player.GetStat().attack;
             monster.TakeHit(player.GetBuff().GetTotalStat(tempStat).attack+tempStat.attack); //TODO: 시너지대미지넣기
+            player.Synergy();
             playerState = combatState.Idle; //다시 게이지 채우는 중으로
             OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
         }

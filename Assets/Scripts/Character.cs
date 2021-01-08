@@ -146,6 +146,62 @@ public class Player : CharacterBase
         }
         this.buff = buff;
     }
+    public void Synergy()
+    {
+        var weaponlist = equipmentSlot.GetWeaponsList();
+        if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() == 10)
+            Debug.Log("대검 4단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() >= 7)
+            Debug.Log("대검 3단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() >= 5)
+            Debug.Log("대검 2단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() >= 3)
+            Debug.Log("대검 1단계 시너지");
+
+        if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() == 10)
+            Debug.Log("둔기 4단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() >= 7)
+            Debug.Log("둔기 3단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() >= 5)
+            Debug.Log("둔기 2단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() >= 3)
+            Debug.Log("둔기 1단계 시너지");
+
+        if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() == 10)
+            Debug.Log("창 4단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() >= 7)
+            Debug.Log("창 3단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() >= 5)
+            Debug.Log("창 2단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() >= 3)
+            Debug.Log("창 1단계 시너지");
+
+        if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() == 10)
+            Debug.Log("단검 4단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() >= 7)
+            Debug.Log("단검 3단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() >= 5)
+            Debug.Log("단검 2단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() >= 3)
+            Debug.Log("단검 1단계 시너지");
+
+        if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() == 10)
+            Debug.Log("지팡이 4단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() >= 7)
+            Debug.Log("지팡이 3단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() >= 5)
+            Debug.Log("지팡이 2단계 시너지");
+        else if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() >= 3)
+            Debug.Log("지팡이 1단계 시너지");
+
+        if((weaponlist.Where(x => x.weaponType == WeaponType.sword).Count()==2) && 
+            (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() == 2)&& 
+            (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() == 2)&& 
+            (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() == 2)&& 
+            (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() == 2))
+            Debug.Log("불쌍해서 주는 추공+2");
+
+    }
 
     public override Stat GetStat()
     {      
