@@ -138,6 +138,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     {
         cardDamageSum = 0;
         int maxCount = (from n in selectCard where n == true select n).Count();
+        if (maxCount == 0) return; //선택된 카드가 없으면 버튼이 작동안하게 설정
         for(int i = HAND_MAX - 1; i >= 0; i--)
         {
             if (selectCard[i] == true) //손에서 정해진 카드를 battle 클래스에 전달
@@ -203,13 +204,13 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public void Bury() {
         if(player.isDead) {
             playerState = combatState.Dead;
-            Debug.Log("플레이어 죽음");
+            Debug.Log("플레이어 죽음"); //TODO : 게임오버패널로 넘어가야함
         }
 
         if(monster.isDead) {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
-            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 
+            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 나중에 보상패널로 이어지도록 해야함
         }    
     }
 
