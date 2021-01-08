@@ -39,6 +39,43 @@ public class Stat
     public Stat DeepCopy() => (Stat)this.MemberwiseClone();
 }
 
+public class StatPercent
+{
+    public float maxHp;
+    public float attack;
+    public float defense;
+    public float speed;
+    
+    public StatPercent() 
+    {
+       maxHp=0;
+       attack=0;
+       defense=0;
+       speed=0;
+    }
+    public StatPercent(float maxHp, float attack, float defense, float speed)
+    {
+        this.maxHp = maxHp;
+        this.attack = attack;
+        this.defense = defense;
+        this.speed = speed;
+    }
+    public static StatPercent operator +(StatPercent a, StatPercent b)
+    {
+        return new StatPercent
+        {
+            maxHp = a.maxHp + b.maxHp,
+            attack = a.attack + b.attack,
+            defense = a.defense + b.defense,
+            speed = a.speed + b.speed,
+        };
+    }
+    public override string ToString()
+    {
+        return $"Stat(hp:{maxHp}%, atk:{attack}%, def:{defense}%, spd:{speed}%)";
+    }
+}
+
 [System.Serializable]
 public class CharacterBase : JsonItem
 {
@@ -146,61 +183,61 @@ public class Player : CharacterBase
         }
         this.buff = buff;
     }
+    public class SynergyStat {
+        public int attack;
+        public StatPercent statPercent;
+        public SynergyStat() 
+        {
+            attack = 0;
+            statPercent = new StatPercent();
+        }
+        public SynergyStat(int x, StatPercent y)
+        {
+            attack = x;
+            statPercent = y;
+        }
+        public static SynergyStat operator+(SynergyStat a, SynergyStat b)
+        {
+            return new SynergyStat
+            { 
+                attack = a.attack+b.attack,
+                statPercent =a.statPercent+b.statPercent,
+            };
+        }
+        public override string ToString()
+        {
+            return $"(atk:{attack},stat:{statPercent})";
+        }
+    }
     public void Synergy()
-    {
+    { 
         var weaponlist = equipmentSlot.GetWeaponsList();
-        if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() == 10)
-            Debug.Log("대검 4단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() >= 7)
-            Debug.Log("대검 3단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() >= 5)
-            Debug.Log("대검 2단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.sword).Count() >= 3)
-            Debug.Log("대검 1단계 시너지");
-
-        if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() == 10)
-            Debug.Log("둔기 4단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() >= 7)
-            Debug.Log("둔기 3단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() >= 5)
-            Debug.Log("둔기 2단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() >= 3)
-            Debug.Log("둔기 1단계 시너지");
-
-        if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() == 10)
-            Debug.Log("창 4단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() >= 7)
-            Debug.Log("창 3단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() >= 5)
-            Debug.Log("창 2단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() >= 3)
-            Debug.Log("창 1단계 시너지");
-
-        if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() == 10)
-            Debug.Log("단검 4단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() >= 7)
-            Debug.Log("단검 3단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() >= 5)
-            Debug.Log("단검 2단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() >= 3)
-            Debug.Log("단검 1단계 시너지");
-
-        if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() == 10)
-            Debug.Log("지팡이 4단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() >= 7)
-            Debug.Log("지팡이 3단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() >= 5)
-            Debug.Log("지팡이 2단계 시너지");
-        else if (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() >= 3)
-            Debug.Log("지팡이 1단계 시너지");
-
-        if((weaponlist.Where(x => x.weaponType == WeaponType.sword).Count()==2) && 
-            (weaponlist.Where(x => x.weaponType == WeaponType.blunt).Count() == 2)&& 
-            (weaponlist.Where(x => x.weaponType == WeaponType.spear).Count() == 2)&& 
-            (weaponlist.Where(x => x.weaponType == WeaponType.dagger).Count() == 2)&& 
-            (weaponlist.Where(x => x.weaponType == WeaponType.wand).Count() == 2))
-            Debug.Log("불쌍해서 주는 추공+2");
-
+        Dictionary<WeaponType,List<SynergyStat>> dict = new Dictionary<WeaponType, List<SynergyStat>>();
+        dict.Add(WeaponType.sword, new List<SynergyStat> { new SynergyStat(2, new StatPercent()), new SynergyStat(5, new StatPercent()), new SynergyStat(10, new StatPercent()), new SynergyStat(15, new StatPercent()) });
+        dict.Add(WeaponType.blunt, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0,0,0.03f,0)), new SynergyStat(0, new StatPercent(0, 0, 0.05f, 0)), new SynergyStat(0, new StatPercent(0, 0, 0.1f, 0)), new SynergyStat(0, new StatPercent(0, 0, 0.2f, 0)) });
+        dict.Add(WeaponType.spear, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0.03f, 0,0, 0)), new SynergyStat(0, new StatPercent(0.05f, 0, 0, 0)), new SynergyStat(0, new StatPercent(0.1f, 0, 0, 0)), new SynergyStat(0, new StatPercent(0.2f, 0, 0, 0)) });
+        dict.Add(WeaponType.dagger, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0, 0, 0,0.03f)), new SynergyStat(0, new StatPercent(0, 0,0, 0.05f)), new SynergyStat(0, new StatPercent(0, 0,0, 0.1f)), new SynergyStat(0, new StatPercent(0, 0,0, 0.2f)) });
+        dict.Add(WeaponType.wand, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0.02f, 0, 0.02f, 0.02f)), new SynergyStat(1, new StatPercent(0.03f, 0, 0.03f, 0.03f)), new SynergyStat(3, new StatPercent(0.05f, 0, 0.05f, 0.05f)), new SynergyStat(8, new StatPercent(0.05f, 0, 0.05f, 0.05f)) });
+        int weaponTypeCount;
+        int weaponType2Count = 0;
+        SynergyStat totalSynergyStat = new SynergyStat(0, new StatPercent());
+        for(WeaponType i = WeaponType.sword; i <= WeaponType.wand; i++)
+        {
+            weaponTypeCount = weaponlist.Where(x => x.weaponType == i).Count();
+            if (weaponTypeCount == 10)
+                totalSynergyStat += dict[i].ElementAt(3);
+            else if (weaponTypeCount >= 7)
+                totalSynergyStat+= dict[i].ElementAt(2);
+            else if (weaponTypeCount >= 5)
+                totalSynergyStat += dict[i].ElementAt(1);
+            else if (weaponTypeCount >= 3)
+                totalSynergyStat += dict[i].ElementAt(0);
+            else if (weaponTypeCount == 2)
+                weaponType2Count++;
+        }
+        if (weaponType2Count == 5)
+            totalSynergyStat += new SynergyStat(2, new StatPercent());
+        Debug.Log(totalSynergyStat);
     }
 
     public override Stat GetStat()

@@ -87,7 +87,7 @@ public class World
         var type = CustomRandom<CardType>.WeightedChoice
         (
             Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
-            new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 },
+            new List<double> { 0.7, 1.05, 0.05, 0.1, 0.1, 0 },
             this.Random
         );
         
