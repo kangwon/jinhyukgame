@@ -2,14 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class ChestPanelController : MonoBehaviour
 {
-    public GameObject chestPanel;
-    public GameObject chestType;
-    public GameObject chestDescription;
-    public StageChoice stageChoice;
-    public GameObject weaponChangePanel;
+    Text chestType;
+    Text chestDescription;
+    StageChoice stageChoice;
+    GameObject weaponChangePanel;
+
     Player player = GameState.Instance.player;
+
+    public ChestCard ChestCard;
+
+    void Start()
+    {
+        chestType = GameObject.Find("/Canvas/ChestPanel/ChestType").GetComponent<Text>();
+        chestDescription = GameObject.Find("/Canvas/ChestPanel/ChestDescription").GetComponent<Text>();
+        stageChoice = GameObject.Find("/Canva").GetComponent<StageChoice>();
+        weaponChangePanel = GameObject.Find("/Canva/WeaponChangePanel");
+    }
+    
     public void OnClickTreasureButton()
     {
         player.SetEquipment(JsonDB.GetWeapon("weapon_000"));
@@ -18,15 +30,5 @@ public class ChestPanelController : MonoBehaviour
             weaponChangePanel.SetActive(true);
         }
        stageChoice.MoveToNextStage();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
