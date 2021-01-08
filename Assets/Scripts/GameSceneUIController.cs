@@ -19,7 +19,7 @@ public class GameSceneUIController : MonoBehaviour
         for (int i = 0; i < NpcItemIds.Count; i++)
         {
             Button button = GameObject.Find($"NpcItemButton{i + 1}").GetComponent<Button>();
-            Equipment item = JsonDB.GetEquipment(NpcItemIds[i]);
+            Equipment item = JsonDB.GetEquipment(NpcItemIds[i]); //**만약 무기 넣을꺼면 GetWeapon(id)로 써야한다. 
             
             button.transform.Find("ItemName").GetComponent<Text>().text = item.name;
             button.transform.Find("ItemPrice").GetComponent<Text>().text = $"{item.price}G";

@@ -12,7 +12,7 @@ public class ChestPanelController : MonoBehaviour
     Player player = GameState.Instance.player;
     public void OnClickTreasureButton()
     {
-        player.SetEquipment(JsonDB.GetEquipment("weapon_000"));
+        player.SetEquipment(JsonDB.GetWeapon("weapon_000"));
         if (player.GetWeaponList().Count > 10)
         {
             weaponChangePanel.SetActive(true);

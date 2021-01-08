@@ -43,8 +43,9 @@ public class WeaponChangePanelController : MonoBehaviour
         if(changeCardIndex<weaponList.Count)
             weaponList.RemoveAt(changeCardIndex);
         if (weaponList.Count <= 10)
-        {           
-            player.SetWeaponList(weaponList);
+        {
+            var sortList = weaponList.OrderBy(x => x.id).ToList();
+            player.SetWeaponList(sortList);
             ChangePanel.SetActive(false);
         }
        else PrintCard();
