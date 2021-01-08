@@ -209,7 +209,7 @@ public class Player : CharacterBase
             return $"(atk:{attack},stat:{statPercent})";
         }
     }
-    public void Synergy()
+    public SynergyStat Synergy()
     { 
         var weaponlist = equipmentSlot.GetWeaponsList();
         Dictionary<WeaponType,List<SynergyStat>> dict = new Dictionary<WeaponType, List<SynergyStat>>();
@@ -236,8 +236,8 @@ public class Player : CharacterBase
                 weaponType2Count++;
         }
         if (weaponType2Count == 5)
-            totalSynergyStat += new SynergyStat(2, new StatPercent());
-        Debug.Log(totalSynergyStat);
+            totalSynergyStat += new SynergyStat(2, new StatPercent());      
+        return totalSynergyStat;
     }
 
     public override Stat GetStat()
