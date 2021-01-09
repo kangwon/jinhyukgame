@@ -8,9 +8,8 @@
       "prefix": 0,
       "rank": 0,
       "price": 10,
-      "statEffect": {
-        "attack": 1
-      }
+      "minAttack": 0,
+      "maxAttack": 1
     },
     {
       "id": "weapon_100",
@@ -20,9 +19,8 @@
       "prefix": 0,
       "rank": 0,
       "price": 10,
-      "statEffect": {
-        "attack": 1
-      }
+      "minAttack": 0,
+      "maxAttack": 1
     },
     {
       "id": "weapon_200",
@@ -32,9 +30,8 @@
       "prefix": 0,
       "rank": 0,
       "price": 10,
-      "statEffect": {
-        "attack": 1
-      }
+      "minAttack": 0,
+      "maxAttack": 1
     },
     {
       "id": "weapon_300",
@@ -44,9 +41,8 @@
       "prefix": 0,
       "rank": 0,
       "price": 10,
-      "statEffect": {
-        "attack": 1
-      }
+      "minAttack": 0,
+      "maxAttack": 1
     },
     {
       "id": "weapon_400",
@@ -58,7 +54,9 @@
       "price": 10,
       "statEffect": {
         "attack": 1
-      }
+      },
+      "minAttack": 0,
+      "maxAttack": 1
     }
   ]
 }
