@@ -7,34 +7,33 @@ using UnityEngine.UI;
 
 public class BuffPanelController : MonoBehaviour
 {
-
+    GameObject buffPanel;
     Text buffName;
     Text buffDescription;
-    public GameObject buffPanel;
-    public StageChoice stageChoice;
+    StageChoice stageChoice;
     
-    StatBuff buff;
+    public BuffCard BuffCard;
 
     void Start()
     {
+        buffPanel = GameObject.Find("Canvas").transform.Find("BuffPanel").gameObject;
         buffName = GameObject.Find("Canvas").transform.Find("BuffPanel/BuffName").gameObject.GetComponent<Text>();
         buffDescription = GameObject.Find("Canvas").transform.Find("BuffPanel/BuffDescription").gameObject.GetComponent<Text>();
+        stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
     }
 
     void OnEnable()
     {
-        if (buffName != null && buffDescription != null)
+        if (BuffCard != null)
         {
-            int i = Random.Range(1, 11); // json 파일 버프 수가 늘어나면 바꾸기
-            buff = JsonDB.GetBuff($"buff{i}");
-            buffName.text = buff.name;
-            buffDescription.text = buff.description;
+            buffName.text = BuffCard.Buff.name;
+            buffDescription.text = BuffCard.Buff.description;
         }
     }
 
     public void OnClickBuffButton()
     {
-        GameState.Instance.player.AddBuff(buff);
+        GameState.Instance.player.AddBuff(BuffCard.Buff);
         stageChoice.MoveToNextStage();
     }
 }

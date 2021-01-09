@@ -68,9 +68,12 @@ public class ChestCard : StageCard
 }
 public class BuffCard : StageCard 
 {
-    public BuffCard()
+    public StatBuff Buff;
+
+    public BuffCard(StatBuff buff)
     {
         this.Type = CardType.Buff;
+        this.Buff = buff;
     }
 }
 public class NpcCard : StageCard 
@@ -173,7 +176,8 @@ public class World
                 }
                 break;
             case CardType.Buff:
-                return new BuffCard();
+                var buff = CustomRandom<StatBuff>.Choice(JsonDB.GetBuffs(), this.Random);
+                return new BuffCard(buff);
             case CardType.Npc:
                 return new NpcCard();
             case CardType.Random:
