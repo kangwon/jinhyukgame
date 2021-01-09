@@ -117,6 +117,8 @@ public class StageChoice : MonoBehaviour
                 ChestPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Buff:
+                var buffController = BuffPanel.GetComponent<BuffPanelController>();
+                buffController.BuffCard = (selectedCard as BuffCard);
                 BuffPanel.SetActive(true);
                 BuffPanel.transform.localPosition = PanelDisplayPosition;
                 break;
