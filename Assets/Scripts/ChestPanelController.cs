@@ -51,6 +51,7 @@ public class ChestPanelController : MonoBehaviour
                 player.Damage((int)(ChestCard.DamagePercent * player.GetStat().maxHp));
                 break;
             case ChestType.Debuff:
+                player.AddBuff(ChestCard.Debuff);
                 break;
         }
        stageChoice.MoveToNextStage();

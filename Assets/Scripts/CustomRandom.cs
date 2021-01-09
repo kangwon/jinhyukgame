@@ -21,4 +21,14 @@ public class CustomRandom<T>
         }
         return list[list.Count - 1];
     }
+
+    public static T Choice(List<T> list, Random random)
+    {
+        return CustomRandom<T>.WeightedChoice
+        (
+            list,
+            Enumerable.Repeat(1.0, list.Count).ToList(),
+            random
+        );
+    }
 }

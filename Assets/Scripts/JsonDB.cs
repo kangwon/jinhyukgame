@@ -69,6 +69,10 @@ class JsonDB
 
     public static StatBuff GetBuff(string id)
         => Instance.buffCollection.GetItem(id);
+    public static List<StatBuff> GetBuffs()
+        => Instance.buffCollection.itemList.FindAll(b => b.IsBuff());
+    public static List<StatBuff> GetDebuffs()
+        => Instance.buffCollection.itemList.FindAll(b => b.IsDebuff());
     
     public static Monster GetMonster(string id)
         => Instance.monsterCollection.GetItem(id);

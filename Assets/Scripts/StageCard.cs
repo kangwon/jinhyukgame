@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Debug = UnityEngine.Debug;
 
 // typeNum 
 // 0 - 몬스터 / 1 - 보물 / 2 - 버프
@@ -38,6 +39,7 @@ public class ChestCard : StageCard
 
     public float HealPercent;
     public float DamagePercent;
+    public StatBuff Debuff;
 
     public ChestCard(ChestType chestType)
     {
@@ -58,7 +60,7 @@ public class ChestCard : StageCard
             case ChestType.Damage:
                 return $"Damage {(int)(this.DamagePercent * 100)}%";
             case ChestType.Debuff:
-                return $"Debuff";
+                return $"{Debuff.name}\n{Debuff.description}";
             default:
                 throw new NotImplementedException($"Invalid chest type: {this.ChestType.ToString()}");
         }
@@ -130,12 +132,7 @@ public class World
                     .GetWorldMonsters(this.Number)
                     .Select(m => m.DeepCopy())
                     .ToList();
-                var monster = CustomRandom<Monster>.WeightedChoice
-                (
-                    worldMonsters,
-                    Enumerable.Repeat(1.0, worldMonsters.Count).ToList(),
-                    this.Random
-                );
+                var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
                 return new MonsterCard(monster);
             case CardType.Chest:
                 var chestType = CustomRandom<ChestType>.WeightedChoice
@@ -156,18 +153,25 @@ public class World
                     case ChestType.Damage:
                         return new ChestCard(chestType) 
                         { 
-                            DamagePercent = CustomRandom<float>.WeightedChoice
+                            DamagePercent = CustomRandom<float>.Choice
                             (
                                 new List<float> { 0.1f, 0.05f },
-                                new List<double> { 1.0, 1.0 },
                                 this.Random
                             )
                         };
                     case ChestType.Debuff:
-                        return new ChestCard(chestType);
+                        return new ChestCard(chestType)
+                        {
+                            Debuff = CustomRandom<StatBuff>.Choice
+                            (
+                                JsonDB.GetDebuffs(), 
+                                this.Random
+                            )
+                        };
                     default:
                         throw new NotImplementedException($"Invalid chest type: {chestType.ToString()}");
                 }
+                break;
             case CardType.Buff:
                 return new BuffCard();
             case CardType.Npc:
