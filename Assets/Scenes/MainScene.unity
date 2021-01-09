@@ -964,12 +964,12 @@ GameObject:
   - component: {fileID: 91948241}
   - component: {fileID: 91948240}
   m_Layer: 5
-  m_Name: BF summary
+  m_Name: BF description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &91948239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -981,12 +981,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1502824054}
-  m_RootOrder: 18
+  m_Father: {fileID: 2036752257}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 417.58, y: 491}
+  m_AnchoredPosition: {x: 309.5788, y: 76.9375}
   m_SizeDelta: {x: 619.1594, y: 153.87622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91948240
@@ -3357,7 +3357,7 @@ GameObject:
   - component: {fileID: 358379990}
   - component: {fileID: 358379989}
   m_Layer: 5
-  m_Name: BF view
+  m_Name: BF name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7060,11 +7060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4106975501135484f9a1ca9c2eeced9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestPanel: {fileID: 761889046}
-  chestType: {fileID: 1211386216}
-  chestDescription: {fileID: 772557087}
-  stageChoice: {fileID: 1186672459}
-  weaponChangePanel: {fileID: 312411451}
 --- !u!114 &761889049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13667,7 +13662,6 @@ RectTransform:
   - {fileID: 510873291}
   - {fileID: 358379986}
   - {fileID: 2036752257}
-  - {fileID: 91948239}
   m_Father: {fileID: 1186672458}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14427,6 +14421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCount: {fileID: 26617691}
   selectCard: 00000000
+  playerWeapons: []
   stageChoice: {fileID: 1186672459}
   isBattle: 0
   GAUGE_SIZE: 200
@@ -17778,7 +17773,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 91948239}
   m_Father: {fileID: 1502824054}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

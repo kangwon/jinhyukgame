@@ -204,8 +204,7 @@ public class Player : CharacterBase
     }
     public void AddBuff(StatBuff buff)
     {
-
-        if (this.buff.debuffImmune == true || buff.IsDebuff()) // 1회 디버프무효화가 있고, 들어오는 버프가 디버프일때. 디버프를 무효화한다.
+        if (this.buff.debuffImmune == true && buff.IsDebuff()) // 1회 디버프무효화가 있고, 들어오는 버프가 디버프일때. 디버프를 무효화한다.
         {
             this.buff.debuffImmune = false;
             return;
@@ -296,15 +295,8 @@ public class Player : CharacterBase
     public override void TakeHit(float rawDamage) 
     {
         float afterDamage = CalcDamage(rawDamage);
-        if(this.GetStat().defense >= afterDamage) 
-        {
-            hp = hp - 1;
-        } 
-        else 
-        {
-            hp = hp + this.GetStat().defense - (int)afterDamage;
-        }
-        //Debug.Log($"이제 플레이어 피 : {hp}임.");
+        int damage = Math.Max((int)afterDamage - this.GetStat().defense, 1);
+        this.Damage(damage);
     }
 
     public override float AttackFoe() 
@@ -316,5 +308,21 @@ public class Player : CharacterBase
     float CalcDamage(float incomingDmg) 
     {
         return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
+    }
+
+    public void Damage(int damage)
+    {
+        this.hp = Math.Max(this.hp - damage, 0);
+    }
+
+    public void Heal(int amount)
+    {
+        this.hp = Math.Min(this.hp + amount, this.GetStat().maxHp);
+    }
+
+    public void Dispel()
+    {
+        if (this.GetBuff().IsDebuff())
+            this.buff = new StatBuff();
     }
 }

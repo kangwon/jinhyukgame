@@ -8,50 +8,33 @@ using UnityEngine.UI;
 public class BuffPanelController : MonoBehaviour
 {
 
-    GameObject buffName;
-    GameObject buffDescription;
-    public GameObject buffView;
+    Text buffName;
+    Text buffDescription;
     public GameObject buffPanel;
     public StageChoice stageChoice;
-    public GameObject buffSummary;
-
-    public bool buffUpdate = false;
-
-    public string str = "버프 없음";
-    public string str2 = "버프 없음";
+    
+    StatBuff buff;
 
     void Start()
     {
-        buffSummary.SetActive(true);
-        this.buffSummary = GameObject.Find("BF summary");
-        buffSummary.SetActive(false);
-        this.buffView = GameObject.Find("BF view");
-        this.buffName = GameObject.Find("BuffName");
-        this.buffDescription = GameObject.Find("BuffDescription");
+        buffName = GameObject.Find("Canvas").transform.Find("BuffPanel/BuffName").gameObject.GetComponent<Text>();
+        buffDescription = GameObject.Find("Canvas").transform.Find("BuffPanel/BuffDescription").gameObject.GetComponent<Text>();
+    }
+
+    void OnEnable()
+    {
+        if (buffName != null && buffDescription != null)
+        {
+            int i = Random.Range(1, 11); // json 파일 버프 수가 늘어나면 바꾸기
+            buff = JsonDB.GetBuff($"buff{i}");
+            buffName.text = buff.name;
+            buffDescription.text = buff.description;
+        }
     }
 
     public void OnClickBuffButton()
     {
-        buffUpdate = false;
-        buffView.GetComponent<Text>().text = str;
-        buffSummary.GetComponent<Text>().text = str2;
+        GameState.Instance.player.AddBuff(buff);
         stageChoice.MoveToNextStage();
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (buffUpdate == false)
-        {
-            int i = Random.Range(1, 11); // json 파일 버프 수가 늘어나면 바꾸기
-            StatBuff buff = JsonDB.GetBuff($"buff{i}");
-            Debug.Log(buff.speedPercent);
-            GameState.Instance.player.AddBuff(buff);
-            str = buff.name;
-            str2 = buff.description;
-            buffName.GetComponent<Text>().text = buff.name;
-            buffDescription.GetComponent<Text>().text = buff.description;
-            buffUpdate = true;
-        }
     }
 }
