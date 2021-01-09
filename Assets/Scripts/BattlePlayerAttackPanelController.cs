@@ -263,14 +263,14 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
         if (firstActive)
         {
-        playerWeapons.Clear();
-        playerWeapons.AddRange(player.GetWeaponList());
-        battle.CardList = playerWeapons;
-        monster = MonsterCard?.monster;
-        PlayerMonsterInit();
-        battle.BattleStart();
+            playerWeapons.Clear();
+            playerWeapons.AddRange(player.GetWeaponList());
+            battle.CardList = playerWeapons;
+            monster = MonsterCard?.monster;
+            PlayerMonsterInit();
+            battle.BattleStart();
         }
-                firstActive = true;
+        firstActive = true;
     }
 
     // Start is called before the first frame update
