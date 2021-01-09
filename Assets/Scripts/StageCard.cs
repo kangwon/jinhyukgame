@@ -64,9 +64,27 @@ public class ChestCard : StageCard
         }
     }
 }
-public class BuffCard : StageCard {}
-public class NpcCard : StageCard {}
-public class RandomCard : StageCard {}
+public class BuffCard : StageCard 
+{
+    public BuffCard()
+    {
+        this.Type = CardType.Buff;
+    }
+}
+public class NpcCard : StageCard 
+{
+    public NpcCard()
+    {
+        this.Type = CardType.Npc;
+    }
+}
+public class RandomCard : StageCard 
+{
+    public RandomCard()
+    {
+        this.Type = CardType.Random;
+    }
+}
 
 public class WorldStage
 {

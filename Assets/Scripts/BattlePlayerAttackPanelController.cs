@@ -266,7 +266,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             playerWeapons.Clear();
             playerWeapons.AddRange(player.GetWeaponList());
             battle.CardList = playerWeapons;
-            monster = MonsterCard?.monster;
+            monster = MonsterCard.monster;
             PlayerMonsterInit();
             battle.BattleStart();
         }
