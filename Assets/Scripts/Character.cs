@@ -227,8 +227,7 @@ public class Player : CharacterBase
     {
         float afterDamage = CalcDamage(rawDamage);
         int damage = Math.Max((int)afterDamage - this.GetStat().defense, 1);
-        this.hp = Math.Max(this.hp - damage, 0);
-        //Debug.Log($"이제 플레이어 피 : {hp}임.");
+        this.Damage(damage);
     }
 
     public override float AttackFoe() 
@@ -240,6 +239,11 @@ public class Player : CharacterBase
     float CalcDamage(float incomingDmg) 
     {
         return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
+    }
+
+    public void Damage(int damage)
+    {
+        this.hp = Math.Max(this.hp - damage, 0);
     }
 
     public void Heal(int amount)
