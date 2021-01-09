@@ -46,6 +46,7 @@ public class ChestPanelController : MonoBehaviour
                 player.Heal((int)(ChestCard.HealPercent * player.GetStat().maxHp));
                 break;
             case ChestType.Dispel:
+                player.Dispel();
                 break;
             case ChestType.Damage:
                 player.Damage((int)(ChestCard.DamagePercent * player.GetStat().maxHp));

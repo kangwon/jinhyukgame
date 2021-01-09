@@ -249,4 +249,10 @@ public class Player : CharacterBase
     {
         this.hp = Math.Min(this.hp + amount, this.GetStat().maxHp);
     }
+
+    public void Dispel()
+    {
+        if (this.GetBuff().IsDebuff())
+            this.buff = new StatBuff();
+    }
 }
