@@ -72,7 +72,36 @@ public class StatPercent
     }
     public override string ToString()
     {
-        return $"Stat(hp:{maxHp}%, atk:{attack}%, def:{defense}%, spd:{speed}%)";
+        return $"StatPercent(hp:{maxHp}%, atk:{attack}%, def:{defense}%, spd:{speed}%)";
+    }
+}
+
+public class SynergyStat 
+{
+    public int attack;
+    public StatPercent statPercent;
+    
+    public SynergyStat() 
+    {
+        attack = 0;
+        statPercent = new StatPercent();
+    }
+    public SynergyStat(int x, StatPercent y)
+    {
+        attack = x;
+        statPercent = y;
+    }
+    public static SynergyStat operator+(SynergyStat a, SynergyStat b)
+    {
+        return new SynergyStat
+        { 
+            attack = a.attack + b.attack,
+            statPercent =a.statPercent + b.statPercent,
+        };
+    }
+    public override string ToString()
+    {
+        return $"SynergyStat(atk:{attack},stat:{statPercent.ToString()})";
     }
 }
 
@@ -183,55 +212,59 @@ public class Player : CharacterBase
         }
         this.buff = buff;
     }
-    public class SynergyStat {
-        public int attack;
-        public StatPercent statPercent;
-        public SynergyStat() 
-        {
-            attack = 0;
-            statPercent = new StatPercent();
-        }
-        public SynergyStat(int x, StatPercent y)
-        {
-            attack = x;
-            statPercent = y;
-        }
-        public static SynergyStat operator+(SynergyStat a, SynergyStat b)
-        {
-            return new SynergyStat
-            { 
-                attack = a.attack+b.attack,
-                statPercent =a.statPercent+b.statPercent,
-            };
-        }
-        public override string ToString()
-        {
-            return $"(atk:{attack},stat:{statPercent})";
-        }
-    }
     public SynergyStat Synergy()
     { 
         var weaponlist = equipmentSlot.GetWeaponsList();
         Dictionary<WeaponType,List<SynergyStat>> dict = new Dictionary<WeaponType, List<SynergyStat>>();
-        dict.Add(WeaponType.sword, new List<SynergyStat> { new SynergyStat(2, new StatPercent()), new SynergyStat(5, new StatPercent()), new SynergyStat(10, new StatPercent()), new SynergyStat(15, new StatPercent()) });
-        dict.Add(WeaponType.blunt, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0,0,0.03f,0)), new SynergyStat(0, new StatPercent(0, 0, 0.05f, 0)), new SynergyStat(0, new StatPercent(0, 0, 0.1f, 0)), new SynergyStat(0, new StatPercent(0, 0, 0.2f, 0)) });
-        dict.Add(WeaponType.spear, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0.03f, 0,0, 0)), new SynergyStat(0, new StatPercent(0.05f, 0, 0, 0)), new SynergyStat(0, new StatPercent(0.1f, 0, 0, 0)), new SynergyStat(0, new StatPercent(0.2f, 0, 0, 0)) });
-        dict.Add(WeaponType.dagger, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0, 0, 0,0.03f)), new SynergyStat(0, new StatPercent(0, 0,0, 0.05f)), new SynergyStat(0, new StatPercent(0, 0,0, 0.1f)), new SynergyStat(0, new StatPercent(0, 0,0, 0.2f)) });
-        dict.Add(WeaponType.wand, new List<SynergyStat> { new SynergyStat(0, new StatPercent(0.02f, 0, 0.02f, 0.02f)), new SynergyStat(1, new StatPercent(0.03f, 0, 0.03f, 0.03f)), new SynergyStat(3, new StatPercent(0.05f, 0, 0.05f, 0.05f)), new SynergyStat(8, new StatPercent(0.05f, 0, 0.05f, 0.05f)) });
+        dict.Add(WeaponType.sword, new List<SynergyStat> 
+        { 
+            new SynergyStat(2, new StatPercent()), 
+            new SynergyStat(5, new StatPercent()), 
+            new SynergyStat(10, new StatPercent()), 
+            new SynergyStat(15, new StatPercent()) 
+        });
+        dict.Add(WeaponType.blunt, new List<SynergyStat> 
+        { 
+            new SynergyStat(0, new StatPercent(0, 0, 0.03f, 0)), 
+            new SynergyStat(0, new StatPercent(0, 0, 0.05f, 0)), 
+            new SynergyStat(0, new StatPercent(0, 0, 0.1f, 0)), 
+            new SynergyStat(0, new StatPercent(0, 0, 0.2f, 0)) 
+        });
+        dict.Add(WeaponType.spear, new List<SynergyStat> 
+        { 
+            new SynergyStat(0, new StatPercent(0.03f, 0,0, 0)), 
+            new SynergyStat(0, new StatPercent(0.05f, 0, 0, 0)), 
+            new SynergyStat(0, new StatPercent(0.1f, 0, 0, 0)), 
+            new SynergyStat(0, new StatPercent(0.2f, 0, 0, 0)) 
+        });
+        dict.Add(WeaponType.dagger, new List<SynergyStat> 
+        { 
+            new SynergyStat(0, new StatPercent(0, 0, 0, 0.03f)), 
+            new SynergyStat(0, new StatPercent(0, 0, 0, 0.05f)), 
+            new SynergyStat(0, new StatPercent(0, 0, 0, 0.1f)), 
+            new SynergyStat(0, new StatPercent(0, 0, 0, 0.2f)) 
+        });
+        dict.Add(WeaponType.wand, new List<SynergyStat> 
+        { 
+            new SynergyStat(0, new StatPercent(0.02f, 0, 0.02f, 0.02f)), 
+            new SynergyStat(1, new StatPercent(0.03f, 0, 0.03f, 0.03f)), 
+            new SynergyStat(3, new StatPercent(0.05f, 0, 0.05f, 0.05f)), 
+            new SynergyStat(8, new StatPercent(0.05f, 0, 0.05f, 0.05f)) 
+        });
         int weaponTypeCount;
         int weaponType2Count = 0;
-        SynergyStat totalSynergyStat = new SynergyStat(0, new StatPercent());
-        for(WeaponType i = WeaponType.sword; i <= WeaponType.wand; i++)
+        SynergyStat totalSynergyStat = new SynergyStat();
+        foreach (WeaponType weaponType in Enum.GetValues(typeof(WeaponType)))
         {
-            weaponTypeCount = weaponlist.Where(x => x.weaponType == i).Count();
+            weaponTypeCount = weaponlist.Where(x => x.weaponType == weaponType).Count();
             if (weaponTypeCount == 10)
-                totalSynergyStat += dict[i].ElementAt(3);
+                totalSynergyStat += dict[weaponType].ElementAt(3);
             else if (weaponTypeCount >= 7)
-                totalSynergyStat+= dict[i].ElementAt(2);
+                totalSynergyStat+= dict[weaponType].ElementAt(2);
             else if (weaponTypeCount >= 5)
-                totalSynergyStat += dict[i].ElementAt(1);
+                totalSynergyStat += dict[weaponType].ElementAt(1);
             else if (weaponTypeCount >= 3)
-                totalSynergyStat += dict[i].ElementAt(0);
+                totalSynergyStat += dict[weaponType].ElementAt(0);
             else if (weaponTypeCount == 2)
                 weaponType2Count++;
         }
