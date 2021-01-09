@@ -7060,11 +7060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4106975501135484f9a1ca9c2eeced9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestPanel: {fileID: 761889046}
-  chestType: {fileID: 1211386216}
-  chestDescription: {fileID: 772557087}
-  stageChoice: {fileID: 1186672459}
-  weaponChangePanel: {fileID: 312411451}
 --- !u!114 &761889049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14427,6 +14422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCount: {fileID: 26617691}
   selectCard: 00000000
+  playerWeapons: []
   stageChoice: {fileID: 1186672459}
   isBattle: 0
   GAUGE_SIZE: 200

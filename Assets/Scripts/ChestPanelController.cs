@@ -14,20 +14,33 @@ public class ChestPanelController : MonoBehaviour
 
     public ChestCard ChestCard;
 
-    void Start()
+    void OnEnable()
     {
-        chestType = GameObject.Find("/Canvas/ChestPanel/ChestType").GetComponent<Text>();
-        chestDescription = GameObject.Find("/Canvas/ChestPanel/ChestDescription").GetComponent<Text>();
-        stageChoice = GameObject.Find("/Canva").GetComponent<StageChoice>();
-        weaponChangePanel = GameObject.Find("/Canva/WeaponChangePanel");
+        chestType = GameObject.Find("ChestPanel/ChestType").GetComponent<Text>();
+        chestDescription = GameObject.Find("ChestPanel/ChestDescription").GetComponent<Text>();
+        stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
+        weaponChangePanel = GameObject.Find("WeaponChangePanel");
     }
     
     public void OnClickTreasureButton()
     {
-        player.SetEquipment(JsonDB.GetWeapon("weapon_000"));
-        if (player.GetWeaponList().Count > 10)
+        switch (ChestCard.ChestType)
         {
-            weaponChangePanel.SetActive(true);
+            case ChestType.Equipment:
+                player.SetEquipment(JsonDB.GetWeapon("weapon_000"));
+                if (player.GetWeaponList().Count > 10)
+                {
+                    weaponChangePanel.SetActive(true);
+                }
+                break;
+            case ChestType.Heal:
+                break;
+            case ChestType.Dispel:
+                break;
+            case ChestType.Damage:
+                break;
+            case ChestType.Debuff:
+                break;
         }
        stageChoice.MoveToNextStage();
     }
