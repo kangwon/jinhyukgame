@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class StatBuff :JsonItem
 {
-    public string name ="buff_name";
-    public string description = "buff_description"; 
+    public string name = "버프 없음";
+    public string description = "버프 없음"; 
     public Stat baseBuffStat = new Stat(); //절대치 증가
     public float maxHpPercent = 0; // 퍼센트로 증가할때 필요. 30% = 0.3f
     public float attackPercent = 0;

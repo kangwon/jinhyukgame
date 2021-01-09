@@ -138,8 +138,7 @@ public class Player : CharacterBase
     }
     public void AddBuff(StatBuff buff)
     {
-
-        if (this.buff.debuffImmune == true || buff.IsDebuff()) // 1회 디버프무효화가 있고, 들어오는 버프가 디버프일때. 디버프를 무효화한다.
+        if (this.buff.debuffImmune == true && buff.IsDebuff()) // 1회 디버프무효화가 있고, 들어오는 버프가 디버프일때. 디버프를 무효화한다.
         {
             this.buff.debuffImmune = false;
             return;
