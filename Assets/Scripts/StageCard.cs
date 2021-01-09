@@ -44,6 +44,25 @@ public class ChestCard : StageCard
         this.Type = CardType.Chest;
         this.ChestType = chestType;
     }
+
+    public string ToString()
+    {
+        switch (this.ChestType)
+        {
+            case ChestType.Equipment:
+                return $"Equipment Chest";
+            case ChestType.Heal:
+                return $"Heal {(int)(this.HealPercent * 100)}%";
+            case ChestType.Dispel:
+                return $"Dispel";
+            case ChestType.Damage:
+                return $"Damage {(int)(this.DamagePercent * 100)}%";
+            case ChestType.Debuff:
+                return $"Debuff";
+            default:
+                throw new NotImplementedException($"Invalid chest type: {this.ChestType.ToString()}");
+        }
+    }
 }
 public class BuffCard : StageCard {}
 public class NpcCard : StageCard {}

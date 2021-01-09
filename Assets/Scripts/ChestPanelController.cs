@@ -14,12 +14,21 @@ public class ChestPanelController : MonoBehaviour
 
     public ChestCard ChestCard;
 
-    void OnEnable()
+    void Start()
     {
         chestType = GameObject.Find("ChestPanel/ChestType").GetComponent<Text>();
         chestDescription = GameObject.Find("ChestPanel/ChestDescription").GetComponent<Text>();
         stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
-        weaponChangePanel = GameObject.Find("WeaponChangePanel");
+        weaponChangePanel = GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject;
+    }
+
+    void OnEnable()
+    {
+        if (ChestCard != null)
+        {
+            chestType.text = $"<{ChestCard.ChestType.ToString()}>";
+            chestDescription.text = ChestCard.ToString();
+        }
     }
     
     public void OnClickTreasureButton()
