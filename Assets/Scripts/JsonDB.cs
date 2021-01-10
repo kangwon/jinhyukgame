@@ -32,7 +32,7 @@ class JsonDB
     private JsonCollection<Equipment> equipmentCollection;
     private JsonCollection<StatBuff> buffCollection;
     private JsonCollection<Monster> monsterCollection;
-    private JsonCollection<Weapon> weaponCollection;
+    private JsonCollection<MinMaxWeapon> weaponCollection;
     private static readonly JsonDB instance = new JsonDB();  
     static JsonDB() {}  
     private JsonDB() 
@@ -40,7 +40,7 @@ class JsonDB
         equipmentCollection = new JsonCollection<Equipment>("equipment");
         buffCollection = new JsonCollection<StatBuff>("buff");
         monsterCollection = new JsonCollection<Monster>("monster");
-        weaponCollection = new JsonCollection<Weapon>("weapon");
+        weaponCollection = new JsonCollection<MinMaxWeapon>("weapon");
     }
     public static JsonDB Instance  
     {  
@@ -65,7 +65,7 @@ class JsonDB
         }
     }
     public static Weapon GetWeapon(string id)
-        => Instance.weaponCollection.GetItem(id);        
+        => Instance.weaponCollection.GetItem(id).ReturnWeapon();        
 
     public static StatBuff GetBuff(string id)
         => Instance.buffCollection.GetItem(id);
@@ -78,4 +78,19 @@ class JsonDB
         => Instance.monsterCollection.GetItem(id);
     public static List<Monster> GetWorldMonsters(int worldNumber)
         => Instance.monsterCollection.itemList.FindAll(m => m.worldNumber == worldNumber);
+}
+
+[System.Serializable]
+public  class MinMaxWeapon : Weapon
+{
+    public int minAttack;
+    public int maxAttack;
+
+    public Weapon ReturnWeapon()
+    {
+        return new Weapon { id = id, type = type, name = name, price = price, rank = rank, prefix = prefix, weaponType = weaponType,
+            statEffect = new Stat{ attack = UnityEngine.Random.Range(minAttack, maxAttack +1)},
+        };
+    }
+
 }
