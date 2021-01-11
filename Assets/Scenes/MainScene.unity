@@ -3137,6 +3137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5630fe76d04734b9a5dad756532644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healerText: {fileID: 0}
 --- !u!114 &295639075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10470,7 +10471,7 @@ GameObject:
   - component: {fileID: 1068607188}
   - component: {fileID: 1068607187}
   m_Layer: 5
-  m_Name: Text2
+  m_Name: HealerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
