@@ -3094,6 +3094,7 @@ GameObject:
   - component: {fileID: 295639073}
   - component: {fileID: 295639076}
   - component: {fileID: 295639075}
+  - component: {fileID: 295639074}
   m_Layer: 5
   m_Name: NpcPanel_Healer
   m_TagString: Untagged
@@ -3124,6 +3125,18 @@ RectTransform:
   m_AnchoredPosition: {x: 2840, y: -1400}
   m_SizeDelta: {x: 0, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &295639074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295639072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5630fe76d04734b9a5dad756532644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &295639075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4136,13 +4149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43632c8dcec8da4d80189cbe6d34bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffView: {fileID: 0}
-  buffPanel: {fileID: 468903604}
-  stageChoice: {fileID: 1186672459}
-  buffSummary: {fileID: 91948238}
-  buffUpdate: 0
-  str: "\uBC84\uD504 \uC5C6\uC74C"
-  str2: "\uBC84\uD504 \uC5C6\uC74C"
 --- !u!1 &469097724
 GameObject:
   m_ObjectHideFlags: 0
@@ -13719,11 +13725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfec53d4c184937498326162ca9b8643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK: {fileID: 0}
-  DEF: {fileID: 0}
-  SPD: {fileID: 0}
-  HP: {fileID: 0}
-  HP_slider: {fileID: 0}
 --- !u!1 &1503947592
 GameObject:
   m_ObjectHideFlags: 0
@@ -16419,7 +16420,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1876132965}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 295639074}
+        m_MethodName: onClickHealButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1876132965
 MonoBehaviour:
   m_ObjectHideFlags: 0
