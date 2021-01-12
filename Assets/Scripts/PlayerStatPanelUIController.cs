@@ -11,8 +11,6 @@ public class PlayerStatPanelUIController : MonoBehaviour
     Text buffName;
     Text buffSummary;
 
-    Player player = GameState.Instance.player;
-
     void Start()
     {
         ATK = GameObject.Find("ATK text").GetComponent<Text>();
@@ -32,6 +30,10 @@ public class PlayerStatPanelUIController : MonoBehaviour
 
     void UpdateStat()
     {
+        Player player = GameState.Instance.player;
+        if (player is null)
+            return;
+            
         ATK.text = player.GetStat().attack.ToString();
         DEF.text = player.GetStat().defense.ToString();
         SPD.text = player.GetStat().speed.ToString();

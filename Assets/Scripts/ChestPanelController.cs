@@ -10,8 +10,6 @@ public class ChestPanelController : MonoBehaviour
     StageChoice stageChoice;
     GameObject weaponChangePanel;
 
-    Player player = GameState.Instance.player;
-
     public ChestCard ChestCard;
 
     void Start()
@@ -33,6 +31,7 @@ public class ChestPanelController : MonoBehaviour
     
     public void OnClickTreasureButton()
     {
+        Player player = GameState.Instance.player;
         switch (ChestCard.ChestType)
         {
             case ChestType.Equipment:

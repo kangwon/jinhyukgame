@@ -25,8 +25,6 @@ public class NpcPanelController : MonoBehaviour
             "Merchant", "Healer", "Enchanter"
         };
 
-        Player player = GameState.Instance.player;
-
         Button button1 = GameObject.Find($"NpcButton1").GetComponent<Button>();
         button1.onClick.AddListener(() => {
             NpcPanel.SetActive(false);

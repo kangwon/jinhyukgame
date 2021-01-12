@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using System.Linq;
 public class WeaponChangePanelController : MonoBehaviour
 {
-    Player player = GameState.Instance.player;
     List<Weapon> weaponList;
     GameObject[] card = new GameObject[11];
     GameObject changeCard;
@@ -45,7 +44,7 @@ public class WeaponChangePanelController : MonoBehaviour
         if (weaponList.Count <= 10)
         {
             var sortList = weaponList.OrderBy(x => x.id).ToList();
-            player.SetWeaponList(sortList);
+            GameState.Instance.player.SetWeaponList(sortList);
             ChangePanel.SetActive(false);
         }
        else PrintCard();
@@ -75,7 +74,7 @@ public class WeaponChangePanelController : MonoBehaviour
     }
     private void OnEnable()
     {
-        weaponList = GameState.Instance.player.GetWeaponList();
+        weaponList = GameState.Instance.player?.GetWeaponList();
         if (firstActive) PrintCard(); //맨 처음에 onEnable 될 때, 11번째 카드는 없으므로 이 함수가 호출 안되게 했음.
         firstActive = true;
     }
