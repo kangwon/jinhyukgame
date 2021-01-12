@@ -17,6 +17,10 @@ public enum ChestType
 {
     Equipment, Heal, Dispel, Damage, Debuff
 }
+public enum RandomEventType
+{
+    Positive, Neuturality, Negative
+}
 
 public class StageCard
 {
@@ -47,7 +51,7 @@ public class ChestCard : StageCard
         this.ChestType = chestType;
     }
 
-    public string ToString()
+    public override string ToString()
     {
         switch (this.ChestType)
         {
@@ -85,9 +89,11 @@ public class NpcCard : StageCard
 }
 public class RandomCard : StageCard 
 {
-    public RandomCard()
+    public RandomEventType randomEventType;
+    public RandomCard(RandomEventType randomEventType)
     {
         this.Type = CardType.Random;
+        this.randomEventType = randomEventType;
     }
 }
 
@@ -181,7 +187,17 @@ public class World
             case CardType.Npc:
                 return new NpcCard();
             case CardType.Random:
-                return new RandomCard();
+                var  randomType =CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
+                switch (randomType){
+                    case 0:
+                        return new RandomCard(RandomEventType.Positive);
+                    case 1:
+                        return new RandomCard(RandomEventType.Neuturality);
+                    case 2:
+                        return new RandomCard(RandomEventType.Negative);
+                    default:
+                        throw new NotImplementedException($"Invalid Random type ");
+                }
             default:
                 throw new NotImplementedException($"Invalid card type: {type.ToString()}");
         }

@@ -123,6 +123,8 @@ public class StageChoice : MonoBehaviour
                 BuffPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Random:
+                var RandomController = RandomPanel.GetComponent<RandomPanelController>();
+                RandomController.RandomCard = (selectedCard as RandomCard);
                 RandomPanel.SetActive(true);
                 RandomPanel.transform.localPosition = PanelDisplayPosition;
                 break;
