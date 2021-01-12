@@ -14172,7 +14172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOLD
+  m_Text: COIN
 --- !u!222 &1586060529
 CanvasRenderer:
   m_ObjectHideFlags: 0
