@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Debug=UnityEngine.Debug;
 
 class GameState
 {
@@ -10,13 +11,26 @@ class GameState
     {
         get => this._player;
     }
-
-    public World World;
-    public WorldStage Stage;
+    public World _world;
+    public World World
+    {
+        get => this._world;
+    }
+    public WorldStage _stage;
+    public WorldStage Stage
+    {
+        get => this._stage;
+    }
     
     private static readonly GameState instance = new GameState();
     static GameState() {}
-    private GameState()
+    private GameState() {}
+    public static GameState Instance  
+    {  
+        get => instance;
+    }
+
+    public void ResetPlayer()
     {
         this._player = new Player
         (
@@ -29,11 +43,19 @@ class GameState
                 startSpeedGauge = 1,
                 evasion = 0.05f,
                 critical = 0.05f,
-            }         
+            }
         );
+        this._player.ResetWeaponList();
     }
-    public static GameState Instance  
-    {  
-        get => instance;
+
+    public void StartWorld(int number, string name)
+    {
+        this._world = new World(number, name);
+        this._stage = this.World.GetStage(1);
+    }
+
+    public void MoveToNextStage()
+    {
+        this._stage = this.World.GetStage(this.Stage.Number + 1);
     }
 }

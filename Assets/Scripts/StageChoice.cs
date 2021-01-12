@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class StageChoice : MonoBehaviour
 {
     StageCard selectedCard;
-    int currentStage;
 
     public static Vector3 PanelDisplayPosition = new Vector3(0, 100, 0);
     
@@ -48,9 +47,9 @@ public class StageChoice : MonoBehaviour
         CardText2 = GameObject.Find("Card2 Text").GetComponent<Text>();
         CardText3 = GameObject.Find("Card3 Text").GetComponent<Text>();
 
-        GameState.Instance.World = new World(1, "테스트 월드");
-        currentStage = 0;
-        MoveToNextStage();
+        GameState.Instance.ResetPlayer();
+        GameState.Instance.StartWorld(1, "테스트 월드");
+        ActivatePannel();
     }
 
     // Update is called once per frame
@@ -71,9 +70,8 @@ public class StageChoice : MonoBehaviour
     public void MoveToNextStage()
     {
         selectedCard = null;
-        currentStage += 1;
-        StageText.text = $"Stage {currentStage}";
-        GameState.Instance.Stage = GameState.Instance.World.GetStage(currentStage);
+        GameState.Instance.MoveToNextStage();
+        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
         ActivatePannel();
     }
     

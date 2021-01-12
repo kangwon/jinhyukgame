@@ -85,7 +85,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     public bool isBattle = false; //private으로 숨기기?
 
-    Player player = GameState.Instance.player;
+    Player player;
 
     public MonsterCard MonsterCard;
     Monster monster;
@@ -262,6 +262,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         //플레이어의 무기10장을 가져와서 cardlist에 복사한다.
         if (firstActive)
         {
+            player = GameState.Instance.player;
             playerWeapons.Clear();
             playerWeapons.AddRange(player.GetWeaponList());
             battle.CardList = playerWeapons;

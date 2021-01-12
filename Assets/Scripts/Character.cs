@@ -194,6 +194,11 @@ public class Player : CharacterBase
     public void ResetWeaponList()
     {
         equipmentSlot.ResetWeaponsList();
+        for (int i = 0; i < 5; i++)
+        {
+            SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
+            SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
+        }
     }
 
     public Player(Stat stat) : base(stat) {}

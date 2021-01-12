@@ -8,9 +8,9 @@ public class NpcPanel_Healer : MonoBehaviour
     [HideInInspector]
     public Text healerText;
 
-    Player player = GameState.Instance.player;
-
-    public void onClickHealButton() {
+    public void onClickHealButton() 
+    {
+        Player player = GameState.Instance.player;
         int healAmount = player.GetStat().maxHp - player.hp;
 
         if(healAmount >= 1) {
