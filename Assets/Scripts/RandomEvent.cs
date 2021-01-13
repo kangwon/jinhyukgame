@@ -95,7 +95,7 @@ public class RandomEvent
                 description.text = "(아직구현안됨)\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
                 tempInt = GameState.Instance.player.ArtifectsCount();
                 GameState.Instance.player.ReMoveAtArtifect(Random.Range(0, tempInt));
-                GameState.Instance.player.SetEquipment(new Artifact {name="새로운 아티펙트", rank=Rank.common, prefix=Prefix.normal, type= "artifact" }); //TODO: 나중에 아티팩트를 JSON에서 받아오자 (구현 필요)
+              //  GameState.Instance.player.SetEquipment(); //TODO: 나중에 아티팩트를 JSON에서 받아오자 (구현 필요)
                 break;
             default:
                 break;
