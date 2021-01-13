@@ -23,21 +23,18 @@ public class RandomPanelController : MonoBehaviour
 
     private void OnEnable()
     {
-        if(RandomCard != null) //TODO : Event를 따로 처리해주는 클래스가 필요
+        if(RandomCard != null) 
         {
             switch (RandomCard.randomEventType)
             {
                 case RandomEventType.Positive:
-                    randomType.text = $"긍정";
-                    randomDescription.text = $"긍정 이벤트";
+                    RandomEvent.PositiveEvent(randomType, randomDescription); 
                     break;
                 case RandomEventType.Neuturality:
-                    randomType.text = $"중립";
-                    randomDescription.text = $"중립 이벤트";
+                    RandomEvent.NeuturalityEvent(randomType, randomDescription);
                     break;
                 case RandomEventType.Negative:
-                    randomType.text = $"부정";
-                    randomDescription.text = $"부정 이벤트";
+                    RandomEvent.NegativeEvent(randomType, randomDescription);
                     break;
             }
         }
