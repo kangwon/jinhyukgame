@@ -4,16 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-struct stringx2
-{
-   public string string1;
-   public string string2;
-}
 
 public class RandomEvent 
 {
     public RandomEventType randomEventType;
-    List<stringx2> nameAndDescriptionOfEvent;
     public static void PositiveEvent(Text name,Text description)
     {
         int tempInt;
@@ -57,7 +51,7 @@ public class RandomEvent
                 break;
             case 6: //TODO : 아직 무적이 구현안됬음. 구현하고 내용 집어넣자.
                 name.text = $"행운의 징표";
-                description.text = "와! 네잎클로버!" + "\n\n" + $"[다음 전투에서 무적(보스제외)]";
+                description.text = "(아직구현안됨)와! 네잎클로버!" + "\n\n" + $"[다음 전투에서 무적(보스제외)]";
                 break;
             case 7:
                 name.text = $"테마파크 분수";
@@ -76,7 +70,7 @@ public class RandomEvent
                 name.text = $"풍선 다트";
                 description.text = "(아직구현안됨)얍!" + "\n\n" + $"[결과]";
                 break;
-            case 1: //TODO : 아티펙트 강제 랜덤변경 코드 구현
+            case 1: //TODO : 아티펙트 강제 랜덤변경 코드 구현하기
                 name.text = $"성난 마술사 이진혁의 장난";
                 description.text = "(아직구현안됨)\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";               
                 break;
@@ -146,10 +140,9 @@ public class RandomEvent
                         break;
                 }
                 break;
-            case 7:
+            case 7: //TODO : 아티펙트 삭제 코드 구현하기
                 name.text = $"소매치기";
                 description.text = "(아직구현안됨)\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
-       //         GameState.Instance.player.
                 break;
             case 8:
                 name.text = $"소매치기";
