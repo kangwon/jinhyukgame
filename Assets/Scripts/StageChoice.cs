@@ -103,6 +103,7 @@ public class StageChoice : MonoBehaviour
                 CardSelectPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Monster:
+            case CardType.Boss:
                 var battleController = BattlePanel.GetComponent<BattlePlayerAttackPanelController>();
                 battleController.MonsterCard = (selectedCard as MonsterCard);
                 BattlePanel.SetActive(true);

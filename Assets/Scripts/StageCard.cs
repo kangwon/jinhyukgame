@@ -96,6 +96,13 @@ public class RandomCard : StageCard
         this.randomEventType = randomEventType;
     }
 }
+public class BossCard : MonsterCard 
+{    
+    public BossCard(Monster monster) : base(monster)
+    {
+        this.Type = CardType.Boss;
+    }
+}
 
 public class WorldStage
 {
@@ -116,12 +123,14 @@ public class World
 {
     public readonly int Number;
     public readonly string Name;
+    public readonly int BossStage;
     public readonly Random Random;
 
-    public World(int number, string name)
+    public World(int number, string name, int bossStage=5)
     {
         this.Number = number;
         this.Name = name;
+        this.BossStage = bossStage;
         this.Random = new Random();
     }
 
@@ -177,15 +186,15 @@ public class World
                     default:
                         throw new NotImplementedException($"Invalid chest type: {chestType.ToString()}");
                 }
-                break;
             case CardType.Buff:
                 var buff = CustomRandom<StatBuff>.Choice(JsonDB.GetBuffs(), this.Random);
                 return new BuffCard(buff);
             case CardType.Npc:
                 return new NpcCard();
             case CardType.Random:
-                var  randomType =CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
-                switch (randomType){
+                var  randomType = CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
+                switch (randomType)
+                {
                     case 0:
                         return new RandomCard(RandomEventType.Positive);
                     case 1:
@@ -206,6 +215,11 @@ public class World
         for (int location = 0; location < WorldStage.NUM_OF_CARDS; location++)
         {
             stage.Cards.Add(this.GetRandomCard());
+        }
+        if (stageNum >= this.BossStage)
+        {
+            var boss = JsonDB.GetWorldBoss(this.Number);
+            stage.Cards[1] = new BossCard(boss);
         }
         return stage;
     }
