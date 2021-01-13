@@ -23,7 +23,7 @@ public class RandomPanelController : MonoBehaviour
 
     private void OnEnable()
     {
-        if(RandomCard != null) //TODO : Event를 따로 처리해주는 클래스가 필요
+        if(RandomCard != null) 
         {
             switch (RandomCard.randomEventType)
             {
