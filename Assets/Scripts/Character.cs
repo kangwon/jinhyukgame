@@ -200,6 +200,14 @@ public class Player : CharacterBase
             SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
         }
     }
+    public int ArtifectsCount()
+    {
+        return equipmentSlot.ArtifactCount();
+    }
+    public void ReMoveAtArtifect(int index)
+    {
+        equipmentSlot.RemoveAtArtifact(index);
+    }
 
     public Player(Stat stat) : base(stat) {}
 
@@ -328,6 +336,11 @@ public class Player : CharacterBase
     public void Dispel()
     {
         if (this.GetBuff().IsDebuff())
+            this.buff = new StatBuff();
+    }
+    public void DispelBuff()
+    {
+        if (this.GetBuff().IsBuff())
             this.buff = new StatBuff();
     }
 }
