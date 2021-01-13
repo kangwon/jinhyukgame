@@ -43,7 +43,7 @@ public class PlayerStatPanelUIController : MonoBehaviour
         HP.text = "HP  " + hp_now + " / " + hp_full;
 
         HP_slider.value = Convert.ToInt32(hp_now);
-
+        HP_slider.maxValue = Convert.ToInt32(hp_full);
         buffName.text = player.GetBuff().name;
         buffSummary.text = player.GetBuff().description;
     }
