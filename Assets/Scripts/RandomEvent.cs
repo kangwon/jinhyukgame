@@ -62,6 +62,7 @@ public class RandomEvent
     }
     public static void NeuturalityEvent(Text name, Text description)
     {
+        int tempInt;
         switch (Random.Range(0,2)) //case 추가할때 Range 범위도 늘려주자.
         {
             case 0: //TODO : 4가지의 확률에 맞춰 구현하기(장비,아티펙트,재화,티켓 획득)
@@ -89,9 +90,12 @@ public class RandomEvent
                 }
                 ;
                 break;
-            case 1: //TODO : 아티펙트 강제 랜덤변경 코드 구현하기
+            case 1:
                 name.text = $"성난 마술사 이진혁의 장난";
-                description.text = "(아직구현안됨)\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";               
+                description.text = "(아직구현안됨)\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
+                tempInt = GameState.Instance.player.ArtifectsCount();
+                GameState.Instance.player.ReMoveAtArtifect(Random.Range(0, tempInt));
+                GameState.Instance.player.SetEquipment(new Artifact {name="새로운 아티펙트", rank=Rank.common, prefix=Prefix.normal, type= "artifact" }); //TODO: 나중에 아티팩트를 JSON에서 받아오자 (구현 필요)
                 break;
             default:
                 break;
@@ -161,7 +165,7 @@ public class RandomEvent
                 break;
             case 7: 
                 name.text = $"소매치기";
-                description.text = "(아직구현안됨)\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
+                description.text = "\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
                 tempInt = GameState.Instance.player.ArtifectsCount();
                 GameState.Instance.player.ReMoveAtArtifect(Random.Range(0,tempInt));
                 break;

@@ -6,7 +6,6 @@ using System.Linq;
 [System.Serializable]
 public enum Rank
 {
-     //TODO: ?????????? ??????
     uncommon,common,rare,unique,legendary,
 }
 
