@@ -137,10 +137,7 @@ public class World
         switch (type)
         {
             case CardType.Monster:
-                var worldMonsters = JsonDB
-                    .GetWorldMonsters(this.Number)
-                    .Select(m => m.DeepCopy())
-                    .ToList();
+                var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
                 var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
                 return new MonsterCard(monster);
             case CardType.Chest:
