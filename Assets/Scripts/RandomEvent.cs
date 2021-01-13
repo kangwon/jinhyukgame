@@ -159,9 +159,11 @@ public class RandomEvent
                         break;
                 }
                 break;
-            case 7: //TODO : 아티펙트 삭제 코드 구현하기
+            case 7: 
                 name.text = $"소매치기";
                 description.text = "(아직구현안됨)\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
+                tempInt = GameState.Instance.player.ArtifectsCount();
+                GameState.Instance.player.ReMoveAtArtifect(Random.Range(0,tempInt));
                 break;
             case 8:
                 name.text = $"소매치기";

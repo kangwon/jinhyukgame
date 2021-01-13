@@ -73,6 +73,23 @@ public class EquipmentSlot
     {
         weapons.Clear();
     }
+    public int ArtifactCount()
+    {
+       return artifacts.Count();
+    }
+    public void ChangeAtArtifact(int index,Artifact artifact)
+    {
+        if (index < ArtifactCount())
+        {
+            artifacts.RemoveAt(index);
+            artifacts.Add(artifact);
+        }
+      
+    }
+    public void RemoveAtArtifact(int index)
+    {
+        if (index < ArtifactCount()) artifacts.RemoveAt(index);
+    }
     public void SetEquipment(Equipment equip)
     {
         switch (equip)

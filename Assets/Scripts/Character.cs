@@ -200,6 +200,14 @@ public class Player : CharacterBase
             SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
         }
     }
+    public int ArtifectsCount()
+    {
+        return equipmentSlot.ArtifactCount();
+    }
+    public void ReMoveAtArtifect(int index)
+    {
+        equipmentSlot.RemoveAtArtifact(index);
+    }
 
     public Player(Stat stat) : base(stat) {}
 
