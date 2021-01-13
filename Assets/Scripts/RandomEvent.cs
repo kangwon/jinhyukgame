@@ -170,7 +170,7 @@ public class RandomEvent
                 break;
             case 9:
                 tempInt = 50;
-                name.text = $"사기꾼";
+                name.text = $"수상한 누군가";
                 description.text = "\"믿어도 되는거죠...?\"" + "\n\n" + $"[-{tempInt} 코인]";
                 GameState.Instance.player.money = System.Math.Max(0, GameState.Instance.player.money - tempInt);
                 break;
