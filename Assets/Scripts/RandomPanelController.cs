@@ -28,16 +28,13 @@ public class RandomPanelController : MonoBehaviour
             switch (RandomCard.randomEventType)
             {
                 case RandomEventType.Positive:
-                    randomType.text = $"긍정";
-                    randomDescription.text = $"긍정 이벤트";
+                    RandomEvent.PositiveEvent(randomType, randomDescription); 
                     break;
                 case RandomEventType.Neuturality:
-                    randomType.text = $"중립";
-                    randomDescription.text = $"중립 이벤트";
+                    RandomEvent.NeuturalityEvent(randomType, randomDescription);
                     break;
                 case RandomEventType.Negative:
-                    randomType.text = $"부정";
-                    randomDescription.text = $"부정 이벤트";
+                    RandomEvent.NegativeEvent(randomType, randomDescription);
                     break;
             }
         }

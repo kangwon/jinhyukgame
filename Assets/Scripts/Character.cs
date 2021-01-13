@@ -330,4 +330,9 @@ public class Player : CharacterBase
         if (this.GetBuff().IsDebuff())
             this.buff = new StatBuff();
     }
+    public void DispelBuff()
+    {
+        if (this.GetBuff().IsBuff())
+            this.buff = new StatBuff();
+    }
 }
