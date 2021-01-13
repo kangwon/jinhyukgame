@@ -126,6 +126,7 @@ public class RandomEvent
                 name.text = $"식중독";
                 description.text = "상한 음식을 먹었다." + "\n\n" + $"[최대 체력 {tempInt} 감소]";
                 GameState.Instance.player.baseStat.maxHp =System.Math.Max(1, GameState.Instance.player.baseStat.maxHp-tempInt);
+                if (GameState.Instance.player.hp > GameState.Instance.player.baseStat.maxHp) GameState.Instance.player.hp = GameState.Instance.player.baseStat.maxHp;
                 break;
             case 3:
                 tempInt = 3;
