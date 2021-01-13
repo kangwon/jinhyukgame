@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-
-
 public class RandomEvent 
 {
     public RandomEventType randomEventType;
@@ -68,7 +66,28 @@ public class RandomEvent
         {
             case 0: //TODO : 4가지의 확률에 맞춰 구현하기(장비,아티펙트,재화,티켓 획득)
                 name.text = $"풍선 다트";
-                description.text = "(아직구현안됨)얍!" + "\n\n" + $"[결과]";
+                description.text = "(아직구현안됨)얍!" + "\n\n";
+                switch (CustomRandom<int>.WeightedChoice(new List<int> { 0, 1, 2, 3,4 }, new List<double> { 0.2f, 0.08f, 0.3f, 0.02f, 0.4f }, new System.Random()))
+                {
+                    case 0:
+                        description.text += $"[장비 획득]";
+                        break;
+                    case 1:
+                        description.text += $"[아티펙트 획득]";
+                        break;
+                    case 2:
+                        description.text += $"[코인 랜덤 획득]";
+                        break;
+                    case 3:
+                        description.text += $"[티켓  랜덤 획득]";
+                        break;
+                    case 4:
+                        description.text += $"[꽝]";
+                        break;
+                    default:
+                        break;
+                }
+                ;
                 break;
             case 1: //TODO : 아티펙트 강제 랜덤변경 코드 구현하기
                 name.text = $"성난 마술사 이진혁의 장난";
