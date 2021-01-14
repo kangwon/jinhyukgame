@@ -290,7 +290,7 @@ public class Player : CharacterBase
 
     public override Stat GetStat()
     {      
-        Stat currentstat = this.baseStat + buff.GetTotalStat(this.baseStat) + equipmentSlot.GetTotalStat();
+        Stat currentstat = this.baseStat + equipmentSlot.GetTotalStat() + buff.GetTotalStat(this.baseStat+ equipmentSlot.GetTotalStat());
         return currentstat;
     }
 
