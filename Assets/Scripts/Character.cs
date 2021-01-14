@@ -230,7 +230,10 @@ public class Player : CharacterBase
     {
         equipmentSlot.RemoveAtArtifact(index);
     }
-
+    public void ChangeAtArtifect(int index, Artifact artifact)
+    {
+        equipmentSlot.ChangeAtArtifact(index, artifact);
+    }
     public Player(Stat stat) : base(stat) {}
 
     public StatBuff GetBuff()
@@ -309,7 +312,7 @@ public class Player : CharacterBase
 
     public override Stat GetStat()
     {      
-        Stat currentstat = this.baseStat + buff.GetTotalStat(this.baseStat) + equipmentSlot.GetTotalStat();
+        Stat currentstat = this.baseStat + equipmentSlot.GetTotalStat() + buff.GetTotalStat(this.baseStat+ equipmentSlot.GetTotalStat());
         return currentstat;
     }
 
