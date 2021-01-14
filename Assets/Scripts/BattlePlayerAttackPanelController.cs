@@ -105,13 +105,11 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     private combatState playerState, monsterState;
 
     /*------------------Up 기존 CombatController부분 병합----------------*/
-    private float[] comboList = new float[3] { 0.3f, 0.8f, 0.5f }; //종류,등급,수식어 콤보 배수
-    private bool[] comboCheck = new bool[3] { false, false, false };
+    private readonly float[] comboList ={0.3f, 0.8f, 0.5f }; //종류,등급,수식어 콤보 배수
     private int cardDamageSum; // 카드 선택한것 총 데미지
     private float comboPercentSum;
     private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
     public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
-
      /*------------------Up 새로 추가한 코드----------------*/
 
     public void OnClickHandCard(int index)
@@ -137,12 +135,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
    
     public void OnClickAttack()
     {
+        bool[] comboCheck = new bool[3] { false, false, false };
         cardDamageSum = 0;
         comboPercentSum = 0;
         Weapon[] selectWeapons = new Weapon[3];
-        for(int i=0;i<comboCheck.Count();i++)
-            comboCheck[i] = false;
-
         var maxCount = (from n in selectCard where n == true select n).Count();
         if (maxCount == 0) return; //선택된 카드가 없으면 버튼이 작동안하게 설정
         int j = 0;
