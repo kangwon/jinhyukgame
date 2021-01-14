@@ -13,6 +13,7 @@ public class WorldClearController : MonoBehaviour
         menuButton.onClick.AddListener(() => {
             this.OnClickMenuButton();
         });
+        this.gameObject.SetActive(false);
     }
 
     void OnClickMenuButton()
