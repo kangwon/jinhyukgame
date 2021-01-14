@@ -75,9 +75,16 @@ class JsonDB
         => Instance.buffCollection.itemList.FindAll(b => b.IsDebuff());
     
     public static Monster GetMonster(string id)
-        => Instance.monsterCollection.GetItem(id);
+        => Instance.monsterCollection.GetItem(id).Spawn();
     public static List<Monster> GetWorldMonsters(int worldNumber)
-        => Instance.monsterCollection.itemList.FindAll(m => m.worldNumber == worldNumber);
+        => Instance.monsterCollection.itemList
+            .FindAll(m => !m.isBoss && m.worldNumber == worldNumber)
+            .Select(m => m.Spawn())
+            .ToList();
+    public static Monster GetWorldBoss(int worldNumber)
+        => Instance.monsterCollection.itemList
+            .Find(m => m.isBoss && m.worldNumber == worldNumber)
+            .Spawn();
 }
 
 [System.Serializable]

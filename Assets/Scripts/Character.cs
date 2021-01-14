@@ -144,7 +144,7 @@ public class Monster : CharacterBase
         this.name = name;
     }
 
-    public Monster DeepCopy()
+    public Monster Spawn()
     {
        return new Monster(this.name, this.baseStat.DeepCopy());
     }
