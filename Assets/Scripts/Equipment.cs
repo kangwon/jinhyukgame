@@ -68,10 +68,29 @@ public class EquipmentSlot
     {
         this.weapons = weapons;
     }
+    public void SetEquipments(Helmet helmet, Armor armor, Shoes shoes)
+    {
+        this.helmet = helmet;
+        this.armor = armor;
+        this.shoes = shoes;
+    }
     public void ResetWeaponsList()
     {
         weapons.Clear();
     }
+    public Armor GetArmorE()
+    {
+        return armor;
+    }
+    public Helmet GetHelmetE()
+    {
+        return helmet;
+    }
+    public Shoes GetShoesE()
+    {
+        return shoes;
+    }
+
     public int ArtifactCount()
     {
        return artifacts.Count();

@@ -13,17 +13,29 @@ public class EnchantControl : MonoBehaviour
     // Start is called before the first frame update
 
     List<int> EnchantMny = new List<int>(new int[] { 50, 175, 400, 750, 1000, 1500, });
+    List<string> prefixlist = new List<string>(new string[] { "broken", "weak", "normal", "strong", "amazing" });
     int minus_mny;
 
     List<Weapon> weaponList;
+    Helmet pHelmet;
+    Armor pArmor;
+    Shoes pShoes;
     GameObject[] I_card = new GameObject[10];
+    GameObject helcard;
+    GameObject armcard;
+    GameObject shocard;
+
     GameObject beforeCard;
     GameObject afterCard;
-    GameObject okButton;
+    GameObject enchantButton;
     public GameObject EnchantPanel;
-    int card_Index = 0;
+    int card_Index = -1;
     bool EnchantOn = true;
     public StageChoice stageChoice;
+
+    string beforeid;
+    string checkprefix;
+    int changeprefix;
 
     void PrintCard()
     {
@@ -35,48 +47,47 @@ public class EnchantControl : MonoBehaviour
             else
                 I_card[temp].transform.GetChild(0).GetComponent<Text>().text = $"카드 없음";
         }
+        helcard.transform.GetChild(0).GetComponent<Text>().text = $"{pHelmet.statEffect.defense}";
+        armcard.transform.GetChild(0).GetComponent<Text>().text = $"{pArmor.statEffect.maxHp}";
+        shocard.transform.GetChild(0).GetComponent<Text>().text = $"{pShoes.statEffect.speed}";
         beforeCard.transform.GetChild(0).GetComponent<Text>().text = $"선택된 카드 없음";
+        afterCard.transform.GetChild(0).GetComponent<Text>().text = $"선택된 카드 없음";
     }
     void CoinButton()
     {
-        string beforeid = $"{weaponList.ElementAt(card_Index).id}";
-        string checkprefix = beforeid.Substring(9);
-        int changeid = Convert.ToInt32(beforeid.Substring(7)) + 1;
-
-        if (checkprefix == "4")
+        if (card_Index != -1)
         {
-            Debug.Log("최대 강화 수식어입니다.");
+            if (checkprefix == "4")
+            {
+                Debug.Log("최대 강화 수식어입니다.");
+            }
+            else
+            {
+                Player player = GameState.Instance.player;
+
+                Debug.Log($"index {card_Index}");
+                if (changeprefix / 10 == 0)
+                    weaponList[card_Index] = JsonDB.GetWeapon($"weapon_00{changeprefix}");
+                else if (changeprefix / 100 == 0)
+                    weaponList[card_Index] = JsonDB.GetWeapon($"weapon_0{changeprefix}");
+                else
+                    weaponList[card_Index] = JsonDB.GetWeapon($"weapon_{changeprefix}");
+                player.SetWeaponList(weaponList);
+
+                // 장비쪽 체크
+
+                player.SetEquipment(pHelmet, pArmor, pShoes);
+
+                Debug.Log($"count {weaponList.Count}");
+
+
+                // update 반복 방지 및 스테이지 넘김
+                EnchantOn = true;
+                stageChoice.MoveToNextStage();
+            }
         }
         else
-        {
-            Player player = GameState.Instance.player;
-
-            Debug.Log($"index {card_Index}");
-            weaponList[card_Index] = JsonDB.GetWeapon($"weapon_{changeid}");
-            player.SetWeaponList(weaponList);
-
-            Debug.Log($"count {weaponList.Count}");
-
-            /*
-            player.SetEquipment(JsonDB.GetWeapon($"weapon_{changeid}"));
-            weaponList = player.GetWeaponList();
-            Debug.Log($"nonremove : {weaponList.Count}");
-            weaponList.RemoveAt(card_Index);
-            Debug.Log($"remove : {weaponList.Count}");
-            var sortList = weaponList.OrderBy(x => x.id).ToList();
-            player.SetWeaponList(sortList);
-            */
-            /*
-            Debug.Log($"weapon_{checkprefix}");
-            Debug.Log($"weapon_{changeid}");
-            Weapon nWeapon = JsonDB.GetWeapon($"weapon_{changeid}");
-            weaponList[card_Index] = nWeapon;
-            var sortList = weaponList.OrderBy(x => x.id).ToList();
-            player.SetWeaponList(sortList);
-            */
-            EnchantOn = true;
-            stageChoice.MoveToNextStage();
-        }
+            Debug.Log("미선택");
     }
 
     void OnClickCard(int c_index)
@@ -86,44 +97,44 @@ public class EnchantControl : MonoBehaviour
 
         if (c_index < weaponList.Count)
         {
-            beforeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(c_index).statEffect.attack}";
+            beforeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(c_index).prefix}";
+
+            beforeid = $"{weaponList.ElementAt(card_Index).id}";
+            checkprefix = beforeid.Substring(9);
+            changeprefix = Convert.ToInt32(beforeid.Substring(7)) + 1;
+
+            afterCard.transform.GetChild(0).GetComponent<Text>().text = prefixlist[changeprefix%10];
 
             if ($"{weaponList.ElementAt(c_index).rank}" == "common")
             {
-                okButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[0]} Coin  확인";
-                afterCard.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[0]} Coin  확인";
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[0]} Coin  확인";
                 minus_mny = EnchantMny[0];
             }
             else if ($"{weaponList.ElementAt(c_index).rank}" == "uncommon")
             {
-                okButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[1]} Coin  확인";
-                afterCard.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[1]} Coin  확인";
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[1]} Coin  확인";
                 minus_mny = EnchantMny[1];
             }
             else if ($"{weaponList.ElementAt(c_index).rank}" == "rare")
             {
-                okButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[2]} Coin  확인";
-                afterCard.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[2]} Coin  확인";
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[2]} Coin  확인";
                 minus_mny = EnchantMny[2];
             }
             else if ($"{weaponList.ElementAt(c_index).rank}" == "unique")
             {
-                okButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[3]} Coin  확인";
-                afterCard.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[3]} Coin  확인";
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[3]} Coin  확인";
                 minus_mny = EnchantMny[3];
             }
             else
             {
                 if ($"{weaponList.ElementAt(c_index).prefix}" != "strong")
                 {
-                    okButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[4]} Coin  확인";
-                    afterCard.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[4]} Coin  확인";
+                    enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[4]} Coin  확인";
                     minus_mny = EnchantMny[4];
                 }
                 else
                 {
-                    okButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[5]} Coin  확인";
-                    afterCard.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[5]} Coin  확인";
+                    enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[5]} Coin  확인";
                     minus_mny = EnchantMny[5];
                 }
             }
@@ -137,14 +148,22 @@ public class EnchantControl : MonoBehaviour
         }
     }
 
+    void OnClickCard2()
+    {
+        card_Index = -1;
+    }
+
     void Start()
     {
         EnchantPanel = GameObject.Find("NpcPanel_Enchanter");
         beforeCard = GameObject.Find("NpcPanel_Enchanter/b_weapon");
         afterCard = GameObject.Find("NpcPanel_Enchanter/a_weapon");
         weaponList = GameState.Instance.player?.GetWeaponList();
-        okButton = GameObject.Find("NpcPanel_Enchanter/OkButton");
-        okButton.GetComponent<Button>().onClick.AddListener(() =>
+        pArmor = GameState.Instance.player?.GetArmor();
+        pHelmet = GameState.Instance.player?.GetHelmet();
+        pShoes = GameState.Instance.player?.GetShoes();
+        enchantButton = GameObject.Find("NpcPanel_Enchanter/EnchantButton");
+        enchantButton.GetComponent<Button>().onClick.AddListener(() =>
         {
             CoinButton();
         });
@@ -157,14 +176,25 @@ public class EnchantControl : MonoBehaviour
                 OnClickCard(temp);
             });
         }
+        helcard = GameObject.Find("WeaponSelect/Helmet");
+        helcard.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            OnClickCard2();
+        });
+        armcard = GameObject.Find("WeaponSelect/Armor");
+        shocard = GameObject.Find("WeaponSelect/Shoes");
     }
 
     // Update is called once per frame
     void Update()
     {
+        // update 반복 방지
         if (EnchantOn)
         {
             weaponList = GameState.Instance.player.GetWeaponList();
+            pArmor = GameState.Instance.player.GetArmor();
+            pHelmet = GameState.Instance.player.GetHelmet();
+            pShoes = GameState.Instance.player.GetShoes();
             PrintCard();
             EnchantOn = false;
         }

@@ -46,6 +46,7 @@ class GameState
             }
         );
         this._player.ResetWeaponList();
+        this._player.ResetEquipment();
     }
 
     public void StartWorld(int number, string name)

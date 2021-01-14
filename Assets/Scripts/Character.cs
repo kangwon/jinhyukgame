@@ -187,9 +187,25 @@ public class Player : CharacterBase
     {
        return equipmentSlot.GetWeaponsList();
     }
+    public Armor GetArmor()
+    {
+        return equipmentSlot.GetArmorE();
+    }
+    public Helmet GetHelmet()
+    {
+        return equipmentSlot.GetHelmetE();
+    }
+    public Shoes GetShoes()
+    {
+        return equipmentSlot.GetShoesE();
+    }
     public void SetWeaponList(List<Weapon> weapons)
     {
         equipmentSlot.SetWeaponsList(weapons);
+    }
+    public void SetEquipment(Helmet helmet, Armor armor, Shoes shoes)
+    {
+        equipmentSlot.SetEquipments(helmet, armor, shoes);
     }
     public void ResetWeaponList()
     {
@@ -199,6 +215,12 @@ public class Player : CharacterBase
             SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
             SetEquipment(JsonDB.GetWeapon($"weapon_{i}00"));
         }
+    }
+    public void ResetEquipment()
+    {
+        SetEquipment(JsonDB.GetEquipment($"helmet"));
+        SetEquipment(JsonDB.GetEquipment($"armor"));
+        SetEquipment(JsonDB.GetEquipment($"shoes"));
     }
     public int ArtifectsCount()
     {
