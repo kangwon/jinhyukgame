@@ -220,12 +220,15 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     public void Bury() 
     {
-        if(player.isDead) {
+        if(player.isDead) 
+        {
             playerState = combatState.Dead;
-            Debug.Log("플레이어 죽음"); //TODO : 게임오버패널로 넘어가야함
+            Debug.Log("플레이어 죽음");
+            ShowGameOver();
         }
 
-        if(monster.isDead) {
+        if(monster.isDead) 
+        {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
             stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 나중에 보상패널로 이어지도록 해야함
@@ -257,7 +260,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }
     }
 
-    public void PlayerMonsterInit() {
+    public void PlayerMonsterInit() 
+    {
         playerState = combatState.Idle;
         monsterState = combatState.Idle;
         playerGauge = player?.GetStat().startSpeedGauge ?? 0;
@@ -267,9 +271,16 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     }
 
 
-    public void EndCombat() {
+    public void EndCombat() 
+    {
         isBattle = false;
         Debug.Log("Battle Done!");
+    }
+
+    public void ShowGameOver()
+    {
+        GameOverPanel.transform.localPosition = new Vector3(0, 0, 0);
+        GameOverPanel.SetActive(true);
     }
 
     //해당 패널이 활성화 될때 실행되는 메서드
@@ -298,13 +309,14 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;;
         GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;;
 
-        /*------------------Down 기존 CombatController부분 병합----------------*/
-        if(player != null && monster != null) {
+        if(player != null && monster != null) 
+        {
             isBattle = true;
-        } else {
+        } 
+        else 
+        {
             Debug.Log("No game objects found!");
         }
-        /*------------------Up 기존 CombatController부분 병합----------------*/
 
         for (int i = 0; i < HAND_MAX; i++) 
         {
@@ -330,11 +342,5 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             turnTriggered = false;
         }
         UpdateBattleState();
-
-        if (!isBattle && (player?.isDead ?? false) && (!GameOverPanel?.activeSelf ?? false))
-        {
-            GameOverPanel.transform.localPosition = new Vector3(0, 0, 0);
-            GameOverPanel.SetActive(true);
-        }
     }
 }
