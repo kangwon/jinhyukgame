@@ -208,7 +208,10 @@ public class Player : CharacterBase
     {
         equipmentSlot.RemoveAtArtifact(index);
     }
-
+    public void ChangeAtArtifect(int index, Artifact artifact)
+    {
+        equipmentSlot.ChangeAtArtifact(index, artifact);
+    }
     public Player(Stat stat) : base(stat) {}
 
     public StatBuff GetBuff()

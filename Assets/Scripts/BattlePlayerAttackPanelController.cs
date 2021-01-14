@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-//TODO:아직 배틀 클래스가 없어서 임시로 만듬 나중에 정섭이 코드 나오면 합쳐야함
 public class Battle 
 {
     const int HAND_MAX = 4; //최대 핸드 수
@@ -106,8 +105,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     private combatState playerState, monsterState;
 
     /*------------------Up 기존 CombatController부분 병합----------------*/
-
+    private float[] comboList = new float[3] { 0.3f, 0.8f, 0.5f }; //종류,등급,수식어 콤보 배수
+    private bool[] comboCheck = new bool[3] { false, false, false };
     private int cardDamageSum; // 카드 선택한것 총 데미지
+    private float comboPercentSum;
     private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
     public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
 
@@ -137,20 +138,38 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public void OnClickAttack()
     {
         cardDamageSum = 0;
-        int maxCount = (from n in selectCard where n == true select n).Count();
+        comboPercentSum = 0;
+        Weapon[] selectWeapons = new Weapon[3];
+        for(int i=0;i<comboCheck.Count();i++)
+            comboCheck[i] = false;
+
+        var maxCount = (from n in selectCard where n == true select n).Count();
         if (maxCount == 0) return; //선택된 카드가 없으면 버튼이 작동안하게 설정
+        int j = 0;
         for(int i = HAND_MAX - 1; i >= 0; i--)
         {
             if (selectCard[i] == true) //손에서 정해진 카드를 battle 클래스에 전달
             {
-                //TODO: 나중에 데미지 관련(시너지)하여 추가해야함
-                //정해진 카드를 모아서 attack매서드에 전달 후, 핸드에 있는 카드를 제거
+                if (maxCount == 3)
+                {
+                    selectWeapons[j] = battle.CardHand.ElementAt(i);
+                    j++;
+                }
                 cardDamageSum += battle.CardHand.ElementAt(i).statEffect.attack;
-                battle.CardHand.RemoveAt(i); // 지금은 제거만 했음.
+                battle.CardHand.RemoveAt(i); 
                 OnClickHandCard(i); //버튼을 다시 눌러서 초기화           
             }          
         }
-        //Debug.Log($"attack : {damageSum}");
+        if (maxCount == 3) //콤보 체크
+        {
+            if ((selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
+            if ((selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
+            if ((selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
+        }
+        for (int i = 0; i < 3; i++) 
+        {
+            if(comboCheck[i])comboPercentSum += comboList[i];
+        }
         int checkDraw = 0;      
         checkDraw =Battle.Draw(battle.CardDeck,battle.CardHand,maxCount);
         if (0 != checkDraw)
@@ -188,7 +207,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             playerGauge -= GAUGE_SIZE; //게이지 소비.
             Stat tempStat = new Stat();
             tempStat.attack = cardDamageSum + player.GetStat().attack;
-            monster.TakeHit(player.GetBuff().GetTotalStat(tempStat).attack+tempStat.attack+player.Synergy().attack); //TODO:콤보대미지넣기
+            monster.TakeHit((player.GetBuff().GetTotalStat(tempStat).attack+tempStat.attack+player.Synergy().attack)*(1f+comboPercentSum)); 
             playerState = combatState.Idle; //다시 게이지 채우는 중으로
             OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
         }
