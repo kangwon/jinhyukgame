@@ -2,32 +2,28 @@
   "items": [
     {
       "id": "artifact0",
-      "type": "artifact",
-      "name": "해당 없음0",
+      "name": "세계수의 나뭇가지",
       "price": 0,
-      "isBossItem": 0,
+      "isBossItem": true,
       "statEffect": {
-
+        "maxHpPercent" : 0.1
       }
     },
     {
       "id": "artifact1",
-      "type": "armor",
-      "name": "해당 없음1",
+      "name": "기사단장의 징표",
       "price": 0,
-      "isBossItem": 0,
+      "isBossItem": true,
       "statEffect": {
-
+        "purchasePercent": 0.1
       }
     },
     {
       "id": "artifact2",
-      "type": "shoes",
-      "name": "해당 없음2",
+      "name": "일반 아티펙트(예시)",
       "price": 0,
-      "isBossItem": 1,
+      "isBossItem": false,
       "statEffect": {
-
       }
     }
   ]
