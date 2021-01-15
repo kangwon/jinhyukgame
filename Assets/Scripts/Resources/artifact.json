@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": "artifact0",
+      "type": "artifact",
+      "name": "해당 없음0",
+      "price": 0,
+      "isBossItem": 0,
+      "statEffect": {
+
+      }
+    },
+    {
+      "id": "artifact1",
+      "type": "armor",
+      "name": "해당 없음1",
+      "price": 0,
+      "isBossItem": 0,
+      "statEffect": {
+
+      }
+    },
+    {
+      "id": "artifact2",
+      "type": "shoes",
+      "name": "해당 없음2",
+      "price": 0,
+      "isBossItem": 1,
+      "statEffect": {
+
+      }
+    }
+  ]
+}

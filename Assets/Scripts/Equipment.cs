@@ -38,7 +38,7 @@ public class Equipment : JsonItem
     public Shoes ToShoes()
         => new Shoes() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Artifact ToArtifact(StatBuff statEffect,bool isBossItem)
-        => new Artifact() { id = id, type =type, name=name, price=price, statEffect= statEffect, isBossItem=isBossItem };
+        => new Artifact() { id = id, name=name, price=price, statEffect= statEffect, isBossItem=isBossItem };
     
 }
 
@@ -54,7 +54,6 @@ public class Shoes : Equipment {}
 public class Artifact : JsonItem
 {
     public bool isBossItem;
-    public string type;
     public string name;
     public int price;
     public StatBuff statEffect;
