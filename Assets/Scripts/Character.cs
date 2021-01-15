@@ -207,6 +207,10 @@ public class Player : CharacterBase
     {
         equipmentSlot.SetEquipments(helmet, armor, shoes);
     }
+    public void SetEquipment(Artifact artifact)
+    {
+        equipmentSlot.SetEquipment(artifact);
+    }
     public void ResetWeaponList()
     {
         equipmentSlot.ResetWeaponsList();

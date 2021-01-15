@@ -36,10 +36,7 @@ public class Equipment : JsonItem
     public Helmet ToHelmet()
         => new Helmet() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Shoes ToShoes()
-        => new Shoes() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
-    public Artifact ToArtifact()
-        => new Artifact() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
-    
+        => new Shoes() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};   
 }
 
 [System.Serializable]
@@ -50,8 +47,14 @@ public class Weapon : Equipment
 public class Armor : Equipment {}
 public class Helmet : Equipment {}
 public class Shoes : Equipment {}
-public class Artifact : Equipment {}
-
+[System.Serializable]
+public class Artifact : JsonItem
+{
+    public string name;
+    public int price;
+    public bool isBossItem;
+    public StatBuff statEffect;
+}
 [System.Serializable]
 public class EquipmentSlot
 {
@@ -124,15 +127,17 @@ public class EquipmentSlot
             case Shoes s:
                 this.shoes = s;
                 break;
-            case Artifact a:
-                this.artifacts.Add(a);
-                while (this.artifacts.Count > 3)
-                    this.artifacts.RemoveAt(0);
-                break;
             default:
                 throw new NotImplementedException($"Invalid equipment type: {equip.GetType().ToString()}");
         }
     }
+    public void SetEquipment(Artifact artifact)
+    {
+        this.artifacts.Add(artifact);
+        while (this.artifacts.Count > 3)
+            this.artifacts.RemoveAt(0);
+    }
+
     public Stat GetTotalStat()
     {
         Stat zeroStat = new Stat();
@@ -140,7 +145,7 @@ public class EquipmentSlot
         totalStat += armor?.statEffect ?? zeroStat;
         totalStat += helmet?.statEffect ?? zeroStat;
         totalStat += shoes?.statEffect ?? zeroStat;
-        totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat;
+       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : 나중에 관련된 아티펙트 변수(?)를 넣어놓자
         return totalStat;
     }
 }
