@@ -80,7 +80,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     bool firstActive = false;
     //버튼이 토글처럼 되도록 했고, 최대 HAND_MAX(=3)만큼만 선택이 되도록 함.
 
-    /*------------------Down 기존 CombatController부분 병합----------------*/
+    GameObject WorldClearPanel;
+    GameObject GameOverPanel;
 
     public bool isBattle = false; //private으로 숨기기?
 
@@ -105,14 +106,12 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     private combatState playerState, monsterState;
 
-    /*------------------Up 기존 CombatController부분 병합----------------*/
     private readonly float[] comboList ={0.3f, 0.8f, 0.5f }; //종류,등급,수식어 콤보 배수
     private bool[] comboCheck = new bool[3] { false, false, false };
     private int cardDamageSum; // 카드 선택한것 총 데미지
     private float comboPercentSum;
     private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
     public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
-     /*------------------Up 새로 추가한 코드----------------*/
 
     public void OnClickHandCard(int index)
     {
@@ -180,10 +179,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }
         OnClickAttackPressed = true;
     }
-    
-     /*------------------Down CombatController부분 병합----------------*/
 
-    public void UpdateBattleState() {
+    public void UpdateBattleState() 
+    {
         if(playerState == combatState.Idle && monsterState == combatState.Idle) { //둘 다 게이지 채우는 중일 때
             SpeedUntilTurn(); //행동게이지 증가, 둘 중 하나의 combatState가 Turn으로 변경.
         }
@@ -213,20 +211,25 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }
     }
 
-    public void MonsterAttackPhase() {
+    public void MonsterAttackPhase() 
+    {
         float Dmg = monster.AttackFoe();
         monsterGauge -= GAUGE_SIZE; //게이지 소비.
         player.TakeHit(Dmg);
         monsterState = combatState.Idle;
     }
 
-    public void Bury() {
-        if(player.isDead) {
+    public void Bury() 
+    {
+        if(player.isDead) 
+        {
             playerState = combatState.Dead;
-            Debug.Log("플레이어 죽음"); //TODO : 게임오버패널로 넘어가야함
+            Debug.Log("플레이어 죽음");
+            ShowGameOver();
         }
 
-        if(monster.isDead) {
+        if(monster.isDead) 
+        {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
             Debug.Log(MonsterCard.monster.isBoss);
@@ -236,8 +239,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }    
     }
 
-    public void SpeedUntilTurn() { 
-
+    public void SpeedUntilTurn() 
+    { 
         //float totalElapsedTime = 0.0f;
         while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
             
@@ -261,7 +264,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }
     }
 
-    public void PlayerMonsterInit() {
+    public void PlayerMonsterInit() 
+    {
         playerState = combatState.Idle;
         monsterState = combatState.Idle;
         playerGauge = player?.GetStat().startSpeedGauge ?? 0;
@@ -271,12 +275,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     }
 
 
-    public void EndCombat() {
+    public void EndCombat() 
+    {
         isBattle = false;
         Debug.Log("Battle Done!");
     }
 
-     /*------------------Up 기존 CombatController부분 병합----------------*/
+    public void ShowGameOver()
+    {
+        GameOverPanel.transform.localPosition = new Vector3(0, 0, 0);
+        GameOverPanel.SetActive(true);
+    }
 
     //해당 패널이 활성화 될때 실행되는 메서드
     private void OnEnable()
@@ -302,13 +311,17 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
         MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
 
-        /*------------------Down 기존 CombatController부분 병합----------------*/
-        if(player != null && monster != null) {
+        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;;
+        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;;
+
+        if(player != null && monster != null) 
+        {
             isBattle = true;
-        } else {
+        } 
+        else 
+        {
             Debug.Log("No game objects found!");
         }
-        /*------------------Up 기존 CombatController부분 병합----------------*/
 
         for (int i = 0; i < HAND_MAX; i++) 
         {
@@ -334,6 +347,5 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             turnTriggered = false;
         }
         UpdateBattleState();
-        
     }
 }
