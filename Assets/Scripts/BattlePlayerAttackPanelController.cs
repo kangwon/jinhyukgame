@@ -67,7 +67,7 @@ public class Battle
 }
 
 public class BattlePlayerAttackPanelController : MonoBehaviour
-{
+{ 
     const int HAND_MAX = 4; //최대 핸드 수
     const int SELECT_MAX = 3; // 선택가능한 핸드의 카드 수
     GameObject[] handCard = new GameObject[HAND_MAX] ;
@@ -86,6 +86,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     Player player;
 
+    GameObject RewardPanel;
     public MonsterCard MonsterCard;
     Monster monster;
     Text MonsterName;
@@ -228,6 +229,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         if(monster.isDead) {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
+            Debug.Log(MonsterCard.monster.isBoss);
+            RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
+            RewardPanel.SetActive(true);
             stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 나중에 보상패널로 이어지도록 해야함
         }    
     }
@@ -293,7 +297,8 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        RewardPanel = GameObject.Find("RewardPanel");
         MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
         MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
 
