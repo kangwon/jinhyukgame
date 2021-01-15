@@ -33,6 +33,7 @@ class JsonDB
     private JsonCollection<StatBuff> buffCollection;
     private JsonCollection<Monster> monsterCollection;
     private JsonCollection<MinMaxWeapon> weaponCollection;
+    private JsonCollection<Artifact> artifactCollection;
     private static readonly JsonDB instance = new JsonDB();  
     static JsonDB() {}  
     private JsonDB() 
@@ -41,6 +42,7 @@ class JsonDB
         buffCollection = new JsonCollection<StatBuff>("buff");
         monsterCollection = new JsonCollection<Monster>("monster");
         weaponCollection = new JsonCollection<MinMaxWeapon>("weapon");
+        artifactCollection = new JsonCollection<Artifact>("artifact");
     }
     public static JsonDB Instance  
     {  
@@ -58,15 +60,14 @@ class JsonDB
                 return equip.ToHelmet();
             case "shoes":
                 return equip.ToShoes();
-            case "artifact":
-                return equip.ToArtifact();
             default:
                 throw new NotImplementedException($"Invalid equipment type: {equip.type}");
         }
     }
     public static Weapon GetWeapon(string id)
-        => Instance.weaponCollection.GetItem(id).ReturnWeapon();        
-
+        => Instance.weaponCollection.GetItem(id).ReturnWeapon();
+    public static Artifact GetArtifact(string id)
+        => Instance.artifactCollection.GetItem(id);
     public static StatBuff GetBuff(string id)
         => Instance.buffCollection.GetItem(id);
     public static List<StatBuff> GetBuffs()
