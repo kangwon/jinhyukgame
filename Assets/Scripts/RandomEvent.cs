@@ -94,8 +94,11 @@ public class RandomEvent
                 name.text = $"성난 마술사 이진혁의 장난";
                 description.text = "(아직구현안됨)\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
                 tempInt = GameState.Instance.player.ArtifectsCount();
-                GameState.Instance.player.ReMoveAtArtifect(Random.Range(0, tempInt));
-              //  GameState.Instance.player.SetEquipment(); //TODO: 나중에 아티팩트를 JSON에서 받아오자 (구현 필요)
+                if (tempInt != 0)
+                {
+                    GameState.Instance.player.ReMoveAtArtifect(Random.Range(0, tempInt));
+                    GameState.Instance.player.SetEquipment(JsonDB.GetArtifact("artifact0")); //TODO: 나중에 랜덤으로 넣는 것이 필요!!
+                }
                 break;
             default:
                 break;

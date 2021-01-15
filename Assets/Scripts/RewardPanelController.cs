@@ -9,14 +9,14 @@ public class RewardPanelController : MonoBehaviour
     
     public StageChoice stageChoice;
 
-    Player[] reward_player = new Player[3];
     GameObject[] reward = new GameObject[3];
     GameObject weaponChangePanel;
-
     Text coinReward;
+
     string full_name;
-    string[] rankName = new string [5] {"#000000","#088A08","#00BFFF","#BF00FF","#FFBF00"};
-    int rankNameIndex;
+    int rankNameIndex, rewardPrefixIndex, coinRand;
+    int[] coinMin = new int[12] {0, 15, 25, 35, 50, 75, 75, 90,  100, 100, 120, 120};
+    int[] coinMax = new int[12] {0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150};
     List<int[]> rankPercentage = new List<int[]>();
     
     public void OnClickRewardAbandon()
@@ -27,31 +27,30 @@ public class RewardPanelController : MonoBehaviour
     public string rewardMaking(int index)
     {
         System.Random r = new System.Random(index);
-        int rewardKind = r.Next(100);
-        int rewardModify = r.Next(100);
+        int rewardType = r.Next(100);
+        int rewardPrefixRand = r.Next(100);
         int rewardRank = r.Next(100);
         int world_num = Convert.ToInt32(GameState.Instance.World.Number);
         
-        if(rewardModify <= 5) full_name += "망가진 ";
-        else if(rewardModify <= 30) full_name += "약한 ";
-        else if(rewardModify <= 70) full_name += "평범한 ";
-        else if(rewardModify <= 95) full_name += "튼튼한 ";
-        else full_name += "놀라운 ";
-        
-        // Debug.Log("월드 " + GameState.Instance.World.Number);
+        coinRand = r.Next(coinMin[world_num], coinMax[world_num]);
+
+        if(rewardPrefixRand <= 5) rewardPrefixIndex = 0;
+        else if(rewardPrefixRand <= 30) rewardPrefixIndex = 1;
+        else if(rewardPrefixRand <= 70) rewardPrefixIndex = 2;
+        else if(rewardPrefixRand <= 95) rewardPrefixIndex = 3;
+        else rewardPrefixIndex = 4;
 
         for(int i=0;i<5;i++){
             if(rankPercentage[world_num - 1][i] != 0){
                 if(rewardRank <= rankPercentage[world_num - 1][i]) 
                 {
-                    // full_name += rankName[i];
                     rankNameIndex = i;
                     break;
                 }
             }
         }
 
-        if(rewardKind <= 70) rewardWeapon(index);
+        if(rewardType <= 70) rewardWeapon(index);
         else rewardArmor(index);
 
         return full_name;
@@ -60,17 +59,14 @@ public class RewardPanelController : MonoBehaviour
     public void rewardWeapon(int index){
         System.Random r = new System.Random();
         int randWeapon = r.Next(5);
-        full_name += JsonDB.GetWeapon($"weapon_{randWeapon}00").name;
-        // reward_player[index].SetEquipment(JsonDB.GetWeapon($"weapon_{randWeapon}00"));
+        full_name = JsonDB.GetWeapon($"weapon_{randWeapon}{rankNameIndex}{rewardPrefixIndex}").name;
     }
     public void rewardArmor(int index){
         System.Random r = new System.Random();
         int randArmor = r.Next(5);
-        full_name += JsonDB.GetEquipment($"helmet0_00").name;
-        // reward_player[index].SetEquipment(JsonDB.GetEquipment($"helmet0_00"));
+        full_name = JsonDB.GetEquipment($"helmet0_00").name;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         weaponChangePanel = GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject;
@@ -85,20 +81,18 @@ public class RewardPanelController : MonoBehaviour
         rankPercentage.Add(new int[] {1,21,85,97,100});
         rankPercentage.Add(new int[] {1,16,80,95,100});
 
-
         coinReward = GameObject.Find("gold_reward").GetComponent<Text>();
 
         for(int i = 0; i < 3; i++)
         {
             reward[i] = GameObject.Find($"RewardPanel").transform.Find($"Reward{i+1}").gameObject;
-            reward[i].transform.GetChild(0).GetComponent<Text>().text = "<color=" + rankName[rankNameIndex] + ">" + rewardMaking(i) + "</color>";
+            reward[i].transform.GetChild(0).GetComponent<Text>().text = rewardMaking(i);
             full_name = "";
         }
     }
 
-    // Update is called once per frame
     void Update()
     {   
-        
+        coinReward.text = "+" + coinRand.ToString();
     }
 }

@@ -1,6 +1,39 @@
 {
   "items": [
     {
+      "id": "helmet",
+      "type": "helmet",
+      "name": "해당 없음",
+      "prefix": 0,
+      "rank": 0,
+      "price": 0,
+      "statEffect": {
+        "defense": 0
+      }
+    },
+    {
+      "id": "armor",
+      "type": "armor",
+      "name": "해당 없음",
+      "prefix": 0,
+      "rank": 0,
+      "price": 0,
+      "statEffect": {
+        "maxHp": 0
+      }
+    },
+    {
+      "id": "shoes",
+      "type": "shoes",
+      "name": "해당 없음",
+      "prefix": 0,
+      "rank": 0,
+      "price": 0,
+      "statEffect": {
+        "speed": 0
+      }
+    },
+    {
       "id": "helmet0_00",
       "type": "helmet",
       "name": "인형탈 머리",
