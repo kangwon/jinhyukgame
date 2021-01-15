@@ -28,7 +28,7 @@ public class NpcPanel_Healer : MonoBehaviour
         healerText = gameObject.transform.Find("HealerText").GetComponent<Text>();
     }
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         healerText.text = "안녕하세요. 힐러입니다.";
     }
