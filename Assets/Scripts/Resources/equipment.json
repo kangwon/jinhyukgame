@@ -4,8 +4,8 @@
       "id": "helmet",
       "type": "helmet",
       "name": "해당 없음",
-      "prefix": 0,
-      "rank": 0,
+      "prefix": -1,
+      "rank": -1,
       "price": 0,
       "statEffect": {
         "defense": 0
@@ -15,8 +15,8 @@
       "id": "armor",
       "type": "armor",
       "name": "해당 없음",
-      "prefix": 0,
-      "rank": 0,
+      "prefix": -1,
+      "rank": -1,
       "price": 0,
       "statEffect": {
         "maxHp": 0
@@ -26,8 +26,8 @@
       "id": "shoes",
       "type": "shoes",
       "name": "해당 없음",
-      "prefix": 0,
-      "rank": 0,
+      "prefix": -1,
+      "rank": -1,
       "price": 0,
       "statEffect": {
         "speed": 0
@@ -41,7 +41,1521 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
+        "defense": 0,
+        "maxHp": 20,
+        "speed": -1
+      }
+    },
+    {
+      "id": "helmet0_01",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 1,
+        "maxHp": 20,
+        "speed": -1
+      }
+    },
+    {
+      "id": "helmet0_02",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 2,
+        "maxHp": 20,
+        "speed": -1
+      }
+    },
+    {
+      "id": "helmet0_03",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 3,
+        "maxHp": 20,
+        "speed": -1
+      }
+    },
+    {
+      "id": "helmet0_04",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 4,
+        "maxHp": 20,
+        "speed": -1
+      }
+    },
+    {
+      "id": "helmet0_10",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 4,
+        "maxHp": 80,
+        "speed": -3
+      }
+    },
+    {
+      "id": "helmet0_11",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 6,
+        "maxHp": 80,
+        "speed": -3
+      }
+    },
+    {
+      "id": "helmet0_12",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 8,
+        "maxHp": 80,
+        "speed": -3
+      }
+    },
+    {
+      "id": "helmet0_13",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 10,
+        "maxHp": 80,
+        "speed": -3
+      }
+    },
+    {
+      "id": "helmet0_14",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 12,
+        "maxHp": 80,
+        "speed": -3
+      }
+    },
+    {
+      "id": "helmet0_20",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 12,
+        "maxHp": 160,
+        "speed": -5
+      }
+    },
+    {
+      "id": "helmet0_21",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 15,
+        "maxHp": 160,
+        "speed": -5
+      }
+    },
+    {
+      "id": "helmet0_22",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 18,
+        "maxHp": 160,
+        "speed": -5
+      }
+    },
+    {
+      "id": "helmet0_23",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 22,
+        "maxHp": 160,
+        "speed": -5
+      }
+    },
+    {
+      "id": "helmet0_24",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 26,
+        "maxHp": 160,
+        "speed": -5
+      }
+    },
+    {
+      "id": "helmet0_30",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 26,
+        "maxHp": 320,
+        "speed": -9
+      }
+    },
+    {
+      "id": "helmet0_31",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 30,
+        "maxHp": 320,
+        "speed": -9
+      }
+    },
+    {
+      "id": "helmet0_32",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 34,
+        "maxHp": 320,
+        "speed": -9
+      }
+    },
+    {
+      "id": "helmet0_33",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 38,
+        "maxHp": 320,
+        "speed": -9
+      }
+    },
+    {
+      "id": "helmet0_34",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 42,
+        "maxHp": 320,
+        "speed": -9
+      }
+    },
+    {
+      "id": "helmet0_40",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 42,
+        "maxHp": 520,
+        "speed": -14
+      }
+    },
+    {
+      "id": "helmet0_41",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 46,
+        "maxHp": 520,
+        "speed": -14
+      }
+    },
+    {
+      "id": "helmet0_42",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 50,
+        "maxHp": 520,
+        "speed": -14
+      }
+    },
+    {
+      "id": "helmet0_43",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 55,
+        "maxHp": 520,
+        "speed": -14
+      }
+    },
+    {
+      "id": "helmet0_44",
+      "type": "helmet",
+      "name": "인형탈 머리",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 60,
+        "maxHp": 520,
+        "speed": -14
+      }
+    },
+    {
+      "id": "helmet1_00",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": -1,
+        "speed": 2
+      }
+    },
+    {
+      "id": "helmet1_01",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 0,
+        "speed": 2
+      }
+    },
+    {
+      "id": "helmet1_02",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 1,
+        "speed": 2
+      }
+    },
+    {
+      "id": "helmet1_03",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 2,
+        "speed": 2
+      }
+    },
+    {
+      "id": "helmet1_04",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 3,
+        "speed": 2
+      }
+    },
+    {
+      "id": "helmet1_10",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 2,
+        "speed": 6
+      }
+    },
+    {
+      "id": "helmet1_11",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 4,
+        "speed": 6
+      }
+    },
+    {
+      "id": "helmet1_12",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 6,
+        "speed": 6
+      }
+    },
+    {
+      "id": "helmet1_13",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 8,
+        "speed": 6
+      }
+    },
+    {
+      "id": "helmet1_14",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 10,
+        "speed": 6
+      }
+    },
+    {
+      "id": "helmet1_20",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 8,
+        "speed": 10
+      }
+    },
+    {
+      "id": "helmet1_21",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 11,
+        "speed": 10
+      }
+    },
+    {
+      "id": "helmet1_22",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 14,
+        "speed": 10
+      }
+    },
+    {
+      "id": "helmet1_23",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 18,
+        "speed": 10
+      }
+    },
+    {
+      "id": "helmet1_24",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 22,
+        "speed": 10
+      }
+    },
+    {
+      "id": "helmet1_30",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 20,
+        "speed": 18
+      }
+    },
+    {
+      "id": "helmet1_31",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 24,
+        "speed": 18
+      }
+    },
+    {
+      "id": "helmet1_32",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 28,
+        "speed": 18
+      }
+    },
+    {
+      "id": "helmet1_33",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 32,
+        "speed": 18
+      }
+    },
+    {
+      "id": "helmet1_34",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 36,
+        "speed": 18
+      }
+    },
+    {
+      "id": "helmet1_40",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 33,
+        "speed": 28
+      }
+    },
+    {
+      "id": "helmet1_41",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 37,
+        "speed": 28
+      }
+    },
+    {
+      "id": "helmet1_42",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 41,
+        "speed": 28
+      }
+    },
+    {
+      "id": "helmet1_43",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 46,
+        "speed": 28
+      }
+    },
+    {
+      "id": "helmet1_44",
+      "type": "helmet",
+      "name": "캐릭터 머리띠",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 51,
+        "speed": 28
+      }
+    },
+    {
+      "id": "helmet2_00",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 2,
+        "attack": -2
+      }
+    },
+    {
+      "id": "helmet2_01",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 3,
+        "attack": -2
+      }
+    },
+    {
+      "id": "helmet2_02",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 4,
+        "attack": -2
+      }
+    },
+    {
+      "id": "helmet2_03",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 5,
+        "attack": -2
+      }
+    },
+    {
+      "id": "helmet2_04",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 6,
+        "attack": -2
+      }
+    },
+    {
+      "id": "helmet2_10",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 8,
+        "attack": -4
+      }
+    },
+    {
+      "id": "helmet2_11",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 10,
+        "attack": -4
+      }
+    },
+    {
+      "id": "helmet2_12",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 12,
+        "attack": -4
+      }
+    },
+    {
+      "id": "helmet2_13",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 14,
+        "attack": -4
+      }
+    },
+    {
+      "id": "helmet2_14",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 16,
+        "attack": -4
+      }
+    },
+    {
+      "id": "helmet2_20",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 20,
+        "attack": -8
+      }
+    },
+    {
+      "id": "helmet2_21",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 23,
+        "attack": -8
+      }
+    },
+    {
+      "id": "helmet2_22",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 26,
+        "attack": -8
+      }
+    },
+    {
+      "id": "helmet2_23",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 30,
+        "attack": -8
+      }
+    },
+    {
+      "id": "helmet2_24",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 34,
+        "attack": -8
+      }
+    },
+    {
+      "id": "helmet2_30",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 38,
+        "attack": -12
+      }
+    },
+    {
+      "id": "helmet2_31",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 42,
+        "attack": -12
+      }
+    },
+    {
+      "id": "helmet2_32",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 46,
+        "attack": -12
+      }
+    },
+    {
+      "id": "helmet2_33",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 50,
+        "attack": -12
+      }
+    },
+    {
+      "id": "helmet2_34",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 54,
+        "attack": -12
+      }
+    },
+    {
+      "id": "helmet2_40",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 60,
+        "attack": -18
+      }
+    },
+    {
+      "id": "helmet2_41",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 64,
+        "attack": -18
+      }
+    },
+    {
+      "id": "helmet2_42",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 68,
+        "attack": -18
+      }
+    },
+    {
+      "id": "helmet2_43",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 73,
+        "attack": -18
+      }
+    },
+    {
+      "id": "helmet2_44",
+      "type": "helmet",
+      "name": "장난감 투구",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 78,
+        "attack": -18
+      }
+    },
+    {
+      "id": "helmet3_00",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 0,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "helmet3_01",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 1,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "helmet3_02",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 2,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "helmet3_03",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 3,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "helmet3_04",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 4,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "helmet3_10",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 4,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "helmet3_11",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 6,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "helmet3_12",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 8,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "helmet3_13",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 10,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "helmet3_14",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 12,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "helmet3_20",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 12,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "helmet3_21",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 15,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "helmet3_22",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 18,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "helmet3_23",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 22,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "helmet3_24",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 26,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "helmet3_30",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 26,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "helmet3_31",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 30,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "helmet3_32",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 34,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "helmet3_33",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 38,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "helmet3_34",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 42,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "helmet3_40",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 42,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "helmet3_41",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 46,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "helmet3_42",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 50,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "helmet3_43",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 55,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "helmet3_44",
+      "type": "helmet",
+      "name": "바이킹 모자",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 60,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "helmet4_00",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
         "defense": 0
+      }
+    },
+    {
+      "id": "helmet4_01",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 1
+      }
+    },
+    {
+      "id": "helmet4_02",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 2
+      }
+    },
+    {
+      "id": "helmet4_03",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 3
+      }
+    },
+    {
+      "id": "helmet4_04",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "defense": 4
+      }
+    },
+    {
+      "id": "helmet4_10",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 4
+      }
+    },
+    {
+      "id": "helmet4_11",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 6
+      }
+    },
+    {
+      "id": "helmet4_12",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 8
+      }
+    },
+    {
+      "id": "helmet4_13",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 10
+      }
+    },
+    {
+      "id": "helmet4_14",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "defense": 12
+      }
+    },
+    {
+      "id": "helmet4_20",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 12
+      }
+    },
+    {
+      "id": "helmet4_21",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 15
+      }
+    },
+    {
+      "id": "helmet4_22",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 18
+      }
+    },
+    {
+      "id": "helmet4_23",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 22
+      }
+    },
+    {
+      "id": "helmet4_24",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "defense": 26
+      }
+    },
+    {
+      "id": "helmet4_30",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 26
+      }
+    },
+    {
+      "id": "helmet4_31",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 30
+      }
+    },
+    {
+      "id": "helmet4_32",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 34
+      }
+    },
+    {
+      "id": "helmet4_33",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 38
+      }
+    },
+    {
+      "id": "helmet4_34",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "defense": 42
+      }
+    },
+    {
+      "id": "helmet4_40",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 42
+      }
+    },
+    {
+      "id": "helmet4_41",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 46
+      }
+    },
+    {
+      "id": "helmet4_42",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 50
+      }
+    },
+    {
+      "id": "helmet4_43",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 55
+      }
+    },
+    {
+      "id": "helmet4_44",
+      "type": "helmet",
+      "name": "할로윈 가면",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "defense": 60
       }
     },
     {
@@ -52,7 +1566,1546 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
+        "maxHp": 20,
+        "attack": -2
+      }
+    },
+    {
+      "id": "armor0_01",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 30,
+        "attack": -2
+      }
+    },
+    {
+      "id": "armor0_02",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 40,
+        "attack": -2
+      }
+    },
+    {
+      "id": "armor0_03",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 60,
+        "attack": -2
+      }
+    },
+    {
+      "id": "armor0_04",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 100,
+        "attack": -2
+      }
+    },
+    {
+      "id": "armor0_10",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 160,
+        "attack": -4
+      }
+    },
+    {
+      "id": "armor0_11",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 200,
+        "attack": -4
+      }
+    },
+    {
+      "id": "armor0_12",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 240,
+        "attack": -4
+      }
+    },
+    {
+      "id": "armor0_13",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "attack": -4
+      }
+    },
+    {
+      "id": "armor0_14",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 400,
+        "attack": -4
+      }
+    },
+    {
+      "id": "armor0_20",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 480,
+        "attack": -8
+      }
+    },
+    {
+      "id": "armor0_21",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 560,
+        "attack": -8
+      }
+    },
+    {
+      "id": "armor0_22",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 680,
+        "attack": -8
+      }
+    },
+    {
+      "id": "armor0_23",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 900,
+        "attack": -8
+      }
+    },
+    {
+      "id": "armor0_24",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1120,
+        "attack": -8
+      }
+    },
+    {
+      "id": "armor0_30",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1280,
+        "attack": -12
+      }
+    },
+    {
+      "id": "armor0_31",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1420,
+        "attack": -12
+      }
+    },
+    {
+      "id": "armor0_32",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1720,
+        "attack": -12
+      }
+    },
+    {
+      "id": "armor0_33",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2120,
+        "attack": -12
+      }
+    },
+    {
+      "id": "armor0_34",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2520,
+        "attack": -12
+      }
+    },
+    {
+      "id": "armor0_40",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2720,
+        "attack": -18
+      }
+    },
+    {
+      "id": "armor0_41",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3120,
+        "attack": -18
+      }
+    },
+    {
+      "id": "armor0_42",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3520,
+        "attack": -18
+      }
+    },
+    {
+      "id": "armor0_43",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 4020,
+        "attack": -18
+      }
+    },
+    {
+      "id": "armor0_44",
+      "type": "armor",
+      "name": "인형탈 몸통",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 4520,
+        "attack": -18
+      }
+    },
+    {
+      "id": "armor1_00",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 0,
+        "attack": 4,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor1_01",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 10,
+        "attack": 4,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor1_02",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 20,
+        "attack": 4,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor1_03",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 40,
+        "attack": 4,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor1_04",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80,
+        "attack": 4,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor1_10",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80,
+        "attack": 8,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor1_11",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 120,
+        "attack": 8,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor1_12",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 160,
+        "attack": 8,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor1_13",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 240,
+        "attack": 8,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor1_14",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "attack": 8,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor1_20",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "attack": 16,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor1_21",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 400,
+        "attack": 16,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor1_22",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 520,
+        "attack": 16,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor1_23",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 740,
+        "attack": 16,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor1_24",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960,
+        "attack": 16,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor1_30",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960,
+        "attack": 24,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor1_31",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1100,
+        "attack": 24,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor1_32",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1400,
+        "attack": 24,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor1_33",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1800,
+        "attack": 24,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor1_34",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200,
+        "attack": 24,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor1_40",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200,
+        "attack": 36,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor1_41",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2600,
+        "attack": 36,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor1_42",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3000,
+        "attack": 36,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor1_43",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3500,
+        "attack": 36,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor1_44",
+      "type": "armor",
+      "name": "테마파크 유니폼",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 4000,
+        "attack": 36,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor2_00",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 0,
+        "defense": 2,
+        "speed": -1
+      }
+    },
+    {
+      "id": "armor2_01",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 10,
+        "defense": 2,
+        "speed": -1
+      }
+    },
+    {
+      "id": "armor2_02",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 20,
+        "defense": 2,
+        "speed": -1
+      }
+    },
+    {
+      "id": "armor2_03",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 40,
+        "defense": 2,
+        "speed": -1
+      }
+    },
+    {
+      "id": "armor2_04",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80,
+        "defense": 2,
+        "speed": -1
+      }
+    },
+    {
+      "id": "armor2_10",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80,
+        "defense": 4,
+        "speed": -3
+      }
+    },
+    {
+      "id": "armor2_11",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 120,
+        "defense": 4,
+        "speed": -3
+      }
+    },
+    {
+      "id": "armor2_12",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 160,
+        "defense": 4,
+        "speed": -3
+      }
+    },
+    {
+      "id": "armor2_13",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 240,
+        "defense": 4,
+        "speed": -3
+      }
+    },
+    {
+      "id": "armor2_14",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "defense": 4,
+        "speed": -3
+      }
+    },
+    {
+      "id": "armor2_20",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "defense": 8,
+        "speed": -5
+      }
+    },
+    {
+      "id": "armor2_21",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 400,
+        "defense": 8,
+        "speed": -5
+      }
+    },
+    {
+      "id": "armor2_22",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 520,
+        "defense": 8,
+        "speed": -5
+      }
+    },
+    {
+      "id": "armor2_23",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 740,
+        "defense": 8,
+        "speed": -5
+      }
+    },
+    {
+      "id": "armor2_24",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960,
+        "defense": 8,
+        "speed": -5
+      }
+    },
+    {
+      "id": "armor2_30",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960,
+        "defense": 12,
+        "speed": -9
+      }
+    },
+    {
+      "id": "armor2_31",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1100,
+        "defense": 12,
+        "speed": -9
+      }
+    },
+    {
+      "id": "armor2_32",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1400,
+        "defense": 12,
+        "speed": -9
+      }
+    },
+    {
+      "id": "armor2_33",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1800,
+        "defense": 12,
+        "speed": -9
+      }
+    },
+    {
+      "id": "armor2_34",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200,
+        "defense": 12,
+        "speed": -9
+      }
+    },
+    {
+      "id": "armor2_40",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200,
+        "defense": 18,
+        "speed": -14
+      }
+    },
+    {
+      "id": "armor2_41",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2600,
+        "defense": 18,
+        "speed": -14
+      }
+    },
+    {
+      "id": "armor2_42",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3000,
+        "defense": 18,
+        "speed": -14
+      }
+    },
+    {
+      "id": "armor2_43",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3500,
+        "defense": 18,
+        "speed": -14
+      }
+    },
+    {
+      "id": "armor2_44",
+      "type": "armor",
+      "name": "보안 조끼",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 4000,
+        "defense": 18,
+        "speed": -14
+      }
+    },
+    {
+      "id": "armor3_00",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 0,
+        "speed": 2,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor3_01",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 10,
+        "speed": 2,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor3_02",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 20,
+        "speed": 2,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor3_03",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 40,
+        "speed": 2,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor3_04",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80,
+        "speed": 2,
+        "defense": -1
+      }
+    },
+    {
+      "id": "armor3_10",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80,
+        "speed": 6,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor3_11",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 120,
+        "speed": 6,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor3_12",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 160,
+        "speed": 6,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor3_13",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 240,
+        "speed": 6,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor3_14",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "speed": 6,
+        "defense": -2
+      }
+    },
+    {
+      "id": "armor3_20",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320,
+        "speed": 10,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor3_21",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 400,
+        "speed": 10,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor3_22",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 520,
+        "speed": 10,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor3_23",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 740,
+        "speed": 10,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor3_24",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960,
+        "speed": 10,
+        "defense": -4
+      }
+    },
+    {
+      "id": "armor3_30",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960,
+        "speed": 18,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor3_31",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1100,
+        "speed": 18,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor3_32",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1400,
+        "speed": 18,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor3_33",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1800,
+        "speed": 18,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor3_34",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200,
+        "speed": 18,
+        "defense": -6
+      }
+    },
+    {
+      "id": "armor3_40",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200,
+        "speed": 28,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor3_41",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2600,
+        "speed": 28,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor3_42",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3000,
+        "speed": 28,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor3_43",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3500,
+        "speed": 28,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor3_44",
+      "type": "armor",
+      "name": "미화원 옷",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 4000,
+        "speed": 28,
+        "defense": -9
+      }
+    },
+    {
+      "id": "armor4_00",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
         "maxHp": 0
+      }
+    },
+    {
+      "id": "armor4_01",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 10
+      }
+    },
+    {
+      "id": "armor4_02",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 20
+      }
+    },
+    {
+      "id": "armor4_03",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 40
+      }
+    },
+    {
+      "id": "armor4_04",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "armor4_10",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "armor4_11",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 120
+      }
+    },
+    {
+      "id": "armor4_12",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 160
+      }
+    },
+    {
+      "id": "armor4_13",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 240
+      }
+    },
+    {
+      "id": "armor4_14",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "armor4_20",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "armor4_21",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 400
+      }
+    },
+    {
+      "id": "armor4_22",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 520
+      }
+    },
+    {
+      "id": "armor4_23",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 740
+      }
+    },
+    {
+      "id": "armor4_24",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960
+      }
+    },
+    {
+      "id": "armor4_30",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 960
+      }
+    },
+    {
+      "id": "armor4_31",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1100
+      }
+    },
+    {
+      "id": "armor4_32",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1400
+      }
+    },
+    {
+      "id": "armor4_33",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 1800
+      }
+    },
+    {
+      "id": "armor4_34",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200
+      }
+    },
+    {
+      "id": "armor4_40",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2200
+      }
+    },
+    {
+      "id": "armor4_41",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 2600
+      }
+    },
+    {
+      "id": "armor4_42",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3000
+      }
+    },
+    {
+      "id": "armor4_43",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 3500
+      }
+    },
+    {
+      "id": "armor4_44",
+      "type": "armor",
+      "name": "대여 교복",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "maxHp": 4000
       }
     },
     {
@@ -63,7 +3116,1496 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
+        "speed": -1,
+        "maxHp": 20
+      }
+    },
+    {
+      "id": "shoes0_01",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 0,
+        "maxHp": 20
+      }
+    },
+    {
+      "id": "shoes0_02",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 1,
+        "maxHp": 20
+      }
+    },
+    {
+      "id": "shoes0_03",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 3,
+        "maxHp": 20
+      }
+    },
+    {
+      "id": "shoes0_04",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 5,
+        "maxHp": 20
+      }
+    },
+    {
+      "id": "shoes0_10",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 3,
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "shoes0_11",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 5,
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "shoes0_12",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 7,
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "shoes0_13",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 11,
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "shoes0_14",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 15,
+        "maxHp": 80
+      }
+    },
+    {
+      "id": "shoes0_20",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 13,
+        "maxHp": 160
+      }
+    },
+    {
+      "id": "shoes0_21",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 17,
+        "maxHp": 160
+      }
+    },
+    {
+      "id": "shoes0_22",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 23,
+        "maxHp": 160
+      }
+    },
+    {
+      "id": "shoes0_23",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 31,
+        "maxHp": 160
+      }
+    },
+    {
+      "id": "shoes0_24",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 39,
+        "maxHp": 160
+      }
+    },
+    {
+      "id": "shoes0_30",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 35,
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "shoes0_31",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 43,
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "shoes0_32",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 51,
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "shoes0_33",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 61,
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "shoes0_34",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 73,
+        "maxHp": 320
+      }
+    },
+    {
+      "id": "shoes0_40",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 68,
+        "maxHp": 520
+      }
+    },
+    {
+      "id": "shoes0_41",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 76,
+        "maxHp": 520
+      }
+    },
+    {
+      "id": "shoes0_42",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 86,
+        "maxHp": 520
+      }
+    },
+    {
+      "id": "shoes0_43",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 96,
+        "maxHp": 520
+      }
+    },
+    {
+      "id": "shoes0_44",
+      "type": "shoes",
+      "name": "인형탈 신발",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 106,
+        "maxHp": 520
+      }
+    },
+    {
+      "id": "shoes1_00",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 2,
+        "attack": -2
+      }
+    },
+    {
+      "id": "shoes1_01",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 3,
+        "attack": -2
+      }
+    },
+    {
+      "id": "shoes1_02",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 4,
+        "attack": -2
+      }
+    },
+    {
+      "id": "shoes1_03",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 6,
+        "attack": -2
+      }
+    },
+    {
+      "id": "shoes1_04",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 8,
+        "attack": -2
+      }
+    },
+    {
+      "id": "shoes1_10",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 12,
+        "attack": -4
+      }
+    },
+    {
+      "id": "shoes1_11",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 14,
+        "attack": -4
+      }
+    },
+    {
+      "id": "shoes1_12",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 16,
+        "attack": -4
+      }
+    },
+    {
+      "id": "shoes1_13",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 20,
+        "attack": -4
+      }
+    },
+    {
+      "id": "shoes1_14",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 24,
+        "attack": -4
+      }
+    },
+    {
+      "id": "shoes1_20",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 28,
+        "attack": -8
+      }
+    },
+    {
+      "id": "shoes1_21",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 32,
+        "attack": -8
+      }
+    },
+    {
+      "id": "shoes1_22",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 38,
+        "attack": -8
+      }
+    },
+    {
+      "id": "shoes1_23",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 46,
+        "attack": -8
+      }
+    },
+    {
+      "id": "shoes1_24",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 54,
+        "attack": -8
+      }
+    },
+    {
+      "id": "shoes1_30",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 62,
+        "attack": -12
+      }
+    },
+    {
+      "id": "shoes1_31",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 70,
+        "attack": -12
+      }
+    },
+    {
+      "id": "shoes1_32",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 78,
+        "attack": -12
+      }
+    },
+    {
+      "id": "shoes1_33",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 88,
+        "attack": -12
+      }
+    },
+    {
+      "id": "shoes1_34",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 100,
+        "attack": -12
+      }
+    },
+    {
+      "id": "shoes1_40",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 110,
+        "attack": -18
+      }
+    },
+    {
+      "id": "shoes1_41",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 118,
+        "attack": -18
+      }
+    },
+    {
+      "id": "shoes1_42",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 128,
+        "attack": -18
+      }
+    },
+    {
+      "id": "shoes1_43",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 138,
+        "attack": -18
+      }
+    },
+    {
+      "id": "shoes1_44",
+      "type": "shoes",
+      "name": "동물 슬리퍼",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 148,
+        "attack": -18
+      }
+    },
+    {
+      "id": "shoes2_00",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 2,
+        "defense": -1
+      }
+    },
+    {
+      "id": "shoes2_01",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 3,
+        "defense": -1
+      }
+    },
+    {
+      "id": "shoes2_02",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 4,
+        "defense": -1
+      }
+    },
+    {
+      "id": "shoes2_03",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 6,
+        "defense": -1
+      }
+    },
+    {
+      "id": "shoes2_04",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 8,
+        "defense": -1
+      }
+    },
+    {
+      "id": "shoes2_10",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 12,
+        "defense": -2
+      }
+    },
+    {
+      "id": "shoes2_11",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 14,
+        "defense": -2
+      }
+    },
+    {
+      "id": "shoes2_12",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 16,
+        "defense": -2
+      }
+    },
+    {
+      "id": "shoes2_13",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 20,
+        "defense": -2
+      }
+    },
+    {
+      "id": "shoes2_14",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 24,
+        "defense": -2
+      }
+    },
+    {
+      "id": "shoes2_20",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 28,
+        "defense": -4
+      }
+    },
+    {
+      "id": "shoes2_21",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 32,
+        "defense": -4
+      }
+    },
+    {
+      "id": "shoes2_22",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 38,
+        "defense": -4
+      }
+    },
+    {
+      "id": "shoes2_23",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 46,
+        "defense": -4
+      }
+    },
+    {
+      "id": "shoes2_24",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 54,
+        "defense": -4
+      }
+    },
+    {
+      "id": "shoes2_30",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 62,
+        "defense": -6
+      }
+    },
+    {
+      "id": "shoes2_31",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 70,
+        "defense": -6
+      }
+    },
+    {
+      "id": "shoes2_32",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 78,
+        "defense": -6
+      }
+    },
+    {
+      "id": "shoes2_33",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 88,
+        "defense": -6
+      }
+    },
+    {
+      "id": "shoes2_34",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 100,
+        "defense": -6
+      }
+    },
+    {
+      "id": "shoes2_40",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 110,
+        "defense": -9
+      }
+    },
+    {
+      "id": "shoes2_41",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 118,
+        "defense": -9
+      }
+    },
+    {
+      "id": "shoes2_42",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 128,
+        "defense": -9
+      }
+    },
+    {
+      "id": "shoes2_43",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 138,
+        "defense": -9
+      }
+    },
+    {
+      "id": "shoes2_44",
+      "type": "shoes",
+      "name": "롤러스케이트",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 148,
+        "defense": -9
+      }
+    },
+    {
+      "id": "shoes3_00",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 0,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "shoes3_01",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 1,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "shoes3_02",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 2,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "shoes3_03",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 4,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "shoes3_04",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 6,
+        "attack": 4,
+        "maxHp": -10
+      }
+    },
+    {
+      "id": "shoes3_10",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 6,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "shoes3_11",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 8,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "shoes3_12",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 10,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "shoes3_13",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 14,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "shoes3_14",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 18,
+        "attack": 8,
+        "maxHp": -40
+      }
+    },
+    {
+      "id": "shoes3_20",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 18,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "shoes3_21",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 22,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "shoes3_22",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 28,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "shoes3_23",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 36,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "shoes3_24",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 44,
+        "attack": 16,
+        "maxHp": -80
+      }
+    },
+    {
+      "id": "shoes3_30",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 44,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "shoes3_31",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 52,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "shoes3_32",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 60,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "shoes3_33",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 70,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "shoes3_34",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 82,
+        "attack": 24,
+        "maxHp": -160
+      }
+    },
+    {
+      "id": "shoes3_40",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 82,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "shoes3_41",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 90,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "shoes3_42",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 100,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "shoes3_43",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 110,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "shoes3_44",
+      "type": "shoes",
+      "name": "스케이트",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 120,
+        "attack": 36,
+        "maxHp": -260
+      }
+    },
+    {
+      "id": "shoes4_00",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 0,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
         "speed": 0
+      }
+    },
+    {
+      "id": "shoes4_01",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 1,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 1
+      }
+    },
+    {
+      "id": "shoes4_02",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 2,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 2
+      }
+    },
+    {
+      "id": "shoes4_03",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 3,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 4
+      }
+    },
+    {
+      "id": "shoes4_04",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 4,
+      "rank": 0,
+      "price": 10,
+      "statEffect": {
+        "speed": 6
+      }
+    },
+    {
+      "id": "shoes4_10",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 0,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 6
+      }
+    },
+    {
+      "id": "shoes4_11",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 1,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 8
+      }
+    },
+    {
+      "id": "shoes4_12",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 2,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 10
+      }
+    },
+    {
+      "id": "shoes4_13",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 3,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 14
+      }
+    },
+    {
+      "id": "shoes4_14",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 4,
+      "rank": 1,
+      "price": 10,
+      "statEffect": {
+        "speed": 18
+      }
+    },
+    {
+      "id": "shoes4_20",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 0,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 18
+      }
+    },
+    {
+      "id": "shoes4_21",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 1,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 22
+      }
+    },
+    {
+      "id": "shoes4_22",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 2,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 28
+      }
+    },
+    {
+      "id": "shoes4_23",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 3,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 36
+      }
+    },
+    {
+      "id": "shoes4_24",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 4,
+      "rank": 2,
+      "price": 10,
+      "statEffect": {
+        "speed": 44
+      }
+    },
+    {
+      "id": "shoes4_30",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 0,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 44
+      }
+    },
+    {
+      "id": "shoes4_31",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 1,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 52
+      }
+    },
+    {
+      "id": "shoes4_32",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 2,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 60
+      }
+    },
+    {
+      "id": "shoes4_33",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 3,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 70
+      }
+    },
+    {
+      "id": "shoes4_34",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 4,
+      "rank": 3,
+      "price": 10,
+      "statEffect": {
+        "speed": 82
+      }
+    },
+    {
+      "id": "shoes4_40",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 0,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 82
+      }
+    },
+    {
+      "id": "shoes4_41",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 1,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 90
+      }
+    },
+    {
+      "id": "shoes4_42",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 2,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 100
+      }
+    },
+    {
+      "id": "shoes4_43",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 3,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 110
+      }
+    },
+    {
+      "id": "shoes4_44",
+      "type": "shoes",
+      "name": "운동화",
+      "prefix": 4,
+      "rank": 4,
+      "price": 10,
+      "statEffect": {
+        "speed": 120
       }
     }
   ]

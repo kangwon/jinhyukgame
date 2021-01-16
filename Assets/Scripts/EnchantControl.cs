@@ -12,7 +12,8 @@ public class EnchantControl : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    List<int> EnchantMny = new List<int>(new int[] { 50, 175, 400, 750, 1000, 1500, });
+    List<int> enchantWeaponMny = new List<int>(new int[] { 25, 100, 250, 500, 750, 1000, });
+    List<int> enchantEquipmentMny = new List<int>(new int[] { 50, 175, 400, 750, 1000, 1500, });
     List<string> prefixlist = new List<string>(new string[] { "broken", "weak", "normal", "strong", "amazing" });
     int minus_mny;
 
@@ -107,35 +108,35 @@ public class EnchantControl : MonoBehaviour
 
             if ($"{weaponList.ElementAt(c_index).rank}" == "common")
             {
-                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[0]} Coin  확인";
-                minus_mny = EnchantMny[0];
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantEquipmentMny[0]} Coin  확인";
+                minus_mny = enchantEquipmentMny[0];
             }
             else if ($"{weaponList.ElementAt(c_index).rank}" == "uncommon")
             {
-                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[1]} Coin  확인";
-                minus_mny = EnchantMny[1];
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantEquipmentMny[1]} Coin  확인";
+                minus_mny = enchantEquipmentMny[1];
             }
             else if ($"{weaponList.ElementAt(c_index).rank}" == "rare")
             {
-                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[2]} Coin  확인";
-                minus_mny = EnchantMny[2];
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantEquipmentMny[2]} Coin  확인";
+                minus_mny = enchantEquipmentMny[2];
             }
             else if ($"{weaponList.ElementAt(c_index).rank}" == "unique")
             {
-                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[3]} Coin  확인";
-                minus_mny = EnchantMny[3];
+                enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantEquipmentMny[3]} Coin  확인";
+                minus_mny = enchantEquipmentMny[3];
             }
             else
             {
                 if ($"{weaponList.ElementAt(c_index).prefix}" != "strong")
                 {
-                    enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[4]} Coin  확인";
-                    minus_mny = EnchantMny[4];
+                    enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantEquipmentMny[4]} Coin  확인";
+                    minus_mny = enchantEquipmentMny[4];
                 }
                 else
                 {
-                    enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{EnchantMny[5]} Coin  확인";
-                    minus_mny = EnchantMny[5];
+                    enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantEquipmentMny[5]} Coin  확인";
+                    minus_mny = enchantEquipmentMny[5];
                 }
             }
 
