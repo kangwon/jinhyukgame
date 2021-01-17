@@ -64,6 +64,12 @@ class JsonDB
                 throw new NotImplementedException($"Invalid equipment type: {equip.type}");
         }
     }
+    public static List<string> GetEquipmentIdBases()
+        => Instance.equipmentCollection.itemList
+            .FindAll(e => e.rank > 0)
+            .Select(e => e.id.Split('_')[0])
+            .Distinct()
+            .ToList();
     public static Weapon GetWeapon(string id)
         => Instance.weaponCollection.GetItem(id).ReturnWeapon();
     public static Artifact GetArtifact(string id)

@@ -25,7 +25,9 @@ public class EquipmentChangePanelController : MonoBehaviour
         GoldText = GameObject.Find("EquipmentChangePanel/GoldText").GetComponent<Text>();
         
         AcceptButton = GameObject.Find("EquipmentChangePanel/AcceptButton").GetComponent<Button>();
+        AcceptButton.onClick.AddListener(OnClickAcceptButton);
         CancelButton = GameObject.Find("EquipmentChangePanel/CancelButton").GetComponent<Button>();
+        CancelButton.onClick.AddListener(OnClickCancelButton);
         
         this.gameObject.SetActive(false);
     }
@@ -62,6 +64,16 @@ public class EquipmentChangePanelController : MonoBehaviour
         AfterNameText.text = afterEquipment.name;
 
         GoldText.text = $"{afterEquipment.price} G";
+    }
+
+    void OnClickAcceptButton()
+    {
+
+    }
+
+    void OnClickCancelButton()
+    {
+
     }
 
     // 이거 써서 불러내면 됨

@@ -308,12 +308,12 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        RewardPanel = GameObject.Find("RewardPanel");
         MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
         MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
 
-        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;;
-        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;;
+        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
+        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;
+        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;
 
         if(player != null && monster != null) 
         {
