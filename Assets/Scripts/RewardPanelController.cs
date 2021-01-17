@@ -11,8 +11,8 @@ public class RewardPanelController : MonoBehaviour
     public readonly Random Random;
     public StageChoice stageChoice;
 
-    GameObject[] reward = new GameObject[3];
     GameObject weaponChangePanel;
+    GameObject rewardPanel;
     Text coinReward;
 
     string full_name;
@@ -131,8 +131,9 @@ public class RewardPanelController : MonoBehaviour
 
     void Start()
     {
+        Button[] reward = new Button[3];
         weaponChangePanel = GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject;
-
+        rewardPanel = GameObject.Find("RewardPanel");  
         coinReward = GameObject.Find("gold_reward").GetComponent<Text>();
 
         for(int i=0;i<9;i++){
@@ -144,9 +145,14 @@ public class RewardPanelController : MonoBehaviour
         
         for(int i = 0; i < 3; i++)
         {
-            reward[i] = GameObject.Find($"RewardPanel").transform.Find($"Reward{i+1}").gameObject;
+            reward[i] = GameObject.Find($"RewardPanel").transform.Find($"Reward{i+1}").GetComponent<Button>();
             reward[i].transform.GetChild(0).GetComponent<Text>().text = rewardMaking(i);
             full_name = "";
+
+            reward[i].onClick.AddListener(() => {
+                rewardPanel.SetActive(false);
+                weaponChangePanel.SetActive(true);
+            });
         }
     }
 
