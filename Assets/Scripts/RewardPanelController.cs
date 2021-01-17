@@ -10,13 +10,14 @@ public class RewardPanelController : MonoBehaviour
 {    
     public readonly Random Random;
     public StageChoice stageChoice;
-
+    
     GameObject weaponChangePanel;
     GameObject rewardPanel;
     Text coinReward;
 
     string full_name;
-    int rewardRankIndex, rewardPrefixIndex, rewardCoin;
+    string[] rewardName = new string[3];
+    int rewardRankIndex, rewardPrefixIndex, rewardCoin, cnt;
     List<List<double>> rankPercentage = new List<List<double>>();
     double[,] percentage = new double[9,5] {
         {1,    0,    0,    0,    0},
@@ -85,7 +86,7 @@ public class RewardPanelController : MonoBehaviour
             rankPercentage[world_num - 1],
             this.Random
         );
-        Debug.Log(rankPercentage[world_num - 1]);
+        
         switch (rewardRankRand)
         {
             case 0: 
@@ -116,6 +117,7 @@ public class RewardPanelController : MonoBehaviour
         if(rewardTypeRand == 0) rewardWeapon(index);
         else rewardEquipment(index);
 
+        rewardName[index] = full_name;
         return full_name;
     }
 
@@ -147,13 +149,33 @@ public class RewardPanelController : MonoBehaviour
         {
             reward[i] = GameObject.Find($"RewardPanel").transform.Find($"Reward{i+1}").GetComponent<Button>();
             reward[i].transform.GetChild(0).GetComponent<Text>().text = rewardMaking(i);
-            full_name = "";
 
-            reward[i].onClick.AddListener(() => {
-                rewardPanel.SetActive(false);
-                weaponChangePanel.SetActive(true);
-            });
+            full_name = "";
         }
+        
+        reward[0].onClick.AddListener(() => {
+            Player player = GameState.Instance.player;
+            player.SetEquipment(JsonDB.GetWeapon(rewardName[0]));
+            rewardPanel.SetActive(false);
+            if (player.GetWeaponList().Count > 10)
+                weaponChangePanel.SetActive(true);
+        });
+
+        reward[1].onClick.AddListener(() => {
+            Player player = GameState.Instance.player;
+            player.SetEquipment(JsonDB.GetWeapon(rewardName[1]));
+            rewardPanel.SetActive(false);
+            if (player.GetWeaponList().Count > 10)
+                weaponChangePanel.SetActive(true);
+        });
+
+        reward[2].onClick.AddListener(() => {
+            Player player = GameState.Instance.player;
+            player.SetEquipment(JsonDB.GetWeapon(rewardName[2]));
+            rewardPanel.SetActive(false);
+            if (player.GetWeaponList().Count > 10)
+                weaponChangePanel.SetActive(true);
+        });
     }
 
     void Update()
