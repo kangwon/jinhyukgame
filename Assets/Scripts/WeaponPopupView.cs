@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Linq;
 
-public class WeaponPopupView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class WeaponPopupView : MonoBehaviour, IPointerDownHandler
 {
 
     public GameObject WeaponPopupScreen;
@@ -47,7 +47,7 @@ public class WeaponPopupView : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                         temp = "지팡이";
                         break;
                     default:
-                        temp = "?";
+                        temp = "맨주먹";
                         break;
                 }
                 WeaponIcon[i].transform.GetChild(0).GetComponent<Text>().text = $"{temp}";
@@ -60,10 +60,5 @@ public class WeaponPopupView : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             WeaponPopupScreen.SetActive(false);
             popupCheck = 0;
         }
-    }
-
-    public void OnPointerUp(PointerEventData data)
-    {
-        // WeaponPopupScreen.SetActive(false);
     }
 }
