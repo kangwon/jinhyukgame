@@ -100,6 +100,10 @@ public class EnchantControl : MonoBehaviour
                     pShoes = JsonDB.GetEquipment($"shoes{changeprefix / 100}_{changeprefix % 100}");
                 player.SetEquipment(pShoes);
             }
+            else
+            {
+                return;
+            }
             // 장비쪽 체크
 
 
@@ -117,7 +121,14 @@ public class EnchantControl : MonoBehaviour
 
         if (c_index < weaponList.Count)
         {
+            if (weaponList.ElementAt(card_Index).id == "bare_fist")
+            {
+                Debug.Log("아직 착용한 게 없어요");
+                return;
+            }
+
             beforeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(c_index).prefix}";
+
 
             beforeid = $"{weaponList.ElementAt(card_Index).id}";
             checkprefix = beforeid.Substring(9);
@@ -146,7 +157,7 @@ public class EnchantControl : MonoBehaviour
                 enchantButton.transform.GetChild(0).GetComponent<Text>().text = $"{enchantWeaponMny[3]} Coin  확인";
                 minus_mny = enchantWeaponMny[3];
             }
-            else
+            else if ($"{weaponList.ElementAt(c_index).rank}" == "legendary")
             {
                 if ($"{weaponList.ElementAt(c_index).prefix}" != "strong")
                 {
@@ -159,8 +170,6 @@ public class EnchantControl : MonoBehaviour
                     minus_mny = enchantWeaponMny[5];
                 }
             }
-
-
         }
         else
         {

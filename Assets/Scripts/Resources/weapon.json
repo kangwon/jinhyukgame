@@ -1,6 +1,17 @@
 {
   "items": [
     {
+      "id": "bare_fist",
+      "type": "weapon",
+      "name": "맨주먹",
+      "weaponType": -1,
+      "rank": -1,
+      "prefix": -1,
+      "price": 0,
+      "minAttack": 0,
+      "maxAttack": 0
+    },
+    {
       "id": "weapon_000",
       "type": "weapon",
       "name": "용사의 모형검",
