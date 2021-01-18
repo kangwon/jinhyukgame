@@ -26,7 +26,9 @@ public class EnchantControl : MonoBehaviour
     GameObject shocard;
 
     GameObject beforeCard;
+    GameObject beforeImg;
     GameObject afterCard;
+    GameObject afterImg;
     GameObject enchantButton;
     public GameObject EnchantPanel;
     int card_Index = -1;
@@ -123,13 +125,38 @@ public class EnchantControl : MonoBehaviour
         {
             if (weaponList.ElementAt(card_Index).id == "bare_fist")
             {
-                Debug.Log("아직 착용한 게 없어요");
+                Debug.Log("맨주먹인데..");
                 return;
             }
 
             beforeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(c_index).prefix}";
-
-
+            switch (weaponList.ElementAt(card_Index).weaponType)
+            {
+                case WeaponType.sword:
+                    beforeImg.GetComponent<Image>().sprite = Resources.Load("Img/sword", typeof(Sprite)) as Sprite;
+                    afterImg.GetComponent<Image>().sprite = Resources.Load("Img/sword", typeof(Sprite)) as Sprite;
+                    break;
+                case WeaponType.blunt:
+                    beforeImg.GetComponent<Image>().sprite = Resources.Load("Img/hammer", typeof(Sprite)) as Sprite;
+                    afterImg.GetComponent<Image>().sprite = Resources.Load("Img/hammer", typeof(Sprite)) as Sprite;
+                    break;
+                case WeaponType.spear:
+                    beforeImg.GetComponent<Image>().sprite = Resources.Load("Img/spear", typeof(Sprite)) as Sprite;
+                    afterImg.GetComponent<Image>().sprite = Resources.Load("Img/spear", typeof(Sprite)) as Sprite;
+                    break;
+                case WeaponType.dagger:
+                    beforeImg.GetComponent<Image>().sprite = Resources.Load("Img/knife", typeof(Sprite)) as Sprite;
+                    afterImg.GetComponent<Image>().sprite = Resources.Load("Img/knife", typeof(Sprite)) as Sprite;
+                    break;
+                case WeaponType.wand:
+                    beforeImg.GetComponent<Image>().sprite = Resources.Load("Img/wand", typeof(Sprite)) as Sprite;
+                    afterImg.GetComponent<Image>().sprite = Resources.Load("Img/wand", typeof(Sprite)) as Sprite;
+                    break;
+                default:
+                    beforeImg.GetComponent<Image>().sprite = Resources.Load("Img/fist", typeof(Sprite)) as Sprite;
+                    afterImg.GetComponent<Image>().sprite = Resources.Load("Img/fist", typeof(Sprite)) as Sprite;
+                    break;
+            }
             beforeid = $"{weaponList.ElementAt(card_Index).id}";
             checkprefix = beforeid.Substring(9);
             checktype = "weapon";
@@ -257,7 +284,9 @@ public class EnchantControl : MonoBehaviour
     {
         EnchantPanel = GameObject.Find("NpcPanel_Enchanter");
         beforeCard = GameObject.Find("NpcPanel_Enchanter/b_weapon");
+        beforeImg = GameObject.Find("NpcPanel_Enchanter/b_weapon/before_img");
         afterCard = GameObject.Find("NpcPanel_Enchanter/a_weapon");
+        afterImg = GameObject.Find("NpcPanel_Enchanter/a_weapon/after_img");
         weaponList = GameState.Instance.player?.GetWeaponList();
         pArmor = GameState.Instance.player?.GetArmor();
         pHelmet = GameState.Instance.player?.GetHelmet();
