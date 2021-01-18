@@ -114,6 +114,7 @@ public class RewardPanelController : MonoBehaviour
             {
                 var rewardEquipment = GetRewardEquipment(worldNum);
                 rewardButton.transform.GetChild(0).GetComponent<Text>().text = rewardEquipment.name;
+                rewardButton.onClick.RemoveAllListeners();
                 rewardButton.onClick.AddListener(() => OnClickRewardButton(rewardEquipment));
             }
         }
