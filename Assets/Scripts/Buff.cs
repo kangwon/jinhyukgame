@@ -8,10 +8,7 @@ public class StatBuff :JsonItem
     public string name = "버프 없음";
     public string description = "버프 없음"; 
     public Stat baseBuffStat = new Stat(); //절대치 증가
-    public float maxHpPercent = 0; // 퍼센트로 증가할때 필요. 30% = 0.3f
-    public float attackPercent = 0;
-    public float defensePercent = 0;
-    public float speedPercent = 0;
+    public StatPercent percentStat = new StatPercent(); // 퍼센트 증가
     public float discountPercent = 0;
     public float evasionPercent = 0;
     public float criticalPercent = 0;
@@ -38,10 +35,10 @@ public class StatBuff :JsonItem
         //반드시 적용하기 전에 이 함수를 써서 수치를 구해야함.
         return new Stat
         {
-            maxHp = (int)(maxHpPercent * stat.maxHp) + baseBuffStat.maxHp,
-            attack = (int)(attackPercent * stat.attack) + baseBuffStat.attack,
-            defense = (int)(defensePercent * stat.defense) + baseBuffStat.defense,
-            speed = (int)(speedPercent * stat.speed) + baseBuffStat.speed,
+            maxHp = (int)(percentStat.maxHp * stat.maxHp) + baseBuffStat.maxHp,
+            attack = (int)(percentStat.attack * stat.attack) + baseBuffStat.attack,
+            defense = (int)(percentStat.defense * stat.defense) + baseBuffStat.defense,
+            speed = (int)(percentStat.speed * stat.speed) + baseBuffStat.speed,
             startSpeedGauge = baseBuffStat.startSpeedGauge + preemptiveUserTurn*(200 - baseBuffStat.startSpeedGauge),
             evasion = evasionPercent + baseBuffStat.evasion,
             critical = criticalPercent + baseBuffStat.critical,
