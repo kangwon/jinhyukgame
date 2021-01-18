@@ -65,6 +65,5 @@ public class RewardPanelController : MonoBehaviour
         {
             equipmentChanger.DisplayPanel(reward);
         }
-        this.gameObject.SetActive(false);
     }
 }
