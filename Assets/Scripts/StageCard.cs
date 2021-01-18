@@ -179,7 +179,7 @@ public class World
         {
             var weaponType = (int)CustomRandom<WeaponType>.Choice
             (
-                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().ToList(), 
+                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().Where(x=>x!=WeaponType.none).ToList(), 
                 this.Random
             );
             string weaponId = $"weapon_{weaponType}{rewardRankIndex}{rewardPrefixIndex}";

@@ -297,17 +297,20 @@ public class Player : CharacterBase
         SynergyStat totalSynergyStat = new SynergyStat();
         foreach (WeaponType weaponType in Enum.GetValues(typeof(WeaponType)))
         {
-            weaponTypeCount = weaponlist.Where(x => x.weaponType == weaponType).Count();
-            if (weaponTypeCount == 10)
-                totalSynergyStat += dict[weaponType].ElementAt(3);
-            else if (weaponTypeCount >= 7)
-                totalSynergyStat+= dict[weaponType].ElementAt(2);
-            else if (weaponTypeCount >= 5)
-                totalSynergyStat += dict[weaponType].ElementAt(1);
-            else if (weaponTypeCount >= 3)
-                totalSynergyStat += dict[weaponType].ElementAt(0);
-            else if (weaponTypeCount == 2)
-                weaponType2Count++;
+            if (weaponType != WeaponType.none) //없는경우(맨주먹)는 적용안되게 설정
+            {
+                weaponTypeCount = weaponlist.Where(x => x.weaponType == weaponType).Count();
+                if (weaponTypeCount == 10)
+                    totalSynergyStat += dict[weaponType].ElementAt(3);
+                else if (weaponTypeCount >= 7)
+                    totalSynergyStat += dict[weaponType].ElementAt(2);
+                else if (weaponTypeCount >= 5)
+                    totalSynergyStat += dict[weaponType].ElementAt(1);
+                else if (weaponTypeCount >= 3)
+                    totalSynergyStat += dict[weaponType].ElementAt(0);
+                else if (weaponTypeCount == 2)
+                    weaponType2Count++;
+            }
         }
         if (weaponType2Count == 5)
             totalSynergyStat += new SynergyStat(2, new StatPercent());      

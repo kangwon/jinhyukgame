@@ -162,9 +162,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         if (maxCount == 3) //콤보 체크
         {
             
-            if ((selectWeapons[0].id != "bare_fist") && (selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
-            if ((selectWeapons[0].id != "bare_fist") && (selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
-            if ((selectWeapons[0].id != "bare_fist") && (selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
+            if ((selectWeapons[0].weaponType != WeaponType.none) && (selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
+            if ((selectWeapons[0].rank != Rank.none) && (selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
+            if ((selectWeapons[0].prefix != Prefix.none) && (selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
         }
         for (int i = 0; i < 3; i++) 
         {
