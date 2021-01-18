@@ -68,12 +68,13 @@ public class EquipmentChangePanelController : MonoBehaviour
 
     void OnClickAcceptButton()
     {
-
+        player.SetEquipment(this.afterEquipment);
+        this.gameObject.SetActive(false);
     }
 
     void OnClickCancelButton()
     {
-
+        this.gameObject.SetActive(false);
     }
 
     // 이거 써서 불러내면 됨

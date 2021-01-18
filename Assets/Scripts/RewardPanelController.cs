@@ -71,7 +71,6 @@ public class RewardPanelController : MonoBehaviour
                 this.Random
             );
             string weaponId = $"weapon_{weaponType}{rewardRankIndex}{rewardPrefixIndex}";
-            Debug.Log($"weaponId: {weaponId}");
             return JsonDB.GetWeapon(weaponId);
         }
         else 
@@ -82,7 +81,6 @@ public class RewardPanelController : MonoBehaviour
                 this.Random
             );
             string equipId = $"{idBase}_{rewardRankIndex}{rewardPrefixIndex}";
-            Debug.Log($"equipId: {equipId}");
             return JsonDB.GetEquipment(equipId);
         }
     }
@@ -135,5 +133,6 @@ public class RewardPanelController : MonoBehaviour
             equipmentChanger.DisplayPanel(reward);
         }
         this.gameObject.SetActive(false);
+        stageChoice.MoveToNextStage();
     }
 }

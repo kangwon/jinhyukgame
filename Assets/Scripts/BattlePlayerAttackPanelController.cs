@@ -236,7 +236,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             Debug.Log(MonsterCard.monster.isBoss);
             RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
             RewardPanel.SetActive(true);
-            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 나중에 보상패널로 이어지도록 해야함
         }    
     }
 
