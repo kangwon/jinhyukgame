@@ -6,7 +6,7 @@ using System.Linq;
 [System.Serializable]
 public enum Rank
 {
-    uncommon,common,rare,unique,legendary,
+   uncommon,common,rare,unique,legendary,
 }
 
 [System.Serializable]
@@ -16,7 +16,7 @@ public enum Prefix
 }
 public enum WeaponType
 {
-    sword,blunt,spear,dagger,wand,
+   sword,blunt,spear,dagger,wand,
 }
 
 [System.Serializable]
