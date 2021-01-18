@@ -236,7 +236,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             Debug.Log(MonsterCard.monster.isBoss);
             RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
             RewardPanel.SetActive(true);
-            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 나중에 보상패널로 이어지도록 해야함
+            stageChoice.MoveToNextStage();
         }    
     }
 
@@ -308,12 +308,12 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        RewardPanel = GameObject.Find("RewardPanel");
         MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
         MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
 
-        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;;
-        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;;
+        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
+        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;
+        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;
 
         if(player != null && monster != null) 
         {
