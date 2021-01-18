@@ -236,6 +236,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             Debug.Log(MonsterCard.monster.isBoss);
             RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
             RewardPanel.SetActive(true);
+            stageChoice.MoveToNextStage();
         }    
     }
 

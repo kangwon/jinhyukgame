@@ -9,6 +9,8 @@ public class EquipmentChangePanelController : MonoBehaviour
     Player player;
     Equipment afterEquipment;
 
+    GameObject RewardPanel;
+
     Text BeforeStatText, BeforeNameText;
     Text AfterStatText, AfterNameText;
     Text GoldText;
@@ -18,6 +20,8 @@ public class EquipmentChangePanelController : MonoBehaviour
 
     void Start()
     {
+        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
+
         BeforeStatText = GameObject.Find("EquipmentChangePanel/BeforeStatText").GetComponent<Text>();
         BeforeNameText = GameObject.Find("EquipmentChangePanel/BeforeNameText").GetComponent<Text>();
         AfterStatText = GameObject.Find("EquipmentChangePanel/AfterStatText").GetComponent<Text>();
@@ -69,6 +73,7 @@ public class EquipmentChangePanelController : MonoBehaviour
     void OnClickAcceptButton()
     {
         player.SetEquipment(this.afterEquipment);
+        RewardPanel.SetActive(false);
         this.gameObject.SetActive(false);
     }
 
