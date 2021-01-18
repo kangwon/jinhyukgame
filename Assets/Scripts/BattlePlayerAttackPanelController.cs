@@ -234,8 +234,12 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
             Debug.Log(MonsterCard.monster.isBoss);
+
+            var controller = RewardPanel.GetComponent<RewardPanelController>();
+            controller.MonsterCard = this.MonsterCard;
             RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
             RewardPanel.SetActive(true);
+
             stageChoice.MoveToNextStage();
         }    
     }

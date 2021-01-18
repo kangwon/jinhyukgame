@@ -30,11 +30,15 @@ public class StageCard
 public class MonsterCard : StageCard 
 {
     public Monster monster;
+    public Equipment[] rewardEquipments;
+    public int rewardCoin;
     
-    public MonsterCard(Monster monster)
+    public MonsterCard(Monster monster, Equipment[] equipments, int coin)
     {
         this.Type = CardType.Monster;
         this.monster = monster;
+        this.rewardEquipments = equipments;
+        this.rewardCoin = coin;
     }
 }
 public class ChestCard : StageCard 
@@ -98,7 +102,7 @@ public class RandomCard : StageCard
 }
 public class BossCard : MonsterCard 
 {    
-    public BossCard(Monster monster) : base(monster)
+    public BossCard(Monster monster, Equipment[] equipments, int coin) : base(monster, equipments, coin)
     {
         this.Type = CardType.Boss;
     }
@@ -126,12 +130,77 @@ public class World
     public readonly int BossStage;
     public readonly Random Random;
 
+    List<List<double>> rankPercentage = new List<List<double>>
+    {
+        new List<double> {1,    0,    0,    0,    0},
+        new List<double> {0.75, 0.25, 0,    0,    0},
+        new List<double> {0.58, 0.4,  0.02, 0,    0},
+        new List<double> {0.35, 0.5,  0.15, 0,    0},
+        new List<double> {0.15, 0.43, 0.4,  0.02, 0},
+        new List<double> {0.1,  0.3,  0.54, 0.05, 0.01},
+        new List<double> {0.03, 0.25, 0.6,  0.1,  0.02},
+        new List<double> {0.01, 0.2,  0.64, 0.12, 0.03},
+        new List<double> {0.01, 0.15, 0.64, 0.15, 0.05}
+    };
+    int[] coinMin = new int[12] {0, 15, 25, 35, 50, 75, 75, 90,  100, 100, 120, 120};
+    int[] coinMax = new int[12] {0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150};
+    List<double> prefixPercentage = new List<double>() { 0.05, 0.25, 0.40, 0.25, 0.05 };
+
     public World(int number, string name, int bossStage=5)
     {
         this.Number = number;
         this.Name = name;
         this.BossStage = bossStage;
         this.Random = new Random();
+    }
+
+    Equipment GetRewardEquipment()
+    {
+        int worldNum = this.Number;
+        int rewardPrefixIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            prefixPercentage,
+            this.Random
+        );
+        int rewardRankIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            rankPercentage[worldNum - 1],
+            this.Random
+        );
+        var rewardTypeRand = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> {0, 1},
+            new List<double> {0.7, 0.3},
+            this.Random
+        );
+        if (rewardTypeRand == 0)
+        {
+            var weaponType = (int)CustomRandom<WeaponType>.Choice
+            (
+                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().ToList(), 
+                this.Random
+            );
+            string weaponId = $"weapon_{weaponType}{rewardRankIndex}{rewardPrefixIndex}";
+            return JsonDB.GetWeapon(weaponId);
+        }
+        else 
+        {
+            var idBase = CustomRandom<string>.Choice
+            (
+                JsonDB.GetEquipmentIdBases(),
+                this.Random
+            );
+            string equipId = $"{idBase}_{rewardRankIndex}{rewardPrefixIndex}";
+            return JsonDB.GetEquipment(equipId);
+        }
+    }
+
+    int GetRewardCoin()
+    {
+        int worldNum = this.Number;
+        return this.Random.Next(coinMin[worldNum], coinMax[worldNum]);
     }
 
     public StageCard GetRandomCard()
@@ -148,7 +217,14 @@ public class World
             case CardType.Monster:
                 var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
                 var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
-                return new MonsterCard(monster);
+                var rewardEquipments = new Equipment[3] 
+                {
+                    GetRewardEquipment(),
+                    GetRewardEquipment(),
+                    GetRewardEquipment(),
+                };
+                var rewardCoin = GetRewardCoin();
+                return new MonsterCard(monster, rewardEquipments, rewardCoin);
             case CardType.Chest:
                 var chestType = CustomRandom<ChestType>.WeightedChoice
                 (
@@ -219,7 +295,15 @@ public class World
         if (stageNum >= this.BossStage)
         {
             var boss = JsonDB.GetWorldBoss(this.Number);
-            stage.Cards[1] = new BossCard(boss);
+            // TODO: 보스 보상을 보스에 맞춰 바꿔야 함
+            var rewardEquipments = new Equipment[3] 
+            {
+                GetRewardEquipment(),
+                GetRewardEquipment(),
+                GetRewardEquipment(),
+            };
+            var rewardCoin = GetRewardCoin();
+            stage.Cards[1] = new BossCard(boss, rewardEquipments, rewardCoin);
         }
         return stage;
     }
