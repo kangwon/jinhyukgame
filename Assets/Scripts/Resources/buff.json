@@ -5,7 +5,7 @@
       "name": "스탯 [최대 체력]",
       "description": "최대 체력 5% 증가",
       "percentStat": {
-        "maxHp" : 0.05
+        "maxHp": 0.05
       }
       },
     {

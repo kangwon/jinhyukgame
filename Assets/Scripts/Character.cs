@@ -39,13 +39,13 @@ public class Stat
     public Stat DeepCopy() => (Stat)this.MemberwiseClone();
 }
 
+[System.Serializable]
 public class StatPercent
 {
     public float maxHp;
     public float attack;
     public float defense;
-    public float speed;
-    
+    public float speed;  
     public StatPercent() 
     {
        maxHp=0;
@@ -53,6 +53,7 @@ public class StatPercent
        defense=0;
        speed=0;
     }
+    
     public StatPercent(float maxHp, float attack, float defense, float speed)
     {
         this.maxHp = maxHp;
@@ -314,7 +315,7 @@ public class Player : CharacterBase
     }
 
     public override Stat GetStat()
-    {      
+    {
         Stat currentstat = this.baseStat + equipmentSlot.GetTotalStat() + buff.GetTotalStat(this.baseStat+ equipmentSlot.GetTotalStat());
         return currentstat;
     }

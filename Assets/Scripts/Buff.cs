@@ -8,11 +8,7 @@ public class StatBuff :JsonItem
     public string name = "버프 없음";
     public string description = "버프 없음"; 
     public Stat baseBuffStat = new Stat(); //절대치 증가
-    public StatPercent percentStat = new StatPercent();
-   // public float maxHpPercent = 0; // 퍼센트로 증가할때 필요. 30% = 0.3f
-   // public float attackPercent = 0;
-    //public float defensePercent = 0;
-  //  public float speedPercent = 0;
+    public StatPercent percentStat = new StatPercent(); // 퍼센트 증가
     public float discountPercent = 0;
     public float evasionPercent = 0;
     public float criticalPercent = 0;
