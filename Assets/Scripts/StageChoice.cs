@@ -19,6 +19,7 @@ public class StageChoice : MonoBehaviour
     GameObject ChestPanel;
     GameObject BattlePanel;
     GameObject RandomPanel;
+    GameObject WeaponPopupView;
     GameObject WeaponChangePanel;
 
     Text StageText;
@@ -40,6 +41,7 @@ public class StageChoice : MonoBehaviour
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel");
         RandomPanel = GameObject.Find("RandomPanel");
         WeaponChangePanel = GameObject.Find("WeaponChangePanel");
+        WeaponPopupView = GameObject.Find("WeaponPopupView/WeaponPopupScreen");
 
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
@@ -92,6 +94,7 @@ public class StageChoice : MonoBehaviour
         ChestPanel.SetActive(false);
         BattlePanel.SetActive(false);
         RandomPanel.SetActive(false);
+        WeaponPopupView.SetActive(false);
     }
 
     public void UpdateGamePanel()

@@ -9,9 +9,10 @@ public class WeaponChangePanelController : MonoBehaviour
     GameObject[] card = new GameObject[11];
     GameObject changeCard;
     GameObject okButton;
-    public GameObject ChangePanel;
     int changeCardIndex=0;
     bool firstActive = false;
+
+    GameObject RewardPanel;
 
     void PrintCard()
     {
@@ -45,7 +46,8 @@ public class WeaponChangePanelController : MonoBehaviour
         {
             var sortList = weaponList.OrderBy(x => x.id).ToList();
             GameState.Instance.player.SetWeaponList(sortList);
-            ChangePanel.SetActive(false);
+            RewardPanel.SetActive(false);
+            this.gameObject.SetActive(false);
         }
        else PrintCard();
     }
@@ -69,8 +71,10 @@ public class WeaponChangePanelController : MonoBehaviour
             });
         }
         changeCard = GameObject.Find("ChangeCard");
-        ChangePanel.transform.localPosition = StageChoice.PanelDisplayPosition;
-        ChangePanel.SetActive(false);
+        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
+
+        this.gameObject.transform.localPosition = StageChoice.PanelDisplayPosition;
+        this.gameObject.SetActive(false);
     }
     private void OnEnable()
     {

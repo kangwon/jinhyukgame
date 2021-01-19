@@ -4,8 +4,10 @@
       "id": "buff1",
       "name": "스탯 [최대 체력]",
       "description": "최대 체력 5% 증가",
-      "maxHpPercent": 0.05
-    },
+      "percentStat": {
+        "maxHp": 0.05
+      }
+      },
     {
       "id": "buff2",
       "name": "스탯 [방어력]",
@@ -18,7 +20,9 @@
       "id": "buff3",
       "name": "스탯 [스피드]",
       "description": "스피드 10% 증가",
-      "speedPercent": 0.1
+      "percentStat": {
+        "speed": 0.1
+      }
     },
     {
       "id": "buff4",
@@ -82,7 +86,9 @@
       "id": "debuff1",
       "name": "디버프 스탯 [최대 체력]",
       "description": "최대 체력 5% 감소",
-      "maxHpPercent": -0.05,
+      "percentStat": {
+        "maxHp": -0.05
+      },
       "isDebuff": true
     },
     {
@@ -98,7 +104,9 @@
       "id": "debuff3",
       "name": "디버프 스탯 [스피드]",
       "description": "스피드 10% 감소",
-      "speedPercent": -0.1,
+      "percentStat": {
+        "speed": 0.1
+      },
       "isDebuff": true
     },
     {

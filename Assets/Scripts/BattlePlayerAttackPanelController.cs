@@ -162,9 +162,9 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         if (maxCount == 3) //콤보 체크
         {
             
-            if ((selectWeapons[0].id != "bare_fist") && (selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
-            if ((selectWeapons[0].id != "bare_fist") && (selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
-            if ((selectWeapons[0].id != "bare_fist") && (selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
+            if ((selectWeapons[0].weaponType != WeaponType.none) && (selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
+            if ((selectWeapons[0].rank != Rank.none) && (selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
+            if ((selectWeapons[0].prefix != Prefix.none) && (selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
         }
         for (int i = 0; i < 3; i++) 
         {
@@ -234,9 +234,13 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");
             Debug.Log(MonsterCard.monster.isBoss);
+
+            var controller = RewardPanel.GetComponent<RewardPanelController>();
+            controller.MonsterCard = this.MonsterCard;
             RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
             RewardPanel.SetActive(true);
-            stageChoice.MoveToNextStage();//TODO: 일단 스테이지를 넘어가기위해 넣어놓음 나중에 보상패널로 이어지도록 해야함
+
+            stageChoice.MoveToNextStage();
         }    
     }
 
@@ -308,12 +312,12 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        RewardPanel = GameObject.Find("RewardPanel");
         MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
         MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
 
-        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;;
-        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;;
+        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
+        WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;
+        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;
 
         if(player != null && monster != null) 
         {

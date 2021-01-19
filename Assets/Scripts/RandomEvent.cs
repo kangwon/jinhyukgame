@@ -68,7 +68,7 @@ public class RandomEvent
             case 0: //TODO : 4가지의 확률에 맞춰 구현하기(장비,아티펙트,재화,티켓 획득)
                 name.text = $"풍선 다트";
                 description.text = "(아직구현안됨)얍!" + "\n\n";
-                switch (CustomRandom<int>.WeightedChoice(new List<int> { 0, 1, 2, 3,4 }, new List<double> { 0.2f, 0.08f, 0.3f, 0.02f, 0.4f }, new System.Random()))
+                switch (CustomRandom<int>.WeightedChoice(new List<int> { 0, 1, 2, 3, 4 }, new List<double> { 0.2f, 0.08f, 0.3f, 0.02f, 0.4f }, new System.Random()))
                 {
                     case 0:
                         description.text += $"[장비 획득]";
@@ -111,11 +111,11 @@ public class RandomEvent
         {
             case 0: 
                 name.text = $"갑작스러운 소나기";
-                description.text = "비를 피해 잠시 건물로 들어가 쉬던 주인공은 옆에 무기를 두고 쉬다가, 비가 그쳐 급히 챙겨나왔다\n\"어... 근데 이거 내 무기가 아니네?\""
-                    + "\n\n" + $"[무기 1개 기본무기로 변경]";
+                description.text = "비를 피해 잠시 건물로 들어가 쉬던 주인공은 옆에 무기를 두고 쉬다가, 비가 그쳐 급히 챙겨나왔다\n\"어... 근데 무기 하나가 어디갔지?\""
+                    + "\n\n" + $"[무기 1개 맨주먹으로 변경]";
                 var weaponList = GameState.Instance.player.GetWeaponList();
                 weaponList.RemoveAt(Random.Range(0, 10)); //장착무기 랜덤 제거
-                weaponList.Add(JsonDB.GetWeapon($"weapon_{Random.Range(0, 5)}00")); //기본무기 랜덤 추가
+                weaponList.Add(JsonDB.GetWeapon($"bare_fist")); //맨주먹 추가
                 var sortList =weaponList.OrderBy(x => x.id).ToList();
                 GameState.Instance.player.SetWeaponList(sortList);
                 break;
@@ -155,13 +155,13 @@ public class RandomEvent
                 switch (Random.Range(0,3))
                 {
                     case 0:
-                        GameState.Instance.player.SetEquipment(new Helmet { });
+                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment("helmet"));
                         break;
                     case 1:
-                        GameState.Instance.player.SetEquipment(new Armor { });
+                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment("armor"));
                         break;
                     case 2:
-                        GameState.Instance.player.SetEquipment(new Shoes { });
+                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment("shoes"));
                         break;
                     default:
                         break;
