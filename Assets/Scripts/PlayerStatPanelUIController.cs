@@ -20,7 +20,7 @@ public class PlayerStatPanelUIController : MonoBehaviour
         HP_slider = GameObject.Find("HP_Slider").GetComponent<Slider>();
         
         buffName = GameObject.Find("BF name").GetComponent<Text>();
-        buffSummary = GameObject.Find("Canvas").transform.Find("PlayerStatPanel/BF popup/BF description").gameObject.GetComponent<Text>();
+        buffSummary = GameObject.Find("Canvas").transform.Find("BuffandStatPanel/BF popup/BF description").gameObject.GetComponent<Text>();
     }
 
     void Update()
