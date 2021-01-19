@@ -11,11 +11,10 @@ public class BattleController : MonoBehaviour
     public Monster monster;
 
     BattlePlayerAttackPanelController BattlePanel;
+    SpeedGaugeUI SGUI;
 
     public int GAUGE_SIZE = 200;
     public float playerGauge, monsterGauge;
-
-    public int gaugeQueueCount = 0;
 
     enum BattleState {
         Sleeping, //시작 안함
@@ -32,6 +31,11 @@ public class BattleController : MonoBehaviour
     void Awake() 
     {
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel").GetComponent<BattlePlayerAttackPanelController>();
+        SGUI = GameObject.Find("SpeedGaugeUI").GetComponent<SpeedGaugeUI>();
+
+        if(SGUI == null) {
+            Debug.Log("SGUI not found!");
+        }
     }
 
     void OnEnable() 
@@ -47,31 +51,25 @@ public class BattleController : MonoBehaviour
         {
             case BattleState.Started:
             BattleInit();
-            Debug.Log("1");
             break;
 
             case BattleState.Waiting:
             SpeedUntilTurn();
-            Debug.Log("2");
             break;
 
             case BattleState.PlayerTurn:
             PlayerAttack();
-            Debug.Log("3");
             break;
 
             case BattleState.MonsterTurn:
             MonsterAttack();
-            Debug.Log("4");
             break;
 
             case BattleState.TurnDone:
             TurnFinish();
-            Debug.Log("5");
             break;
 
             case BattleState.BattleOver:
-            Debug.Log("Battle Done!");
             BattleFinish();
             break;
         }
@@ -88,9 +86,7 @@ public class BattleController : MonoBehaviour
             Debug.Log("몬스터 로딩 안됨.");
         } else {
             playerGauge = player?.GetStat().startSpeedGauge ?? 0;
-            //Debug.Log($"플레이어 게이지 : {playerGauge}");
             monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
-            //Debug.Log($"몬스터 게이지 : {monsterGauge}");
         }
 
         battleState = BattleState.Waiting;
@@ -100,22 +96,19 @@ public class BattleController : MonoBehaviour
     {
         while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
             playerGauge += (player.GetStat().speed * 0.1f);
-            //Debug.Log($"플레이어 게이지 : {playerGauge}");
             monsterGauge += (monster.GetStat().speed * 0.1f);
         }
 
         if(monsterGauge >= GAUGE_SIZE) 
         {
             battleState = BattleState.MonsterTurn; //몬스터 턴으로
-            //Debug.Log($"몬스터 게이지 : {monsterGauge}");
-            gaugeQueueCount++;
+            SGUI.QueueSpeedGauge();
         }
 
         if(playerGauge >= GAUGE_SIZE) 
         {
             battleState = BattleState.PlayerTurn; //플레이어 턴으로
-            //Debug.Log($"플레이어 게이지 : {playerGauge}");
-            gaugeQueueCount++;
+            SGUI.QueueSpeedGauge();
         }
     }
 
