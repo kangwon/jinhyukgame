@@ -23,7 +23,30 @@ public class StatBuff :JsonItem
     public int preemptiveUserTurn = 0;
     public int preemptiveMonTurn = 0;
     public bool handReroll = false;
-
+    //아티펙트용 변수------------------------------------------------------
+    public float npcPurchasePercent = 0; //마을 할인용 변수
+    public bool firstAttackCritical = false; //첫타격 확정치명타
+    public bool resurrection = false; //1회 부활
+    public bool firstDamagedImmune = false; //첫번째 피격 데미지 무시
+    public float bossDamageDecrease = 0; //보스전 피격대미지 감소
+    public float battleEndHealPercent = 0; //전투 종료시 체력 ()% 회복
+    public float doubleAttackPercent = 0; //()%확률로 2번공격
+    public int continueBattleAddDamage = 0; //연속전투시 추가데미지
+    public int continueBattleCoin = 0; //연속전투시 추가재화
+    public int attack3AddDamage = 0; //세번째 타격마다 추가고정데미지
+    public float enemyHpPercentDamage = 0; //상대체력퍼센트()% 추가고정데미지
+    public int nasusQ =0; // 잡은몬스터*n 만큼 추가데미지 (스택제한이 있다)
+    public float reflectionDamage = 0; //받은피해에 ()% 반사 데미지
+    public int bossAddDamage = 0; //보스전 추가 데미지
+    public bool statusEffectImmune = false; //상태이상 면역
+    public bool hp1Left = false; // 전투시마다 피1로 1회 버티기
+    public bool resetStageCard = false; // 스테이지 카드 리셋 충전식 (5스테이지마다)
+    public float lostHpRatioDamageUp = 0; // 잃은 체력 비례 데미지 증가
+    public float lostHpRatioSpeedUp = 0; // 잃은 체력 비례 스피드 증가
+    public float monsterChanceDecrease = 0; //몬스터 조우확률 ()% 감소
+    public float monsterChanceIncrease = 0; //몬스터 조우확룰 ()% 증가
+    public float rewardBonusPercent = 0; //몬스터 처치시 ()% 추가보상기회
+    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가
     public float GetHP(CharacterBase characterBase)       // 스테이지마다 함수 구현 필요
     {
         return characterBase.baseStat.maxHp*stageHpDrainPercent + characterBase.hp;
