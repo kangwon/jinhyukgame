@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 [System.Serializable]
 public enum Rank
@@ -43,6 +44,20 @@ public class Equipment : JsonItem
 public class Weapon : Equipment
 {
     public WeaponType weaponType;
+
+    Dictionary<WeaponType, Sprite> weaponImgs = new Dictionary<WeaponType, Sprite>()
+    {
+        { WeaponType.none , Resources.Load("Img/fist", typeof(Sprite)) as Sprite },
+        { WeaponType.sword , Resources.Load("Img/sword", typeof(Sprite)) as Sprite },
+        { WeaponType.blunt , Resources.Load("Img/blunt", typeof(Sprite)) as Sprite },
+        { WeaponType.spear , Resources.Load("Img/spear", typeof(Sprite)) as Sprite },
+        { WeaponType.dagger , Resources.Load("Img/dagger", typeof(Sprite)) as Sprite },
+        { WeaponType.wand , Resources.Load("Img/wand", typeof(Sprite)) as Sprite }
+    };
+
+    public Sprite weaponImg { get => weaponImgs[this.weaponType]; }
+
+
 }
 public class Armor : Equipment {}
 public class Helmet : Equipment {}

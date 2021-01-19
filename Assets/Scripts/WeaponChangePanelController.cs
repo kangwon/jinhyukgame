@@ -16,27 +16,7 @@ public class WeaponChangePanelController : MonoBehaviour
 
     void changeview()
     {
-        switch (weaponList[changeCardIndex].weaponType)
-        {
-            case WeaponType.sword:
-                changeCard.GetComponent<Image>().sprite = Resources.Load("Img/sword", typeof(Sprite)) as Sprite;
-                break;
-            case WeaponType.blunt:
-                changeCard.GetComponent<Image>().sprite = Resources.Load("Img/hammer", typeof(Sprite)) as Sprite;
-                break;
-            case WeaponType.spear:
-                changeCard.GetComponent<Image>().sprite = Resources.Load("Img/spear", typeof(Sprite)) as Sprite;
-                break;
-            case WeaponType.dagger:
-                changeCard.GetComponent<Image>().sprite = Resources.Load("Img/knife", typeof(Sprite)) as Sprite;
-                break;
-            case WeaponType.wand:
-                changeCard.GetComponent<Image>().sprite = Resources.Load("Img/wand", typeof(Sprite)) as Sprite;
-                break;
-            default:
-                changeCard.GetComponent<Image>().sprite = Resources.Load("Img/fist", typeof(Sprite)) as Sprite;
-                break;
-        }
+        changeCard.GetComponent<Image>().sprite = weaponList[changeCardIndex].weaponImg;
         if (changeCardIndex < weaponList.Count)
             changeCard.transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(changeCardIndex).name}\n{weaponList.ElementAt(changeCardIndex).statEffect.attack}";
         else
@@ -47,27 +27,7 @@ public class WeaponChangePanelController : MonoBehaviour
     {
         for (int i = 0; i < 11; i++)
         {
-            switch (weaponList[i].weaponType)
-            {
-                case WeaponType.sword:
-                    card[i].GetComponent<Image>().sprite = Resources.Load("Img/sword", typeof(Sprite)) as Sprite;
-                    break;
-                case WeaponType.blunt:
-                    card[i].GetComponent<Image>().sprite = Resources.Load("Img/hammer", typeof(Sprite)) as Sprite;
-                    break;
-                case WeaponType.spear:
-                    card[i].GetComponent<Image>().sprite = Resources.Load("Img/spear", typeof(Sprite)) as Sprite;
-                    break;
-                case WeaponType.dagger:
-                    card[i].GetComponent<Image>().sprite = Resources.Load("Img/knife", typeof(Sprite)) as Sprite;
-                    break;
-                case WeaponType.wand:
-                    card[i].GetComponent<Image>().sprite = Resources.Load("Img/wand", typeof(Sprite)) as Sprite;
-                    break;
-                default:
-                    card[i].GetComponent<Image>().sprite = Resources.Load("Img/fist", typeof(Sprite)) as Sprite;
-                    break;
-            }
+            card[i].GetComponent<Image>().sprite = weaponList[i].weaponImg;
             int temp = i;
             if(temp < weaponList.Count)
                 card[temp].transform.GetChild(0).GetComponent<Text>().text = $"{weaponList.ElementAt(temp).name}\n{weaponList.ElementAt(temp).statEffect.attack}";
