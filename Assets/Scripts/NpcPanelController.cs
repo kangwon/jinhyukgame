@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class NpcPanelController : MonoBehaviour
 {
-    public List<string> NpcJobs;
-    // public StageChoice stageChoice;
-
     GameObject NpcPanel;
     GameObject NpcPanel_Merchant;
     GameObject NpcPanel_Healer;
@@ -19,11 +16,6 @@ public class NpcPanelController : MonoBehaviour
         NpcPanel_Merchant = GameObject.Find("NpcPanel_Merchant");
         NpcPanel_Healer = GameObject.Find("NpcPanel_Healer");
         NpcPanel_Enchanter = GameObject.Find("NpcPanel_Enchanter");
-
-        List<string> NpcJobs = new List<string>()
-        {
-            "Merchant", "Healer", "Enchanter"
-        };
 
         Button button1 = GameObject.Find($"NpcButton1").GetComponent<Button>();
         button1.onClick.AddListener(() => {
