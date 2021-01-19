@@ -8,7 +8,7 @@ using UnityEditor.Build.Reporting;
 using UnityEditorInternal;
 using System;
 
-public class EnchantControl : MonoBehaviour
+public class NpcEnchantController : MonoBehaviour
 {
     // Start is called before the first frame update
 

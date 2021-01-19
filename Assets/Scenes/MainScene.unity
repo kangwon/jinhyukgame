@@ -3792,7 +3792,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 295639072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5630fe76d04734b9a5dad756532644, type: 3}
+  m_Script: {fileID: 11500000, guid: 7984e676c58a143faa99003fe6f1d1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healerText: {fileID: 0}
@@ -7687,6 +7687,7 @@ GameObject:
   - component: {fileID: 647921969}
   - component: {fileID: 647921972}
   - component: {fileID: 647921971}
+  - component: {fileID: 647921970}
   m_Layer: 5
   m_Name: NpcPanel_Merchant
   m_TagString: Untagged
@@ -7719,6 +7720,18 @@ RectTransform:
   m_AnchoredPosition: {x: 1500, y: -1400}
   m_SizeDelta: {x: 0, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &647921970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647921968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb6d680d9cb5491f8d52622a809ae3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &647921971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8187,11 +8200,98 @@ MonoBehaviour:
   m_GameObject: {fileID: 674661713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b966ce2cc81644bb1cb14deb7ff780, type: 3}
+  m_Script: {fileID: 11500000, guid: 7984e676c58a143faa99003fe6f1d1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enchantWeaponMny: 1900000064000000fa000000f4010000ee020000e8030000
+  enchantEquipmentMny: 32000000af00000090010000ee020000e8030000dc050000
+  prefixlist:
+  - broken
+  - weak
+  - normal
+  - strong
+  - amazing
+  typelist:
+  - weapon
+  - helmet
+  - armor
+  - shoes
+  minus_mny: 0
+  weaponList: []
+  pHelmet:
+    id: 
+    type: 
+    name: 
+    price: 0
+    statEffect:
+      maxHp: 0
+      attack: 0
+      defense: 0
+      speed: 0
+      startSpeedGauge: 0
+      critical: 0
+      evasion: 0
+      vampire: 0
+    rank: 0
+    prefix: 0
+  pArmor:
+    id: 
+    type: 
+    name: 
+    price: 0
+    statEffect:
+      maxHp: 0
+      attack: 0
+      defense: 0
+      speed: 0
+      startSpeedGauge: 0
+      critical: 0
+      evasion: 0
+      vampire: 0
+    rank: 0
+    prefix: 0
+  pShoes:
+    id: 
+    type: 
+    name: 
+    price: 0
+    statEffect:
+      maxHp: 0
+      attack: 0
+      defense: 0
+      speed: 0
+      startSpeedGauge: 0
+      critical: 0
+      evasion: 0
+      vampire: 0
+    rank: 0
+    prefix: 0
+  I_card:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  helcard: {fileID: 0}
+  armcard: {fileID: 0}
+  shocard: {fileID: 0}
+  beforeCard: {fileID: 0}
+  afterCard: {fileID: 0}
+  enchantButton: {fileID: 0}
   EnchantPanel: {fileID: 0}
+  card_Index: -1
+  EnchantOn: 1
   stageChoice: {fileID: 1186672459}
+  beforeid: 
+  checkprefix: 
+  checktype: 
+  checkrank: 
+  changeprefix: 0
 --- !u!114 &674661716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14179,7 +14279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb06d2972db8b40f09ae3dada89e4a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NpcJobs: []
 --- !u!1 &1145485625
 GameObject:
   m_ObjectHideFlags: 0
