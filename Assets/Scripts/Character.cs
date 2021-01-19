@@ -175,7 +175,6 @@ public class Monster : CharacterBase
         return incomingDmg; // TODO : 몬스터 데미지 계산식
     }
 }
-
 public class Player : CharacterBase
 {
 
