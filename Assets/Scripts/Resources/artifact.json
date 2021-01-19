@@ -3,16 +3,14 @@
     {
       "id": "artifact0",
       "name": "세계수의 나뭇가지",
-      "price": 0,
       "isBossItem": true,
       "statEffect": {
-        "maxHpPercent" : 0.1
+        "maxHpPercent": 0.1
       }
     },
     {
       "id": "artifact1",
       "name": "기사단장의 징표",
-      "price": 0,
       "isBossItem": true,
       "statEffect": {
         "purchasePercent": 0.1
@@ -20,10 +18,66 @@
     },
     {
       "id": "artifact2",
-      "name": "일반 아티펙트(예시)",
-      "price": 0,
-      "isBossItem": false,
+      "name": "가시박힌 너클",
+      "isBossItem": true,
       "statEffect": {
+        "firstAttackCritical": true
+      }
+    },
+    {
+      "id": "artifact3",
+      "name": "앙크(부활의 인장)",
+      "isBossItem": true,
+      "statEffect": {
+        "resurrection": true
+      }
+    },
+    {
+      "id": "artifact4",
+      "name": "미니어쳐 묠니르",
+      "isBossItem": true,
+      "statEffect": {
+        "continueBattleAddDamage": 50
+      }
+    },
+    {
+      "id": "artifact5",
+      "name": "하바리움",
+      "isBossItem": true,
+      "statEffect": {
+        "npcPurchasePercent": 0.2
+      }
+    },
+    {
+      "id": "artifact6",
+      "name": "깨진 거울조각",
+      "isBossItem": true,
+      "statEffect": {
+        "bossDamageDecrease": 0.1
+      }
+    },
+    {
+      "id": "artifact7",
+      "name": "곰방대",
+      "isBossItem": true,
+      "statEffect": {
+        "battleEndHealPercent": 0.05
+      }
+    },
+    {
+      "id": "artifact8",
+      "name": "주피터 주니어",
+      "isBossItem": true,
+      "statEffect": {
+        "doubleAttackPercent": 0.05
+      }
+    },
+    {
+      "id": "artifact9",
+      "name": "흡혈 송곳니",
+      "isBossItem": true,
+      "statEffect": {
+        "hpDrainPercent": 0.1
       }
     }
   ]
