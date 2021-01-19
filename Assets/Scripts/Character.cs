@@ -331,12 +331,17 @@ public class Player : CharacterBase
         HpOver();
     }
 
-    public void BuyItem(Equipment item)
+    public bool BuyItem(Equipment item)
     {
         if (money >= item.price)
         {
             money -= item.price;
             this.SetEquipment(item);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

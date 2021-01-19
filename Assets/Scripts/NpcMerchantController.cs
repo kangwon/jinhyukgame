@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NpcMerchantController : MonoBehaviour
 {
     Button[] SaleButtons = new Button[3];
+    Text StatusText;
 
     StageChoice stageChoice;
     GameObject weaponChangePanel;
@@ -20,6 +21,9 @@ public class NpcMerchantController : MonoBehaviour
             SaleButtons[i] = GameObject.Find("Canvas").transform
                 .Find($"NpcPanel_Merchant/Sale{i + 1}").gameObject.GetComponent<Button>();
         }
+        StatusText = GameObject.Find("Canvas").transform
+                .Find("NpcPanel_Merchant/StatusText").gameObject.GetComponent<Text>();
+
         stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
         weaponChangePanel = GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject;
         equipmentChanger = GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>();
@@ -51,6 +55,11 @@ public class NpcMerchantController : MonoBehaviour
                 button.onClick.AddListener(() => OnClickSaleButton(equipment));
             }
         }
+
+        if (StatusText != null)
+        {
+            StatusText.text = "상인을 만났다";
+        }
     }
 
     void OnClickSaleButton(Equipment equipment)
@@ -58,20 +67,33 @@ public class NpcMerchantController : MonoBehaviour
         var player = GameState.Instance.player;
         if (equipment.type == "weapon")
         {
-            player.BuyItem(equipment);
-            if (player.GetWeaponList().Count > 10)
-                weaponChangePanel.SetActive(true);
-            this.gameObject.SetActive(false);
-            stageChoice.MoveToNextStage();
+            if (player.BuyItem(equipment))
+            {
+                if (player.GetWeaponList().Count > 10)
+                    weaponChangePanel.SetActive(true);
+                this.gameObject.SetActive(false);
+                stageChoice.MoveToNextStage();
+            }
+            else
+            {
+                StatusText.text = "돈이 부족해";
+            }
         }
         else
         {
-            equipmentChanger.DisplayPanel(equipment, (e) => 
+            if (player.BuyItem(equipment))
             {
-                player.BuyItem(e);
-                this.gameObject.SetActive(false);
-                stageChoice.MoveToNextStage();
-            });
+                equipmentChanger.DisplayPanel(equipment, (e) => 
+                {
+                    player.BuyItem(e);
+                    this.gameObject.SetActive(false);
+                    stageChoice.MoveToNextStage();
+                });
+            }
+            else
+            {
+                StatusText.text = "돈이 부족해";
+            }
         }
     }
 }
