@@ -28,7 +28,6 @@ public class StageChoice : MonoBehaviour
     Text CardText2;
     Text CardText3;
 
-    Player player;
     // Start is called before the first frame update
     void Start()
     {
