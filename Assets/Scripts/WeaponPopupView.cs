@@ -50,9 +50,12 @@ public class WeaponPopupView : MonoBehaviour, IPointerDownHandler
                         WeaponIcon[i].GetComponent<Image>().sprite = Resources.Load("Img/wand", typeof(Sprite)) as Sprite;
                         temp = "지팡이";
                         break;
-                    default:
+                    case WeaponType.none:
                         WeaponIcon[i].GetComponent<Image>().sprite = Resources.Load("Img/fist", typeof(Sprite)) as Sprite;
                         temp = "맨주먹";
+                        break;
+                    default:
+                        temp = "?";
                         break;
                 }
                 WeaponIcon[i].transform.GetChild(0).GetComponent<Text>().text = $"{temp}";
