@@ -65,5 +65,9 @@ public class RewardPanelController : MonoBehaviour
         {
             equipmentChanger.DisplayPanel(reward);
         }
+
+
+        if (player.GetStat().maxHp < player.hp)
+            GameState.Instance.player.hp = player.GetStat().maxHp;
     }
 }

@@ -28,6 +28,7 @@ public class StageChoice : MonoBehaviour
     Text CardText2;
     Text CardText3;
 
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +74,8 @@ public class StageChoice : MonoBehaviour
     {
         selectedCard = null;
         GameState.Instance.MoveToNextStage();
+        if (GameState.Instance.player.GetStat().maxHp < GameState.Instance.player.hp)
+            GameState.Instance.player.hp = GameState.Instance.player.GetStat().maxHp;
         StageText.text = $"Stage {GameState.Instance.Stage.Number}";
         ActivatePannel();
     }

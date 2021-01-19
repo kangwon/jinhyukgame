@@ -206,7 +206,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             playerGauge -= GAUGE_SIZE; //게이지 소비.
             Stat tempStat = new Stat();
             tempStat.attack = cardDamageSum + player.GetStat().attack;
-            monster.TakeHit((tempStat.attack+player.Synergy().attack)*(1f+comboPercentSum)); 
+            monster.TakeHit((tempStat.attack+player.Synergy().attack)*(1f+comboPercentSum));
             playerState = combatState.Idle; //다시 게이지 채우는 중으로
             OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
         }
@@ -229,7 +229,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             ShowGameOver();
         }
 
-        if(monster.isDead) 
+        if (player.GetStat().maxHp < player.hp)
+            GameState.Instance.player.hp = player.GetStat().maxHp;
+
+        if (monster.isDead) 
         {
             monsterState = combatState.Dead;
             Debug.Log("몬스터 죽음");

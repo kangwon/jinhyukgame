@@ -116,6 +116,7 @@ public class CharacterBase : JsonItem
         get => hp <= 0;
     }
 
+
     public CharacterBase(Stat stat)
     {
         this.baseStat = stat;

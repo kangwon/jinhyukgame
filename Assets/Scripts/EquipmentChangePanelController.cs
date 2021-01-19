@@ -75,11 +75,19 @@ public class EquipmentChangePanelController : MonoBehaviour
         player.SetEquipment(this.afterEquipment);
         RewardPanel.SetActive(false);
         this.gameObject.SetActive(false);
+
+        if (player.GetStat().maxHp < player.hp)
+            GameState.Instance.player.hp = player.GetStat().maxHp;
+
     }
 
     void OnClickCancelButton()
     {
         this.gameObject.SetActive(false);
+
+
+        if (player.GetStat().maxHp < player.hp)
+            GameState.Instance.player.hp = player.GetStat().maxHp;
     }
 
     // 이거 써서 불러내면 됨
