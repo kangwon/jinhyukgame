@@ -51,7 +51,6 @@ public class Shoes : Equipment {}
 public class Artifact : JsonItem
 {
     public string name;
-    public int price;
     public bool isBossItem;
     public StatBuff statEffect;
 }

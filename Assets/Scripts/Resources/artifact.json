@@ -3,16 +3,14 @@
     {
       "id": "artifact0",
       "name": "세계수의 나뭇가지",
-      "price": 0,
       "isBossItem": true,
       "statEffect": {
-        "maxHpPercent" : 0.1
+        "maxHpPercent": 0.1
       }
     },
     {
       "id": "artifact1",
       "name": "기사단장의 징표",
-      "price": 0,
       "isBossItem": true,
       "statEffect": {
         "purchasePercent": 0.1
@@ -20,10 +18,233 @@
     },
     {
       "id": "artifact2",
-      "name": "일반 아티펙트(예시)",
-      "price": 0,
+      "name": "가시박힌 너클",
+      "isBossItem": true,
+      "statEffect": {
+        "firstAttackCritical": true
+      }
+    },
+    {
+      "id": "artifact3",
+      "name": "앙크(부활의 인장)",
+      "isBossItem": true,
+      "statEffect": {
+        "resurrection": true
+      }
+    },
+    {
+      "id": "artifact4",
+      "name": "미니어쳐 묠니르",
+      "isBossItem": true,
+      "statEffect": {
+        "continueBattleAddDamage": 50
+      }
+    },
+    {
+      "id": "artifact5",
+      "name": "하바리움",
+      "isBossItem": true,
+      "statEffect": {
+        "npcPurchasePercent": 0.2
+      }
+    },
+    {
+      "id": "artifact6",
+      "name": "깨진 거울조각",
+      "isBossItem": true,
+      "statEffect": {
+        "bossDamageDecrease": 0.1
+      }
+    },
+    {
+      "id": "artifact7",
+      "name": "곰방대",
+      "isBossItem": true,
+      "statEffect": {
+        "battleEndHealPercent": 0.05
+      }
+    },
+    {
+      "id": "artifact8",
+      "name": "주피터 주니어",
+      "isBossItem": true,
+      "statEffect": {
+        "doubleAttackPercent": 0.05
+      }
+    },
+    {
+      "id": "artifact9",
+      "name": "흡혈 송곳니",
+      "isBossItem": true,
+      "statEffect": {
+        "hpDrainPercent": 0.1
+      }
+    },
+    {
+      "id": "artifact10",
+      "name": "키재기 막대",
       "isBossItem": false,
       "statEffect": {
+        "percentStat": {
+          "attack": 0.1
+        }
+      }
+    },
+    {
+      "id": "artifact11",
+      "name": "두루마리 휴지",
+      "isBossItem": false,
+      "statEffect": {
+        "percentStat": {
+          "defense": 0.1
+        }
+      }
+    },
+    {
+      "id": "artifact12",
+      "name": "알 없는 안경",
+      "isBossItem": false,
+      "statEffect": {
+        "percentStat": {
+          "speed": 0.1
+        }
+      }
+    },
+    {
+      "id": "artifact13",
+      "name": "망가진 가로등",
+      "isBossItem": false,
+      "statEffect": {
+        "attack3AddDamage": 50
+      }
+    },
+    {
+      "id": "artifact14",
+      "name": "폭죽 점화장치",
+      "isBossItem": false,
+      "statEffect": {
+        "enemyHpPercentDamage": 0.1
+      }
+    },
+    {
+      "id": "artifact15",
+      "name": "분장용 도구 세트",
+      "isBossItem": false,
+      "statEffect": {
+        "firstDamagedImmune": true
+      }
+    },
+    {
+      "id": "artifact16",
+      "name": "보조 배터리",
+      "isBossItem": false,
+      "statEffect": {
+        "checkNasusQ": true,
+        "nasusQ": 5
+      }
+    },
+    {
+      "id": "artifact17",
+      "name": "아주 뜨거운 손난로",
+      "isBossItem": false,
+      "statEffect": {
+        "reflectionDamage": 0.1
+      }
+    },
+    {
+      "id": "artifact18",
+      "name": "분실물 명품 지갑",
+      "isBossItem": false,
+      "statEffect": {
+        "continueBattleCoin": 50
+      }
+    },
+    {
+      "id": "artifact19",
+      "name": "가이드맵",
+      "isBossItem": false,
+      "statEffect": {
+        "bossAddDamage": 50
+      }
+    },
+    {
+      "id": "artifact20",
+      "name": "잃어버린 손목시계",
+      "isBossItem": false,
+      "statEffect": {
+        "preemptiveUserTurn": 1
+      }
+    },
+    {
+      "id": "artifact22",
+      "name": "VR 헤드기어",
+      "isBossItem": false,
+      "statEffect": {
+        "statusEffectImmune": true
+      }
+    },
+    {
+      "id": "artifact23",
+      "name": "파라오 가면",
+      "isBossItem": false,
+      "statEffect": {
+        "hp1Left": true
+      }
+    },
+    {
+      "id": "artifact24",
+      "name": "트럼프 JOKER",
+      "isBossItem": false,
+      "statEffect": {
+        "resetStageCard": true
+      }
+    },
+    {
+      "id": "artifact25",
+      "name": "트럼프 카드 뭉치",
+      "isBossItem": false,
+      "statEffect": {
+        "rewardBonusPercent": 0.05
+      }
+    },
+    {
+      "id": "artifact26",
+      "name": "연간 회원권",
+      "isBossItem": false,
+      "statEffect": {
+        "battleTurnRatioStatUp": 0.01
+      }
+    },
+    {
+      "id": "artifact27",
+      "name": "춤추는 관짝",
+      "isBossItem": false,
+      "statEffect": {
+        "lostHpRatioDamageUp": 0.01
+      }
+    },
+    {
+      "id": "artifact28",
+      "name": "에너지 드링크",
+      "isBossItem": false,
+      "statEffect": {
+        "lostHpRatioSpeedUp": 0.01
+      }
+    },
+    {
+      "id": "artifact29",
+      "name": "러블리 열쇠고리 인형",
+      "isBossItem": false,
+      "statEffect": {
+        "monsterChanceDecrease": 0.05
+      }
+    },
+    {
+      "id": "artifact30",
+      "name": "러비 얼굴 뱃지",
+      "isBossItem": false,
+      "statEffect": {
+        "monsterChanceIncrease": 0.05
       }
     }
   ]
