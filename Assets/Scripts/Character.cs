@@ -116,6 +116,7 @@ public class CharacterBase : JsonItem
         get => hp <= 0;
     }
 
+
     public CharacterBase(Stat stat)
     {
         this.baseStat = stat;
@@ -175,7 +176,6 @@ public class Monster : CharacterBase
         return incomingDmg; // TODO : 몬스터 데미지 계산식
     }
 }
-
 public class Player : CharacterBase
 {
 
@@ -184,6 +184,11 @@ public class Player : CharacterBase
     public float hpDrain = 0f; // 일단은 곱연산
     public int money = 100;
     
+    public void HpOver()
+    {
+        if (this.GetStat().maxHp < this.hp)
+            this.hp = this.GetStat().maxHp;
+    }
     public List<Weapon> GetWeaponList()
     {
        return equipmentSlot.GetWeaponsList();
@@ -203,10 +208,6 @@ public class Player : CharacterBase
     public void SetWeaponList(List<Weapon> weapons)
     {
         equipmentSlot.SetWeaponsList(weapons);
-    }
-    public void SetEquipment(Helmet helmet, Armor armor, Shoes shoes)
-    {
-        equipmentSlot.SetEquipments(helmet, armor, shoes);
     }
     public void SetEquipment(Artifact artifact)
     {
@@ -252,6 +253,7 @@ public class Player : CharacterBase
             return;
         }
         this.buff = buff;
+        HpOver();
     }
     public SynergyStat Synergy()
     { 
@@ -326,6 +328,7 @@ public class Player : CharacterBase
     public void SetEquipment(Equipment equip)
     {
         equipmentSlot.SetEquipment(equip);
+        HpOver();
     }
 
     public void BuyItem(Equipment item)
