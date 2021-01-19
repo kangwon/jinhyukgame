@@ -106,8 +106,6 @@ public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
             MonsterSpeedGaugeValue.NowPos = MPos;
 
             monsterQueue.Enqueue(MonsterSpeedGaugeValue);
-
-            howManyUpdates++;
         }
 
         if((howManyUpdates != 0) && playerGaugeUpdateFinished && monsterGaugeUpdateFinished) { //큐에 남은 목록이 있고 재생이 끝남
@@ -117,7 +115,7 @@ public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
             StartCoroutine(UpdatePlayerSpeedGaugeAnim(speed));
             StartCoroutine(UpdateMonsterSpeedGaugeAnim(speed));
 
-            howManyUpdates--;
+            battleController.gaugeQueueCount--;
         }
     }
 

@@ -6,16 +6,19 @@ public class BattleController : MonoBehaviour
 {
 
     Player player;
-    Monster monster;
+    
+    public MonsterCard MonsterCard;
+    public Monster monster;
 
     BattlePlayerAttackPanelController BattlePanel;
 
-    public float GAUGE_SIZE = 200.0f;
+    public int GAUGE_SIZE = 200;
     public float playerGauge, monsterGauge;
 
     public int gaugeQueueCount = 0;
 
     enum BattleState {
+        Sleeping, //시작 안함
         Started, //시작함
         Waiting, //대기 상태(게이지 채우는 중)
         PlayerTurn, //플레이어의 턴
@@ -28,27 +31,13 @@ public class BattleController : MonoBehaviour
 
     void Awake() 
     {
-        player = GameState.Instance.player;
-
         BattlePanel = GameObject.Find("BattlePlayerAttackPanel").GetComponent<BattlePlayerAttackPanelController>();
     }
 
     void OnEnable() 
     {
-        if(player == null || monster == null) 
-        {
-            Debug.Log("No game objects found!");
-        } else {
-            PlayerMonsterInit();
-            battleState = BattleState.Started;
-        }
-    }
-
-    void PlayerMonsterInit() 
-    {
-        monster = BattlePanel.monster;
-        playerGauge = player?.GetStat().startSpeedGauge ?? 0;
-        monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
+        player = GameState.Instance.player;
+        battleState = BattleState.Started;
     }
 
     // Update is called once per frame
@@ -57,24 +46,28 @@ public class BattleController : MonoBehaviour
         switch(battleState) 
         {
             case BattleState.Started:
-            Debug.Log("new battle started!");
-            battleState = BattleState.Waiting;
+            BattleInit();
+            Debug.Log("1");
             break;
 
             case BattleState.Waiting:
-            StartCoroutine(SpeedTilTurn());
+            SpeedUntilTurn();
+            Debug.Log("2");
             break;
 
             case BattleState.PlayerTurn:
             PlayerAttack();
+            Debug.Log("3");
             break;
 
             case BattleState.MonsterTurn:
             MonsterAttack();
+            Debug.Log("4");
             break;
 
             case BattleState.TurnDone:
             TurnFinish();
+            Debug.Log("5");
             break;
 
             case BattleState.BattleOver:
@@ -84,24 +77,45 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    IEnumerator SpeedTilTurn()
+    public void BattleInit()
+    {
+        monster = MonsterCard?.monster;
+
+        if(player == null) {
+            Debug.Log("플레이어 로딩 안됨.");
+        }
+        else if(monster == null) {
+            Debug.Log("몬스터 로딩 안됨.");
+        } else {
+            playerGauge = player?.GetStat().startSpeedGauge ?? 0;
+            //Debug.Log($"플레이어 게이지 : {playerGauge}");
+            monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
+            //Debug.Log($"몬스터 게이지 : {monsterGauge}");
+        }
+
+        battleState = BattleState.Waiting;
+    }
+
+    public void SpeedUntilTurn()
     {
         while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
-            playerGauge += (player.GetStat().speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
-            monsterGauge += (monster.GetStat().speed * Time.deltaTime);
-            yield return null;
+            playerGauge += (player.GetStat().speed * 0.1f);
+            //Debug.Log($"플레이어 게이지 : {playerGauge}");
+            monsterGauge += (monster.GetStat().speed * 0.1f);
         }
 
         if(monsterGauge >= GAUGE_SIZE) 
         {
             battleState = BattleState.MonsterTurn; //몬스터 턴으로
-            Debug.Log("몬스터턴");
+            //Debug.Log($"몬스터 게이지 : {monsterGauge}");
+            gaugeQueueCount++;
         }
 
         if(playerGauge >= GAUGE_SIZE) 
         {
             battleState = BattleState.PlayerTurn; //플레이어 턴으로
-            Debug.Log("플레이어턴");
+            //Debug.Log($"플레이어 게이지 : {playerGauge}");
+            gaugeQueueCount++;
         }
     }
 
@@ -110,7 +124,6 @@ public class BattleController : MonoBehaviour
         if(BattlePanel.OnClickAttackPressed)
         {
             Stat tempStat = new Stat();
-            Debug.Log($"카드 총합 데미지:{BattlePanel.cardDamageSum}, 플레이어 공격력:{player.GetStat().attack}");
             tempStat.attack = BattlePanel.cardDamageSum + player.GetStat().attack;
             monster.TakeHit((tempStat.attack+player.Synergy().attack)*(1f+BattlePanel.comboPercentSum));
             
@@ -133,8 +146,6 @@ public class BattleController : MonoBehaviour
 
     public void TurnFinish() 
     {
-        gaugeQueueCount++;
-
         if(player.isDead || monster.isDead) 
         {
             battleState = BattleState.BattleOver;

@@ -87,7 +87,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     GameObject RewardPanel;
     public MonsterCard MonsterCard;
-    public Monster monster;
+    Monster monster;
     Text MonsterName;
     Text MonsterHp;
 
@@ -96,6 +96,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public int cardDamageSum; // 카드 선택한것 총 데미지
     public float comboPercentSum;
     public bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
+    public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
 
     public void OnClickHandCard(int index)
     {
