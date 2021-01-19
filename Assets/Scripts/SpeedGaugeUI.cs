@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
 {
-    BattlePlayerAttackPanelController BPAPC;
+    BattleController battleController;
     
     [HideInInspector]
     public RectTransform rectTran;
@@ -37,7 +37,7 @@ public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
     /*---*/
 
     void Awake() {
-        BPAPC = this.transform.parent.GetComponent<BattlePlayerAttackPanelController>();
+        battleController = this.transform.parent.GetComponent<BattleController>();
 
         rectTran = this.GetComponent<RectTransform>();
 
@@ -67,13 +67,13 @@ public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
     // Update is called once per frame
     void Update()
     {
-        if(BPAPC.turnTriggered == true) { //BPAPC에서 턴이 진행될때 마다 queue에 차곡차곡 넣어주기
+        if(battleController.gaugeQueueCount > 0) { //battleController에서 턴이 진행될때 마다 queue에 차곡차곡 넣어주기
 
             /*---------플레이어-----------*/
 
             SpeedGaugeValues PlayerSpeedGaugeValue = new SpeedGaugeValues();
 
-            float PGRatio = BPAPC.playerGauge / BPAPC.GAUGE_SIZE;//현재 플레이어가 턴까지의 비율을 계산
+            float PGRatio = battleController.playerGauge / battleController.GAUGE_SIZE;//현재 플레이어가 턴까지의 비율을 계산
             PGRatio = RoundTrimRatio(PGRatio); //소수 두자리수까지 round, 0이하 1이상 다듬기
             PlayerSpeedGaugeValue.GaugeRatio = PGRatio;
 
@@ -92,7 +92,7 @@ public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
 
             SpeedGaugeValues MonsterSpeedGaugeValue = new SpeedGaugeValues();
 
-            float MGRatio = BPAPC.monsterGauge / BPAPC.GAUGE_SIZE;
+            float MGRatio = battleController.monsterGauge / battleController.GAUGE_SIZE;
             MGRatio = RoundTrimRatio(MGRatio);
             MonsterSpeedGaugeValue.GaugeRatio = MGRatio;
 
@@ -153,7 +153,7 @@ public class SpeedGaugeUI : MonoBehaviour //BattlePlayerAttackPanel의 child
 
     float RoundTrimRatio(float ratio) {
         ratio = Mathf.Round(ratio * 100.0f) * 0.01f; //소숫점 두자리 수까지 반올림
-        if(ratio >= 1.0f || ratio == 0.0f) { //턴을 살짝 넘어갔거나 아예 BPAPC에서 빼기당한경우
+        if(ratio >= 1.0f || ratio == 0.0f) { //턴을 살짝 넘어갔거나 아예 battleController에서 빼기당한경우
             ratio = 1.0f;
         }
         return ratio;
