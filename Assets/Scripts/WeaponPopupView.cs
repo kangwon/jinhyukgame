@@ -24,7 +24,6 @@ public class WeaponPopupView : MonoBehaviour, IPointerDownHandler
         Player player = GameState.Instance.player;
         if (popupCheck == 0)
         {
-            string temp;
             WeaponPopupScreen.SetActive(true);
             for (int i=0;i<10;i++)
             {              
@@ -49,7 +48,6 @@ public class WeaponPopupView : MonoBehaviour, IPointerDownHandler
                         WeaponIcon[i].GetComponent<Image>().sprite = Resources.Load("Img/fist", typeof(Sprite)) as Sprite;
                         break;
                     default:
-                        temp = "?";
                         break;
                 }
                 WeaponIcon[i].transform.GetChild(0).GetComponent<Text>().text = $"{player.GetWeaponList().ElementAt(i).statEffect.attack}";

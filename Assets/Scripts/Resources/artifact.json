@@ -61,7 +61,7 @@
       "name": "곰방대",
       "isBossItem": true,
       "statEffect": {
-        "battleEndHealPercent": 0.05
+        "battleEndHealPercent": 0.03
       }
     },
     {
@@ -77,7 +77,7 @@
       "name": "흡혈 송곳니",
       "isBossItem": true,
       "statEffect": {
-        "hpDrainPercent": 0.1
+        "hpDrainPercent": 0.05
       }
     },
     {
@@ -85,33 +85,41 @@
       "name": "키재기 막대",
       "isBossItem": false,
       "statEffect": {
-        "percentStat": {
-          "attack": 0.1
-        }
+        "negativeEventImmune": true
       }
     },
     {
       "id": "artifact11",
-      "name": "두루마리 휴지",
+      "name": "스티커 문신",
       "isBossItem": false,
       "statEffect": {
         "percentStat": {
-          "defense": 0.1
+          "attack": 0.05
         }
       }
     },
     {
       "id": "artifact12",
-      "name": "알 없는 안경",
+      "name": "두루마리 휴지",
       "isBossItem": false,
       "statEffect": {
         "percentStat": {
-          "speed": 0.1
+          "defense": 0.05
         }
       }
     },
     {
       "id": "artifact13",
+      "name": "알 없는 안경",
+      "isBossItem": false,
+      "statEffect": {
+        "percentStat": {
+          "speed": 0.05
+        }
+      }
+    },
+    {
+      "id": "artifact14",
       "name": "망가진 가로등",
       "isBossItem": false,
       "statEffect": {
@@ -119,15 +127,15 @@
       }
     },
     {
-      "id": "artifact14",
+      "id": "artifact15",
       "name": "폭죽 점화장치",
       "isBossItem": false,
       "statEffect": {
-        "enemyHpPercentDamage": 0.1
+        "enemyHpPercentDamage": 0.05
       }
     },
     {
-      "id": "artifact15",
+      "id": "artifact16",
       "name": "분장용 도구 세트",
       "isBossItem": false,
       "statEffect": {
@@ -135,40 +143,40 @@
       }
     },
     {
-      "id": "artifact16",
+      "id": "artifact17",
       "name": "보조 배터리",
       "isBossItem": false,
       "statEffect": {
         "checkNasusQ": true,
-        "nasusQ": 5
-      }
-    },
-    {
-      "id": "artifact17",
-      "name": "아주 뜨거운 손난로",
-      "isBossItem": false,
-      "statEffect": {
-        "reflectionDamage": 0.1
+        "nasusQ": 1
       }
     },
     {
       "id": "artifact18",
-      "name": "분실물 명품 지갑",
+      "name": "아주 뜨거운 손난로",
       "isBossItem": false,
       "statEffect": {
-        "continueBattleCoin": 50
+        "reflectionDamage": 0.05
       }
     },
     {
       "id": "artifact19",
-      "name": "가이드맵",
+      "name": "분실물 명품 지갑",
       "isBossItem": false,
       "statEffect": {
-        "bossAddDamage": 50
+        "continueBattleCoin": 10
       }
     },
     {
       "id": "artifact20",
+      "name": "가이드맵",
+      "isBossItem": false,
+      "statEffect": {
+        "bossAddDamage": 0.1
+      }
+    },
+    {
+      "id": "artifact21",
       "name": "잃어버린 손목시계",
       "isBossItem": false,
       "statEffect": {
@@ -177,7 +185,7 @@
     },
     {
       "id": "artifact22",
-      "name": "VR 헤드기어",
+      "name": "3D 체험 안경",
       "isBossItem": false,
       "statEffect": {
         "statusEffectImmune": true
@@ -193,6 +201,14 @@
     },
     {
       "id": "artifact24",
+      "name": "미아 방지 팔찌",
+      "isBossItem": false,
+      "statEffect": {
+        "chooseBuff" :  true
+      }
+    },
+    {
+      "id": "artifact25",
       "name": "트럼프 JOKER",
       "isBossItem": false,
       "statEffect": {
@@ -200,15 +216,15 @@
       }
     },
     {
-      "id": "artifact25",
+      "id": "artifact26",
       "name": "트럼프 카드 뭉치",
       "isBossItem": false,
       "statEffect": {
-        "rewardBonusPercent": 0.05
+        "rewardBonusPercent": 0.03
       }
     },
     {
-      "id": "artifact26",
+      "id": "artifact27",
       "name": "연간 회원권",
       "isBossItem": false,
       "statEffect": {
@@ -216,7 +232,7 @@
       }
     },
     {
-      "id": "artifact27",
+      "id": "artifact28",
       "name": "춤추는 관짝",
       "isBossItem": false,
       "statEffect": {
@@ -224,7 +240,7 @@
       }
     },
     {
-      "id": "artifact28",
+      "id": "artifact29",
       "name": "에너지 드링크",
       "isBossItem": false,
       "statEffect": {
@@ -232,19 +248,19 @@
       }
     },
     {
-      "id": "artifact29",
+      "id": "artifact30",
       "name": "러블리 열쇠고리 인형",
       "isBossItem": false,
       "statEffect": {
-        "monsterChanceDecrease": 0.05
+        "monsterChanceDecrease": 0.2
       }
     },
     {
-      "id": "artifact30",
+      "id": "artifact31",
       "name": "러비 얼굴 뱃지",
       "isBossItem": false,
       "statEffect": {
-        "monsterChanceIncrease": 0.05
+        "monsterChanceIncrease": 0.1
       }
     }
   ]

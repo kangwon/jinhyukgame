@@ -107,7 +107,7 @@ public class RandomEvent
     public static void NegativeEvent(Text name, Text description)
     {
         int tempInt;
-        switch (Random.Range(0, 10)) //case 추가할때 Range 범위도 늘려주자.
+        switch (Random.Range(0, 9)) //case 추가할때 Range 범위도 늘려주자.
         {
             case 0: 
                 name.text = $"갑작스러운 소나기";
@@ -149,36 +149,18 @@ public class RandomEvent
                 description.text = "청소를 하다가 손을 다쳤다." + "\n\n" + $"[공격력 {tempInt} 감소]";
                 GameState.Instance.player.baseStat.attack = System.Math.Max(0, GameState.Instance.player.baseStat.attack - tempInt);
                 break;
-            case 6:
-                name.text = $"가랑비";
-                description.text = "\"비 쯤이야 맞아도...어...?\"" + "\n\n" + $"[장비 손실]";
-                switch (Random.Range(0,3))
-                {
-                    case 0:
-                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment("helmet"));
-                        break;
-                    case 1:
-                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment("armor"));
-                        break;
-                    case 2:
-                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment("shoes"));
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 7: 
+            case 6: 
                 name.text = $"소매치기";
                 description.text = "\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
                 tempInt = GameState.Instance.player.ArtifectsCount();
                 GameState.Instance.player.ReMoveAtArtifect(Random.Range(0,tempInt));
                 break;
-            case 8:
+            case 7:
                 name.text = $"소매치기";
                 description.text = "\"내 돈 돌려줘!\"" + "\n\n" + $"[코인 전액 감소]";
                 GameState.Instance.player.money = 0;
                 break;
-            case 9:
+            case 8:
                 tempInt = 50;
                 name.text = $"수상한 누군가";
                 description.text = "\"믿어도 되는거죠...?\"" + "\n\n" + $"[-{tempInt} 코인]";
