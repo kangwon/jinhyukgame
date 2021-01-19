@@ -252,7 +252,7 @@
       "name": "러블리 열쇠고리 인형",
       "isBossItem": false,
       "statEffect": {
-        "monsterChanceDecrease": 0.05
+        "monsterChanceDecrease": 0.2
       }
     },
     {
@@ -260,7 +260,7 @@
       "name": "러비 얼굴 뱃지",
       "isBossItem": false,
       "statEffect": {
-        "monsterChanceIncrease": 0.05
+        "monsterChanceIncrease": 0.1
       }
     }
   ]
