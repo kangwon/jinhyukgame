@@ -36,10 +36,11 @@ public class StatBuff :JsonItem
     public bool checkNasusQ = false; 
     public int nasusQ =0; // 잡은몬스터*n 만큼 추가데미지 (스택제한이 있다)
     public float reflectionDamage = 0; //받은피해에 ()% 반사 데미지
-    public int bossAddDamage = 0; //보스전 추가 데미지
+    public float bossAddDamage = 0; //보스전 추가 데미지()%
     public bool statusEffectImmune = false; //상태이상 면역
     public bool negativeEventImmune = false;// 부정적인 이벤트 면역
     public bool hp1Left = false; // 전투시마다 피1로 1회 버티기
+    public bool chooseBuff = false; //버프 선택 가능(다만, 디버프는 강제)
     public bool resetStageCard = false; // 스테이지 카드 리셋 충전식 (5스테이지마다)
     public float lostHpRatioDamageUp = 0; // 잃은 체력 비례 데미지 증가
     public float lostHpRatioSpeedUp = 0; // 잃은 체력 비례 스피드 증가
