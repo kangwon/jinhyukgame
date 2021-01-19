@@ -229,8 +229,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             ShowGameOver();
         }
 
-        if (player.GetStat().maxHp < player.hp)
-            GameState.Instance.player.hp = player.GetStat().maxHp;
 
         if (monster.isDead) 
         {

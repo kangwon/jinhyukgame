@@ -50,10 +50,6 @@ public class WeaponChangePanelController : MonoBehaviour
             this.gameObject.SetActive(false);
         }
        else PrintCard();
-
-
-        if (GameState.Instance.player.GetStat().maxHp < GameState.Instance.player.hp)
-            GameState.Instance.player.hp = GameState.Instance.player.GetStat().maxHp;
     }
 
 
