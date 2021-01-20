@@ -81,19 +81,18 @@ public class NpcMerchantController : MonoBehaviour
         }
         else
         {
-            if (player.BuyItem(equipment))
+            equipmentChanger.DisplayPanel(equipment, (e) => 
             {
-                equipmentChanger.DisplayPanel(equipment, (e) => 
+                if (player.BuyItem(e))
                 {
-                    player.BuyItem(e);
                     this.gameObject.SetActive(false);
                     stageChoice.MoveToNextStage();
-                });
-            }
-            else
-            {
-                StatusText.text = "돈이 부족해";
-            }
+                }
+                else
+                {
+                    StatusText.text = "돈이 부족해";
+                }
+            });
         }
     }
 }
