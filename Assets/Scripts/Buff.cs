@@ -62,7 +62,10 @@ public class StatBuff :JsonItem
             startSpeedGauge = baseBuffStat.startSpeedGauge + preemptiveUserTurn*(200 - baseBuffStat.startSpeedGauge),
             evasion = evasionPercent + baseBuffStat.evasion,
             critical = criticalPercent + baseBuffStat.critical,
-            hpDrain = hpDrainPercent + baseBuffStat.hpDrain
+            hpDrain = hpDrainPercent + baseBuffStat.hpDrain,
+            stageHpDrain = stageHpDrainPercent + baseBuffStat.stageHpDrain,
+            discount = discountPercent + baseBuffStat.discount,
+            rewardCoinPer = rewardCoinPercent + baseBuffStat.rewardCoinPer
         };
     }
 
