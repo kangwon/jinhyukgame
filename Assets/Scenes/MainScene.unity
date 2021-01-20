@@ -10230,7 +10230,7 @@ GameObject:
   - component: {fileID: 815979223}
   - component: {fileID: 815979224}
   m_Layer: 5
-  m_Name: HP_Slider
+  m_Name: HpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
