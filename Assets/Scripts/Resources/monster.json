@@ -37,7 +37,7 @@
       }
     },
     {
-      "id": "teddy_lv1",
+      "id": "teddy_world1",
       "name": "테디 베어",
       "worldNumber": 1,
       "isBoss": false,
@@ -49,7 +49,7 @@
       }
     },
     {
-      "id": "spider_lv1",
+      "id": "spider_world1",
       "name": "거미",
       "worldNumber": 1,
       "isBoss": false,
@@ -61,7 +61,7 @@
       }
     },
     {
-      "id": "monkey_lv1",
+      "id": "monkey_world1",
       "name": "심벌치는 원숭이",
       "worldNumber": 1,
       "isBoss": false,
@@ -73,7 +73,7 @@
       }
     },
     {
-      "id": "rabbit_lv1",
+      "id": "rabbit_world1",
       "name": "북치는 토끼",
       "worldNumber": 1,
       "isBoss": false,
@@ -97,7 +97,7 @@
       }
     },
     {
-      "id": "",
+      "id": "apprentice_knight",
       "name": "견습기사",
       "worldNumber": 2,
       "isBoss": false,
@@ -109,7 +109,7 @@
       }
     },
     {
-      "id": "",
+      "id": "official_knight",
       "name": "정식기사",
       "worldNumber": 2,
       "isBoss": false,
@@ -121,7 +121,7 @@
       }
     },
     {
-      "id": "",
+      "id": "elite_knight",
       "name": "정예기사",
       "worldNumber": 2,
       "isBoss": false,
@@ -133,7 +133,7 @@
       }
     },
     {
-      "id": "teddy_lv2",
+      "id": "teddy_world2",
       "name": "테디 베어",
       "worldNumber": 2,
       "isBoss": false,
@@ -145,7 +145,7 @@
       }
     },
     {
-      "id": "spider_lv2",
+      "id": "spider_world2",
       "name": "거미",
       "worldNumber": 2,
       "isBoss": false,
@@ -157,7 +157,7 @@
       }
     },
     {
-      "id": "monkey_lv2",
+      "id": "monkey_world2",
       "name": "심벌치는 원숭이",
       "worldNumber": 2,
       "isBoss": false,
@@ -169,7 +169,7 @@
       }
     },
     {
-      "id": "rabbit_lv2",
+      "id": "rabbit_world2",
       "name": "북치는 토끼",
       "worldNumber": 2,
       "isBoss": false,
@@ -217,7 +217,7 @@
       }
     },
     {
-      "id": "teddy_lv3",
+      "id": "teddy_world3",
       "name": "테디 베어",
       "worldNumber": 3,
       "isBoss": false,
@@ -229,7 +229,7 @@
       }
     },
     {
-      "id": "spider_lv3",
+      "id": "spider_world3",
       "name": "거미",
       "worldNumber": 3,
       "isBoss": false,
@@ -241,7 +241,7 @@
       }
     },
     {
-      "id": "monkey_lv3",
+      "id": "monkey_world3",
       "name": "심벌치는 원숭이",
       "worldNumber": 3,
       "isBoss": false,
@@ -253,7 +253,7 @@
       }
     },
     {
-      "id": "rabbit_lv3",
+      "id": "rabbit_world3",
       "name": "북치는 토끼",
       "worldNumber": 3,
       "isBoss": false,
@@ -301,7 +301,7 @@
       }
     },
     {
-      "id": "teddy_lv4",
+      "id": "teddy_world4",
       "name": "테디 베어",
       "worldNumber": 4,
       "isBoss": false,
@@ -313,7 +313,7 @@
       }
     },
     {
-      "id": "spider_lv4",
+      "id": "spider_world4",
       "name": "거미",
       "worldNumber": 4,
       "isBoss": false,
@@ -325,7 +325,7 @@
       }
     },
     {
-      "id": "monkey_lv4",
+      "id": "monkey_world4",
       "name": "심벌치는 원숭이",
       "worldNumber": 4,
       "isBoss": false,
@@ -337,7 +337,7 @@
       }
     },
     {
-      "id": "rabbit_lv4",
+      "id": "rabbit_world4",
       "name": "북치는 토끼",
       "worldNumber": 4,
       "isBoss": false,
@@ -397,7 +397,7 @@
       }
     },
     {
-      "id": "teddy_lv5",
+      "id": "teddy_world5",
       "name": "테디 베어",
       "worldNumber": 5,
       "isBoss": false,
@@ -409,7 +409,7 @@
       }
     },
     {
-      "id": "spider_lv5",
+      "id": "spider_world5",
       "name": "거미",
       "worldNumber": 5,
       "isBoss": false,
@@ -421,7 +421,7 @@
       }
     },
     {
-      "id": "monkey_lv5",
+      "id": "monkey_world5",
       "name": "심벌치는 원숭이",
       "worldNumber": 5,
       "isBoss": false,
@@ -433,7 +433,7 @@
       }
     },
     {
-      "id": "rabbit_lv5",
+      "id": "rabbit_world5",
       "name": "북치는 토끼",
       "worldNumber": 5,
       "isBoss": false,
@@ -493,7 +493,7 @@
       }
     },
     {
-      "id": "teddy_lv5.5",
+      "id": "teddy_world5.5",
       "name": "테디 베어",
       "worldNumber": 5.5,
       "isBoss": false,
@@ -505,7 +505,7 @@
       }
     },
     {
-      "id": "spider_lv5.5",
+      "id": "spider_world5.5",
       "name": "거미",
       "worldNumber": 5.5,
       "isBoss": false,
@@ -517,7 +517,7 @@
       }
     },
     {
-      "id": "monkey_lv5.5",
+      "id": "monkey_world5.5",
       "name": "심벌치는 원숭이",
       "worldNumber": 5.5,
       "isBoss": false,
@@ -529,7 +529,7 @@
       }
     },
     {
-      "id": "rabbit_lv5.5",
+      "id": "rabbit_world5.5",
       "name": "북치는 토끼",
       "worldNumber": 5.5,
       "isBoss": false,
@@ -601,7 +601,7 @@
       }
     },
     {
-      "id": "bat_lv7",
+      "id": "bat_world7",
       "name": "박쥐",
       "worldNumber": 7,
       "isBoss": false,
@@ -613,7 +613,7 @@
       }
     },
     {
-      "id": "queen_spider_lv7",
+      "id": "queen_spider_world7",
       "name": "퀸 스파이더",
       "worldNumber": 7,
       "isBoss": false,
@@ -625,7 +625,7 @@
       }
     },
     {
-      "id": "moon_bear_lv7",
+      "id": "moon_bear_world7",
       "name": "곰인형(반달곰)",
       "worldNumber": 7,
       "isBoss": false,
@@ -685,7 +685,7 @@
       }
     },
     {
-      "id": "bat_lv7.5",
+      "id": "bat_world7.5",
       "name": "박쥐",
       "worldNumber": 7.5,
       "isBoss": false,
@@ -697,7 +697,7 @@
       }
     },
     {
-      "id": "queen_spider_lv7.5",
+      "id": "queen_spider_world7.5",
       "name": "퀸 스파이더",
       "worldNumber": 7.5,
       "isBoss": false,
@@ -709,7 +709,7 @@
       }
     },
     {
-      "id": "moon_bear_lv7.5",
+      "id": "moon_bear_world7.5",
       "name": "곰인형(반달곰)",
       "worldNumber": 7.5,
       "isBoss": false,
@@ -769,7 +769,7 @@
       }
     },
     {
-      "id": "bat_lv8",
+      "id": "bat_world8",
       "name": "박쥐",
       "worldNumber": 8,
       "isBoss": false,
@@ -781,7 +781,7 @@
       }
     },
     {
-      "id": "queen_spider_lv8",
+      "id": "queen_spider_world8",
       "name": "퀸 스파이더",
       "worldNumber": 8,
       "isBoss": false,
@@ -793,7 +793,7 @@
       }
     },
     {
-      "id": "moon_bear_lv8",
+      "id": "moon_bear_world8",
       "name": "곰인형(반달곰)",
       "worldNumber": 8,
       "isBoss": false,
@@ -853,7 +853,7 @@
       }
     },
     {
-      "id": "bat_lv9",
+      "id": "bat_world9",
       "name": "박쥐",
       "worldNumber": 9,
       "isBoss": false,
@@ -865,7 +865,7 @@
       }
     },
     {
-      "id": "queen_spider_lv9",
+      "id": "queen_spider_world9",
       "name": "퀸 스파이더",
       "worldNumber": 9,
       "isBoss": false,
@@ -877,7 +877,7 @@
       }
     },
     {
-      "id": "moon_bear_lv9",
+      "id": "moon_bear_world9",
       "name": "곰인형(반달곰)",
       "worldNumber": 9,
       "isBoss": false,
