@@ -133,6 +133,8 @@ public class StageChoice : MonoBehaviour
                 RandomPanel.transform.localPosition = PanelDisplayPosition;
                 break;
             case CardType.Npc:
+                var NpcController = NpcPanel.GetComponent<NpcPanelController>();
+                NpcController.NpcCard = (selectedCard as NpcCard);
                 NpcPanel.SetActive(true);
                 NpcPanel.transform.localPosition = PanelDisplayPosition;
                 NpcPanel_Merchant.transform.localPosition = PanelDisplayPosition;

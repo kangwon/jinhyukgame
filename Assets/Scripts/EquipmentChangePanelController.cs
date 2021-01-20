@@ -9,7 +9,8 @@ public class EquipmentChangePanelController : MonoBehaviour
     Player player;
     Equipment afterEquipment;
 
-    GameObject RewardPanel;
+    public delegate void EquipmentAcceptCallback(Equipment equipment);
+    EquipmentAcceptCallback acceptCallback;
 
     Text BeforeStatText, BeforeNameText;
     Text AfterStatText, AfterNameText;
@@ -20,8 +21,6 @@ public class EquipmentChangePanelController : MonoBehaviour
 
     void Start()
     {
-        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
-
         BeforeStatText = GameObject.Find("EquipmentChangePanel/BeforeStatText").GetComponent<Text>();
         BeforeNameText = GameObject.Find("EquipmentChangePanel/BeforeNameText").GetComponent<Text>();
         AfterStatText = GameObject.Find("EquipmentChangePanel/AfterStatText").GetComponent<Text>();
@@ -72,8 +71,7 @@ public class EquipmentChangePanelController : MonoBehaviour
 
     void OnClickAcceptButton()
     {
-        player.SetEquipment(this.afterEquipment);
-        RewardPanel.SetActive(false);
+        this.acceptCallback(afterEquipment);
         this.gameObject.SetActive(false);
     }
 
@@ -83,10 +81,11 @@ public class EquipmentChangePanelController : MonoBehaviour
     }
 
     // 이거 써서 불러내면 됨
-    public void DisplayPanel(Equipment equipment)
+    public void DisplayPanel(Equipment equipment, EquipmentAcceptCallback acceptCallback)
     {
         this.player = GameState.Instance.player;
         this.afterEquipment = equipment;
+        this.acceptCallback = acceptCallback;
 
         this.UpdateEquipmentInfo();
 

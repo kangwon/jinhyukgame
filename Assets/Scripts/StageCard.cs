@@ -29,8 +29,8 @@ public class StageCard
 
 public class MonsterCard : StageCard 
 {
-    public Monster monster;
-    public Equipment[] rewardEquipments;
+    public readonly Monster monster;
+    public readonly Equipment[] rewardEquipments;
     public int rewardCoin;
     
     public MonsterCard(Monster monster, Equipment[] equipments, int coin)
@@ -86,9 +86,12 @@ public class BuffCard : StageCard
 }
 public class NpcCard : StageCard 
 {
-    public NpcCard()
+    public readonly Equipment[] EquipmentsOnSale;
+
+    public NpcCard(Equipment[] equipmentsOnSale)
     {
         this.Type = CardType.Npc;
+        this.EquipmentsOnSale = equipmentsOnSale;
     }
 }
 public class RandomCard : StageCard 
@@ -266,7 +269,13 @@ public class World
                 var buff = CustomRandom<StatBuff>.Choice(JsonDB.GetBuffs(), this.Random);
                 return new BuffCard(buff);
             case CardType.Npc:
-                return new NpcCard();
+                var equipmentsOnSale = new Equipment[3] 
+                {
+                    GetRewardEquipment(),
+                    GetRewardEquipment(),
+                    GetRewardEquipment(),
+                };
+                return new NpcCard(equipmentsOnSale);
             case CardType.Random:
                 var  randomType = CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
                 switch (randomType)

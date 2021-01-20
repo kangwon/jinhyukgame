@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NpcPanel_Healer : MonoBehaviour
+public class NpcHealerController : MonoBehaviour
 {
     [HideInInspector]
     public Text healerText;
