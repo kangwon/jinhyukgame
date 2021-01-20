@@ -12,8 +12,6 @@ public class WeaponChangePanelController : MonoBehaviour
     int changeCardIndex=0;
     bool firstActive = false;
 
-    GameObject RewardPanel;
-
     void changeview()
     {
         changeCard.GetComponent<Image>().sprite = weaponList[changeCardIndex].weaponImg;
@@ -50,12 +48,10 @@ public class WeaponChangePanelController : MonoBehaviour
         {
             var sortList = weaponList.OrderBy(x => x.id).ToList();
             GameState.Instance.player.SetWeaponList(sortList);
-            RewardPanel.SetActive(false);
             this.gameObject.SetActive(false);
         }
        else PrintCard();
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +71,6 @@ public class WeaponChangePanelController : MonoBehaviour
             });
         }
         changeCard = GameObject.Find("ChangeCard");
-        RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
 
         this.gameObject.transform.localPosition = StageChoice.PanelDisplayPosition;
         this.gameObject.SetActive(false);
