@@ -18,13 +18,13 @@ public class RandomPanelController : MonoBehaviour
     {
         randomDescription = GameObject.Find("RandomPanel/RandomDescription").GetComponent<Text>();
         randomType = GameObject.Find("RandomPanel/RandomType").GetComponent<Text>();
-        stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>(); 
+        stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
     }
 
     private void OnEnable()
     {
         if(RandomCard != null) 
-        {
+        {           
             switch (RandomCard.randomEventType)
             {
                 case RandomEventType.Positive:
@@ -37,6 +37,7 @@ public class RandomPanelController : MonoBehaviour
                     RandomEvent.NegativeEvent(randomType, randomDescription);
                     break;
             }
+            
         }
 
     }

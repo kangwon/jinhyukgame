@@ -227,15 +227,19 @@ public class Player : CharacterBase
         SetEquipment(JsonDB.GetEquipment($"armor"));
         SetEquipment(JsonDB.GetEquipment($"shoes"));
     }
-    public int ArtifectsCount()
+    public int ArtifactsCount()
     {
         return equipmentSlot.ArtifactCount();
     }
-    public void ReMoveAtArtifect(int index)
+    public List<Artifact> GetArtifacts()
+    {
+       return equipmentSlot.GetArtifacts();
+    }
+    public void RemoveAtArtifact(int index)
     {
         equipmentSlot.RemoveAtArtifact(index);
     }
-    public void ChangeAtArtifect(int index, Artifact artifact)
+    public void ChangeAtArtifact(int index, Artifact artifact)
     {
         equipmentSlot.ChangeAtArtifact(index, artifact);
     }
