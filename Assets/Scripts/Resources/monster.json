@@ -459,7 +459,7 @@
     {
       "id": "dolphin",
       "name": "돌고래",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 550,
@@ -471,7 +471,7 @@
     {
       "id": "angler_fish",
       "name": "아귀",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 700,
@@ -483,7 +483,7 @@
     {
       "id": "shark",
       "name": "상어",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 800,
@@ -495,7 +495,7 @@
     {
       "id": "teddy_world5.5",
       "name": "테디 베어",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 843,
@@ -507,7 +507,7 @@
     {
       "id": "spider_world5.5",
       "name": "거미",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 443,
@@ -519,7 +519,7 @@
     {
       "id": "monkey_world5.5",
       "name": "심벌치는 원숭이",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 763,
@@ -531,7 +531,7 @@
     {
       "id": "rabbit_world5.5",
       "name": "북치는 토끼",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": false,
       "baseStat": {
         "maxHp": 683,
@@ -543,7 +543,7 @@
     {
       "id": "deep_ocean",
       "name": "닥터 딥 오션",
-      "worldNumber": 5.5,
+      "worldNumber": 5,
       "isBoss": true,
       "baseStat": {
         "maxHp": 2500,
@@ -651,7 +651,7 @@
     {
       "id": "ufo",
       "name": "UFO",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": false,
       "baseStat": {
         "maxHp": 1200,
@@ -663,7 +663,7 @@
     {
       "id": "astronaut",
       "name": "우주인",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": false,
       "baseStat": {
         "maxHp": 700,
@@ -675,7 +675,7 @@
     {
       "id": "robot",
       "name": "로봇 병정",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": false,
       "baseStat": {
         "maxHp": 950,
@@ -687,7 +687,7 @@
     {
       "id": "bat_world7.5",
       "name": "박쥐",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": false,
       "baseStat": {
         "maxHp": 850,
@@ -699,7 +699,7 @@
     {
       "id": "queen_spider_world7.5",
       "name": "퀸 스파이더",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": false,
       "baseStat": {
         "maxHp": 900,
@@ -711,7 +711,7 @@
     {
       "id": "moon_bear_world7.5",
       "name": "곰인형(반달곰)",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": false,
       "baseStat": {
         "maxHp": 1100,
@@ -723,7 +723,7 @@
     {
       "id": "jupiter_queen",
       "name": "주피터 퀸",
-      "worldNumber": 7.5,
+      "worldNumber": 7,
       "isBoss": true,
       "baseStat": {
         "maxHp": 3300,
