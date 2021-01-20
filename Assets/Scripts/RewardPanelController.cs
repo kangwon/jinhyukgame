@@ -16,6 +16,8 @@ public class RewardPanelController : MonoBehaviour
     Button[] rewardButtons = new Button[3];
     Text coinReward;
 
+    int rewardGetCoin;
+
     public void OnClickRewardAbandon()
     {
         stageChoice.MoveToNextStage();
@@ -36,10 +38,11 @@ public class RewardPanelController : MonoBehaviour
 
     void OnEnable()
     {
+        rewardGetCoin = (int)(MonsterCard.rewardCoin * (1 + GameState.Instance.player.GetStat().rewardCoinPer));
         int worldNum = GameState.Instance.World?.Number ?? -1;
         if (worldNum > -1)
         {
-            coinReward.text = $"+ {MonsterCard.rewardCoin}";
+            coinReward.text = $"+ {rewardGetCoin}";
 
             for(int i = 0; i < 3; i++)
             {
@@ -58,7 +61,7 @@ public class RewardPanelController : MonoBehaviour
         if (reward.type == "weapon")
         {
             player.SetEquipment(reward);
-            player.money += MonsterCard.rewardCoin;
+            player.money += rewardGetCoin;
             this.gameObject.SetActive(false);
             if (player.GetWeaponList().Count > 10)
                 weaponChangePanel.SetActive(true);
@@ -68,7 +71,7 @@ public class RewardPanelController : MonoBehaviour
             equipmentChanger.DisplayPanel(reward, (e) => 
             {
                 player.SetEquipment(e);
-                player.money += MonsterCard.rewardCoin;
+                player.money += rewardGetCoin;
                 this.gameObject.SetActive(false);
             });
         }

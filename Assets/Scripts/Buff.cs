@@ -14,7 +14,7 @@ public class StatBuff :JsonItem
     public float criticalPercent = 0;
     public float stageHpDrainPercent = 0; // 스테이지 당 회복량 변수
     public float hpDrainPercent = 0; // 흡혈,회복용 변수
-    public float cashPercent = 0; // 전투 시 추가 재화용 변수
+    public float rewardCoinPercent = 0; // 전투 시 추가 재화용 변수
     public bool isDebuff = false;
     public bool debuffImmune = false;
     public bool iCantUsedCombo = false;
@@ -48,10 +48,6 @@ public class StatBuff :JsonItem
     public float monsterChanceIncrease = 0; //몬스터 조우확룰 ()% 증가
     public float rewardBonusPercent = 0; //몬스터 처치시 ()% 추가보상기회
     public float battleTurnRatioStatUp = 0; //한턴당 스탯증가
-    public float GetHP(CharacterBase characterBase)       // 스테이지마다 함수 구현 필요
-    {
-        return characterBase.baseStat.maxHp*stageHpDrainPercent + characterBase.hp;
-    }
 
     public Stat GetTotalStat(Stat stat)
     {
@@ -66,7 +62,7 @@ public class StatBuff :JsonItem
             startSpeedGauge = baseBuffStat.startSpeedGauge + preemptiveUserTurn*(200 - baseBuffStat.startSpeedGauge),
             evasion = evasionPercent + baseBuffStat.evasion,
             critical = criticalPercent + baseBuffStat.critical,
-            vampire = hpDrainPercent + baseBuffStat.vampire
+            hpDrain = hpDrainPercent + baseBuffStat.hpDrain
         };
     }
 
