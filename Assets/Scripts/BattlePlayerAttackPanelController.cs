@@ -83,8 +83,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     GameObject WorldClearPanel;
     GameObject GameOverPanel;
 
-    public bool isBattle = false; //private으로 숨기기?
-
     Player player;
 
     GameObject RewardPanel;
@@ -93,24 +91,11 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Text MonsterName;
     Text MonsterHp;
 
-    public float GAUGE_SIZE = 200.0f; //스피드게이지 고정값
-
-    public float playerGauge, monsterGauge; //플레이어와 몬스터의 현재 스피드게이지
-
-    public enum combatState {
-        Dead, //죽음
-        Idle, //게이지 채우는 중
-        Turn, //현재 턴
-        Unable // IDEA : 스턴 등의 행동불가
-    }
-
-    private combatState playerState, monsterState;
-
     private readonly float[] comboList ={0.3f, 0.8f, 0.5f }; //종류,등급,수식어 콤보 배수
     private bool[] comboCheck = new bool[3] { false, false, false };
-    private int cardDamageSum; // 카드 선택한것 총 데미지
-    private float comboPercentSum;
-    private bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
+    public int cardDamageSum; // 카드 선택한것 총 데미지
+    public float comboPercentSum;
+    public bool OnClickAttackPressed = false; // 카드 선택하고 attack 버튼을 누름.
     public bool turnTriggered; //SpeedGaugeUI에서 쓰일bool
 
     public void OnClickHandCard(int index)
@@ -181,116 +166,20 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         OnClickAttackPressed = true;
     }
 
-    public void UpdateBattleState() 
-    {
-        if(playerState == combatState.Idle && monsterState == combatState.Idle) { //둘 다 게이지 채우는 중일 때
-            SpeedUntilTurn(); //행동게이지 증가, 둘 중 하나의 combatState가 Turn으로 변경.
-        }
-
-        if(playerState == combatState.Turn) { //player의 Turn 이 왔을 때
-            PlayerAttackPhase(); //때리고 맞고
-            Bury();
-        } else if (monsterState == combatState.Turn) { //monster의 Turn 이 왔을 때
-            MonsterAttackPhase();
-            Bury();
-        }
-
-        if(playerState == combatState.Dead || monsterState == combatState.Dead) {
-            EndCombat();
-        }
-    }
-
-    public void PlayerAttackPhase() {
-        if(OnClickAttackPressed) {
-            //Debug.Log($"PlayerAttackPhase에서 {damageSum}만큼 때린다!");
-            playerGauge -= GAUGE_SIZE; //게이지 소비.
-            Stat tempStat = new Stat();
-            tempStat.attack = cardDamageSum + player.GetStat().attack;
-            monster.TakeHit((tempStat.attack+player.Synergy().attack)*(1f+comboPercentSum));
-            playerState = combatState.Idle; //다시 게이지 채우는 중으로
-            OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
-        }
-    }
-
-    public void MonsterAttackPhase() 
-    {
-        float Dmg = monster.AttackFoe();
-        monsterGauge -= GAUGE_SIZE; //게이지 소비.
-        player.TakeHit(Dmg);
-        monsterState = combatState.Idle;
-    }
-
-    public void Bury() 
-    {
-        if(player.isDead) 
-        {
-            playerState = combatState.Dead;
-            Debug.Log("플레이어 죽음");
-            ShowGameOver();
-        }
-
-
-        if (monster.isDead) 
-        {
-            monsterState = combatState.Dead;
-            Debug.Log("몬스터 죽음");
-            Debug.Log(MonsterCard.monster.isBoss);
-
-            var controller = RewardPanel.GetComponent<RewardPanelController>();
-            controller.MonsterCard = this.MonsterCard;
-            RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
-            RewardPanel.SetActive(true);
-
-            stageChoice.MoveToNextStage();
-        }    
-    }
-
-    public void SpeedUntilTurn() 
-    { 
-        //float totalElapsedTime = 0.0f;
-        while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
-            
-            playerGauge += (player.GetStat().speed * Time.deltaTime); //흐른 시간만큼 속도에 곱해 게이지를 채움
-
-            monsterGauge += (monster.GetStat().speed * Time.deltaTime);
-            
-            //totalElapsedTime += Time.deltaTime; // IDEA : 추후에 쓰일 걸릴시간?
-        }
-
-        if(playerGauge >= GAUGE_SIZE) {
-            playerState = combatState.Turn;
-            turnTriggered = true;
-        }
-        if(monsterGauge >= GAUGE_SIZE) {
-            monsterState = combatState.Turn;
-            turnTriggered = true;
-        } else {
-            turnTriggered = true;
-            //동시에 행동게이지 1000?
-        }
-    }
-
-    public void PlayerMonsterInit() 
-    {
-        playerState = combatState.Idle;
-        monsterState = combatState.Idle;
-        playerGauge = player?.GetStat().startSpeedGauge ?? 0;
-        monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
-
-        turnTriggered = false;
-    }
-
-
-    public void EndCombat() 
-    {
-        isBattle = false;
-        Debug.Log("Battle Done!");
-    }
-
     public void ShowGameOver()
     {
         GameOverPanel.transform.localPosition = new Vector3(0, 0, 0);
         GameOverPanel.SetActive(true);
+    }
+
+    public void RewardStage()
+    {
+        var controller = RewardPanel.GetComponent<RewardPanelController>();
+        controller.MonsterCard = this.MonsterCard;
+        RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
+        RewardPanel.SetActive(true);
+
+        stageChoice.MoveToNextStage();
     }
 
     //해당 패널이 활성화 될때 실행되는 메서드
@@ -304,7 +193,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             playerWeapons.AddRange(player.GetWeaponList());
             battle.CardList = playerWeapons;
             monster = MonsterCard.monster;
-            PlayerMonsterInit();
             battle.BattleStart();
         }
         firstActive = true;
@@ -319,15 +207,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
         WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;
         GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;
-
-        if(player != null && monster != null) 
-        {
-            isBattle = true;
-        } 
-        else 
-        {
-            Debug.Log("No game objects found!");
-        }
 
         for (int i = 0; i < HAND_MAX; i++) 
         {
@@ -349,9 +228,5 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
         deckCount.GetComponent<Text>().text = $"남은 덱: {battle.DeckCount()}";
-        if(turnTriggered) {
-            turnTriggered = false;
-        }
-        UpdateBattleState();
     }
 }

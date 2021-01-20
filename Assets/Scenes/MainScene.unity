@@ -18767,6 +18767,7 @@ GameObject:
   - component: {fileID: 1664559588}
   - component: {fileID: 1664559587}
   - component: {fileID: 1664559586}
+  - component: {fileID: 1664559589}
   - component: {fileID: 1664559585}
   m_Layer: 5
   m_Name: BattlePlayerAttackPanel
@@ -18791,10 +18792,9 @@ MonoBehaviour:
   selectCard: 00000000
   playerWeapons: []
   stageChoice: {fileID: 1186672459}
-  isBattle: 0
-  GAUGE_SIZE: 200
-  playerGauge: 0
-  monsterGauge: 0
+  cardDamageSum: 0
+  comboPercentSum: 0
+  OnClickAttackPressed: 0
   turnTriggered: 0
 --- !u!114 &1664559586
 MonoBehaviour:
@@ -18861,6 +18861,36 @@ RectTransform:
   m_AnchoredPosition: {x: 1500, y: 1600}
   m_SizeDelta: {x: 0, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1664559589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664559584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747db3a449be4c24599dcf54bac90415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster:
+    id: 
+    baseStat:
+      maxHp: 0
+      attack: 0
+      defense: 0
+      speed: 0
+      startSpeedGauge: 0
+      critical: 0
+      evasion: 0
+      vampire: 0
+    hp: 0
+    name: 
+    isBoss: 0
+    worldNumber: 0
+  GAUGE_SIZE: 200
+  playerGauge: 0
+  monsterGauge: 0
 --- !u!1 &1675603128
 GameObject:
   m_ObjectHideFlags: 0
