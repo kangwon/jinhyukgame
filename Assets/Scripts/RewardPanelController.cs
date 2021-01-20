@@ -58,6 +58,8 @@ public class RewardPanelController : MonoBehaviour
         if (reward.type == "weapon")
         {
             player.SetEquipment(reward);
+            player.money += MonsterCard.rewardCoin;
+            this.gameObject.SetActive(false);
             if (player.GetWeaponList().Count > 10)
                 weaponChangePanel.SetActive(true);
         }
@@ -66,6 +68,7 @@ public class RewardPanelController : MonoBehaviour
             equipmentChanger.DisplayPanel(reward, (e) => 
             {
                 player.SetEquipment(e);
+                player.money += MonsterCard.rewardCoin;
                 this.gameObject.SetActive(false);
             });
         }
