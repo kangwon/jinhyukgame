@@ -73,6 +73,8 @@ public class StageChoice : MonoBehaviour
     {
         selectedCard = null;
         GameState.Instance.MoveToNextStage();
+        GameState.Instance.player.Heal((int)(GameState.Instance.player.GetStat().maxHp * GameState.Instance.player.GetStat().stageHpDrain));
+        GameState.Instance.player.HpOver();
         StageText.text = $"Stage {GameState.Instance.Stage.Number}";
         ActivatePannel();
     }

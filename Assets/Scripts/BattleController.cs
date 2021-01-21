@@ -119,7 +119,7 @@ public class BattleController : MonoBehaviour
             Stat tempStat = new Stat();
             tempStat.attack = BattlePanel.cardDamageSum + player.GetStat().attack;
             monster.TakeHit((tempStat.attack+player.Synergy().attack)*(1f+BattlePanel.comboPercentSum));
-            
+            player.Heal((int)((tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum) * player.GetStat().hpDrain));
             playerGauge = 0; //게이지 소비(초기화)
 
             BattlePanel.OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
