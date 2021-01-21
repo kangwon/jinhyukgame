@@ -162,7 +162,7 @@ public class EquipmentSlot
         totalStat += armor?.statEffect ?? zeroStat;
         totalStat += helmet?.statEffect ?? zeroStat;
         totalStat += shoes?.statEffect ?? zeroStat;
-       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ���߿� ���õ� ��Ƽ��Ʈ ����(?)�� �־����
+       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : 나중에 관련된 아티펙트 변수(?)를 넣어놓자
         return totalStat;
     }
 }
