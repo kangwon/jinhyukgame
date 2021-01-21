@@ -107,7 +107,10 @@ public class EquipmentSlot
     {
         return shoes;
     }
-
+    public List<Artifact> GetArtifacts()
+    {
+        return artifacts;
+    }
     public int ArtifactCount()
     {
        return artifacts.Count();
@@ -148,8 +151,6 @@ public class EquipmentSlot
     public void SetEquipment(Artifact artifact)
     {
         this.artifacts.Add(artifact);
-        while (this.artifacts.Count > 3)
-            this.artifacts.RemoveAt(0);
     }
 
     public Stat GetTotalStat()
