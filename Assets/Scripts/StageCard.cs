@@ -45,6 +45,7 @@ public class ChestCard : StageCard
 {
     public ChestType ChestType;
 
+    public Equipment Equipment;
     public float HealPercent;
     public float DamagePercent;
     public StatBuff Debuff;
@@ -60,7 +61,7 @@ public class ChestCard : StageCard
         switch (this.ChestType)
         {
             case ChestType.Equipment:
-                return $"Equipment Chest";
+                return $"Equipment: {Equipment.ToString()}";
             case ChestType.Heal:
                 return $"Heal {(int)(this.HealPercent * 100)}%";
             case ChestType.Dispel:
@@ -238,8 +239,7 @@ public class World
                 switch (chestType)
                 {
                     case ChestType.Equipment:
-                        // TODO: 몬스터 보상과 동일
-                        return new ChestCard(chestType);
+                        return new ChestCard(chestType) { Equipment = GetRewardEquipment() };
                     case ChestType.Heal:
                         return new ChestCard(chestType) { HealPercent = 0.3f };
                     case ChestType.Dispel:
