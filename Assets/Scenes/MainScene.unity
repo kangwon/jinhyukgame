@@ -10863,7 +10863,7 @@ GameObject:
   - component: {fileID: 815979223}
   - component: {fileID: 815979224}
   m_Layer: 5
-  m_Name: HP_Slider
+  m_Name: HpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20109,7 +20109,10 @@ MonoBehaviour:
       startSpeedGauge: 0
       critical: 0
       evasion: 0
-      vampire: 0
+      hpDrain: 0
+      stageHpDrain: 0
+      discount: 0
+      rewardCoinPer: 0
     hp: 0
     name: 
     isBoss: 0

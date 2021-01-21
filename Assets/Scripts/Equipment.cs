@@ -38,6 +38,8 @@ public class Equipment : JsonItem
         => new Helmet() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};
     public Shoes ToShoes()
         => new Shoes() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};   
+
+    public string ToString() => $"{prefix.ToString()} {rank.ToString()} {name}";
 }
 
 [System.Serializable]
@@ -160,7 +162,7 @@ public class EquipmentSlot
         totalStat += armor?.statEffect ?? zeroStat;
         totalStat += helmet?.statEffect ?? zeroStat;
         totalStat += shoes?.statEffect ?? zeroStat;
-       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ³ªÁß¿¡ °ü·ÃµÈ ¾ÆÆ¼ÆåÆ® º¯¼ö(?)¸¦ ³Ö¾î³õÀÚ
+       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ë‚˜ì¤‘ì— ê´€ë ¨ëœ ì•„í‹°í™íŠ¸ ë³€ìˆ˜(?)ë¥¼ ë„£ì–´ë†“ì
         return totalStat;
     }
 }
