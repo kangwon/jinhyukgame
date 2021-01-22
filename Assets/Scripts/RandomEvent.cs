@@ -153,11 +153,7 @@ public class RandomEvent
                 name.text = $"소매치기";
                 description.text = "\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
                 tempInt = GameState.Instance.player.ArtifactsCount();
-<<<<<<< HEAD
-                GameState.Instance.player.ReMoveAtArtifact(Random.Range(0,tempInt));
-=======
                 GameState.Instance.player.RemoveAtArtifact(Random.Range(0,tempInt));
->>>>>>> main
                 break;
             case 7:
                 name.text = $"소매치기";
