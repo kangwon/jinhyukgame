@@ -150,7 +150,7 @@ public class World
     int[] coinMax = new int[12] {0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150};
     List<double> prefixPercentage = new List<double>() { 0.05, 0.25, 0.40, 0.25, 0.05 };
 
-    public World(int number, string name, int bossStage=5)
+    public World(int number, string name, int bossStage=15)
     {
         this.Number = number;
         this.Name = name;

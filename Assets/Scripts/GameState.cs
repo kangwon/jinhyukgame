@@ -36,7 +36,7 @@ class GameState
         (
             new Stat()
             {
-                maxHp = 20,
+                maxHp = 40,
                 attack = 10,
                 defense = 0,
                 speed = 10,
