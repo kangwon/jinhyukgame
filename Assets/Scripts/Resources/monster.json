@@ -90,8 +90,8 @@
       "worldNumber": 1,
       "isBoss": true,
       "baseStat": {
-        "maxHp": 120,
-        "attack": 6,
+        "maxHp": 240,
+        "attack": 12,
         "defense": 10,
         "speed": 15
       }

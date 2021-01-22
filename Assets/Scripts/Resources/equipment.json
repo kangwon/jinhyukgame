@@ -42,7 +42,7 @@
       "price": 10,
       "statEffect": {
         "defense": 0,
-        "maxHp": 20,
+        "maxHp": 10,
         "speed": -1
       }
     },
@@ -55,7 +55,7 @@
       "price": 10,
       "statEffect": {
         "defense": 1,
-        "maxHp": 20,
+        "maxHp": 10,
         "speed": -1
       }
     },
@@ -68,7 +68,7 @@
       "price": 10,
       "statEffect": {
         "defense": 2,
-        "maxHp": 20,
+        "maxHp": 10,
         "speed": -1
       }
     },
@@ -81,7 +81,7 @@
       "price": 10,
       "statEffect": {
         "defense": 3,
-        "maxHp": 20,
+        "maxHp": 10,
         "speed": -1
       }
     },
@@ -94,7 +94,7 @@
       "price": 10,
       "statEffect": {
         "defense": 4,
-        "maxHp": 20,
+        "maxHp": 10,
         "speed": -1
       }
     },
@@ -968,7 +968,7 @@
       "statEffect": {
         "defense": 0,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -981,7 +981,7 @@
       "statEffect": {
         "defense": 1,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -994,7 +994,7 @@
       "statEffect": {
         "defense": 2,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -1007,7 +1007,7 @@
       "statEffect": {
         "defense": 3,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -1020,7 +1020,7 @@
       "statEffect": {
         "defense": 4,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -1566,7 +1566,7 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
-        "maxHp": 20,
+        "maxHp": 10,
         "attack": -2
       }
     },
@@ -1578,7 +1578,7 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
-        "maxHp": 30,
+        "maxHp": 20,
         "attack": -2
       }
     },
@@ -1590,7 +1590,7 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
-        "maxHp": 40,
+        "maxHp": 30,
         "attack": -2
       }
     },
@@ -1602,7 +1602,7 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
-        "maxHp": 60,
+        "maxHp": 50,
         "attack": -2
       }
     },
@@ -1614,7 +1614,7 @@
       "rank": 0,
       "price": 10,
       "statEffect": {
-        "maxHp": 100,
+        "maxHp": 90,
         "attack": -2
       }
     },
@@ -3117,7 +3117,7 @@
       "price": 10,
       "statEffect": {
         "speed": -1,
-        "maxHp": 20
+        "maxHp": 10
       }
     },
     {
@@ -3129,7 +3129,7 @@
       "price": 10,
       "statEffect": {
         "speed": 0,
-        "maxHp": 20
+        "maxHp": 10
       }
     },
     {
@@ -3141,7 +3141,7 @@
       "price": 10,
       "statEffect": {
         "speed": 1,
-        "maxHp": 20
+        "maxHp": 10
       }
     },
     {
@@ -3153,7 +3153,7 @@
       "price": 10,
       "statEffect": {
         "speed": 3,
-        "maxHp": 20
+        "maxHp": 10
       }
     },
     {
@@ -3165,7 +3165,7 @@
       "price": 10,
       "statEffect": {
         "speed": 5,
-        "maxHp": 20
+        "maxHp": 10
       }
     },
     {
@@ -4018,7 +4018,7 @@
       "statEffect": {
         "speed": 0,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -4031,7 +4031,7 @@
       "statEffect": {
         "speed": 1,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -4044,7 +4044,7 @@
       "statEffect": {
         "speed": 2,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -4057,7 +4057,7 @@
       "statEffect": {
         "speed": 4,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
@@ -4070,7 +4070,7 @@
       "statEffect": {
         "speed": 6,
         "attack": 4,
-        "maxHp": -10
+        "maxHp": -5
       }
     },
     {
