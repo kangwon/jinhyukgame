@@ -96,7 +96,7 @@ public class RandomEvent
                 tempInt = GameState.Instance.player.ArtifactsCount();
                 if (tempInt != 0)
                 {
-                    GameState.Instance.player.ReMoveAtArtifact(Random.Range(0, tempInt));
+                    GameState.Instance.player.RemoveAtArtifact(Random.Range(0, tempInt));
                     GameState.Instance.player.SetEquipment(JsonDB.GetArtifact("artifact0")); //TODO: 나중에 랜덤으로 넣는 것이 필요!!
                 }
                 break;
@@ -153,7 +153,11 @@ public class RandomEvent
                 name.text = $"소매치기";
                 description.text = "\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
                 tempInt = GameState.Instance.player.ArtifactsCount();
+<<<<<<< HEAD
                 GameState.Instance.player.ReMoveAtArtifact(Random.Range(0,tempInt));
+=======
+                GameState.Instance.player.RemoveAtArtifact(Random.Range(0,tempInt));
+>>>>>>> main
                 break;
             case 7:
                 name.text = $"소매치기";

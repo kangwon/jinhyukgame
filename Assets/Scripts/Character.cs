@@ -12,9 +12,12 @@ public class Stat
     public int defense;
     public int speed;
     public int startSpeedGauge;
-    public float critical;
-    public float evasion;
-    public float vampire = 0;       // 흡혈률
+    public float critical = 0.05f;
+    public float evasion = 0.05f;
+    public float hpDrain = 0;       // 흡혈률
+    public float stageHpDrain = 0;  // 스테이지 회복량
+    public float discount = 0;      // 상점 할인가
+    public float rewardCoinPer = 0; // 전투 재화 보상 증가
 
     public static Stat operator +(Stat a, Stat b)
     {
@@ -27,7 +30,10 @@ public class Stat
             startSpeedGauge = a.startSpeedGauge + b.startSpeedGauge,
             critical = a.critical + b.critical,
             evasion = a.evasion + b.evasion,
-            vampire = a.vampire + b.vampire
+            hpDrain = a.hpDrain + b.hpDrain,
+            stageHpDrain = a.stageHpDrain + b.stageHpDrain,
+            discount = a.discount + b.discount,
+            rewardCoinPer = a.rewardCoinPer + b.rewardCoinPer
         };
     }
 
@@ -181,7 +187,6 @@ public class Player : CharacterBase
 
     StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
-    public float hpDrain = 0f; // 일단은 곱연산
     public int money = 100;
     
     public void HpOver()
@@ -231,7 +236,11 @@ public class Player : CharacterBase
     {
         return equipmentSlot.ArtifactCount();
     }
-    public void ReMoveAtArtifact(int index)
+    public List<Artifact> GetArtifacts()
+    {
+       return equipmentSlot.GetArtifacts();
+    }
+    public void RemoveAtArtifact(int index)
     {
         equipmentSlot.RemoveAtArtifact(index);
     }
@@ -333,9 +342,9 @@ public class Player : CharacterBase
 
     public bool BuyItem(Equipment item)
     {
-        if (money >= item.price)
+        if (money >= (int)(item.price * (1 - GameState.Instance.player.GetStat().discount)))
         {
-            money -= item.price;
+            money -= (int)(item.price * (1 - GameState.Instance.player.GetStat().discount));
             this.SetEquipment(item);
             return true;
         }

@@ -44,7 +44,7 @@
       "id": "buff6",
       "name": "상점가 할인(%)",
       "description": "상점가 20% 할인",
-      "purchasePersent": 0.2
+      "discountPercent": 0.2
     },
     {
       "id": "buff7",
@@ -68,7 +68,7 @@
       "id": "buff10",
       "name": "흡혈",
       "description": "가한 데미지의 5% 회복",
-      "vampirePercent": 0.05
+      "hpDrainPercent": 0.05
     },
     {
       "id": "buff11",
@@ -80,7 +80,7 @@
       "id": "buff12",
       "name": "전투 보상 재화 증가",
       "description": "전투 보상에 대한 재화 추가 20%",
-      "cashPercent": 0.2
+      "rewardCoinPercent": 0.2
     },
     {
       "id": "debuff1",
@@ -120,7 +120,7 @@
     },
     {
       "id": "debuff5",
-      "name": "콤보 데미지 불가",
+      "name": "콤보 데미지 불가 // 미구현",
       "description": "콤보 사용 불가",
       "iCantUsedCombo": true,
       "isDebuff": true
@@ -129,7 +129,7 @@
       "id": "debuff6",
       "name": "상점가 할인(%)",
       "description": "상점가 20% 증가",
-      "purchasePersent": -0.2,
+      "discountPercent": -0.2,
       "isDebuff": true
     },
     {
@@ -155,7 +155,7 @@
     },
     {
       "id": "debuff10",
-      "name": "핸드 자동 리롤",
+      "name": "핸드 자동 리롤 // 미구현",
       "description": "핸드의 모든 카드 버리기",
       "handReroll": true,
       "isDebuff": true
@@ -171,7 +171,7 @@
       "id": "debuff12",
       "name": "전투 보상 재화 감소",
       "description": "전투 보상에 대한 재화 감소 20%",
-      "cashPercent": -0.2,
+      "rewardCoinPercent": -0.2,
       "isDebuff": true
     }
   ]

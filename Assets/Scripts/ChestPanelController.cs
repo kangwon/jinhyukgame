@@ -35,7 +35,7 @@ public class ChestPanelController : MonoBehaviour
         switch (ChestCard.ChestType)
         {
             case ChestType.Equipment:
-                player.SetEquipment(JsonDB.GetWeapon("weapon_000"));
+                player.SetEquipment(ChestCard.Equipment);
                 if (player.GetWeaponList().Count > 10)
                 {
                     weaponChangePanel.SetActive(true);

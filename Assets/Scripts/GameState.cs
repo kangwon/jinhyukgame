@@ -38,8 +38,8 @@ class GameState
             {
                 maxHp = 20,
                 attack = 10,
-                defense = 3,
-                speed = 12,
+                defense = 0,
+                speed = 10,
                 startSpeedGauge = 1,
                 evasion = 0.05f,
                 critical = 0.05f,
