@@ -99,15 +99,15 @@ public class BattleController : MonoBehaviour
             monsterGauge += (monster.GetStat().speed * 0.1f);
         }
 
-        if(monsterGauge >= GAUGE_SIZE) 
-        {
-            battleState = BattleState.MonsterTurn; //몬스터 턴으로
-            SGUI.QueueSpeedGauge();
-        }
-
         if(playerGauge >= GAUGE_SIZE) 
         {
             battleState = BattleState.PlayerTurn; //플레이어 턴으로
+            SGUI.QueueSpeedGauge();
+        }
+
+        else if(monsterGauge >= GAUGE_SIZE) 
+        {
+            battleState = BattleState.MonsterTurn; //몬스터 턴으로
             SGUI.QueueSpeedGauge();
         }
     }
