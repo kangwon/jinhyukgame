@@ -7,7 +7,6 @@ public class EquipPanelController : MonoBehaviour
 {
     GameObject[] artifactIcon = new GameObject[3];
     GameObject[] equipmentIcon = new GameObject[3];
-    bool firstStart = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,24 +19,19 @@ public class EquipPanelController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
+        for (int i = 0; i < 3; i++)
+        {
+            if (i < GameState.Instance.player?.GetArtifacts().Count)
+                artifactIcon[i].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetArtifacts()?.ElementAt(i).name;
+            else
+                artifactIcon[i].transform.GetChild(0).GetComponent<Text>().text = "";
+        }
+        equipmentIcon[0].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetHelmet()?.name;
+        equipmentIcon[1].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetArmor()?.name;
+        equipmentIcon[2].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetShoes()?.name;
     }
     private void OnEnable()
     {
-        if (firstStart) firstStart = false;
-        else
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                if (i < GameState.Instance.player.GetArtifacts().Count)
-                    artifactIcon[i].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetArtifacts()?.ElementAt(i).name;
-                else
-                    artifactIcon[i].transform.GetChild(0).GetComponent<Text>().text = "";
-            }
-            equipmentIcon[0].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetHelmet()?.name;
-            equipmentIcon[1].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetArmor()?.name;
-            equipmentIcon[2].transform.GetChild(0).GetComponent<Text>().text = GameState.Instance.player.GetShoes()?.name;
-        }
     }
 }
