@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-public class RandomEvent 
-{
-    public RandomEventType randomEventType;
+public class RandomEvent { 
+
+    RandomEventType randomEventType;
     public static void PositiveEvent(Text name,Text description)
     {
         int tempInt;
@@ -75,7 +75,12 @@ public class RandomEvent
                         break;
                     case 1:
                         description.text += $"[아티펙트 획득]";
-                        break;
+                        GameState.Instance.player.SetEquipment(JsonDB.GetArtifact($"artifact{Random.Range(0, 32)}")); //TODO : 나중에 보스아티펙트는 안나오게 해야함
+                        if (3 < GameState.Instance.player.ArtifactsCount())
+                        {
+                            GameObject.Find("Canvas").transform.Find("ArtifactChangePanel").gameObject.SetActive(true);
+                        }
+                            break;
                     case 2:
                         description.text += $"[코인 랜덤 획득]";
                         break;
@@ -92,12 +97,12 @@ public class RandomEvent
                 break;
             case 1:
                 name.text = $"성난 마술사 이진혁의 장난";
-                description.text = "(아직구현안됨)\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
+                description.text = "\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
                 tempInt = GameState.Instance.player.ArtifactsCount();
                 if (tempInt != 0)
                 {
                     GameState.Instance.player.RemoveAtArtifact(Random.Range(0, tempInt));
-                    GameState.Instance.player.SetEquipment(JsonDB.GetArtifact("artifact0")); //TODO: 나중에 랜덤으로 넣는 것이 필요!!
+                    GameState.Instance.player.SetEquipment(JsonDB.GetArtifact($"artifact{Random.Range(0,32)}")); //TODO: 나중에 보스아티펙트는 안나오게 해야함
                 }
                 break;
             default:
