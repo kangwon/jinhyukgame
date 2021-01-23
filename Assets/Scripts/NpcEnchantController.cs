@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Linq;
-using UnityEditor.Build.Reporting;
-using UnityEditorInternal;
+using UnityEditor;
 using System;
 
 public class NpcEnchantController : MonoBehaviour
