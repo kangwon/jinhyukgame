@@ -168,6 +168,7 @@ public class Monster : CharacterBase
         {
             hp = hp + this.GetStat().defense - (int)afterDamage;
         }
+        GameState.Instance.player.Heal((int)((this.GetStat().defense - (int)afterDamage) * GameState.Instance.player.GetStat().hpDrain)); //TODO:나중에 요거 코드 위치 바꾸는게 좋을듯함.
         //Debug.Log($"이제 몬스터 피 : {hp}임.");
     }
 

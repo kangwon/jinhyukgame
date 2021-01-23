@@ -91,7 +91,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Text MonsterName;
     Text MonsterHp;
 
-    private readonly float[] comboList ={0.3f, 0.8f, 0.5f }; //종류,등급,수식어 콤보 배수
+    private readonly float[] comboList ={0.8f, 0.3f, 0.5f }; //종류,등급,수식어 콤보 배수
     private bool[] comboCheck = new bool[3] { false, false, false };
     public int cardDamageSum; // 카드 선택한것 총 데미지
     public float comboPercentSum;
