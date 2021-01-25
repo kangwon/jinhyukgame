@@ -222,16 +222,17 @@ public class Player : CharacterBase
     public void ResetWeaponList()
     {
         equipmentSlot.ResetWeaponsList();
-        for (int i = 0; i < 10; i++)
+        foreach (string weaponId in GameConstant.PlayerInitialWeapon)
         {
-            SetEquipment(JsonDB.GetWeapon($"bare_fist"));
+            SetEquipment(JsonDB.GetWeapon(weaponId));
         }
     }
     public void ResetEquipment()
     {
-        SetEquipment(JsonDB.GetEquipment($"helmet"));
-        SetEquipment(JsonDB.GetEquipment($"armor"));
-        SetEquipment(JsonDB.GetEquipment($"shoes"));
+        foreach (string equipmentId in GameConstant.PlayerInitialEquipment)
+        {
+            SetEquipment(JsonDB.GetEquipment(equipmentId));
+        }
     }
     public int ArtifactsCount()
     {
