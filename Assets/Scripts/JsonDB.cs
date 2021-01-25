@@ -74,6 +74,8 @@ class JsonDB
         => Instance.weaponCollection.GetItem(id).ReturnWeapon();
     public static Artifact GetArtifact(string id)
         => Instance.artifactCollection.GetItem(id);
+    public static List<Artifact> GetNotBossArtifacts()
+        => Instance.artifactCollection.itemList.FindAll(arti => !arti.isBossItem);
     public static StatBuff GetBuff(string id)
         => Instance.buffCollection.GetItem(id);
     public static List<StatBuff> GetBuffs()

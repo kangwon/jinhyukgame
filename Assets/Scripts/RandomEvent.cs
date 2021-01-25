@@ -5,11 +5,10 @@ using UnityEngine.UI;
 using System.Linq;
 public class RandomEvent { 
 
-    RandomEventType randomEventType;
-    public static void PositiveEvent(Text name,Text description)
+    public static void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
-        switch (Random.Range(0,8)) //case 추가할때 Range 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
 
             case 0:
@@ -60,29 +59,39 @@ public class RandomEvent {
                 break;
         }
     }
-    public static void NeuturalityEvent(Text name, Text description)
+    public static void NeuturalityEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (Random.Range(0,2)) //case 추가할때 Range 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: //TODO : 4가지의 확률에 맞춰 구현하기(장비,아티펙트,재화,티켓 획득)
                 name.text = $"풍선 다트";
                 description.text = "(아직구현안됨)얍!" + "\n\n";
-                switch (CustomRandom<int>.WeightedChoice(new List<int> { 0, 1, 2, 3, 4 }, new List<double> { 0.2f, 0.08f, 0.3f, 0.02f, 0.4f }, new System.Random()))
+                switch (CustomRandom<int>.WeightedChoice(new List<int> { 0, 1, 2, 3, 4 }, new List<double> { 0.2f, 0.08f, 0.3f, 0.02f, 0.4f }, GameState.Instance.World.Random))
                 {
                     case 0:
                         description.text += $"[장비 획득]";
+                        if (randomCard.equipment.type == "weapon")
+                        {
+                            GameState.Instance.player.SetEquipment(randomCard.equipment);
+                            if (10 < GameState.Instance.player.GetWeaponList().Count)
+                                GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>().DisplayPanel(randomCard.equipment, (e)=>{ });
+                        }
                         break;
                     case 1:
                         description.text += $"[아티펙트 획득]";
-                        GameState.Instance.player.SetEquipment(JsonDB.GetArtifact($"artifact{Random.Range(0, 32)}")); //TODO : 나중에 보스아티펙트는 안나오게 해야함
+                        GameState.Instance.player.SetEquipment(randomCard.artifact); 
                         if (3 < GameState.Instance.player.ArtifactsCount())
-                        {
                             GameObject.Find("Canvas").transform.Find("ArtifactChangePanel").gameObject.SetActive(true);
-                        }
+
                             break;
                     case 2:
-                        description.text += $"[코인 랜덤 획득]";
+                        description.text += $"[{randomCard.money}코인 획득]";
+                        GameState.Instance.player.money += randomCard.money;
                         break;
                     case 3:
                         description.text += $"[티켓  랜덤 획득]";
@@ -102,17 +111,17 @@ public class RandomEvent {
                 if (tempInt != 0)
                 {
                     GameState.Instance.player.RemoveAtArtifact(Random.Range(0, tempInt));
-                    GameState.Instance.player.SetEquipment(JsonDB.GetArtifact($"artifact{Random.Range(0,32)}")); //TODO: 나중에 보스아티펙트는 안나오게 해야함
+                    GameState.Instance.player.SetEquipment(randomCard.artifact);
                 }
                 break;
             default:
                 break;
         }
     }
-    public static void NegativeEvent(Text name, Text description)
+    public static void NegativeEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (Random.Range(0, 9)) //case 추가할때 Range 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: 
                 name.text = $"갑작스러운 소나기";

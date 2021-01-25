@@ -98,10 +98,16 @@ public class NpcCard : StageCard
 public class RandomCard : StageCard 
 {
     public RandomEventType randomEventType;
-    public RandomCard(RandomEventType randomEventType)
+    public Equipment equipment;
+    public Artifact artifact;
+    public int money;
+    public RandomCard(RandomEventType randomEventType, Equipment equipment, Artifact artifact, int money)
     {
         this.Type = CardType.Random;
         this.randomEventType = randomEventType;
+        this.equipment = equipment;
+        this.artifact = artifact;
+        this.money = money;
     }
 }
 public class BossCard : MonsterCard 
@@ -207,6 +213,11 @@ public class World
         return this.Random.Next(coinMin[worldNum], coinMax[worldNum]);
     }
 
+    Artifact GetRewardArtifact()
+    {
+        return CustomRandom<Artifact>.Choice(JsonDB.GetNotBossArtifacts(), this.Random);
+    }
+
     public StageCard GetRandomCard()
     {
         var type = CustomRandom<CardType>.WeightedChoice
@@ -278,14 +289,17 @@ public class World
                 return new NpcCard(equipmentsOnSale);
             case CardType.Random:
                 var  randomType = CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
+                var equipmentRand = GetRewardEquipment();
+                var artifactRand = GetRewardArtifact();
+                var money = 5*GetRewardCoin(); // 보상 획득재화의 5배 (임의설정)
                 switch (randomType)
                 {
                     case 0:
-                        return new RandomCard(RandomEventType.Positive);
+                        return new RandomCard(RandomEventType.Positive, equipmentRand, artifactRand, money);
                     case 1:
-                        return new RandomCard(RandomEventType.Neuturality);
+                        return new RandomCard(RandomEventType.Neuturality, equipmentRand, artifactRand, money);
                     case 2:
-                        return new RandomCard(RandomEventType.Negative);
+                        return new RandomCard(RandomEventType.Negative, equipmentRand, artifactRand, money);
                     default:
                         throw new NotImplementedException($"Invalid Random type ");
                 }
