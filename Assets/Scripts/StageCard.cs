@@ -154,33 +154,60 @@ public class World
 
     Equipment GetRewardEquipment()
     {
-        int worldNum = this.Number;
-        int rewardPrefixIndex = CustomRandom<int>.WeightedChoice
+        var shouldWeapon = CustomRandom<bool>.WeightedChoice
+        (
+            new List<bool> { true, false },
+            GameConstant.RewardEquipmentType,
+            this.Random
+        );
+        int rankIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            GameConstant.RewardRank[this.Number - 1],
+            this.Random
+        );
+        int prefixIndex = CustomRandom<int>.WeightedChoice
         (
             new List<int> { 0, 1, 2, 3, 4 }, 
             GameConstant.RewardPrefix,
             this.Random
         );
-        int rewardRankIndex = CustomRandom<int>.WeightedChoice
+        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+    }
+
+    Equipment GetMerchantEquipment()
+    {
+        var shouldWeapon = CustomRandom<bool>.WeightedChoice
+        (
+            new List<bool> { true, false },
+            GameConstant.MerchantEquipmentType,
+            this.Random
+        );
+        int rankIndex = CustomRandom<int>.WeightedChoice
         (
             new List<int> { 0, 1, 2, 3, 4 }, 
-            GameConstant.RewardRank[worldNum - 1],
+            GameConstant.MerchantRank[this.Number - 1],
             this.Random
         );
-        var rewardTypeRand = CustomRandom<int>.WeightedChoice
+        int prefixIndex = CustomRandom<int>.WeightedChoice
         (
-            new List<int> {0, 1},
-            GameConstant.RewardEquipmentType,
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            GameConstant.MerchantPrefix,
             this.Random
         );
-        if (rewardTypeRand == 0)
+        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+    }
+
+    Equipment GetRandomEquipment(bool shouldWeapon, int rankIndex, int prefixIndex)
+    {
+        if (shouldWeapon)
         {
             var weaponType = (int)CustomRandom<WeaponType>.Choice
             (
                 Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().Where(x=> x != WeaponType.none).ToList(), 
                 this.Random
             );
-            string weaponId = $"weapon_{weaponType}{rewardRankIndex}{rewardPrefixIndex}";
+            string weaponId = $"weapon_{weaponType}{rankIndex}{prefixIndex}";
             return JsonDB.GetWeapon(weaponId);
         }
         else 
@@ -190,7 +217,7 @@ public class World
                 JsonDB.GetEquipmentIdBases(),
                 this.Random
             );
-            string equipId = $"{idBase}_{rewardRankIndex}{rewardPrefixIndex}";
+            string equipId = $"{idBase}_{rankIndex}{prefixIndex}";
             return JsonDB.GetEquipment(equipId);
         }
     }
@@ -264,9 +291,9 @@ public class World
             case CardType.Npc:
                 var equipmentsOnSale = new Equipment[3] 
                 {
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
+                    GetMerchantEquipment(),
+                    GetMerchantEquipment(),
+                    GetMerchantEquipment(),
                 };
                 return new NpcCard(equipmentsOnSale);
             case CardType.Random:
