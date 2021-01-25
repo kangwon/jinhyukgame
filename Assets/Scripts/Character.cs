@@ -159,16 +159,17 @@ public class Monster : CharacterBase
 
     public override void TakeHit(float rawDamage) 
     {
-        float afterDamage = CalcDamage(rawDamage); 
-        if(this.GetStat().defense >= afterDamage) 
+        float afterDamage = CalcDamage(rawDamage);
+        var totalDamage = (int)afterDamage - this.GetStat().defense;
+        if (totalDamage < 1) 
         {
             hp = hp - 1;
         } 
         else 
         {
-            hp = hp + this.GetStat().defense - (int)afterDamage;
+            hp = hp - totalDamage;
         }
-        GameState.Instance.player.Heal((int)((this.GetStat().defense - (int)afterDamage) * GameState.Instance.player.GetStat().hpDrain)); //TODO:나중에 요거 코드 위치 바꾸는게 좋을듯함.
+        GameState.Instance.player.Heal((int)(totalDamage * GameState.Instance.player.GetStat().hpDrain)); //TODO:나중에 요거 코드 위치 바꾸는게 좋을듯함.
         //Debug.Log($"이제 몬스터 피 : {hp}임.");
     }
 
