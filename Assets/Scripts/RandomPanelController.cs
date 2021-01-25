@@ -28,13 +28,13 @@ public class RandomPanelController : MonoBehaviour
             switch (RandomCard.randomEventType)
             {
                 case RandomEventType.Positive:
-                    RandomEvent.PositiveEvent(randomType, randomDescription); 
+                    RandomEvent.PositiveEvent(randomType, randomDescription, RandomCard); 
                     break;
                 case RandomEventType.Neuturality:
-                    RandomEvent.NeuturalityEvent(randomType, randomDescription);
+                    RandomEvent.NeuturalityEvent(randomType, randomDescription, RandomCard);
                     break;
                 case RandomEventType.Negative:
-                    RandomEvent.NegativeEvent(randomType, randomDescription);
+                    RandomEvent.NegativeEvent(randomType, randomDescription, RandomCard);
                     break;
             }
             
