@@ -39,7 +39,7 @@
       "name": "인형탈 머리",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "defense": 0,
         "maxHp": 10,
@@ -52,7 +52,7 @@
       "name": "인형탈 머리",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "defense": 1,
         "maxHp": 10,
@@ -65,7 +65,7 @@
       "name": "인형탈 머리",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "defense": 2,
         "maxHp": 10,
@@ -78,7 +78,7 @@
       "name": "인형탈 머리",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 3,
         "maxHp": 10,
@@ -91,7 +91,7 @@
       "name": "인형탈 머리",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 4,
         "maxHp": 10,
@@ -104,7 +104,7 @@
       "name": "인형탈 머리",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 4,
         "maxHp": 80,
@@ -117,7 +117,7 @@
       "name": "인형탈 머리",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "defense": 6,
         "maxHp": 80,
@@ -130,7 +130,7 @@
       "name": "인형탈 머리",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "defense": 8,
         "maxHp": 80,
@@ -143,7 +143,7 @@
       "name": "인형탈 머리",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "defense": 10,
         "maxHp": 80,
@@ -156,7 +156,7 @@
       "name": "인형탈 머리",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 12,
         "maxHp": 80,
@@ -169,7 +169,7 @@
       "name": "인형탈 머리",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "defense": 12,
         "maxHp": 160,
@@ -182,7 +182,7 @@
       "name": "인형탈 머리",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "defense": 15,
         "maxHp": 160,
@@ -195,7 +195,7 @@
       "name": "인형탈 머리",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "defense": 18,
         "maxHp": 160,
@@ -208,7 +208,7 @@
       "name": "인형탈 머리",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "defense": 22,
         "maxHp": 160,
@@ -221,7 +221,7 @@
       "name": "인형탈 머리",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 26,
         "maxHp": 160,
@@ -234,7 +234,7 @@
       "name": "인형탈 머리",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "defense": 26,
         "maxHp": 320,
@@ -247,7 +247,7 @@
       "name": "인형탈 머리",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "defense": 30,
         "maxHp": 320,
@@ -260,7 +260,7 @@
       "name": "인형탈 머리",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "defense": 34,
         "maxHp": 320,
@@ -273,7 +273,7 @@
       "name": "인형탈 머리",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "defense": 38,
         "maxHp": 320,
@@ -286,7 +286,7 @@
       "name": "인형탈 머리",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 42,
         "maxHp": 320,
@@ -299,7 +299,7 @@
       "name": "인형탈 머리",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 42,
         "maxHp": 520,
@@ -312,7 +312,7 @@
       "name": "인형탈 머리",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 46,
         "maxHp": 520,
@@ -325,7 +325,7 @@
       "name": "인형탈 머리",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 50,
         "maxHp": 520,
@@ -338,7 +338,7 @@
       "name": "인형탈 머리",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 55,
         "maxHp": 520,
@@ -351,7 +351,7 @@
       "name": "인형탈 머리",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 60,
         "maxHp": 520,
@@ -364,7 +364,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "defense": -1,
         "speed": 2
@@ -376,7 +376,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "defense": 0,
         "speed": 2
@@ -388,7 +388,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "defense": 1,
         "speed": 2
@@ -400,7 +400,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 2,
         "speed": 2
@@ -412,7 +412,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 3,
         "speed": 2
@@ -424,7 +424,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 2,
         "speed": 6
@@ -436,7 +436,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "defense": 4,
         "speed": 6
@@ -448,7 +448,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "defense": 6,
         "speed": 6
@@ -460,7 +460,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "defense": 8,
         "speed": 6
@@ -472,7 +472,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 10,
         "speed": 6
@@ -484,7 +484,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "defense": 8,
         "speed": 10
@@ -496,7 +496,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "defense": 11,
         "speed": 10
@@ -508,7 +508,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "defense": 14,
         "speed": 10
@@ -520,7 +520,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "defense": 18,
         "speed": 10
@@ -532,7 +532,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 22,
         "speed": 10
@@ -544,7 +544,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "defense": 20,
         "speed": 18
@@ -556,7 +556,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "defense": 24,
         "speed": 18
@@ -568,7 +568,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "defense": 28,
         "speed": 18
@@ -580,7 +580,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "defense": 32,
         "speed": 18
@@ -592,7 +592,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 36,
         "speed": 18
@@ -604,7 +604,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 33,
         "speed": 28
@@ -616,7 +616,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 37,
         "speed": 28
@@ -628,7 +628,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 41,
         "speed": 28
@@ -640,7 +640,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 46,
         "speed": 28
@@ -652,7 +652,7 @@
       "name": "캐릭터 머리띠",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 51,
         "speed": 28
@@ -664,7 +664,7 @@
       "name": "장난감 투구",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "defense": 2,
         "attack": -2
@@ -676,7 +676,7 @@
       "name": "장난감 투구",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "defense": 3,
         "attack": -2
@@ -688,7 +688,7 @@
       "name": "장난감 투구",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "defense": 4,
         "attack": -2
@@ -700,7 +700,7 @@
       "name": "장난감 투구",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 5,
         "attack": -2
@@ -712,7 +712,7 @@
       "name": "장난감 투구",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 6,
         "attack": -2
@@ -724,7 +724,7 @@
       "name": "장난감 투구",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 8,
         "attack": -4
@@ -736,7 +736,7 @@
       "name": "장난감 투구",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "defense": 10,
         "attack": -4
@@ -748,7 +748,7 @@
       "name": "장난감 투구",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "defense": 12,
         "attack": -4
@@ -760,7 +760,7 @@
       "name": "장난감 투구",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "defense": 14,
         "attack": -4
@@ -772,7 +772,7 @@
       "name": "장난감 투구",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 16,
         "attack": -4
@@ -784,7 +784,7 @@
       "name": "장난감 투구",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "defense": 20,
         "attack": -8
@@ -796,7 +796,7 @@
       "name": "장난감 투구",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "defense": 23,
         "attack": -8
@@ -808,7 +808,7 @@
       "name": "장난감 투구",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "defense": 26,
         "attack": -8
@@ -820,7 +820,7 @@
       "name": "장난감 투구",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "defense": 30,
         "attack": -8
@@ -832,7 +832,7 @@
       "name": "장난감 투구",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 34,
         "attack": -8
@@ -844,7 +844,7 @@
       "name": "장난감 투구",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "defense": 38,
         "attack": -12
@@ -856,7 +856,7 @@
       "name": "장난감 투구",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "defense": 42,
         "attack": -12
@@ -868,7 +868,7 @@
       "name": "장난감 투구",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "defense": 46,
         "attack": -12
@@ -880,7 +880,7 @@
       "name": "장난감 투구",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "defense": 50,
         "attack": -12
@@ -892,7 +892,7 @@
       "name": "장난감 투구",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 54,
         "attack": -12
@@ -904,7 +904,7 @@
       "name": "장난감 투구",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 60,
         "attack": -18
@@ -916,7 +916,7 @@
       "name": "장난감 투구",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 64,
         "attack": -18
@@ -928,7 +928,7 @@
       "name": "장난감 투구",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 68,
         "attack": -18
@@ -940,7 +940,7 @@
       "name": "장난감 투구",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 73,
         "attack": -18
@@ -952,7 +952,7 @@
       "name": "장난감 투구",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 78,
         "attack": -18
@@ -964,7 +964,7 @@
       "name": "바이킹 모자",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "defense": 0,
         "attack": 4,
@@ -977,7 +977,7 @@
       "name": "바이킹 모자",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "defense": 1,
         "attack": 4,
@@ -990,7 +990,7 @@
       "name": "바이킹 모자",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "defense": 2,
         "attack": 4,
@@ -1003,7 +1003,7 @@
       "name": "바이킹 모자",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 3,
         "attack": 4,
@@ -1016,7 +1016,7 @@
       "name": "바이킹 모자",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 4,
         "attack": 4,
@@ -1029,7 +1029,7 @@
       "name": "바이킹 모자",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 4,
         "attack": 8,
@@ -1042,7 +1042,7 @@
       "name": "바이킹 모자",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "defense": 6,
         "attack": 8,
@@ -1055,7 +1055,7 @@
       "name": "바이킹 모자",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "defense": 8,
         "attack": 8,
@@ -1068,7 +1068,7 @@
       "name": "바이킹 모자",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "defense": 10,
         "attack": 8,
@@ -1081,7 +1081,7 @@
       "name": "바이킹 모자",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 12,
         "attack": 8,
@@ -1094,7 +1094,7 @@
       "name": "바이킹 모자",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "defense": 12,
         "attack": 16,
@@ -1107,7 +1107,7 @@
       "name": "바이킹 모자",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "defense": 15,
         "attack": 16,
@@ -1120,7 +1120,7 @@
       "name": "바이킹 모자",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "defense": 18,
         "attack": 16,
@@ -1133,7 +1133,7 @@
       "name": "바이킹 모자",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "defense": 22,
         "attack": 16,
@@ -1146,7 +1146,7 @@
       "name": "바이킹 모자",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 26,
         "attack": 16,
@@ -1159,7 +1159,7 @@
       "name": "바이킹 모자",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "defense": 26,
         "attack": 24,
@@ -1172,7 +1172,7 @@
       "name": "바이킹 모자",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "defense": 30,
         "attack": 24,
@@ -1185,7 +1185,7 @@
       "name": "바이킹 모자",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "defense": 34,
         "attack": 24,
@@ -1198,7 +1198,7 @@
       "name": "바이킹 모자",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "defense": 38,
         "attack": 24,
@@ -1211,7 +1211,7 @@
       "name": "바이킹 모자",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 42,
         "attack": 24,
@@ -1224,7 +1224,7 @@
       "name": "바이킹 모자",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 42,
         "attack": 36,
@@ -1237,7 +1237,7 @@
       "name": "바이킹 모자",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 46,
         "attack": 36,
@@ -1250,7 +1250,7 @@
       "name": "바이킹 모자",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 50,
         "attack": 36,
@@ -1263,7 +1263,7 @@
       "name": "바이킹 모자",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 55,
         "attack": 36,
@@ -1276,7 +1276,7 @@
       "name": "바이킹 모자",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 60,
         "attack": 36,
@@ -1289,7 +1289,7 @@
       "name": "할로윈 가면",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "defense": 0
       }
@@ -1300,7 +1300,7 @@
       "name": "할로윈 가면",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "defense": 1
       }
@@ -1311,7 +1311,7 @@
       "name": "할로윈 가면",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "defense": 2
       }
@@ -1322,7 +1322,7 @@
       "name": "할로윈 가면",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 3
       }
@@ -1333,7 +1333,7 @@
       "name": "할로윈 가면",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 4
       }
@@ -1344,7 +1344,7 @@
       "name": "할로윈 가면",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "defense": 4
       }
@@ -1355,7 +1355,7 @@
       "name": "할로윈 가면",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "defense": 6
       }
@@ -1366,7 +1366,7 @@
       "name": "할로윈 가면",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "defense": 8
       }
@@ -1377,7 +1377,7 @@
       "name": "할로윈 가면",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "defense": 10
       }
@@ -1388,7 +1388,7 @@
       "name": "할로윈 가면",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 12
       }
@@ -1399,7 +1399,7 @@
       "name": "할로윈 가면",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "defense": 12
       }
@@ -1410,7 +1410,7 @@
       "name": "할로윈 가면",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "defense": 15
       }
@@ -1421,7 +1421,7 @@
       "name": "할로윈 가면",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "defense": 18
       }
@@ -1432,7 +1432,7 @@
       "name": "할로윈 가면",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "defense": 22
       }
@@ -1443,7 +1443,7 @@
       "name": "할로윈 가면",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 26
       }
@@ -1454,7 +1454,7 @@
       "name": "할로윈 가면",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "defense": 26
       }
@@ -1465,7 +1465,7 @@
       "name": "할로윈 가면",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "defense": 30
       }
@@ -1476,7 +1476,7 @@
       "name": "할로윈 가면",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "defense": 34
       }
@@ -1487,7 +1487,7 @@
       "name": "할로윈 가면",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "defense": 38
       }
@@ -1498,7 +1498,7 @@
       "name": "할로윈 가면",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 42
       }
@@ -1509,7 +1509,7 @@
       "name": "할로윈 가면",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 42
       }
@@ -1520,7 +1520,7 @@
       "name": "할로윈 가면",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 46
       }
@@ -1531,7 +1531,7 @@
       "name": "할로윈 가면",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 50
       }
@@ -1542,7 +1542,7 @@
       "name": "할로윈 가면",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 55
       }
@@ -1553,7 +1553,7 @@
       "name": "할로윈 가면",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "defense": 60
       }
@@ -1564,7 +1564,7 @@
       "name": "인형탈 몸통",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "maxHp": 10,
         "attack": -2
@@ -1576,7 +1576,7 @@
       "name": "인형탈 몸통",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "maxHp": 20,
         "attack": -2
@@ -1588,7 +1588,7 @@
       "name": "인형탈 몸통",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "maxHp": 30,
         "attack": -2
@@ -1600,7 +1600,7 @@
       "name": "인형탈 몸통",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 50,
         "attack": -2
@@ -1612,7 +1612,7 @@
       "name": "인형탈 몸통",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 90,
         "attack": -2
@@ -1624,7 +1624,7 @@
       "name": "인형탈 몸통",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 160,
         "attack": -4
@@ -1636,7 +1636,7 @@
       "name": "인형탈 몸통",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "maxHp": 200,
         "attack": -4
@@ -1648,7 +1648,7 @@
       "name": "인형탈 몸통",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "maxHp": 240,
         "attack": -4
@@ -1660,7 +1660,7 @@
       "name": "인형탈 몸통",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "maxHp": 320,
         "attack": -4
@@ -1672,7 +1672,7 @@
       "name": "인형탈 몸통",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 400,
         "attack": -4
@@ -1684,7 +1684,7 @@
       "name": "인형탈 몸통",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "maxHp": 480,
         "attack": -8
@@ -1696,7 +1696,7 @@
       "name": "인형탈 몸통",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "maxHp": 560,
         "attack": -8
@@ -1708,7 +1708,7 @@
       "name": "인형탈 몸통",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "maxHp": 680,
         "attack": -8
@@ -1720,7 +1720,7 @@
       "name": "인형탈 몸통",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "maxHp": 900,
         "attack": -8
@@ -1732,7 +1732,7 @@
       "name": "인형탈 몸통",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 1120,
         "attack": -8
@@ -1744,7 +1744,7 @@
       "name": "인형탈 몸통",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "maxHp": 1280,
         "attack": -12
@@ -1756,7 +1756,7 @@
       "name": "인형탈 몸통",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "maxHp": 1420,
         "attack": -12
@@ -1768,7 +1768,7 @@
       "name": "인형탈 몸통",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "maxHp": 1720,
         "attack": -12
@@ -1780,7 +1780,7 @@
       "name": "인형탈 몸통",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "maxHp": 2120,
         "attack": -12
@@ -1792,7 +1792,7 @@
       "name": "인형탈 몸통",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2520,
         "attack": -12
@@ -1804,7 +1804,7 @@
       "name": "인형탈 몸통",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2720,
         "attack": -18
@@ -1816,7 +1816,7 @@
       "name": "인형탈 몸통",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3120,
         "attack": -18
@@ -1828,7 +1828,7 @@
       "name": "인형탈 몸통",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3520,
         "attack": -18
@@ -1840,7 +1840,7 @@
       "name": "인형탈 몸통",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 4020,
         "attack": -18
@@ -1852,7 +1852,7 @@
       "name": "인형탈 몸통",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 4520,
         "attack": -18
@@ -1864,7 +1864,7 @@
       "name": "테마파크 유니폼",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "maxHp": 0,
         "attack": 4,
@@ -1877,7 +1877,7 @@
       "name": "테마파크 유니폼",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "maxHp": 10,
         "attack": 4,
@@ -1890,7 +1890,7 @@
       "name": "테마파크 유니폼",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "maxHp": 20,
         "attack": 4,
@@ -1903,7 +1903,7 @@
       "name": "테마파크 유니폼",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 40,
         "attack": 4,
@@ -1916,7 +1916,7 @@
       "name": "테마파크 유니폼",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 80,
         "attack": 4,
@@ -1929,7 +1929,7 @@
       "name": "테마파크 유니폼",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 80,
         "attack": 8,
@@ -1942,7 +1942,7 @@
       "name": "테마파크 유니폼",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "maxHp": 120,
         "attack": 8,
@@ -1955,7 +1955,7 @@
       "name": "테마파크 유니폼",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "maxHp": 160,
         "attack": 8,
@@ -1968,7 +1968,7 @@
       "name": "테마파크 유니폼",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "maxHp": 240,
         "attack": 8,
@@ -1981,7 +1981,7 @@
       "name": "테마파크 유니폼",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 320,
         "attack": 8,
@@ -1994,7 +1994,7 @@
       "name": "테마파크 유니폼",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "maxHp": 320,
         "attack": 16,
@@ -2007,7 +2007,7 @@
       "name": "테마파크 유니폼",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "maxHp": 400,
         "attack": 16,
@@ -2020,7 +2020,7 @@
       "name": "테마파크 유니폼",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "maxHp": 520,
         "attack": 16,
@@ -2033,7 +2033,7 @@
       "name": "테마파크 유니폼",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "maxHp": 740,
         "attack": 16,
@@ -2046,7 +2046,7 @@
       "name": "테마파크 유니폼",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 960,
         "attack": 16,
@@ -2059,7 +2059,7 @@
       "name": "테마파크 유니폼",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "maxHp": 960,
         "attack": 24,
@@ -2072,7 +2072,7 @@
       "name": "테마파크 유니폼",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "maxHp": 1100,
         "attack": 24,
@@ -2085,7 +2085,7 @@
       "name": "테마파크 유니폼",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "maxHp": 1400,
         "attack": 24,
@@ -2098,7 +2098,7 @@
       "name": "테마파크 유니폼",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "maxHp": 1800,
         "attack": 24,
@@ -2111,7 +2111,7 @@
       "name": "테마파크 유니폼",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200,
         "attack": 24,
@@ -2124,7 +2124,7 @@
       "name": "테마파크 유니폼",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200,
         "attack": 36,
@@ -2137,7 +2137,7 @@
       "name": "테마파크 유니폼",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2600,
         "attack": 36,
@@ -2150,7 +2150,7 @@
       "name": "테마파크 유니폼",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3000,
         "attack": 36,
@@ -2163,7 +2163,7 @@
       "name": "테마파크 유니폼",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3500,
         "attack": 36,
@@ -2176,7 +2176,7 @@
       "name": "테마파크 유니폼",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 4000,
         "attack": 36,
@@ -2189,7 +2189,7 @@
       "name": "보안 조끼",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "maxHp": 0,
         "defense": 2,
@@ -2202,7 +2202,7 @@
       "name": "보안 조끼",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "maxHp": 10,
         "defense": 2,
@@ -2215,7 +2215,7 @@
       "name": "보안 조끼",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "maxHp": 20,
         "defense": 2,
@@ -2228,7 +2228,7 @@
       "name": "보안 조끼",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 40,
         "defense": 2,
@@ -2241,7 +2241,7 @@
       "name": "보안 조끼",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 80,
         "defense": 2,
@@ -2254,7 +2254,7 @@
       "name": "보안 조끼",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 80,
         "defense": 4,
@@ -2267,7 +2267,7 @@
       "name": "보안 조끼",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "maxHp": 120,
         "defense": 4,
@@ -2280,7 +2280,7 @@
       "name": "보안 조끼",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "maxHp": 160,
         "defense": 4,
@@ -2293,7 +2293,7 @@
       "name": "보안 조끼",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "maxHp": 240,
         "defense": 4,
@@ -2306,7 +2306,7 @@
       "name": "보안 조끼",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 320,
         "defense": 4,
@@ -2319,7 +2319,7 @@
       "name": "보안 조끼",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "maxHp": 320,
         "defense": 8,
@@ -2332,7 +2332,7 @@
       "name": "보안 조끼",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "maxHp": 400,
         "defense": 8,
@@ -2345,7 +2345,7 @@
       "name": "보안 조끼",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "maxHp": 520,
         "defense": 8,
@@ -2358,7 +2358,7 @@
       "name": "보안 조끼",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "maxHp": 740,
         "defense": 8,
@@ -2371,7 +2371,7 @@
       "name": "보안 조끼",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 960,
         "defense": 8,
@@ -2384,7 +2384,7 @@
       "name": "보안 조끼",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "maxHp": 960,
         "defense": 12,
@@ -2397,7 +2397,7 @@
       "name": "보안 조끼",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "maxHp": 1100,
         "defense": 12,
@@ -2410,7 +2410,7 @@
       "name": "보안 조끼",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "maxHp": 1400,
         "defense": 12,
@@ -2423,7 +2423,7 @@
       "name": "보안 조끼",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "maxHp": 1800,
         "defense": 12,
@@ -2436,7 +2436,7 @@
       "name": "보안 조끼",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200,
         "defense": 12,
@@ -2449,7 +2449,7 @@
       "name": "보안 조끼",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200,
         "defense": 18,
@@ -2462,7 +2462,7 @@
       "name": "보안 조끼",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2600,
         "defense": 18,
@@ -2475,7 +2475,7 @@
       "name": "보안 조끼",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3000,
         "defense": 18,
@@ -2488,7 +2488,7 @@
       "name": "보안 조끼",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3500,
         "defense": 18,
@@ -2501,7 +2501,7 @@
       "name": "보안 조끼",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 4000,
         "defense": 18,
@@ -2514,7 +2514,7 @@
       "name": "미화원 옷",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "maxHp": 0,
         "speed": 2,
@@ -2527,7 +2527,7 @@
       "name": "미화원 옷",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "maxHp": 10,
         "speed": 2,
@@ -2540,7 +2540,7 @@
       "name": "미화원 옷",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "maxHp": 20,
         "speed": 2,
@@ -2553,7 +2553,7 @@
       "name": "미화원 옷",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 40,
         "speed": 2,
@@ -2566,7 +2566,7 @@
       "name": "미화원 옷",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 80,
         "speed": 2,
@@ -2579,7 +2579,7 @@
       "name": "미화원 옷",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 80,
         "speed": 6,
@@ -2592,7 +2592,7 @@
       "name": "미화원 옷",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "maxHp": 120,
         "speed": 6,
@@ -2605,7 +2605,7 @@
       "name": "미화원 옷",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "maxHp": 160,
         "speed": 6,
@@ -2618,7 +2618,7 @@
       "name": "미화원 옷",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "maxHp": 240,
         "speed": 6,
@@ -2631,7 +2631,7 @@
       "name": "미화원 옷",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 320,
         "speed": 6,
@@ -2644,7 +2644,7 @@
       "name": "미화원 옷",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "maxHp": 320,
         "speed": 10,
@@ -2657,7 +2657,7 @@
       "name": "미화원 옷",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "maxHp": 400,
         "speed": 10,
@@ -2670,7 +2670,7 @@
       "name": "미화원 옷",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "maxHp": 520,
         "speed": 10,
@@ -2683,7 +2683,7 @@
       "name": "미화원 옷",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "maxHp": 740,
         "speed": 10,
@@ -2696,7 +2696,7 @@
       "name": "미화원 옷",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 960,
         "speed": 10,
@@ -2709,7 +2709,7 @@
       "name": "미화원 옷",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "maxHp": 960,
         "speed": 18,
@@ -2722,7 +2722,7 @@
       "name": "미화원 옷",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "maxHp": 1100,
         "speed": 18,
@@ -2735,7 +2735,7 @@
       "name": "미화원 옷",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "maxHp": 1400,
         "speed": 18,
@@ -2748,7 +2748,7 @@
       "name": "미화원 옷",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "maxHp": 1800,
         "speed": 18,
@@ -2761,7 +2761,7 @@
       "name": "미화원 옷",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200,
         "speed": 18,
@@ -2774,7 +2774,7 @@
       "name": "미화원 옷",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200,
         "speed": 28,
@@ -2787,7 +2787,7 @@
       "name": "미화원 옷",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2600,
         "speed": 28,
@@ -2800,7 +2800,7 @@
       "name": "미화원 옷",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3000,
         "speed": 28,
@@ -2813,7 +2813,7 @@
       "name": "미화원 옷",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3500,
         "speed": 28,
@@ -2826,7 +2826,7 @@
       "name": "미화원 옷",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 4000,
         "speed": 28,
@@ -2839,7 +2839,7 @@
       "name": "대여 교복",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "maxHp": 0
       }
@@ -2850,7 +2850,7 @@
       "name": "대여 교복",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "maxHp": 10
       }
@@ -2861,7 +2861,7 @@
       "name": "대여 교복",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "maxHp": 20
       }
@@ -2872,7 +2872,7 @@
       "name": "대여 교복",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 40
       }
@@ -2883,7 +2883,7 @@
       "name": "대여 교복",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 80
       }
@@ -2894,7 +2894,7 @@
       "name": "대여 교복",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "maxHp": 80
       }
@@ -2905,7 +2905,7 @@
       "name": "대여 교복",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "maxHp": 120
       }
@@ -2916,7 +2916,7 @@
       "name": "대여 교복",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "maxHp": 160
       }
@@ -2927,7 +2927,7 @@
       "name": "대여 교복",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "maxHp": 240
       }
@@ -2938,7 +2938,7 @@
       "name": "대여 교복",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 320
       }
@@ -2949,7 +2949,7 @@
       "name": "대여 교복",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "maxHp": 320
       }
@@ -2960,7 +2960,7 @@
       "name": "대여 교복",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "maxHp": 400
       }
@@ -2971,7 +2971,7 @@
       "name": "대여 교복",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "maxHp": 520
       }
@@ -2982,7 +2982,7 @@
       "name": "대여 교복",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "maxHp": 740
       }
@@ -2993,7 +2993,7 @@
       "name": "대여 교복",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 960
       }
@@ -3004,7 +3004,7 @@
       "name": "대여 교복",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "maxHp": 960
       }
@@ -3015,7 +3015,7 @@
       "name": "대여 교복",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "maxHp": 1100
       }
@@ -3026,7 +3026,7 @@
       "name": "대여 교복",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "maxHp": 1400
       }
@@ -3037,7 +3037,7 @@
       "name": "대여 교복",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "maxHp": 1800
       }
@@ -3048,7 +3048,7 @@
       "name": "대여 교복",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200
       }
@@ -3059,7 +3059,7 @@
       "name": "대여 교복",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2200
       }
@@ -3070,7 +3070,7 @@
       "name": "대여 교복",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 2600
       }
@@ -3081,7 +3081,7 @@
       "name": "대여 교복",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3000
       }
@@ -3092,7 +3092,7 @@
       "name": "대여 교복",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 3500
       }
@@ -3103,7 +3103,7 @@
       "name": "대여 교복",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "maxHp": 4000
       }
@@ -3114,7 +3114,7 @@
       "name": "인형탈 신발",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "speed": -1,
         "maxHp": 10
@@ -3126,7 +3126,7 @@
       "name": "인형탈 신발",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "speed": 0,
         "maxHp": 10
@@ -3138,7 +3138,7 @@
       "name": "인형탈 신발",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "speed": 1,
         "maxHp": 10
@@ -3150,7 +3150,7 @@
       "name": "인형탈 신발",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 3,
         "maxHp": 10
@@ -3162,7 +3162,7 @@
       "name": "인형탈 신발",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 5,
         "maxHp": 10
@@ -3174,7 +3174,7 @@
       "name": "인형탈 신발",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 3,
         "maxHp": 80
@@ -3186,7 +3186,7 @@
       "name": "인형탈 신발",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "speed": 5,
         "maxHp": 80
@@ -3198,7 +3198,7 @@
       "name": "인형탈 신발",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "speed": 7,
         "maxHp": 80
@@ -3210,7 +3210,7 @@
       "name": "인형탈 신발",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "speed": 11,
         "maxHp": 80
@@ -3222,7 +3222,7 @@
       "name": "인형탈 신발",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 15,
         "maxHp": 80
@@ -3234,7 +3234,7 @@
       "name": "인형탈 신발",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "speed": 13,
         "maxHp": 160
@@ -3246,7 +3246,7 @@
       "name": "인형탈 신발",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "speed": 17,
         "maxHp": 160
@@ -3258,7 +3258,7 @@
       "name": "인형탈 신발",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "speed": 23,
         "maxHp": 160
@@ -3270,7 +3270,7 @@
       "name": "인형탈 신발",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "speed": 31,
         "maxHp": 160
@@ -3282,7 +3282,7 @@
       "name": "인형탈 신발",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 39,
         "maxHp": 160
@@ -3294,7 +3294,7 @@
       "name": "인형탈 신발",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "speed": 35,
         "maxHp": 320
@@ -3306,7 +3306,7 @@
       "name": "인형탈 신발",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "speed": 43,
         "maxHp": 320
@@ -3318,7 +3318,7 @@
       "name": "인형탈 신발",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "speed": 51,
         "maxHp": 320
@@ -3330,7 +3330,7 @@
       "name": "인형탈 신발",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "speed": 61,
         "maxHp": 320
@@ -3342,7 +3342,7 @@
       "name": "인형탈 신발",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 73,
         "maxHp": 320
@@ -3354,7 +3354,7 @@
       "name": "인형탈 신발",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 68,
         "maxHp": 520
@@ -3366,7 +3366,7 @@
       "name": "인형탈 신발",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 76,
         "maxHp": 520
@@ -3378,7 +3378,7 @@
       "name": "인형탈 신발",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 86,
         "maxHp": 520
@@ -3390,7 +3390,7 @@
       "name": "인형탈 신발",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 96,
         "maxHp": 520
@@ -3402,7 +3402,7 @@
       "name": "인형탈 신발",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 106,
         "maxHp": 520
@@ -3414,7 +3414,7 @@
       "name": "동물 슬리퍼",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "speed": 2,
         "attack": -2
@@ -3426,7 +3426,7 @@
       "name": "동물 슬리퍼",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "speed": 3,
         "attack": -2
@@ -3438,7 +3438,7 @@
       "name": "동물 슬리퍼",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "speed": 4,
         "attack": -2
@@ -3450,7 +3450,7 @@
       "name": "동물 슬리퍼",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 6,
         "attack": -2
@@ -3462,7 +3462,7 @@
       "name": "동물 슬리퍼",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 8,
         "attack": -2
@@ -3474,7 +3474,7 @@
       "name": "동물 슬리퍼",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 12,
         "attack": -4
@@ -3486,7 +3486,7 @@
       "name": "동물 슬리퍼",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "speed": 14,
         "attack": -4
@@ -3498,7 +3498,7 @@
       "name": "동물 슬리퍼",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "speed": 16,
         "attack": -4
@@ -3510,7 +3510,7 @@
       "name": "동물 슬리퍼",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "speed": 20,
         "attack": -4
@@ -3522,7 +3522,7 @@
       "name": "동물 슬리퍼",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 24,
         "attack": -4
@@ -3534,7 +3534,7 @@
       "name": "동물 슬리퍼",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "speed": 28,
         "attack": -8
@@ -3546,7 +3546,7 @@
       "name": "동물 슬리퍼",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "speed": 32,
         "attack": -8
@@ -3558,7 +3558,7 @@
       "name": "동물 슬리퍼",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "speed": 38,
         "attack": -8
@@ -3570,7 +3570,7 @@
       "name": "동물 슬리퍼",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "speed": 46,
         "attack": -8
@@ -3582,7 +3582,7 @@
       "name": "동물 슬리퍼",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 54,
         "attack": -8
@@ -3594,7 +3594,7 @@
       "name": "동물 슬리퍼",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "speed": 62,
         "attack": -12
@@ -3606,7 +3606,7 @@
       "name": "동물 슬리퍼",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "speed": 70,
         "attack": -12
@@ -3618,7 +3618,7 @@
       "name": "동물 슬리퍼",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "speed": 78,
         "attack": -12
@@ -3630,7 +3630,7 @@
       "name": "동물 슬리퍼",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "speed": 88,
         "attack": -12
@@ -3642,7 +3642,7 @@
       "name": "동물 슬리퍼",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 100,
         "attack": -12
@@ -3654,7 +3654,7 @@
       "name": "동물 슬리퍼",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 110,
         "attack": -18
@@ -3666,7 +3666,7 @@
       "name": "동물 슬리퍼",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 118,
         "attack": -18
@@ -3678,7 +3678,7 @@
       "name": "동물 슬리퍼",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 128,
         "attack": -18
@@ -3690,7 +3690,7 @@
       "name": "동물 슬리퍼",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 138,
         "attack": -18
@@ -3702,7 +3702,7 @@
       "name": "동물 슬리퍼",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 148,
         "attack": -18
@@ -3714,7 +3714,7 @@
       "name": "롤러스케이트",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "speed": 2,
         "defense": -1
@@ -3726,7 +3726,7 @@
       "name": "롤러스케이트",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "speed": 3,
         "defense": -1
@@ -3738,7 +3738,7 @@
       "name": "롤러스케이트",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "speed": 4,
         "defense": -1
@@ -3750,7 +3750,7 @@
       "name": "롤러스케이트",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 6,
         "defense": -1
@@ -3762,7 +3762,7 @@
       "name": "롤러스케이트",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 8,
         "defense": -1
@@ -3774,7 +3774,7 @@
       "name": "롤러스케이트",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 12,
         "defense": -2
@@ -3786,7 +3786,7 @@
       "name": "롤러스케이트",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "speed": 14,
         "defense": -2
@@ -3798,7 +3798,7 @@
       "name": "롤러스케이트",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "speed": 16,
         "defense": -2
@@ -3810,7 +3810,7 @@
       "name": "롤러스케이트",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "speed": 20,
         "defense": -2
@@ -3822,7 +3822,7 @@
       "name": "롤러스케이트",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 24,
         "defense": -2
@@ -3834,7 +3834,7 @@
       "name": "롤러스케이트",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "speed": 28,
         "defense": -4
@@ -3846,7 +3846,7 @@
       "name": "롤러스케이트",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "speed": 32,
         "defense": -4
@@ -3858,7 +3858,7 @@
       "name": "롤러스케이트",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "speed": 38,
         "defense": -4
@@ -3870,7 +3870,7 @@
       "name": "롤러스케이트",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "speed": 46,
         "defense": -4
@@ -3882,7 +3882,7 @@
       "name": "롤러스케이트",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 54,
         "defense": -4
@@ -3894,7 +3894,7 @@
       "name": "롤러스케이트",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "speed": 62,
         "defense": -6
@@ -3906,7 +3906,7 @@
       "name": "롤러스케이트",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "speed": 70,
         "defense": -6
@@ -3918,7 +3918,7 @@
       "name": "롤러스케이트",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "speed": 78,
         "defense": -6
@@ -3930,7 +3930,7 @@
       "name": "롤러스케이트",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "speed": 88,
         "defense": -6
@@ -3942,7 +3942,7 @@
       "name": "롤러스케이트",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 100,
         "defense": -6
@@ -3954,7 +3954,7 @@
       "name": "롤러스케이트",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 110,
         "defense": -9
@@ -3966,7 +3966,7 @@
       "name": "롤러스케이트",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 118,
         "defense": -9
@@ -3978,7 +3978,7 @@
       "name": "롤러스케이트",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 128,
         "defense": -9
@@ -3990,7 +3990,7 @@
       "name": "롤러스케이트",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 138,
         "defense": -9
@@ -4002,7 +4002,7 @@
       "name": "롤러스케이트",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 148,
         "defense": -9
@@ -4014,7 +4014,7 @@
       "name": "스케이트",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "speed": 0,
         "attack": 4,
@@ -4027,7 +4027,7 @@
       "name": "스케이트",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "speed": 1,
         "attack": 4,
@@ -4040,7 +4040,7 @@
       "name": "스케이트",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "speed": 2,
         "attack": 4,
@@ -4053,7 +4053,7 @@
       "name": "스케이트",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 4,
         "attack": 4,
@@ -4066,7 +4066,7 @@
       "name": "스케이트",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 6,
         "attack": 4,
@@ -4079,7 +4079,7 @@
       "name": "스케이트",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 6,
         "attack": 8,
@@ -4092,7 +4092,7 @@
       "name": "스케이트",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "speed": 8,
         "attack": 8,
@@ -4105,7 +4105,7 @@
       "name": "스케이트",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "speed": 10,
         "attack": 8,
@@ -4118,7 +4118,7 @@
       "name": "스케이트",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "speed": 14,
         "attack": 8,
@@ -4131,7 +4131,7 @@
       "name": "스케이트",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 18,
         "attack": 8,
@@ -4144,7 +4144,7 @@
       "name": "스케이트",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "speed": 18,
         "attack": 16,
@@ -4157,7 +4157,7 @@
       "name": "스케이트",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "speed": 22,
         "attack": 16,
@@ -4170,7 +4170,7 @@
       "name": "스케이트",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "speed": 28,
         "attack": 16,
@@ -4183,7 +4183,7 @@
       "name": "스케이트",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "speed": 36,
         "attack": 16,
@@ -4196,7 +4196,7 @@
       "name": "스케이트",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 44,
         "attack": 16,
@@ -4209,7 +4209,7 @@
       "name": "스케이트",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "speed": 44,
         "attack": 24,
@@ -4222,7 +4222,7 @@
       "name": "스케이트",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "speed": 52,
         "attack": 24,
@@ -4235,7 +4235,7 @@
       "name": "스케이트",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "speed": 60,
         "attack": 24,
@@ -4248,7 +4248,7 @@
       "name": "스케이트",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "speed": 70,
         "attack": 24,
@@ -4261,7 +4261,7 @@
       "name": "스케이트",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 82,
         "attack": 24,
@@ -4274,7 +4274,7 @@
       "name": "스케이트",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 82,
         "attack": 36,
@@ -4287,7 +4287,7 @@
       "name": "스케이트",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 90,
         "attack": 36,
@@ -4300,7 +4300,7 @@
       "name": "스케이트",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 100,
         "attack": 36,
@@ -4313,7 +4313,7 @@
       "name": "스케이트",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 110,
         "attack": 36,
@@ -4326,7 +4326,7 @@
       "name": "스케이트",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 120,
         "attack": 36,
@@ -4339,7 +4339,7 @@
       "name": "운동화",
       "prefix": 0,
       "rank": 0,
-      "price": 10,
+      "price": 100,
       "statEffect": {
         "speed": 0
       }
@@ -4350,7 +4350,7 @@
       "name": "운동화",
       "prefix": 1,
       "rank": 0,
-      "price": 10,
+      "price": 175,
       "statEffect": {
         "speed": 1
       }
@@ -4361,7 +4361,7 @@
       "name": "운동화",
       "prefix": 2,
       "rank": 0,
-      "price": 10,
+      "price": 250,
       "statEffect": {
         "speed": 2
       }
@@ -4372,7 +4372,7 @@
       "name": "운동화",
       "prefix": 3,
       "rank": 0,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 4
       }
@@ -4383,7 +4383,7 @@
       "name": "운동화",
       "prefix": 4,
       "rank": 0,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 6
       }
@@ -4394,7 +4394,7 @@
       "name": "운동화",
       "prefix": 0,
       "rank": 1,
-      "price": 10,
+      "price": 350,
       "statEffect": {
         "speed": 6
       }
@@ -4405,7 +4405,7 @@
       "name": "운동화",
       "prefix": 1,
       "rank": 1,
-      "price": 10,
+      "price": 600,
       "statEffect": {
         "speed": 8
       }
@@ -4416,7 +4416,7 @@
       "name": "운동화",
       "prefix": 2,
       "rank": 1,
-      "price": 10,
+      "price": 875,
       "statEffect": {
         "speed": 10
       }
@@ -4427,7 +4427,7 @@
       "name": "운동화",
       "prefix": 3,
       "rank": 1,
-      "price": 10,
+      "price": 1225,
       "statEffect": {
         "speed": 14
       }
@@ -4438,7 +4438,7 @@
       "name": "운동화",
       "prefix": 4,
       "rank": 1,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 18
       }
@@ -4449,7 +4449,7 @@
       "name": "운동화",
       "prefix": 0,
       "rank": 2,
-      "price": 10,
+      "price": 800,
       "statEffect": {
         "speed": 18
       }
@@ -4460,7 +4460,7 @@
       "name": "운동화",
       "prefix": 1,
       "rank": 2,
-      "price": 10,
+      "price": 1400,
       "statEffect": {
         "speed": 22
       }
@@ -4471,7 +4471,7 @@
       "name": "운동화",
       "prefix": 2,
       "rank": 2,
-      "price": 10,
+      "price": 2000,
       "statEffect": {
         "speed": 28
       }
@@ -4482,7 +4482,7 @@
       "name": "운동화",
       "prefix": 3,
       "rank": 2,
-      "price": 10,
+      "price": 2800,
       "statEffect": {
         "speed": 36
       }
@@ -4493,7 +4493,7 @@
       "name": "운동화",
       "prefix": 4,
       "rank": 2,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 44
       }
@@ -4504,7 +4504,7 @@
       "name": "운동화",
       "prefix": 0,
       "rank": 3,
-      "price": 10,
+      "price": 1500,
       "statEffect": {
         "speed": 44
       }
@@ -4515,7 +4515,7 @@
       "name": "운동화",
       "prefix": 1,
       "rank": 3,
-      "price": 10,
+      "price": 2625,
       "statEffect": {
         "speed": 52
       }
@@ -4526,7 +4526,7 @@
       "name": "운동화",
       "prefix": 2,
       "rank": 3,
-      "price": 10,
+      "price": 3750,
       "statEffect": {
         "speed": 60
       }
@@ -4537,7 +4537,7 @@
       "name": "운동화",
       "prefix": 3,
       "rank": 3,
-      "price": 10,
+      "price": 5250,
       "statEffect": {
         "speed": 70
       }
@@ -4548,7 +4548,7 @@
       "name": "운동화",
       "prefix": 4,
       "rank": 3,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 82
       }
@@ -4559,7 +4559,7 @@
       "name": "운동화",
       "prefix": 0,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 82
       }
@@ -4570,7 +4570,7 @@
       "name": "운동화",
       "prefix": 1,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 90
       }
@@ -4581,7 +4581,7 @@
       "name": "운동화",
       "prefix": 2,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 100
       }
@@ -4592,7 +4592,7 @@
       "name": "운동화",
       "prefix": 3,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 110
       }
@@ -4603,7 +4603,7 @@
       "name": "운동화",
       "prefix": 4,
       "rank": 4,
-      "price": 10,
+      "price": 0,
       "statEffect": {
         "speed": 120
       }
