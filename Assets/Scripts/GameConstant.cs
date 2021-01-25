@@ -25,6 +25,9 @@ class GameConstant
         "helmet", "armor", "shoes",
     };
 
+    // 시작 월드
+    public static int InitialWorldNumber = 1;
+
     // 스테이지 카드 등장 확률
     // Monster, Chest, Buff, Npc, Random, Boss
     public static List<double> StageCardType = new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 };

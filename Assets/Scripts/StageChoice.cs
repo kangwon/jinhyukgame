@@ -50,7 +50,7 @@ public class StageChoice : MonoBehaviour
         CardText3 = GameObject.Find("Card3 Text").GetComponent<Text>();
 
         GameState.Instance.ResetPlayer();
-        GameState.Instance.StartWorld(1, "테스트 월드");
+        GameState.Instance.StartWorld(GameConstant.InitialWorldNumber, "테스트 월드");
         ActivatePannel();
     }
 
