@@ -79,7 +79,10 @@ public class RandomEvent {
                         }
                         else
                         {
-                            GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>().DisplayPanel(randomCard.equipment, (e)=>{ });
+                            GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>().DisplayPanel(randomCard.equipment, 
+                                (e)=>{ 
+                                    GameState.Instance.player.SetEquipment(e);
+                                });
                         }
                         break;
                     case 1:
