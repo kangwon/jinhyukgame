@@ -41,10 +41,6 @@ public class RewardPanelController : MonoBehaviour
         if (MonsterCard != null)
         {
             rewardGetCoin = (int)(MonsterCard.rewardCoin * (1 + GameState.Instance.player.GetStat().rewardCoinPer));
-        }
-        if (GameState.Instance.World != null)
-        {
-            int worldNum = GameState.Instance.World.Number;
             coinReward.text = $"+ {rewardGetCoin}";
 
             for(int i = 0; i < 3; i++)
