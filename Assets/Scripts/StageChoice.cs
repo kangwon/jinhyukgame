@@ -24,7 +24,6 @@ public class StageChoice : MonoBehaviour
 
     Text WorldText;
     Text StageText;
-    Text WorldText;
 
     Text CardText1;
     Text CardText2;
@@ -46,7 +45,6 @@ public class StageChoice : MonoBehaviour
 
         WorldText = GameObject.Find("World Text").GetComponent<Text>();
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
-        WorldText = GameObject.Find("World Txt").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
         CardText2 = GameObject.Find("Card2 Text").GetComponent<Text>();
