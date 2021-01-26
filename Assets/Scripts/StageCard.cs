@@ -138,27 +138,11 @@ public class World
     public readonly int BossStage;
     public readonly Random Random;
 
-    List<List<double>> rankPercentage = new List<List<double>>
-    {
-        new List<double> {1,    0,    0,    0,    0},
-        new List<double> {0.75, 0.25, 0,    0,    0},
-        new List<double> {0.58, 0.4,  0.02, 0,    0},
-        new List<double> {0.35, 0.5,  0.15, 0,    0},
-        new List<double> {0.15, 0.43, 0.4,  0.02, 0},
-        new List<double> {0.1,  0.3,  0.54, 0.05, 0.01},
-        new List<double> {0.03, 0.25, 0.6,  0.1,  0.02},
-        new List<double> {0.01, 0.2,  0.64, 0.12, 0.03},
-        new List<double> {0.01, 0.15, 0.64, 0.15, 0.05}
-    };
-    int[] coinMin = new int[12] {0, 15, 25, 35, 50, 75, 75, 90,  100, 100, 120, 120};
-    int[] coinMax = new int[12] {0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150};
-    List<double> prefixPercentage = new List<double>() { 0.05, 0.25, 0.40, 0.25, 0.05 };
-    int[] bossStage = new int[8] { 15, 20, 20, 20, 20 ,20, 20, 20};
     public World(int number, string name)
     {
         this.Number = number;
         this.Name = name;
-        this.BossStage = bossStage[number-1];
+        this.BossStage = GameConstant.BossStage[this.Number - 1];
         this.Random = new Random();
     }
 

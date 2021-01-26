@@ -28,6 +28,9 @@ class GameConstant
     // 시작 월드
     public static int InitialWorldNumber = 1;
 
+    // 월드별 보스 등장 스테이지
+    public static int[] BossStage = new int[8] { 15, 20, 20, 20, 20 ,20, 20, 20 };
+
     // 스테이지 카드 등장 확률
     // Monster, Chest, Buff, Npc, Random, Boss
     public static List<double> StageCardType = new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 };
