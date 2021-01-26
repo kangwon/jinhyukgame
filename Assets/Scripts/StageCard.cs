@@ -244,7 +244,7 @@ public class World
         switch (type)
         {
             case CardType.Monster:
-                var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
+                var worldMonsters = JsonDB.GetWorldMonsters(this.Id);
                 var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
                 var rewardEquipments = new Equipment[3] 
                 {
@@ -331,7 +331,7 @@ public class World
         }
         if (stageNum >= this.BossStage)
         {
-            var boss = JsonDB.GetWorldBoss(this.Number);
+            var boss = JsonDB.GetWorldBoss(this.Id);
             // TODO: 보스 보상을 보스에 맞춰 바꿔야 함
             var rewardEquipments = new Equipment[3] 
             {
