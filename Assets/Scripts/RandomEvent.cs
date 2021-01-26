@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-public class RandomEvent { 
-
-    public static void PositiveEvent(Text name,Text description,RandomCard randomCard)
+public class RandomEvent {
+    RandomPanelController randomPanelController = GameObject.Find("Canvas").transform.Find("RandomPanel").gameObject.GetComponent<RandomPanelController>();
+    private static readonly RandomEvent instance = new RandomEvent();
+    public static RandomEvent Instance
+    {
+        get => instance;
+    }
+    public void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
 
             case 0:
@@ -56,14 +61,23 @@ public class RandomEvent {
                 GameState.Instance.player.Dispel();
                 break; 
             case 8:
+                name.text = $"카오마이의 축복";
+                description.text = "버프를 선택하세요." + "\n\n" + $"[버프 선택 획득]";
+                foreach (var buff in JsonDB.GetBuffs())
+                {
+                    randomPanelController.CreateButton(buff);
+                }
+                break;
+            case 9:
                 name.text = $"카발라의 축복";
                 description.text = "카발라의 축복" + "\n\n" + $"[선택장비 등급 상승]";
+
                 break;
             default:
                 break;
         }
     }
-    public static void NeuturalityEvent(Text name, Text description, RandomCard randomCard)
+    public void NeuturalityEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
         switch (CustomRandom<int>.Choice(new List<int> { 0, 1 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
@@ -125,7 +139,7 @@ public class RandomEvent {
                 break;
         }
     }
-    public static void NegativeEvent(Text name, Text description, RandomCard randomCard)
+    public void NegativeEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
         switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
