@@ -20493,7 +20493,7 @@ GameObject:
   - component: {fileID: 1443965982}
   - component: {fileID: 1443965981}
   m_Layer: 5
-  m_Name: World Txt
+  m_Name: World Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28499,8 +28499,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1722733938}
   m_HandleRect: {fileID: 1722733937}
   m_Direction: 2
-  m_Value: 0.99999964
-  m_Size: 0.46268654
+  m_Value: 1
+  m_Size: 0.46268657
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

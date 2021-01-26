@@ -22,14 +22,13 @@ public class StageChoice : MonoBehaviour
     GameObject WeaponPopupView;
     GameObject WeaponChangePanel;
 
-    Text StageText;
     Text WorldText;
+    Text StageText;
 
     Text CardText1;
     Text CardText2;
     Text CardText3;
 
-    // Start is called before the first frame update
     void Start()
     {
         CardSelectPanel = GameObject.Find("CardSelectPanel");
@@ -44,19 +43,18 @@ public class StageChoice : MonoBehaviour
         WeaponChangePanel = GameObject.Find("WeaponChangePanel");
         WeaponPopupView = GameObject.Find("WeaponPopupView/WeaponPopupScreen");
 
+        WorldText = GameObject.Find("World Text").GetComponent<Text>();
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
-        WorldText = GameObject.Find("World Txt").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
         CardText2 = GameObject.Find("Card2 Text").GetComponent<Text>();
         CardText3 = GameObject.Find("Card3 Text").GetComponent<Text>();
 
         GameState.Instance.ResetPlayer();
-        GameState.Instance.StartWorld(1, "테스트 월드");
+        GameState.Instance.StartWorld(GameConstant.InitialWorldNumber, "테스트 월드");
         ActivatePannel();
     }
 
-    // Update is called once per frame
     void Update()
     {
         var stageCards = GameState.Instance.Stage.Cards;
@@ -77,7 +75,6 @@ public class StageChoice : MonoBehaviour
         GameState.Instance.MoveToNextStage();
         GameState.Instance.player.Heal((int)(GameState.Instance.player.GetStat().maxHp * GameState.Instance.player.GetStat().stageHpDrain));
         GameState.Instance.player.HpOver();
-        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
         ActivatePannel();
     }
     
@@ -115,6 +112,9 @@ public class StageChoice : MonoBehaviour
 
     public void UpdateGamePanel()
     {
+        WorldText.text = $"W{GameState.Instance.World.Number}";
+        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
+        
         switch (selectedCard?.Type ?? null)
         {
             case null:
