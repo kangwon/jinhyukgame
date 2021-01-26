@@ -7,17 +7,17 @@ using UnityEngine;
 [System.Serializable]
 public enum Rank
 {
-   none=-1,common, uncommon, rare,unique,legendary
+   none = -1, common, uncommon, rare, unique, legendary,
 }
 
 [System.Serializable]
 public enum Prefix
 {
-    none = -1,broken,weak,normal,strong,amazing,
+    none = -1 ,broken, weak, normal, strong, amazing,
 }
 public enum WeaponType
 {
-    none = -1,sword,blunt,spear,dagger,wand,
+    none = -1, sword, blunt, spear, dagger, wand,
 }
 
 [System.Serializable]

@@ -5,12 +5,10 @@ using System.Linq;
 using Debug = UnityEngine.Debug;
 
 // typeNum 
-// 0 - 몬스터 / 1 - 보물 / 2 - 버프
-// 3 - 마을 / 4 - 이벤트 / 5 - 보스
+// 0 - 몬스터 / 1 - 보물 / 2 - 버프 / 3 - 마을 / 4 - 이벤트 / 5 - 보스
 public enum CardType
 {
-    Monster, Chest, Buff,
-    Npc, Random, Boss
+    Monster, Chest, Buff, Npc, Random, Boss
 }
 
 public enum ChestType
@@ -164,35 +162,68 @@ public class World
         this.Random = new Random();
     }
 
-    Equipment GetRewardEquipment()
+    int GetRewardCoin()
     {
         int worldNum = this.Number;
-        int rewardPrefixIndex = CustomRandom<int>.WeightedChoice
+        return this.Random.Next(GameConstant.RewardCoinMin[worldNum], GameConstant.RewardCoinMax[worldNum]);
+    }
+
+    Equipment GetRewardEquipment()
+    {
+        var shouldWeapon = CustomRandom<bool>.WeightedChoice
+        (
+            new List<bool> { true, false },
+            GameConstant.RewardEquipmentType,
+            this.Random
+        );
+        int rankIndex = CustomRandom<int>.WeightedChoice
         (
             new List<int> { 0, 1, 2, 3, 4 }, 
-            prefixPercentage,
+            GameConstant.RewardRank[this.Number - 1],
             this.Random
         );
-        int rewardRankIndex = CustomRandom<int>.WeightedChoice
+        int prefixIndex = CustomRandom<int>.WeightedChoice
         (
             new List<int> { 0, 1, 2, 3, 4 }, 
-            rankPercentage[worldNum - 1],
+            GameConstant.RewardPrefix,
             this.Random
         );
-        var rewardTypeRand = CustomRandom<int>.WeightedChoice
+        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+    }
+
+    Equipment GetMerchantEquipment()
+    {
+        var shouldWeapon = CustomRandom<bool>.WeightedChoice
         (
-            new List<int> {0, 1},
-            new List<double> {0.7, 0.3},
+            new List<bool> { true, false },
+            GameConstant.MerchantEquipmentType,
             this.Random
         );
-        if (rewardTypeRand == 0)
+        int rankIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            GameConstant.MerchantRank[this.Number - 1],
+            this.Random
+        );
+        int prefixIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            GameConstant.MerchantPrefix,
+            this.Random
+        );
+        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+    }
+
+    Equipment GetRandomEquipment(bool shouldWeapon, int rankIndex, int prefixIndex)
+    {
+        if (shouldWeapon)
         {
             var weaponType = (int)CustomRandom<WeaponType>.Choice
             (
-                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().Where(x=>x!=WeaponType.none).ToList(), 
+                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().Where(x=> x != WeaponType.none).ToList(), 
                 this.Random
             );
-            string weaponId = $"weapon_{weaponType}{rewardRankIndex}{rewardPrefixIndex}";
+            string weaponId = $"weapon_{weaponType}{rankIndex}{prefixIndex}";
             return JsonDB.GetWeapon(weaponId);
         }
         else 
@@ -202,28 +233,22 @@ public class World
                 JsonDB.GetEquipmentIdBases(),
                 this.Random
             );
-            string equipId = $"{idBase}_{rewardRankIndex}{rewardPrefixIndex}";
+            string equipId = $"{idBase}_{rankIndex}{prefixIndex}";
             return JsonDB.GetEquipment(equipId);
         }
-    }
-
-    int GetRewardCoin()
-    {
-        int worldNum = this.Number;
-        return this.Random.Next(coinMin[worldNum], coinMax[worldNum]);
     }
 
     Artifact GetRewardArtifact()
     {
         return CustomRandom<Artifact>.Choice(JsonDB.GetNotBossArtifacts(), this.Random);
     }
-
+    
     public StageCard GetRandomCard()
     {
         var type = CustomRandom<CardType>.WeightedChoice
         (
             Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
-            new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 },
+            GameConstant.StageCardType,
             this.Random
         );
         
@@ -244,7 +269,7 @@ public class World
                 var chestType = CustomRandom<ChestType>.WeightedChoice
                 (
                     Enum.GetValues(typeof(ChestType)).Cast<ChestType>().ToList(),
-                    new List<double> { 0.5, 0.3, 0.1, 0.075, 0.025 },
+                    GameConstant.ChestType,
                     this.Random
                 );
                 switch (chestType)
@@ -282,9 +307,9 @@ public class World
             case CardType.Npc:
                 var equipmentsOnSale = new Equipment[3] 
                 {
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
+                    GetMerchantEquipment(),
+                    GetMerchantEquipment(),
+                    GetMerchantEquipment(),
                 };
                 return new NpcCard(equipmentsOnSale);
             case CardType.Random:
