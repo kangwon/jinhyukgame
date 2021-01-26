@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Debug = UnityEngine.Debug;
 
-// typeNum 
+
+public enum WorldId
+{
+    W1 = 1, W2 = 2, W3 = 3, W4 = 4, W5_1 = 51, W5_2 = 52, 
+    W6 = 6, W7_1 = 71, W7_2 = 72, W8 = 8, WX = 9,
+}
+
 // 0 - 몬스터 / 1 - 보물 / 2 - 버프 / 3 - 마을 / 4 - 이벤트 / 5 - 보스
 public enum CardType
 {
@@ -133,15 +139,14 @@ public class WorldStage
 
 public class World
 {
-    public readonly int Number;
-    public readonly string Name;
+    public readonly WorldId Id;
+    public int Number { get => (int)Id < 10 ? (int)Id : ((int)Id / 10); }
     public readonly int BossStage;
     public readonly Random Random;
 
-    public World(int number, string name)
+    public World(WorldId id)
     {
-        this.Number = number;
-        this.Name = name;
+        this.Id = id;
         this.BossStage = GameConstant.BossStage[this.Number - 1];
         this.Random = new Random();
     }
@@ -338,5 +343,24 @@ public class World
             stage.Cards[1] = new BossCard(boss, rewardEquipments, rewardCoin);
         }
         return stage;
+    }
+
+    public WorldId GetNextWorldId()
+    {
+        switch(Number)
+        {
+            case 4:
+                return WorldId.W5_1;
+            case 52:
+                return WorldId.W6;
+            case 6:
+                return WorldId.W7_1;
+            case 72:
+                return WorldId.W8;
+            case 9: // TODO: the next world of the last world
+                return WorldId.WX;
+            default:
+                return (WorldId)(Number + 1);
+        }
     }
 }

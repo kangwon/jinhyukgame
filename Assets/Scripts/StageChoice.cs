@@ -51,7 +51,7 @@ public class StageChoice : MonoBehaviour
         CardText3 = GameObject.Find("Card3 Text").GetComponent<Text>();
 
         GameState.Instance.ResetPlayer();
-        GameState.Instance.StartWorld(GameConstant.InitialWorldNumber, "테스트 월드");
+        GameState.Instance.StartWorld(GameConstant.InitialWorldId);
         ActivatePannel();
     }
 
@@ -81,11 +81,9 @@ public class StageChoice : MonoBehaviour
     public void MoveToNextWorld()
     {
         selectedCard = null;
-        GameState.Instance.StartWorld(GameState.Instance._world.Number+1,"테스트 월드");
+        GameState.Instance.StartWorld(GameState.Instance.World.GetNextWorldId());
         GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
         GameState.Instance.player.HpOver();
-        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
-        WorldText.text = $"W{GameState.Instance.World.Number}";
         ActivatePannel();
     }
 
@@ -112,7 +110,7 @@ public class StageChoice : MonoBehaviour
 
     public void UpdateGamePanel()
     {
-        WorldText.text = $"W{GameState.Instance.World.Number}";
+        WorldText.text = GameState.Instance.World.Id.ToString();
         StageText.text = $"Stage {GameState.Instance.Stage.Number}";
         
         switch (selectedCard?.Type ?? null)

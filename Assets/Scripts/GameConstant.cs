@@ -25,8 +25,8 @@ class GameConstant
         "helmet", "armor", "shoes",
     };
 
-    // 시작 월드
-    public static int InitialWorldNumber = 1;
+    // 시작 월드 ID
+    public static WorldId InitialWorldId = WorldId.W1;
 
     // 월드별 보스 등장 스테이지
     public static int[] BossStage = new int[8] { 15, 20, 20, 20, 20 ,20, 20, 20 };
