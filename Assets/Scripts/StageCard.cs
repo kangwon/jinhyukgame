@@ -155,12 +155,12 @@ public class World
     int[] coinMin = new int[12] {0, 15, 25, 35, 50, 75, 75, 90,  100, 100, 120, 120};
     int[] coinMax = new int[12] {0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150};
     List<double> prefixPercentage = new List<double>() { 0.05, 0.25, 0.40, 0.25, 0.05 };
-
-    public World(int number, string name, int bossStage=15)
+    int[] bossStage = new int[8] { 15, 20, 20, 20, 20 ,20, 20, 20};
+    public World(int number, string name)
     {
         this.Number = number;
         this.Name = name;
-        this.BossStage = bossStage;
+        this.BossStage = bossStage[number-1];
         this.Random = new Random();
     }
 

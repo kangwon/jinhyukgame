@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public enum Rank
 {
-   none=-1,uncommon,common,rare,unique,legendary,
+   none=-1,common, uncommon, rare,unique,legendary
 }
 
 [System.Serializable]

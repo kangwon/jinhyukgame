@@ -23,6 +23,7 @@ public class StageChoice : MonoBehaviour
     GameObject WeaponChangePanel;
 
     Text StageText;
+    Text WorldText;
 
     Text CardText1;
     Text CardText2;
@@ -44,6 +45,7 @@ public class StageChoice : MonoBehaviour
         WeaponPopupView = GameObject.Find("WeaponPopupView/WeaponPopupScreen");
 
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
+        WorldText = GameObject.Find("World Txt").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
         CardText2 = GameObject.Find("Card2 Text").GetComponent<Text>();
@@ -79,6 +81,18 @@ public class StageChoice : MonoBehaviour
         ActivatePannel();
     }
     
+    public void MoveToNextWorld()
+    {
+        selectedCard = null;
+        GameState.Instance.StartWorld(GameState.Instance._world.Number+1,"테스트 월드");
+        GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
+        GameState.Instance.player.HpOver();
+        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
+        WorldText.text = $"W{GameState.Instance.World.Number}";
+        ActivatePannel();
+    }
+
+
     void ActivatePannel()
     {
         DeactiveAllPanel();

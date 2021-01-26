@@ -147,14 +147,15 @@ public class Monster : CharacterBase
     public int worldNumber;
 
     public Monster(Stat stat) : base(stat) { }
-    public Monster(string name, Stat stat) : base(stat)
+    public Monster(string name, Stat stat,bool isboss) : base(stat)
     {
         this.name = name;
+        this.isBoss = isboss;
     }
 
     public Monster Spawn()
     {
-       return new Monster(this.name, this.baseStat.DeepCopy());
+       return new Monster(this.name, this.baseStat.DeepCopy(),this.isBoss);
     }
 
     public override void TakeHit(float rawDamage) 
@@ -223,10 +224,20 @@ public class Player : CharacterBase
     public void ResetWeaponList()
     {
         equipmentSlot.ResetWeaponsList();
-        for (int i = 0; i < 10; i++)
+        var weapons = new List<Weapon> 
         {
-            SetEquipment(JsonDB.GetWeapon($"bare_fist"));
-        }
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist"),
+            JsonDB.GetWeapon($"bare_fist")
+        };
+        SetWeaponList(weapons);
     }
     public void ResetEquipment()
     {
