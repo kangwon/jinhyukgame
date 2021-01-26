@@ -1,33 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Debug=UnityEngine.Debug;
 
 class GameConstant
 {
-    // 플레이어 초기 스탯
-    public static Stat PlayerInitialStat = new Stat()
-    {
-        maxHp = 40,
-        attack = 10,
-        defense = 0,
-        speed = 10,
-        startSpeedGauge = 1,
-        evasion = 0.05f,
-        critical = 0.05f,
-    };
-    // 플레이어 초기 장비
-    public static string[] PlayerInitialWeapon = new string[10]
-    {
-        "bare_fist", "bare_fist", "bare_fist", "bare_fist", "bare_fist",
-        "bare_fist", "bare_fist", "bare_fist", "bare_fist", "bare_fist",
-    };
-    public static string[] PlayerInitialEquipment = new string[3]
-    {
-        "helmet", "armor", "shoes",
-    };
-
-    // 시작 월드
-    public static int InitialWorldNumber = 1;
-
     // 스테이지 카드 등장 확률
     // Monster, Chest, Buff, Npc, Random, Boss
     public static List<double> StageCardType = new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 };
