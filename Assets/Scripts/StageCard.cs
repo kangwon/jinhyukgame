@@ -347,20 +347,20 @@ public class World
 
     public WorldId GetNextWorldId()
     {
-        switch(Number)
+        switch(Id)
         {
-            case 4:
+            case WorldId.W4:
                 return WorldId.W5_1;
-            case 52:
+            case WorldId.W5_2:
                 return WorldId.W6;
-            case 6:
+            case WorldId.W6:
                 return WorldId.W7_1;
-            case 72:
+            case WorldId.W7_2:
                 return WorldId.W8;
-            case 9: // TODO: the next world of the last world
+            case WorldId.WX: // TODO: the next world of the last world
                 return WorldId.WX;
             default:
-                return (WorldId)(Number + 1);
+                return (WorldId)((int)Id + 1);
         }
     }
 }
