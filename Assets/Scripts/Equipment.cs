@@ -39,7 +39,7 @@ public class Equipment : JsonItem
     public Shoes ToShoes()
         => new Shoes() { id = id, type =type, name=name, price=price, statEffect=statEffect, rank=rank, prefix=prefix};   
 
-    public string ToString() => $"{prefix.ToString()} {rank.ToString()} {name}";
+    public override string ToString() => $"{prefix.ToString()} {rank.ToString()} {name}";
 }
 
 [System.Serializable]
