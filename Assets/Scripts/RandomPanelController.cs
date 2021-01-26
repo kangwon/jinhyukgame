@@ -34,6 +34,30 @@ public class RandomPanelController : MonoBehaviour
         button.transform.GetChild(0).GetComponent<Text>().text = $"{buff.name}:{buff.description}";
         buttons.Add(button);
     }
+    public void CreateButton(Artifact artifact)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{artifact.name}";
+        buttons.Add(button);
+    }
+    public void CreateButton(Helmet helmet)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}";
+        buttons.Add(button);
+    } 
+    public void CreateButton(Armor armor)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{armor.name},{armor.rank},{armor.prefix},{armor.statEffect.ToString()}";
+        buttons.Add(button);
+    }
+    public void CreateButton(Shoes shoes)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{shoes.name},{shoes.rank},{shoes.prefix},{shoes.statEffect.ToString()}";
+        buttons.Add(button);
+    }
     // Start is called before the first frame update
     void Start()
     {

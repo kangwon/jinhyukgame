@@ -13,7 +13,7 @@ public class RandomEvent {
     public void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
 
             case 0:
@@ -69,9 +69,26 @@ public class RandomEvent {
                 }
                 break;
             case 9:
-                name.text = $"카발라의 축복";
+                name.text = $"카발라의 축복(등급)";
                 description.text = "카발라의 축복" + "\n\n" + $"[선택장비 등급 상승]";
-
+                foreach (var weapon in GameState.Instance.player.GetWeaponList())
+                {
+                    randomPanelController.CreateButton(weapon);
+                }
+                randomPanelController.CreateButton(GameState.Instance.player.GetHelmet());
+                randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
+                randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
+                break;
+            case 10:
+                name.text = $"카발라의 축복(수식어)";
+                description.text = "카발라의 축복" + "\n\n" + $"[선택장비 수식어 상승]";
+                foreach (var weapon in GameState.Instance.player.GetWeaponList())
+                {
+                    randomPanelController.CreateButton(weapon);
+                }
+                randomPanelController.CreateButton(GameState.Instance.player.GetHelmet());
+                randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
+                randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
                 break;
             default:
                 break;
@@ -80,7 +97,7 @@ public class RandomEvent {
     public void NeuturalityEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1 ,2 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: //TODO : 4가지의 확률에 맞춰 구현하기(장비,아티펙트,재화,티켓 획득)
                 name.text = $"풍선 다트";
@@ -134,6 +151,15 @@ public class RandomEvent {
                     GameState.Instance.player.RemoveAtArtifact(Random.Range(0, tempInt));
                     GameState.Instance.player.SetEquipment(randomCard.artifact);
                 }
+                break;
+            case 2:
+                name.text = $"마술사 이진혁의 장난";
+                description.text = "\"바꾸고 싶은 아티펙트가 있습니까?\"" + "\n\n" + $"[아티펙트 선택 랜덤변경]";
+                foreach(var artifact in GameState.Instance.player.GetArtifacts())
+                {
+                    randomPanelController.CreateButton(artifact);
+                }
+
                 break;
             default:
                 break;
