@@ -54,6 +54,10 @@ public class RandomEvent {
                 name.text = $"테마파크 분수";
                 description.text = "정화되는 기분이 든다." + "\n\n" + $"[디버프 제거]";
                 GameState.Instance.player.Dispel();
+                break; 
+            case 8:
+                name.text = $"카발라의 축복";
+                description.text = "카발라의 축복" + "\n\n" + $"[선택장비 등급 상승]";
                 break;
             default:
                 break;

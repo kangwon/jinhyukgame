@@ -178,8 +178,15 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         controller.MonsterCard = this.MonsterCard;
         RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
         RewardPanel.SetActive(true);
-
-        stageChoice.MoveToNextStage();
+        if (this.monster.isBoss)
+        {
+            stageChoice.MoveToNextWorld();
+        }
+        else
+        {
+            stageChoice.MoveToNextStage();
+        }
+        
     }
 
     //해당 패널이 활성화 될때 실행되는 메서드
@@ -225,7 +232,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
         for (int i = 0; i < HAND_MAX; i++)
         {
-            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
+            handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).rank}\n{battle.CardHand.ElementAt(i).prefix}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
         deckCount.GetComponent<Text>().text = $"남은 덱: {battle.DeckCount()}";
     }
