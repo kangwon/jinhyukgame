@@ -24,39 +24,27 @@ public class RandomPanelController : MonoBehaviour
     }  
     public void CreateButton(Weapon weapon) 
     {
-        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{weapon.name},{weapon.rank},{weapon.prefix},{weapon.statEffect.attack}";
-        buttons.Add(button);
+        CreateButton($"{weapon.name},{weapon.rank},{weapon.prefix},{weapon.statEffect.attack}");
     }
     public void CreateButton(StatBuff buff)
     {
-        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{buff.name}:{buff.description}";
-        buttons.Add(button);
+        CreateButton($"{buff.name}:{buff.description}");
     }
     public void CreateButton(Artifact artifact)
     {
-        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{artifact.name}";
-        buttons.Add(button);
+        CreateButton($"{artifact.name}");
     }
     public void CreateButton(Helmet helmet)
     {
-        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}";
-        buttons.Add(button);
+        CreateButton($"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}");
     } 
     public void CreateButton(Armor armor)
     {
-        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{armor.name},{armor.rank},{armor.prefix},{armor.statEffect.ToString()}";
-        buttons.Add(button);
+        CreateButton($"{armor.name},{armor.rank},{armor.prefix},{armor.statEffect.ToString()}");
     }
     public void CreateButton(Shoes shoes)
     {
-        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{shoes.name},{shoes.rank},{shoes.prefix},{shoes.statEffect.ToString()}";
-        buttons.Add(button);
+        CreateButton($"{shoes.name},{shoes.rank},{shoes.prefix},{shoes.statEffect.ToString()}");
     }
     // Start is called before the first frame update
     void Start()
@@ -96,12 +84,4 @@ public class RandomPanelController : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
-    {
-        //var weapons = GameState.Instance.player.GetWeaponList();
-        // var helmet = GameState.Instance.player.GetHelmet();
-        //var armor = GameState.Instance.player.GetArmor();
-        // var shoes = GameState.Instance.player.GetShoes();
-        // var artifacts = GameState.Instance.player.GetArtifacts();       
-    }
 }

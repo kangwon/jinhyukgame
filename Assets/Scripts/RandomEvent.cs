@@ -6,10 +6,6 @@ using System.Linq;
 public class RandomEvent {
     RandomPanelController randomPanelController = GameObject.Find("Canvas").transform.Find("RandomPanel").gameObject.GetComponent<RandomPanelController>();
     private static readonly RandomEvent instance = new RandomEvent();
-    public static RandomEvent Instance
-    {
-        get => instance;
-    }
     public void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
@@ -71,24 +67,12 @@ public class RandomEvent {
             case 9:
                 name.text = $"카발라의 축복(등급)";
                 description.text = "카발라의 축복" + "\n\n" + $"[선택장비 등급 상승]";
-                foreach (var weapon in GameState.Instance.player.GetWeaponList())
-                {
-                    randomPanelController.CreateButton(weapon);
-                }
-                randomPanelController.CreateButton(GameState.Instance.player.GetHelmet());
-                randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
-                randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
+                CreateButtonEquipments();
                 break;
             case 10:
                 name.text = $"카발라의 축복(수식어)";
                 description.text = "카발라의 축복" + "\n\n" + $"[선택장비 수식어 상승]";
-                foreach (var weapon in GameState.Instance.player.GetWeaponList())
-                {
-                    randomPanelController.CreateButton(weapon);
-                }
-                randomPanelController.CreateButton(GameState.Instance.player.GetHelmet());
-                randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
-                randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
+                CreateButtonEquipments();
                 break;
             default:
                 break;
@@ -125,7 +109,6 @@ public class RandomEvent {
                         GameState.Instance.player.SetEquipment(randomCard.artifact); 
                         if (3 < GameState.Instance.player.ArtifactsCount())
                             GameObject.Find("Canvas").transform.Find("ArtifactChangePanel").gameObject.SetActive(true);
-
                             break;
                     case 2:
                         description.text += $"[{randomCard.money}코인 획득]";
@@ -159,7 +142,6 @@ public class RandomEvent {
                 {
                     randomPanelController.CreateButton(artifact);
                 }
-
                 break;
             default:
                 break;
@@ -230,5 +212,19 @@ public class RandomEvent {
             default:
                 break;
         }
+    }
+    public static RandomEvent Instance
+    {
+        get => instance;
+    }
+    void CreateButtonEquipments()
+    {
+        foreach (var weapon in GameState.Instance.player.GetWeaponList())
+        {
+            randomPanelController.CreateButton(weapon);
+        }
+        randomPanelController.CreateButton(GameState.Instance.player.GetHelmet());
+        randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
+        randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
     }
 }
