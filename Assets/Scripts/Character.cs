@@ -268,6 +268,11 @@ public class Player : CharacterBase
         this.buff = buff;
         HpOver();
     }
+
+    public bool UseCanCombo(StatBuff buff)
+    {
+        return this.buff.iCantUsedCombo;
+    }
     public SynergyStat Synergy()
     { 
         var weaponlist = equipmentSlot.GetWeaponsList();
