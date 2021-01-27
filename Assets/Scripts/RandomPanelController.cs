@@ -61,6 +61,7 @@ public class RandomPanelController : MonoBehaviour
         button.GetComponent<Button>().onClick.AddListener(() =>
         {
             GameState.Instance.player.ChangeAtArtifact(index, RandomCard.artifact);
+            OnClickRandomButton();
         });
         buttons.Add(button);
     }
