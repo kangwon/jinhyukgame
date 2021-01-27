@@ -39,7 +39,7 @@ public class Stat
 
     public override string ToString()
     {
-        return $"Stat(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
+        return $"(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
     }
 
     public Stat DeepCopy() => (Stat)this.MemberwiseClone();
