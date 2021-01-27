@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Debug = UnityEngine.Debug;
 
-// typeNum 
+
+public enum WorldId
+{
+    W1 = 1, W2 = 2, W3 = 3, W4 = 4, W5_1 = 51, W5_2 = 52, 
+    W6 = 6, W7_1 = 71, W7_2 = 72, W8 = 8, WX = 9,
+}
+
 // 0 - 몬스터 / 1 - 보물 / 2 - 버프 / 3 - 마을 / 4 - 이벤트 / 5 - 보스
 public enum CardType
 {
@@ -133,15 +139,14 @@ public class WorldStage
 
 public class World
 {
-    public readonly int Number;
-    public readonly string Name;
+    public readonly WorldId Id;
+    public int Number { get => (int)Id < 10 ? (int)Id : ((int)Id / 10); }
     public readonly int BossStage;
     public readonly Random Random;
 
-    public World(int number, string name)
+    public World(WorldId id)
     {
-        this.Number = number;
-        this.Name = name;
+        this.Id = id;
         this.BossStage = GameConstant.BossStage[this.Number - 1];
         this.Random = new Random();
     }
@@ -239,7 +244,7 @@ public class World
         switch (type)
         {
             case CardType.Monster:
-                var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
+                var worldMonsters = JsonDB.GetWorldMonsters(this.Id);
                 var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
                 var rewardEquipments = new Equipment[3] 
                 {
@@ -326,7 +331,7 @@ public class World
         }
         if (stageNum >= this.BossStage)
         {
-            var boss = JsonDB.GetWorldBoss(this.Number);
+            var boss = JsonDB.GetWorldBoss(this.Id);
             // TODO: 보스 보상을 보스에 맞춰 바꿔야 함
             var rewardEquipments = new Equipment[3] 
             {
@@ -338,5 +343,24 @@ public class World
             stage.Cards[1] = new BossCard(boss, rewardEquipments, rewardCoin);
         }
         return stage;
+    }
+
+    public WorldId GetNextWorldId()
+    {
+        switch(Id)
+        {
+            case WorldId.W4:
+                return WorldId.W5_1;
+            case WorldId.W5_2:
+                return WorldId.W6;
+            case WorldId.W6:
+                return WorldId.W7_1;
+            case WorldId.W7_2:
+                return WorldId.W8;
+            case WorldId.WX: // TODO: the next world of the last world
+                return WorldId.WX;
+            default:
+                return (WorldId)((int)Id + 1);
+        }
     }
 }

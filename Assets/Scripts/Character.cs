@@ -144,7 +144,7 @@ public class Monster : CharacterBase
 {
     public string name;
     public bool isBoss;
-    public int worldNumber;
+    public WorldId worldId;
 
     public Monster(Stat stat) : base(stat) { }
     public Monster(string name, Stat stat,bool isboss) : base(stat)

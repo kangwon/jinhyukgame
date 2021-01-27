@@ -85,14 +85,14 @@ class JsonDB
     
     public static Monster GetMonster(string id)
         => Instance.monsterCollection.GetItem(id).Spawn();
-    public static List<Monster> GetWorldMonsters(int worldNumber)
+    public static List<Monster> GetWorldMonsters(WorldId worldId)
         => Instance.monsterCollection.itemList
-            .FindAll(m => !m.isBoss && m.worldNumber == worldNumber)
+            .FindAll(m => !m.isBoss && m.worldId == worldId)
             .Select(m => m.Spawn())
             .ToList();
-    public static Monster GetWorldBoss(int worldNumber)
+    public static Monster GetWorldBoss(WorldId worldId)
         => Instance.monsterCollection.itemList
-            .Find(m => m.isBoss && m.worldNumber == worldNumber)
+            .Find(m => m.isBoss && m.worldId == worldId)
             .Spawn();
 }
 

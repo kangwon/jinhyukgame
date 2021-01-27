@@ -11,12 +11,12 @@ class GameState
     {
         get => this._player;
     }
-    public World _world;
+    private World _world;
     public World World
     {
         get => this._world;
     }
-    public WorldStage _stage;
+    private WorldStage _stage;
     public WorldStage Stage
     {
         get => this._stage;
@@ -37,9 +37,9 @@ class GameState
         this._player.ResetEquipment();
     }
 
-    public void StartWorld(int number, string name)
+    public void StartWorld(WorldId worldId)
     {
-        this._world = new World(number, name);
+        this._world = new World(worldId);
         this._stage = this.World.GetStage(1);
     }
 
