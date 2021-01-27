@@ -130,10 +130,7 @@ public class RandomEvent
                 description.text = "\"...이건 제 아티펙트가 아닌 것 같은데요?\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
                 tempInt = GameState.Instance.player.ArtifactsCount();
                 if (tempInt != 0)
-                {
-                    GameState.Instance.player.RemoveAtArtifact(Random.Range(0, tempInt));
-                    GameState.Instance.player.SetEquipment(randomCard.artifact);
-                }
+                    GameState.Instance.player.ChangeAtArtifact(Random.Range(0, tempInt), randomCard.artifact);
                 break;
             case 2:
                 name.text = $"마술사 이진혁의 장난";
@@ -210,6 +207,18 @@ public class RandomEvent
                 name.text = $"수상한 누군가";
                 description.text = "\"믿어도 되는거죠...?\"" + "\n\n" + $"[-{tempInt} 코인]";
                 GameState.Instance.player.money = System.Math.Max(0, GameState.Instance.player.money - tempInt);
+                break;
+            case 9://TODO : 코드 구현하기
+                name.text = $"가시덤불";
+                description.text = "\"가시덤불 \"" + "\n\n" + $"[체력 손실]";
+                break;
+            case 10://TODO : 코드 구현하기
+                name.text = $"정밀 감정";
+                description.text = "이 장비는 그렇게 좋은 아이템은 아니네요..." + "\n\n" + $"[장비 등급 하락]";
+                break;
+              case 11://TODO : 코드 구현하기
+                name.text = $"길을 가다가";
+                description.text = "길을 지나가다가 돌부리에 걸려 넘어졌는데 장비에 금이 갔다." + "\n\n" + $"[장비 수식어 하락]";       
                 break;
             default:
                 break;
