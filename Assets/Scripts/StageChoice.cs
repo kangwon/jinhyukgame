@@ -22,13 +22,13 @@ public class StageChoice : MonoBehaviour
     GameObject WeaponPopupView;
     GameObject WeaponChangePanel;
 
+    Text WorldText;
     Text StageText;
 
     Text CardText1;
     Text CardText2;
     Text CardText3;
 
-    // Start is called before the first frame update
     void Start()
     {
         CardSelectPanel = GameObject.Find("CardSelectPanel");
@@ -43,6 +43,7 @@ public class StageChoice : MonoBehaviour
         WeaponChangePanel = GameObject.Find("WeaponChangePanel");
         WeaponPopupView = GameObject.Find("WeaponPopupView/WeaponPopupScreen");
 
+        WorldText = GameObject.Find("World Text").GetComponent<Text>();
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
 
         CardText1 = GameObject.Find("Card1 Text").GetComponent<Text>();
@@ -50,11 +51,10 @@ public class StageChoice : MonoBehaviour
         CardText3 = GameObject.Find("Card3 Text").GetComponent<Text>();
 
         GameState.Instance.ResetPlayer();
-        GameState.Instance.StartWorld(1, "테스트 월드");
+        GameState.Instance.StartWorld(GameConstant.InitialWorldId);
         ActivatePannel();
     }
 
-    // Update is called once per frame
     void Update()
     {
         var stageCards = GameState.Instance.Stage.Cards;
@@ -75,10 +75,19 @@ public class StageChoice : MonoBehaviour
         GameState.Instance.MoveToNextStage();
         GameState.Instance.player.Heal((int)(GameState.Instance.player.GetStat().maxHp * GameState.Instance.player.GetStat().stageHpDrain));
         GameState.Instance.player.HpOver();
-        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
         ActivatePannel();
     }
     
+    public void MoveToNextWorld()
+    {
+        selectedCard = null;
+        GameState.Instance.StartWorld(GameState.Instance.World.GetNextWorldId());
+        GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
+        GameState.Instance.player.HpOver();
+        ActivatePannel();
+    }
+
+
     void ActivatePannel()
     {
         DeactiveAllPanel();
@@ -101,6 +110,9 @@ public class StageChoice : MonoBehaviour
 
     public void UpdateGamePanel()
     {
+        WorldText.text = GameState.Instance.World.Id.ToString();
+        StageText.text = $"Stage {GameState.Instance.Stage.Number}";
+        
         switch (selectedCard?.Type ?? null)
         {
             case null:

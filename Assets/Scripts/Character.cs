@@ -39,7 +39,7 @@ public class Stat
 
     public override string ToString()
     {
-        return $"Stat(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
+        return $"(hp:{maxHp}, atk:{attack}, def:{defense}, spd:{speed})";
     }
 
     public Stat DeepCopy() => (Stat)this.MemberwiseClone();
@@ -144,31 +144,33 @@ public class Monster : CharacterBase
 {
     public string name;
     public bool isBoss;
-    public int worldNumber;
+    public WorldId worldId;
 
     public Monster(Stat stat) : base(stat) { }
-    public Monster(string name, Stat stat) : base(stat)
+    public Monster(string name, Stat stat,bool isboss) : base(stat)
     {
         this.name = name;
+        this.isBoss = isboss;
     }
 
     public Monster Spawn()
     {
-       return new Monster(this.name, this.baseStat.DeepCopy());
+       return new Monster(this.name, this.baseStat.DeepCopy(),this.isBoss);
     }
 
     public override void TakeHit(float rawDamage) 
     {
-        float afterDamage = CalcDamage(rawDamage); 
-        if(this.GetStat().defense >= afterDamage) 
+        float afterDamage = CalcDamage(rawDamage);
+        var totalDamage = (int)afterDamage - this.GetStat().defense;
+        if (totalDamage < 1) 
         {
             hp = hp - 1;
         } 
         else 
         {
-            hp = hp + this.GetStat().defense - (int)afterDamage;
+            hp = hp - totalDamage;
         }
-        GameState.Instance.player.Heal((int)((this.GetStat().defense - (int)afterDamage) * GameState.Instance.player.GetStat().hpDrain)); //TODO:나중에 요거 코드 위치 바꾸는게 좋을듯함.
+        GameState.Instance.player.Heal((int)(totalDamage * GameState.Instance.player.GetStat().hpDrain)); //TODO:나중에 요거 코드 위치 바꾸는게 좋을듯함.
         //Debug.Log($"이제 몬스터 피 : {hp}임.");
     }
 
@@ -222,16 +224,17 @@ public class Player : CharacterBase
     public void ResetWeaponList()
     {
         equipmentSlot.ResetWeaponsList();
-        for (int i = 0; i < 10; i++)
+        foreach (string weaponId in GameConstant.PlayerInitialWeapon)
         {
-            SetEquipment(JsonDB.GetWeapon($"bare_fist"));
+            SetEquipment(JsonDB.GetWeapon(weaponId));
         }
     }
     public void ResetEquipment()
     {
-        SetEquipment(JsonDB.GetEquipment($"helmet"));
-        SetEquipment(JsonDB.GetEquipment($"armor"));
-        SetEquipment(JsonDB.GetEquipment($"shoes"));
+        foreach (string equipmentId in GameConstant.PlayerInitialEquipment)
+        {
+            SetEquipment(JsonDB.GetEquipment(equipmentId));
+        }
     }
     public int ArtifactsCount()
     {

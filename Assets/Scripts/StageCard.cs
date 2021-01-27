@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Debug = UnityEngine.Debug;
 
-// typeNum 
-// 0 - 몬스터 / 1 - 보물 / 2 - 버프
-// 3 - 마을 / 4 - 이벤트 / 5 - 보스
+
+public enum WorldId
+{
+    W1 = 1, W2 = 2, W3 = 3, W4 = 4, W5_1 = 51, W5_2 = 52, 
+    W6 = 6, W7_1 = 71, W7_2 = 72, W8 = 8, WX = 9,
+}
+
+// 0 - 몬스터 / 1 - 보물 / 2 - 버프 / 3 - 마을 / 4 - 이벤트 / 5 - 보스
 public enum CardType
 {
-    Monster, Chest, Buff,
-    Npc, Random, Boss
+    Monster, Chest, Buff, Npc, Random, Boss
 }
 
 public enum ChestType
@@ -98,10 +102,16 @@ public class NpcCard : StageCard
 public class RandomCard : StageCard 
 {
     public RandomEventType randomEventType;
-    public RandomCard(RandomEventType randomEventType)
+    public Equipment equipment;
+    public Artifact artifact;
+    public int money;
+    public RandomCard(RandomEventType randomEventType, Equipment equipment, Artifact artifact, int money)
     {
         this.Type = CardType.Random;
         this.randomEventType = randomEventType;
+        this.equipment = equipment;
+        this.artifact = artifact;
+        this.money = money;
     }
 }
 public class BossCard : MonsterCard 
@@ -129,64 +139,80 @@ public class WorldStage
 
 public class World
 {
-    public readonly int Number;
-    public readonly string Name;
+    public readonly WorldId Id;
+    public int Number { get => (int)Id < 10 ? (int)Id : ((int)Id / 10); }
     public readonly int BossStage;
     public readonly Random Random;
 
-    List<List<double>> rankPercentage = new List<List<double>>
+    public World(WorldId id)
     {
-        new List<double> {1,    0,    0,    0,    0},
-        new List<double> {0.75, 0.25, 0,    0,    0},
-        new List<double> {0.58, 0.4,  0.02, 0,    0},
-        new List<double> {0.35, 0.5,  0.15, 0,    0},
-        new List<double> {0.15, 0.43, 0.4,  0.02, 0},
-        new List<double> {0.1,  0.3,  0.54, 0.05, 0.01},
-        new List<double> {0.03, 0.25, 0.6,  0.1,  0.02},
-        new List<double> {0.01, 0.2,  0.64, 0.12, 0.03},
-        new List<double> {0.01, 0.15, 0.64, 0.15, 0.05}
-    };
-    int[] coinMin = new int[12] {0, 15, 25, 35, 50, 75, 75, 90,  100, 100, 120, 120};
-    int[] coinMax = new int[12] {0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150};
-    List<double> prefixPercentage = new List<double>() { 0.05, 0.25, 0.40, 0.25, 0.05 };
-
-    public World(int number, string name, int bossStage=15)
-    {
-        this.Number = number;
-        this.Name = name;
-        this.BossStage = bossStage;
+        this.Id = id;
+        this.BossStage = GameConstant.BossStage[this.Number - 1];
         this.Random = new Random();
+    }
+
+    int GetRewardCoin()
+    {
+        int worldNum = this.Number;
+        return this.Random.Next(GameConstant.RewardCoinMin[worldNum], GameConstant.RewardCoinMax[worldNum]);
     }
 
     Equipment GetRewardEquipment()
     {
-        int worldNum = this.Number;
-        int rewardPrefixIndex = CustomRandom<int>.WeightedChoice
+        var shouldWeapon = CustomRandom<bool>.WeightedChoice
+        (
+            new List<bool> { true, false },
+            GameConstant.RewardEquipmentType,
+            this.Random
+        );
+        int rankIndex = CustomRandom<int>.WeightedChoice
         (
             new List<int> { 0, 1, 2, 3, 4 }, 
-            prefixPercentage,
+            GameConstant.RewardRank[this.Number - 1],
             this.Random
         );
-        int rewardRankIndex = CustomRandom<int>.WeightedChoice
+        int prefixIndex = CustomRandom<int>.WeightedChoice
         (
             new List<int> { 0, 1, 2, 3, 4 }, 
-            rankPercentage[worldNum - 1],
+            GameConstant.RewardPrefix,
             this.Random
         );
-        var rewardTypeRand = CustomRandom<int>.WeightedChoice
+        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+    }
+
+    Equipment GetMerchantEquipment()
+    {
+        var shouldWeapon = CustomRandom<bool>.WeightedChoice
         (
-            new List<int> {0, 1},
-            new List<double> {0.7, 0.3},
+            new List<bool> { true, false },
+            GameConstant.MerchantEquipmentType,
             this.Random
         );
-        if (rewardTypeRand == 0)
+        int rankIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            GameConstant.MerchantRank[this.Number - 1],
+            this.Random
+        );
+        int prefixIndex = CustomRandom<int>.WeightedChoice
+        (
+            new List<int> { 0, 1, 2, 3, 4 }, 
+            GameConstant.MerchantPrefix,
+            this.Random
+        );
+        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+    }
+
+    Equipment GetRandomEquipment(bool shouldWeapon, int rankIndex, int prefixIndex)
+    {
+        if (shouldWeapon)
         {
             var weaponType = (int)CustomRandom<WeaponType>.Choice
             (
-                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().Where(x=>x!=WeaponType.none).ToList(), 
+                Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().Where(x=> x != WeaponType.none).ToList(), 
                 this.Random
             );
-            string weaponId = $"weapon_{weaponType}{rewardRankIndex}{rewardPrefixIndex}";
+            string weaponId = $"weapon_{weaponType}{rankIndex}{prefixIndex}";
             return JsonDB.GetWeapon(weaponId);
         }
         else 
@@ -196,30 +222,29 @@ public class World
                 JsonDB.GetEquipmentIdBases(),
                 this.Random
             );
-            string equipId = $"{idBase}_{rewardRankIndex}{rewardPrefixIndex}";
+            string equipId = $"{idBase}_{rankIndex}{prefixIndex}";
             return JsonDB.GetEquipment(equipId);
         }
     }
 
-    int GetRewardCoin()
+    Artifact GetRewardArtifact()
     {
-        int worldNum = this.Number;
-        return this.Random.Next(coinMin[worldNum], coinMax[worldNum]);
+        return CustomRandom<Artifact>.Choice(JsonDB.GetNotBossArtifacts(), this.Random);
     }
-
+    
     public StageCard GetRandomCard()
     {
         var type = CustomRandom<CardType>.WeightedChoice
         (
             Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
-            new List<double> { 0.7, 0.05, 0.05, 0.1, 0.1, 0 },
+            GameConstant.StageCardType,
             this.Random
         );
         
         switch (type)
         {
             case CardType.Monster:
-                var worldMonsters = JsonDB.GetWorldMonsters(this.Number);
+                var worldMonsters = JsonDB.GetWorldMonsters(this.Id);
                 var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
                 var rewardEquipments = new Equipment[3] 
                 {
@@ -233,7 +258,7 @@ public class World
                 var chestType = CustomRandom<ChestType>.WeightedChoice
                 (
                     Enum.GetValues(typeof(ChestType)).Cast<ChestType>().ToList(),
-                    new List<double> { 0.5, 0.3, 0.1, 0.075, 0.025 },
+                    GameConstant.ChestType,
                     this.Random
                 );
                 switch (chestType)
@@ -271,21 +296,24 @@ public class World
             case CardType.Npc:
                 var equipmentsOnSale = new Equipment[3] 
                 {
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
+                    GetMerchantEquipment(),
+                    GetMerchantEquipment(),
+                    GetMerchantEquipment(),
                 };
                 return new NpcCard(equipmentsOnSale);
             case CardType.Random:
                 var  randomType = CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
+                var equipmentRand = GetRewardEquipment();
+                var artifactRand = GetRewardArtifact();
+                var money = 5*GetRewardCoin(); // 보상 획득재화의 5배 (임의설정)
                 switch (randomType)
                 {
                     case 0:
-                        return new RandomCard(RandomEventType.Positive);
+                        return new RandomCard(RandomEventType.Positive, equipmentRand, artifactRand, money);
                     case 1:
-                        return new RandomCard(RandomEventType.Neuturality);
+                        return new RandomCard(RandomEventType.Neuturality, equipmentRand, artifactRand, money);
                     case 2:
-                        return new RandomCard(RandomEventType.Negative);
+                        return new RandomCard(RandomEventType.Negative, equipmentRand, artifactRand, money);
                     default:
                         throw new NotImplementedException($"Invalid Random type ");
                 }
@@ -303,7 +331,7 @@ public class World
         }
         if (stageNum >= this.BossStage)
         {
-            var boss = JsonDB.GetWorldBoss(this.Number);
+            var boss = JsonDB.GetWorldBoss(this.Id);
             // TODO: 보스 보상을 보스에 맞춰 바꿔야 함
             var rewardEquipments = new Equipment[3] 
             {
@@ -315,5 +343,24 @@ public class World
             stage.Cards[1] = new BossCard(boss, rewardEquipments, rewardCoin);
         }
         return stage;
+    }
+
+    public WorldId GetNextWorldId()
+    {
+        switch(Id)
+        {
+            case WorldId.W4:
+                return WorldId.W5_1;
+            case WorldId.W5_2:
+                return WorldId.W6;
+            case WorldId.W6:
+                return WorldId.W7_1;
+            case WorldId.W7_2:
+                return WorldId.W8;
+            case WorldId.WX: // TODO: the next world of the last world
+                return WorldId.WX;
+            default:
+                return (WorldId)((int)Id + 1);
+        }
     }
 }

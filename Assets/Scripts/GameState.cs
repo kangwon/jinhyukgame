@@ -11,12 +11,12 @@ class GameState
     {
         get => this._player;
     }
-    public World _world;
+    private World _world;
     public World World
     {
         get => this._world;
     }
-    public WorldStage _stage;
+    private WorldStage _stage;
     public WorldStage Stage
     {
         get => this._stage;
@@ -32,26 +32,14 @@ class GameState
 
     public void ResetPlayer()
     {
-        this._player = new Player
-        (
-            new Stat()
-            {
-                maxHp = 40,
-                attack = 10,
-                defense = 0,
-                speed = 10,
-                startSpeedGauge = 1,
-                evasion = 0.05f,
-                critical = 0.05f,
-            }
-        );
+        this._player = new Player(GameConstant.PlayerInitialStat);
         this._player.ResetWeaponList();
         this._player.ResetEquipment();
     }
 
-    public void StartWorld(int number, string name)
+    public void StartWorld(WorldId worldId)
     {
-        this._world = new World(number, name);
+        this._world = new World(worldId);
         this._stage = this.World.GetStage(1);
     }
 
