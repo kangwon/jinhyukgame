@@ -23,10 +23,6 @@ public class RandomPanelController : MonoBehaviour
         button.transform.GetChild(0).GetComponent<Text>().text = $"{name}";
         buttons.Add(button);
     }  
-    public void CreateButton(Weapon weapon) 
-    {
-        CreateButton($"{weapon.name},{weapon.rank},{weapon.prefix},{weapon.statEffect.attack}");
-    }
     public void CreateButton(StatBuff buff)
     {
         GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
@@ -38,9 +34,15 @@ public class RandomPanelController : MonoBehaviour
         });
         buttons.Add(button);
     }
-    public void CreateButton(Artifact artifact)
+    public void CreateButton(Weapon weapon,bool isRank,int index) 
     {
-        CreateButton($"{artifact.name}");
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{weapon.name},{weapon.rank},{weapon.prefix},{weapon.statEffect.attack}";
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            OnClickButtonWeapon(weapon, isRank,index);
+        });
+        buttons.Add(button);
     }
     public void CreateButton(Equipment equip,bool isRank)
     {
@@ -52,6 +54,37 @@ public class RandomPanelController : MonoBehaviour
         });
         buttons.Add(button);
     } 
+    public void CreateButton(Artifact artifact,int index)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{artifact.name}";
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            GameState.Instance.player.ChangeAtArtifact(index, RandomCard.artifact);
+        });
+        buttons.Add(button);
+    }
+    void OnClickButtonWeapon(Weapon weapon,bool isRank, int index)
+    {
+        if (weapon.id != "bare_fist")
+        {
+            var stringTemp = weapon.id;
+            var intRank = Int32.Parse(stringTemp.Substring(8, 1));
+            var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
+            if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+            {
+                if (isRank) intRank++;
+                else intPrefix++;
+                stringTemp = stringTemp.Substring(0, 8) + $"{intRank}" + $"{intPrefix}";
+                var weaponList = GameState.Instance.player.GetWeaponList();
+                weaponList.RemoveAt(index);
+                weaponList.Add(JsonDB.GetWeapon(stringTemp));
+               var sortList  = weaponList.OrderBy(x => x.id).ToList();
+                GameState.Instance.player.SetWeaponList(sortList);
+                OnClickRandomButton();
+            }
+        }
+    }
     void OnClickButtonEquipment(Equipment equip,bool isRank)
     {
         switch (equip)
@@ -108,7 +141,7 @@ public class RandomPanelController : MonoBehaviour
                 break;
         }
 
-    }    
+    }
 
     // Start is called before the first frame update
     void Start()

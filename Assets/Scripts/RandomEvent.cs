@@ -9,7 +9,7 @@ public class RandomEvent
     public void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> {  9, 10 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
 
             case 0:
@@ -138,9 +138,11 @@ public class RandomEvent
             case 2:
                 name.text = $"마술사 이진혁의 장난";
                 description.text = "\"바꾸고 싶은 아티펙트가 있습니까?\"" + "\n\n" + $"[아티펙트 선택 랜덤변경]";
+                var index = 0;
                 foreach(var artifact in GameState.Instance.player.GetArtifacts())
                 {
-                    randomPanelController.CreateButton(artifact);
+                    randomPanelController.CreateButton(artifact,index);
+                    index++;
                 }
                 break;
             default:
@@ -215,9 +217,11 @@ public class RandomEvent
     }
     void CreateButtonEquipments(bool isRank) //랭크올리는거면 true, 수식어면 false
     {
+        var index = 0;
         foreach (var weapon in GameState.Instance.player.GetWeaponList())
-        {
-            randomPanelController.CreateButton(weapon);
+        {           
+            randomPanelController.CreateButton(weapon,isRank,index);
+            index++;
         }
         randomPanelController.CreateButton(GameState.Instance.player.GetHelmet(),isRank);
         randomPanelController.CreateButton(GameState.Instance.player.GetArmor(), isRank);
