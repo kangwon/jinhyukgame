@@ -9,7 +9,7 @@ public class RandomEvent
     public void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> {  9, 10 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
 
             case 0:
@@ -220,7 +220,7 @@ public class RandomEvent
             randomPanelController.CreateButton(weapon);
         }
         randomPanelController.CreateButton(GameState.Instance.player.GetHelmet(),isRank);
-        randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
-        randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
+        randomPanelController.CreateButton(GameState.Instance.player.GetArmor(), isRank);
+        randomPanelController.CreateButton(GameState.Instance.player.GetShoes(), isRank);
     }
 }

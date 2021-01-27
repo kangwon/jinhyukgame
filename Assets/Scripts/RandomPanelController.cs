@@ -42,42 +42,73 @@ public class RandomPanelController : MonoBehaviour
     {
         CreateButton($"{artifact.name}");
     }
-    public void CreateButton(Helmet helmet,bool isRank)
+    public void CreateButton(Equipment equip,bool isRank)
     {
         GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}";
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{equip.name},{equip.rank},{equip.prefix},{equip.statEffect.ToString()}";
         button.GetComponent<Button>().onClick.AddListener(() =>
         {
-            OnClickButtonHelmet(helmet, isRank) ;
+            OnClickButtonEquipment(equip, isRank) ;
         });
         buttons.Add(button);
     } 
-    public void CreateButton(Armor armor)
+    void OnClickButtonEquipment(Equipment equip,bool isRank)
     {
-        CreateButton($"{armor.name},{armor.rank},{armor.prefix},{armor.statEffect.ToString()}");
-    }
-    public void CreateButton(Shoes shoes)
-    {
-        CreateButton($"{shoes.name},{shoes.rank},{shoes.prefix},{shoes.statEffect.ToString()}");
-    }
-    void OnClickButtonHelmet(Helmet helmet,bool isRank)
-    {
-        if (helmet.id != "helmet")
+        switch (equip)
         {
-            var stringTemp = helmet.id;
-            var intRank = Int32.Parse(stringTemp.Substring(8, 1));
-            var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
-            if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
-            {
-                if (isRank) intRank++;
-                else intPrefix++;
-                stringTemp = stringTemp.Substring(0, 8) + $"{intRank}" + $"{intPrefix}";
-                GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
-                OnClickRandomButton();
-            }
+            case Helmet helmet:
+                if (helmet.id != "helmet")
+                {
+                    var stringTemp = helmet.id;
+                    var intRank = Int32.Parse(stringTemp.Substring(8, 1));
+                    var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
+                    if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+                    {
+                        if (isRank) intRank++;
+                        else intPrefix++;
+                        stringTemp = stringTemp.Substring(0, 8) + $"{intRank}" + $"{intPrefix}";
+                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
+                        OnClickRandomButton();
+                    }
+                }
+                break;
+            case Armor armor:
+                if (armor.id != "armor")
+                {
+                    var stringTemp = armor.id;
+                    var intRank = Int32.Parse(stringTemp.Substring(7, 1));
+                    var intPrefix = Int32.Parse(stringTemp.Substring(8, 1));
+                    if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+                    {
+                        if (isRank) intRank++;
+                        else intPrefix++;
+                        stringTemp = stringTemp.Substring(0, 7) + $"{intRank}" + $"{intPrefix}";
+                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
+                        OnClickRandomButton();
+                    }
+                }
+                break;
+            case Shoes shoes:
+                if (shoes.id != "shoes")
+                {
+                    var stringTemp = shoes.id;
+                    var intRank = Int32.Parse(stringTemp.Substring(7, 1));
+                    var intPrefix = Int32.Parse(stringTemp.Substring(8, 1));
+                    if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+                    {
+                        if (isRank) intRank++;
+                        else intPrefix++;
+                        stringTemp = stringTemp.Substring(0, 7) + $"{intRank}" + $"{intPrefix}";
+                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
+                        OnClickRandomButton();
+                    }
+                }
+                break;
+            default:
+                break;
         }
-    }
 
+    }    
 
     // Start is called before the first frame update
     void Start()
