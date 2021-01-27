@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-public class RandomEvent {
-    RandomPanelController randomPanelController = GameObject.Find("Canvas").transform.Find("RandomPanel").gameObject.GetComponent<RandomPanelController>();
-    private static readonly RandomEvent instance = new RandomEvent();
+public class RandomEvent
+{
+    RandomPanelController randomPanelController =GameObject.Find("Canvas").transform.Find("RandomPanel").gameObject.GetComponent<RandomPanelController>();
     public void PositiveEvent(Text name,Text description,RandomCard randomCard)
     {
         int tempInt;
@@ -67,12 +67,12 @@ public class RandomEvent {
             case 9:
                 name.text = $"카발라의 축복(등급)";
                 description.text = "카발라의 축복" + "\n\n" + $"[선택장비 등급 상승]";
-                CreateButtonEquipments();
+                CreateButtonEquipments(true);
                 break;
             case 10:
                 name.text = $"카발라의 축복(수식어)";
                 description.text = "카발라의 축복" + "\n\n" + $"[선택장비 수식어 상승]";
-                CreateButtonEquipments();
+                CreateButtonEquipments(false);
                 break;
             default:
                 break;
@@ -213,17 +213,13 @@ public class RandomEvent {
                 break;
         }
     }
-    public static RandomEvent Instance
-    {
-        get => instance;
-    }
-    void CreateButtonEquipments()
+    void CreateButtonEquipments(bool isRank) //랭크올리는거면 true, 수식어면 false
     {
         foreach (var weapon in GameState.Instance.player.GetWeaponList())
         {
             randomPanelController.CreateButton(weapon);
         }
-        randomPanelController.CreateButton(GameState.Instance.player.GetHelmet());
+        randomPanelController.CreateButton(GameState.Instance.player.GetHelmet(),isRank);
         randomPanelController.CreateButton(GameState.Instance.player.GetArmor());
         randomPanelController.CreateButton(GameState.Instance.player.GetShoes());
     }

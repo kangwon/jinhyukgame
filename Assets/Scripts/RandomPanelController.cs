@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +12,7 @@ public class RandomPanelController : MonoBehaviour
     List<GameObject> buttons = new List<GameObject>();
     GameObject selectPanel;
     GameObject buttonPrefab;
+    RandomEvent randomEvent;
     public void OnClickRandomButton()
     {
         stageChoice.MoveToNextStage();
@@ -28,15 +29,28 @@ public class RandomPanelController : MonoBehaviour
     }
     public void CreateButton(StatBuff buff)
     {
-        CreateButton($"{buff.name}:{buff.description}");
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{buff.name}:{buff.description}";
+        button.GetComponent<Button>().onClick.AddListener(()=> 
+        { 
+            GameState.Instance.player.AddBuff(buff);
+            OnClickRandomButton(); 
+        });
+        buttons.Add(button);
     }
     public void CreateButton(Artifact artifact)
     {
         CreateButton($"{artifact.name}");
     }
-    public void CreateButton(Helmet helmet)
+    public void CreateButton(Helmet helmet,bool isRank)
     {
-        CreateButton($"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}");
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}";
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            OnClickButtonHelmet(helmet, isRank) ;
+        });
+        buttons.Add(button);
     } 
     public void CreateButton(Armor armor)
     {
@@ -46,6 +60,25 @@ public class RandomPanelController : MonoBehaviour
     {
         CreateButton($"{shoes.name},{shoes.rank},{shoes.prefix},{shoes.statEffect.ToString()}");
     }
+    void OnClickButtonHelmet(Helmet helmet,bool isRank)
+    {
+        if (helmet.id != "helmet")
+        {
+            var stringTemp = helmet.id;
+            var intRank = Int32.Parse(stringTemp.Substring(8, 1));
+            var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
+            if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+            {
+                if (isRank) intRank++;
+                else intPrefix++;
+                stringTemp = stringTemp.Substring(0, 8) + $"{intRank}" + $"{intPrefix}";
+                GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
+                OnClickRandomButton();
+            }
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +87,7 @@ public class RandomPanelController : MonoBehaviour
         stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
         selectPanel = GameObject.Find("Canvas/RandomPanel/SelectPanel").gameObject;
         buttonPrefab = Resources.Load<GameObject>("SelectButtonPrefab");
+        randomEvent = new RandomEvent();
     }
 
     private void OnEnable()
@@ -63,13 +97,13 @@ public class RandomPanelController : MonoBehaviour
             switch (RandomCard.randomEventType)
             {
                 case RandomEventType.Positive:
-                    RandomEvent.Instance.PositiveEvent(randomType, randomDescription, RandomCard); 
+                    randomEvent.PositiveEvent(randomType, randomDescription, RandomCard); 
                     break;
                 case RandomEventType.Neuturality:
-                    RandomEvent.Instance.NeuturalityEvent(randomType, randomDescription, RandomCard);
+                    randomEvent.NeuturalityEvent(randomType, randomDescription, RandomCard);
                     break;
                 case RandomEventType.Negative:
-                    RandomEvent.Instance.NegativeEvent(randomType, randomDescription, RandomCard);
+                    randomEvent.NegativeEvent(randomType, randomDescription, RandomCard);
                     break;
             }
         }
