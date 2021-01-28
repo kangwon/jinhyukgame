@@ -46,33 +46,38 @@ public class RewardPanelController : MonoBehaviour
             for(int i = 0; i < 3; i++)
             {
                 var rewardButton = rewardButtons[i];
-                var rewardEquipment = MonsterCard.rewardEquipments[i];
-                rewardButton.transform.GetChild(0).GetComponent<Text>().text = rewardEquipment.name;
+                var reward = MonsterCard.rewards[i];
+                rewardButton.transform.GetChild(0).GetComponent<Text>().text = reward.title;
                 rewardButton.onClick.RemoveAllListeners();
-                rewardButton.onClick.AddListener(() => OnClickRewardButton(rewardEquipment));
+                rewardButton.onClick.AddListener(() => OnClickRewardButton(reward));
             }
         }
     }
 
-    void OnClickRewardButton(Equipment reward)
+    void OnClickRewardButton(MonsterReward reward)
     {
         Player player = GameState.Instance.player;
-        if (reward.type == "weapon")
+        switch(reward.type)
         {
-            player.SetEquipment(reward);
-            player.money += rewardGetCoin;
-            this.gameObject.SetActive(false);
-            if (player.GetWeaponList().Count > 10)
-                weaponChangePanel.SetActive(true);
-        }
-        else
-        {
-            equipmentChanger.DisplayPanel(reward, (e) => 
-            {
-                player.SetEquipment(e);
+            case MonsterRewardType.Weapon:
+                player.SetEquipment(reward.equipment);
                 player.money += rewardGetCoin;
                 this.gameObject.SetActive(false);
-            });
+                if (player.GetWeaponList().Count > 10)
+                    weaponChangePanel.SetActive(true);
+                break;
+            case MonsterRewardType.Equipment:
+                equipmentChanger.DisplayPanel(reward.equipment, (e) => 
+                {
+                    player.SetEquipment(e);
+                    player.money += rewardGetCoin;
+                    this.gameObject.SetActive(false);
+                });
+                break;
+            case MonsterRewardType.Heal:
+                player.Heal((int)(player.GetStat().maxHp * reward.healPercent));
+                this.gameObject.SetActive(false);
+                break;
         }
     }
 }

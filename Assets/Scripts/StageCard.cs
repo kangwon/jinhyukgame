@@ -25,23 +25,38 @@ public enum RandomEventType
 {
     Positive, Neuturality, Negative
 }
+public enum MonsterRewardType
+{
+    Weapon, Equipment, Heal
+}
+
+public class MonsterReward
+{
+    public MonsterRewardType type;
+    public Equipment equipment;
+    public float healPercent = 0.2f;
+
+    public string title 
+    { 
+        get => (type == MonsterRewardType.Heal) ? "힐 20%" : equipment.name; 
+    }
+}
 
 public class StageCard
 {
     public CardType Type;
 }
-
 public class MonsterCard : StageCard 
 {
     public readonly Monster monster;
-    public readonly Equipment[] rewardEquipments;
+    public readonly MonsterReward[] rewards;
     public int rewardCoin;
     
-    public MonsterCard(Monster monster, Equipment[] equipments, int coin)
+    public MonsterCard(Monster monster, MonsterReward[] rewards, int coin)
     {
         this.Type = CardType.Monster;
         this.monster = monster;
-        this.rewardEquipments = equipments;
+        this.rewards = rewards;
         this.rewardCoin = coin;
     }
 }
@@ -116,7 +131,7 @@ public class RandomCard : StageCard
 }
 public class BossCard : MonsterCard 
 {    
-    public BossCard(Monster monster, Equipment[] equipments, int coin) : base(monster, equipments, coin)
+    public BossCard(Monster monster, MonsterReward[] rewards, int coin) : base(monster, rewards, coin)
     {
         this.Type = CardType.Boss;
     }
@@ -157,12 +172,13 @@ public class World
         return this.Random.Next(GameConstant.RewardCoinMin[worldNum], GameConstant.RewardCoinMax[worldNum]);
     }
 
-    Equipment GetRewardEquipment()
+    MonsterReward GetMonsterReward()
     {
-        var shouldWeapon = CustomRandom<bool>.WeightedChoice
+        var reward = new MonsterReward();
+        reward.type = CustomRandom<MonsterRewardType>.WeightedChoice
         (
-            new List<bool> { true, false },
-            GameConstant.RewardEquipmentType,
+            Enum.GetValues(typeof(MonsterRewardType)).Cast<MonsterRewardType>().ToList(),
+            GameConstant.RewardType,
             this.Random
         );
         int rankIndex = CustomRandom<int>.WeightedChoice
@@ -177,7 +193,16 @@ public class World
             GameConstant.RewardPrefix,
             this.Random
         );
-        return GetRandomEquipment(shouldWeapon, rankIndex, prefixIndex);
+        switch(reward.type)
+        {
+            case MonsterRewardType.Weapon:
+                reward.equipment = GetRandomEquipment(true, rankIndex, prefixIndex);
+                break;
+            case MonsterRewardType.Equipment:
+                reward.equipment = GetRandomEquipment(false, rankIndex, prefixIndex);
+                break;
+        }
+        return reward;
     }
 
     Equipment GetMerchantEquipment()
@@ -246,14 +271,14 @@ public class World
             case CardType.Monster:
                 var worldMonsters = JsonDB.GetWorldMonsters(this.Id);
                 var monster = CustomRandom<Monster>.Choice(worldMonsters, this.Random);
-                var rewardEquipments = new Equipment[3] 
+                var rewards = new MonsterReward[3] 
                 {
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
-                    GetRewardEquipment(),
+                    GetMonsterReward(),
+                    GetMonsterReward(),
+                    GetMonsterReward(),
                 };
                 var rewardCoin = GetRewardCoin();
-                return new MonsterCard(monster, rewardEquipments, rewardCoin);
+                return new MonsterCard(monster, rewards, rewardCoin);
             case CardType.Chest:
                 var chestType = CustomRandom<ChestType>.WeightedChoice
                 (
@@ -264,7 +289,7 @@ public class World
                 switch (chestType)
                 {
                     case ChestType.Equipment:
-                        return new ChestCard(chestType) { Equipment = GetRewardEquipment() };
+                        return new ChestCard(chestType) { Equipment = GetMerchantEquipment() };
                     case ChestType.Heal:
                         return new ChestCard(chestType) { HealPercent = 0.3f };
                     case ChestType.Dispel:
@@ -303,7 +328,7 @@ public class World
                 return new NpcCard(equipmentsOnSale);
             case CardType.Random:
                 var  randomType = CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
-                var equipmentRand = GetRewardEquipment();
+                var equipmentRand = GetMerchantEquipment();
                 var artifactRand = GetRewardArtifact();
                 var money = 5*GetRewardCoin(); // 보상 획득재화의 5배 (임의설정)
                 switch (randomType)
@@ -333,14 +358,14 @@ public class World
         {
             var boss = JsonDB.GetWorldBoss(this.Id);
             // TODO: 보스 보상을 보스에 맞춰 바꿔야 함
-            var rewardEquipments = new Equipment[3] 
+            var rewards = new MonsterReward[3] 
             {
-                GetRewardEquipment(),
-                GetRewardEquipment(),
-                GetRewardEquipment(),
+                GetMonsterReward(),
+                GetMonsterReward(),
+                GetMonsterReward(),
             };
             var rewardCoin = GetRewardCoin();
-            stage.Cards[1] = new BossCard(boss, rewardEquipments, rewardCoin);
+            stage.Cards[1] = new BossCard(boss, rewards, rewardCoin);
         }
         return stage;
     }
