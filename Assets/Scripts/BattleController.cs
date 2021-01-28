@@ -154,14 +154,7 @@ public class BattleController : MonoBehaviour
                 finalAttack = tempStat.attack + player.Synergy().attack;
             }
 
-            if(isPlayersFirstTurn && player.GetBuff().firstAttackCritical) //첫타격 확정치명타시
-            {
-                finalAttack = player.ReturnAlwaysCritAttack(finalAttack);
-            }
-            else
-            {
-                finalAttack = player.ReturnCritAttack(finalAttack);
-            }
+            finalAttack = player.ReturnCritAttack(finalAttack,player.GetBuff().firstAttackCritical); //첫타격 확정치명타 관련
 
             if(monster.isBoss && (player.GetBuff().bossAddDamage != 0)) //몬스터가 보스고 보스전 추가 퍼뎀이 있을경우
             {
