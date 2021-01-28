@@ -34,9 +34,10 @@ public class StatBuff :JsonItem
     public float bossAddDamage = 0; //보스전 추가 데미지()%
     public float lostHpRatioSpeedUp = 0; // 잃은 체력 비례 스피드 증가
 
-    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가
-    public float lostHpRatioDamageUp = 0; // 잃은 체력 비례 데미지 증가
+    //12345
 
+    public float lostHpRatioDamageUp = 0; // 잃은 체력 비례 데미지 증가
+    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가
     public float enemyHpPercentDamage = 0; //상대체력퍼센트()% 추가고정데미지
 
     public bool checkNasusQ = false; 

@@ -136,7 +136,7 @@ public class CharacterBase : JsonItem
 
     public virtual float AttackFoe() {return 0;} // 공격하는 함수
 
-    public virtual float ReturnCritAttack(float dmg) {return 0;} // 공격하는 함수
+    public virtual float ReturnCritAttack(float dmg) {return 0;} // 데미지에 크리티컬 확률 곱해서 돌려줌
 
     public virtual void TakeHit(float rawDamage) {} // 데미지 받는 함수 TODO : IntFloat 해결
 }
@@ -362,8 +362,7 @@ public class Player : CharacterBase
 
     public override void TakeHit(float rawDamage) 
     {
-        float afterDamage = CalcDamage(rawDamage);
-        int damage = Math.Max((int)afterDamage - this.GetStat().defense, 1);
+        int damage = Math.Max((int)rawDamage - this.GetStat().defense, 1);
         this.Damage(damage);
     }
 
@@ -387,11 +386,6 @@ public class Player : CharacterBase
     {
         float CRITMULTIPLIER = 2.0f;
         return rawDamage * CRITMULTIPLIER;
-    }
-
-    float CalcDamage(float incomingDmg) 
-    {
-        return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
     }
 
     public void Damage(int damage)

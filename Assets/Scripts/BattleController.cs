@@ -23,6 +23,8 @@ public class BattleController : MonoBehaviour
 
     public int playerTurnCount = 0; // 플레이어가 턴 몇번 진행했는지 계산
 
+    public int battlecalled = 0; //나서스 q데미지 여기서하면될듯?
+
     enum BattleState {
         Sleeping, //시작 안함
         Started, //시작함
@@ -49,13 +51,6 @@ public class BattleController : MonoBehaviour
     {
         player = GameState.Instance.player;
         battleState = BattleState.Started;
-
-        isPlayersFirstTurn = true;
-        isMonstersFirstTurn = true;
-
-        hp1Undied = false;
-
-        playerTurnCount = 0; // 초기화
     }
 
     // Update is called once per frame
@@ -102,6 +97,13 @@ public class BattleController : MonoBehaviour
             playerGauge = player?.GetStat().startSpeedGauge ?? 0;
             monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
         }
+
+        isPlayersFirstTurn = true;
+        isMonstersFirstTurn = true;
+
+        hp1Undied = false;
+
+        playerTurnCount = 0; // 초기화
 
         battleState = BattleState.Waiting;
     }
@@ -234,11 +236,11 @@ public class BattleController : MonoBehaviour
             }
             else if(GameState.Instance.player.GetBuff().resurrection) //죽으면 부활
             {
-                int healAmount = (player.GetStat().maxHp - player.hp) / 2;
+                int healAmount = player.GetStat().maxHp / 2;
                 player.Heal(player.GetStat().maxHp);
 
                 player.buff.resurrection = false; //RemoveBuff 메소드 추가?
-                //아티팩트 remove?
+                //아티팩트 remove로 해야할거같음
                 battleState = BattleState.Waiting;
             }
             else
