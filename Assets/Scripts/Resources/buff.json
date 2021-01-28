@@ -155,20 +155,13 @@
     },
     {
       "id": "debuff10",
-      "name": "핸드 자동 리롤 // 미구현",
-      "description": "핸드의 모든 카드 버리기",
-      "handReroll": true,
-      "isDebuff": true
-    },
-    {
-      "id": "debuff11",
       "name": "스테이지 일정량 피 감소 (독)",
       "description": "스테이지 클리어 시마다 최대 체력의 2% 감소",
       "stageHpDrainPercent": -0.02,
       "isDebuff": true
     },
     {
-      "id": "debuff12",
+      "id": "debuff11",
       "name": "전투 보상 재화 감소",
       "description": "전투 보상에 대한 재화 감소 20%",
       "rewardCoinPercent": -0.2,

@@ -17,10 +17,9 @@ public class StatBuff :JsonItem
     public float rewardCoinPercent = 0; // 전투 시 추가 재화용 변수
     public bool isDebuff = false;
     public bool debuffImmune = false;
-    public bool iCantUsedCombo = false;
+    public bool iCantUsedCombo = false; // 콤보 불가 디버프용
     public int preemptiveUserTurn = 0;
     public int preemptiveMonTurn = 0;
-    public bool handReroll = false;
     //아티펙트용 변수------------------------------------------------------
     public float npcPurchasePercent = 0; //마을 할인용 변수
     public bool firstAttackCritical = false; //첫타격 확정치명타
