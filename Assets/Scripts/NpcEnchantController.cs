@@ -120,7 +120,6 @@ public class NpcEnchantController : MonoBehaviour
     {
         card_Index = c_index;
 
-
         if (c_index < weaponList.Count)
         {
             if (weaponList.ElementAt(card_Index).id == "bare_fist")

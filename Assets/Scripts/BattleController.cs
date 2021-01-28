@@ -16,6 +16,15 @@ public class BattleController : MonoBehaviour
     public int GAUGE_SIZE = 200;
     public float playerGauge, monsterGauge;
 
+    public bool isPlayersFirstTurn; // firstAttackCritical = false; 관련 첫 번째 턴 
+    public bool isMonstersFirstTurn; // firstDamagedImmune = false; 첫번째 피격 데미지 무시 관련
+
+    public bool hp1Undied; //bool hp1Left 전투마다 체력1에서 버티기 관련
+
+    public int playerTurnCount = 0; // 플레이어가 턴 몇번 진행했는지 계산
+
+    public int battlecalled = 0; //나서스 q데미지 여기서하면될듯?
+
     enum BattleState {
         Sleeping, //시작 안함
         Started, //시작함
@@ -89,25 +98,38 @@ public class BattleController : MonoBehaviour
             monsterGauge = monster?.GetStat().startSpeedGauge ?? 0;
         }
 
+        isPlayersFirstTurn = true;
+        isMonstersFirstTurn = true;
+
+        hp1Undied = false;
+
+        playerTurnCount = 0; // 초기화
+
         battleState = BattleState.Waiting;
     }
 
     public void SpeedUntilTurn()
     {
-        while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
-            playerGauge += (player.GetStat().speed * 0.1f);
-            monsterGauge += (monster.GetStat().speed * 0.1f);
+        float hpSpeedMultiplier = 1;
+        if(player.GetBuff().lostHpRatioSpeedUp != 0)
+        {
+            hpSpeedMultiplier += (1 - player.hp / player.GetStat().maxHp) * player.GetBuff().lostHpRatioSpeedUp * 100.0f; // 잃은 체력 비율 * 1퍼당 올라가는 속도율
         }
 
-        if(monsterGauge >= GAUGE_SIZE) 
-        {
-            battleState = BattleState.MonsterTurn; //몬스터 턴으로
-            SGUI.QueueSpeedGauge();
+        while(playerGauge < GAUGE_SIZE && monsterGauge < GAUGE_SIZE) { //둘다 행동게이지가 최대 게이지에 이르지 못했을때
+            playerGauge += (player.GetStat().speed * Time.deltaTime) * hpSpeedMultiplier;
+            monsterGauge += (monster.GetStat().speed * Time.deltaTime);
         }
 
         if(playerGauge >= GAUGE_SIZE) 
         {
             battleState = BattleState.PlayerTurn; //플레이어 턴으로
+            SGUI.QueueSpeedGauge();
+        }
+
+        else if(monsterGauge >= GAUGE_SIZE) 
+        {
+            battleState = BattleState.MonsterTurn; //몬스터 턴으로
             SGUI.QueueSpeedGauge();
         }
     }
@@ -116,41 +138,132 @@ public class BattleController : MonoBehaviour
     {
         if(BattlePanel.OnClickAttackPressed)
         {
+            playerTurnCount++; //플레이어 진행 턴에 1카운트 추가
+
             Stat tempStat = new Stat();
             tempStat.attack = BattlePanel.cardDamageSum + player.GetStat().attack;
+            
+            float finalAttack;
 
-            if (!GameState.Instance.player.GetBuff().iCantUsedCombo)
+            if (!GameState.Instance.player.GetBuff().iCantUsedCombo) //콤보 불가 디버프시
             {
-                monster.TakeHit((tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum));
-                Debug.Log($"total : {(tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum)}");
-                Debug.Log($"x{1f + BattlePanel.comboPercentSum}배");
+                finalAttack = (tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum);
             }
             else
-                monster.TakeHit((tempStat.attack + player.Synergy().attack));
-            
-            playerGauge = 0; //게이지 소비(초기화)
+            {
+                finalAttack = tempStat.attack + player.Synergy().attack;
+            }
+
+            if(isPlayersFirstTurn && player.GetBuff().firstAttackCritical) //첫타격 확정치명타시
+            {
+                finalAttack = player.ReturnAlwaysCritAttack(finalAttack);
+            }
+            else
+            {
+                finalAttack = player.ReturnCritAttack(finalAttack);
+            }
+
+            if(monster.isBoss && (player.GetBuff().bossAddDamage != 0)) //몬스터가 보스고 보스전 추가 퍼뎀이 있을경우
+            {
+                finalAttack = finalAttack * (1 + player.GetBuff().bossAddDamage);
+            }
+
+            if(player.GetBuff().attack3AddDamage != 0 && playerTurnCount % 3 == 0) 
+            {
+                finalAttack += player.GetBuff().attack3AddDamage; //3번마다 추가 고정데미지
+            }
+
+            monster.TakeHit(finalAttack);
+
+          //  player.Heal((int)((tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum) * player.GetStat().hpDrain));
+           
+            Debug.Log($"total : {(tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum)}");
+            Debug.Log($"x{1f+BattlePanel.comboPercentSum}배");
+
+            if(player.GetBuff().doubleAttackPercent != 0)
+            {
+                float doubleAttackRand = UnityEngine.Random.Range(0.0f, 1.0f); //턴 추가 진행확률
+                if(doubleAttackRand < player.GetBuff().doubleAttackPercent)
+                {
+                    //게이지 변함없음
+                }
+                else
+                {
+                    playerGauge = 0; //게이지 소비(초기화)
+                }
+            }
+            else
+            {
+                playerGauge = 0; //게이지 소비(초기화)
+            }
 
             BattlePanel.OnClickAttackPressed = false; // 버튼 bool 다시 초기화.
+
+            isPlayersFirstTurn = false;
+            
             battleState = BattleState.TurnDone;
         }
     }
 
     public void MonsterAttack()
     {
-        int dmg = (int)monster.AttackFoe();
-        player.TakeHit(dmg);
+        float rawMonterInflictingdmg = monster.AttackFoe();
+        float finalMonsterDmg = rawMonterInflictingdmg;
+
+        if(monster.isBoss && (player.GetBuff().bossDamageDecrease != 0)) //몬스터가 보스고 보스전 피격데미지 감소 유물일경우
+        {
+            finalMonsterDmg = (1 - player.GetBuff().bossDamageDecrease) * rawMonterInflictingdmg;
+        }
+        
+        if(isMonstersFirstTurn && player.GetBuff().firstDamagedImmune) //몬스터 첫타격이고 첫번째 피격 데미지 무시 유물일경우
+        {
+            finalMonsterDmg = 0;
+        }
+
+        player.TakeHit((int)finalMonsterDmg);
+
+        if(player.GetBuff().reflectionDamage != 0) //플레이어가 반사데미지 있을경우
+        {
+            monster.TakeHit(rawMonterInflictingdmg * player.GetBuff().reflectionDamage);
+        }
 
         monsterGauge = 0;
 
+        isMonstersFirstTurn = false;
         battleState = BattleState.TurnDone;
     }
 
     public void TurnFinish() 
     {
-        if(player.isDead || monster.isDead) 
+        if(player.isDead) 
+        {
+            if (GameState.Instance.player.GetBuff().hp1Left && !hp1Undied) //전투마다 피1에서 버티기
+            {
+                player.hp = 1;
+                hp1Undied = true;
+                battleState = BattleState.Waiting;
+            }
+            else if(GameState.Instance.player.GetBuff().resurrection) //죽으면 부활
+            {
+                int healAmount = player.GetStat().maxHp / 2;
+                player.Heal(player.GetStat().maxHp);
+
+                player.buff.resurrection = false; //RemoveBuff 메소드 추가?
+                //아티팩트 remove로 해야할거같음
+                battleState = BattleState.Waiting;
+            }
+            else
+            {
+                battleState = BattleState.BattleOver;
+            }
+
+        } 
+        else if(monster.isDead)
         {
             battleState = BattleState.BattleOver;
-        } else {
+        } 
+        else 
+        {
             battleState = BattleState.Waiting;
         }
     }

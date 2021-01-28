@@ -136,6 +136,8 @@ public class CharacterBase : JsonItem
 
     public virtual float AttackFoe() {return 0;} // 공격하는 함수
 
+    public virtual float ReturnCritAttack(float dmg) {return 0;} // 데미지에 크리티컬 확률 곱해서 돌려줌
+
     public virtual void TakeHit(float rawDamage) {} // 데미지 받는 함수 TODO : IntFloat 해결
 }
 
@@ -187,8 +189,7 @@ public class Monster : CharacterBase
 }
 public class Player : CharacterBase
 {
-
-    StatBuff buff = new StatBuff();
+    public StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
     public int money = 100;
     
@@ -346,6 +347,7 @@ public class Player : CharacterBase
 
     public bool BuyItem(Equipment item)
     {
+
         if (money >= (int)(item.price * (1 - GameState.Instance.player.GetStat().discount)))
         {
             money -= (int)(item.price * (1 - GameState.Instance.player.GetStat().discount));
@@ -360,20 +362,30 @@ public class Player : CharacterBase
 
     public override void TakeHit(float rawDamage) 
     {
-        float afterDamage = CalcDamage(rawDamage);
-        int damage = Math.Max((int)afterDamage - this.GetStat().defense, 1);
+        int damage = Math.Max((int)rawDamage - this.GetStat().defense, 1);
         this.Damage(damage);
     }
 
-    public override float AttackFoe() 
+    public override float ReturnCritAttack(float rawDamage) //BattleController에서 받아온 값을 크리확률계산
     {
-        float finalDamage = this.GetStat().attack;  //TODO : 공격 기믹 추가
-        return finalDamage;
+        float critRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
+
+        if(critRand < this.GetStat().critical) //크리티컬
+        {
+            float CRITMULTIPLIER = 2.0f;
+            Debug.Log("크리티컬! : " + rawDamage * CRITMULTIPLIER);
+            return rawDamage * CRITMULTIPLIER;
+        }
+        else
+        {
+            return rawDamage;
+        }
     }
 
-    float CalcDamage(float incomingDmg) 
+    public float ReturnAlwaysCritAttack(float rawDamage) //BattleController에서 받아온 값을 크리확정
     {
-        return incomingDmg;  // TODO : 유물 등의 추가 방어 기믹 추후 추가 
+        float CRITMULTIPLIER = 2.0f;
+        return rawDamage * CRITMULTIPLIER;
     }
 
     public void Damage(int damage)
