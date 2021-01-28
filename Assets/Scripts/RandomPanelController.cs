@@ -70,8 +70,8 @@ public class RandomPanelController : MonoBehaviour
         if (weapon.id != "bare_fist")
         {
             var stringTemp = weapon.id;
-            var intRank = Int32.Parse(stringTemp.Substring(8, 1));
-            var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
+            var intRank = (int)weapon.rank;
+            var intPrefix = (int)weapon.prefix;
             if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
             {
                 if (isRank) intRank++;
@@ -88,60 +88,22 @@ public class RandomPanelController : MonoBehaviour
     }
     void OnClickButtonEquipment(Equipment equip,bool isRank)
     {
-        switch (equip)
+        if ((equip.id != "helmet") && (equip.id != "armor")&& (equip.id != "shoes"))
         {
-            case Helmet helmet:
-                if (helmet.id != "helmet")
-                {
-                    var stringTemp = helmet.id;
-                    var intRank = Int32.Parse(stringTemp.Substring(8, 1));
-                    var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
-                    if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
-                    {
-                        if (isRank) intRank++;
-                        else intPrefix++;
-                        stringTemp = stringTemp.Substring(0, 8) + $"{intRank}" + $"{intPrefix}";
-                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
-                        OnClickRandomButton();
-                    }
-                }
-                break;
-            case Armor armor:
-                if (armor.id != "armor")
-                {
-                    var stringTemp = armor.id;
-                    var intRank = Int32.Parse(stringTemp.Substring(7, 1));
-                    var intPrefix = Int32.Parse(stringTemp.Substring(8, 1));
-                    if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
-                    {
-                        if (isRank) intRank++;
-                        else intPrefix++;
-                        stringTemp = stringTemp.Substring(0, 7) + $"{intRank}" + $"{intPrefix}";
-                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
-                        OnClickRandomButton();
-                    }
-                }
-                break;
-            case Shoes shoes:
-                if (shoes.id != "shoes")
-                {
-                    var stringTemp = shoes.id;
-                    var intRank = Int32.Parse(stringTemp.Substring(7, 1));
-                    var intPrefix = Int32.Parse(stringTemp.Substring(8, 1));
-                    if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
-                    {
-                        if (isRank) intRank++;
-                        else intPrefix++;
-                        stringTemp = stringTemp.Substring(0, 7) + $"{intRank}" + $"{intPrefix}";
-                        GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
-                        OnClickRandomButton();
-                    }
-                }
-                break;
-            default:
-                break;
+            var stringTemp = equip.id;
+            var intRank = (int)equip.rank;
+            var intPrefix = (int)equip.prefix;
+            if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+            {
+                if (isRank) intRank++;
+                else intPrefix++;
+                if(equip.type =="helmet") stringTemp = stringTemp.Substring(0, 8);
+                else if (equip.type == "armor" || equip.type=="shoes") stringTemp = stringTemp.Substring(0, 7);
+                stringTemp += $"{intRank}" + $"{intPrefix}";
+                GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
+                OnClickRandomButton();
+            }
         }
-
     }
 
     // Start is called before the first frame update
