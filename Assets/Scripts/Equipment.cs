@@ -79,6 +79,7 @@ public class EquipmentSlot
     Helmet helmet;
     Shoes shoes;
     List<Artifact> artifacts = new List<Artifact>();
+    
     public List<Weapon> GetWeaponsList()
     {
         return weapons;
@@ -162,7 +163,7 @@ public class EquipmentSlot
         totalStat += armor?.statEffect ?? zeroStat;
         totalStat += helmet?.statEffect ?? zeroStat;
         totalStat += shoes?.statEffect ?? zeroStat;
-       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ë‚˜ì¤‘ì— ê´€ë ¨ëœ ì•„í‹°íŽ™íŠ¸ ë³€ìˆ˜(?)ë¥¼ ë„£ì–´ë†“ìž
+       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ³ªÁß¿¡ °ü·ÃµÈ ¾ÆÆ¼ÆåÆ® º¯¼ö(?)¸¦ ³Ö¾î³õÀÚ
         return totalStat;
     }
 }
