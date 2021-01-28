@@ -23,10 +23,6 @@ public class RandomPanelController : MonoBehaviour
         button.transform.GetChild(0).GetComponent<Text>().text = $"{name}";
         buttons.Add(button);
     }  
-    public void CreateButton(Weapon weapon) 
-    {
-        CreateButton($"{weapon.name},{weapon.rank},{weapon.prefix},{weapon.statEffect.attack}");
-    }
     public void CreateButton(StatBuff buff)
     {
         GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
@@ -38,46 +34,77 @@ public class RandomPanelController : MonoBehaviour
         });
         buttons.Add(button);
     }
-    public void CreateButton(Artifact artifact)
-    {
-        CreateButton($"{artifact.name}");
-    }
-    public void CreateButton(Helmet helmet,bool isRank)
+    public void CreateButton(Weapon weapon,bool isRank,int index) 
     {
         GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"{helmet.name},{helmet.rank},{helmet.prefix},{helmet.statEffect.ToString()}";
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{weapon.name},{weapon.rank},{weapon.prefix},{weapon.statEffect.attack}";
         button.GetComponent<Button>().onClick.AddListener(() =>
         {
-            OnClickButtonHelmet(helmet, isRank) ;
+            OnClickButtonWeapon(weapon, isRank,index);
+        });
+        buttons.Add(button);
+    }
+    public void CreateButton(Equipment equip,bool isRank)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{equip.name},{equip.rank},{equip.prefix},{equip.statEffect.ToString()}";
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            OnClickButtonEquipment(equip, isRank) ;
         });
         buttons.Add(button);
     } 
-    public void CreateButton(Armor armor)
+    public void CreateButton(Artifact artifact,int index)
     {
-        CreateButton($"{armor.name},{armor.rank},{armor.prefix},{armor.statEffect.ToString()}");
-    }
-    public void CreateButton(Shoes shoes)
-    {
-        CreateButton($"{shoes.name},{shoes.rank},{shoes.prefix},{shoes.statEffect.ToString()}");
-    }
-    void OnClickButtonHelmet(Helmet helmet,bool isRank)
-    {
-        if (helmet.id != "helmet")
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"{artifact.name}";
+        button.GetComponent<Button>().onClick.AddListener(() =>
         {
-            var stringTemp = helmet.id;
-            var intRank = Int32.Parse(stringTemp.Substring(8, 1));
-            var intPrefix = Int32.Parse(stringTemp.Substring(9, 1));
+            GameState.Instance.player.ChangeAtArtifact(index, RandomCard.artifact);
+            OnClickRandomButton();
+        });
+        buttons.Add(button);
+    }
+    void OnClickButtonWeapon(Weapon weapon,bool isRank, int index)
+    {
+        if (weapon.id != "bare_fist")
+        {
+            var stringTemp = weapon.id;
+            var intRank = (int)weapon.rank;
+            var intPrefix = (int)weapon.prefix;
             if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
             {
                 if (isRank) intRank++;
                 else intPrefix++;
                 stringTemp = stringTemp.Substring(0, 8) + $"{intRank}" + $"{intPrefix}";
+                var weaponList = GameState.Instance.player.GetWeaponList();
+                weaponList.RemoveAt(index);
+                weaponList.Add(JsonDB.GetWeapon(stringTemp));
+               var sortList  = weaponList.OrderBy(x => x.id).ToList();
+                GameState.Instance.player.SetWeaponList(sortList);
+                OnClickRandomButton();
+            }
+        }
+    }
+    void OnClickButtonEquipment(Equipment equip,bool isRank)
+    {
+        if ((equip.id != "helmet") && (equip.id != "armor")&& (equip.id != "shoes"))
+        {
+            var stringTemp = equip.id;
+            var intRank = (int)equip.rank;
+            var intPrefix = (int)equip.prefix;
+            if ((isRank && (intRank < 4)) || (!isRank && (intPrefix < 4)))
+            {
+                if (isRank) intRank++;
+                else intPrefix++;
+                if(equip.type =="helmet") stringTemp = stringTemp.Substring(0, 8);
+                else if (equip.type == "armor" || equip.type=="shoes") stringTemp = stringTemp.Substring(0, 7);
+                stringTemp += $"{intRank}" + $"{intPrefix}";
                 GameState.Instance.player.SetEquipment(JsonDB.GetEquipment(stringTemp));
                 OnClickRandomButton();
             }
         }
     }
-
 
     // Start is called before the first frame update
     void Start()

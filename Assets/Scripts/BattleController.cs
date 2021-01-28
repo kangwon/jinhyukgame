@@ -145,13 +145,22 @@ public class BattleController : MonoBehaviour
             
             float finalAttack;
 
-            if(isPlayersFirstTurn && player.GetBuff().firstAttackCritical) //첫타격 확정치명타시
+            if (!GameState.Instance.player.GetBuff().iCantUsedCombo) //콤보 불가 디버프시
             {
-                finalAttack = player.ReturnAlwaysCritAttack(tempStat.attack+player.Synergy().attack)*(1f+BattlePanel.comboPercentSum); //시너지, 크리계산
+                finalAttack = (tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum);
             }
             else
             {
-                finalAttack = player.ReturnCritAttack(tempStat.attack+player.Synergy().attack)*(1f+BattlePanel.comboPercentSum); //시너지, 크리계산
+                finalAttack = tempStat.attack + player.Synergy().attack;
+            }
+
+            if(isPlayersFirstTurn && player.GetBuff().firstAttackCritical) //첫타격 확정치명타시
+            {
+                finalAttack = player.ReturnAlwaysCritAttack(finalAttack);
+            }
+            else
+            {
+                finalAttack = player.ReturnCritAttack(finalAttack);
             }
 
             if(monster.isBoss && (player.GetBuff().bossAddDamage != 0)) //몬스터가 보스고 보스전 추가 퍼뎀이 있을경우
