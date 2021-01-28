@@ -46,8 +46,8 @@ class GameConstant
     public static int[] RewardCoinMax = new int[12] { 0, 25, 35, 45, 60, 90, 90, 100, 110, 110, 130, 150 };
 
     // 몬스터 보상 장비 종류 확률
-    // 무기, 방어구
-    public static List<double> RewardEquipmentType = new List<double> { 0.7, 0.3 };
+    // 무기, 방어구, 힐
+    public static List<double> RewardType = new List<double> { 0.7, 0.27, 0.03 };
     
     // 몬스터 보상 장비 등급 확률
     // common, uncommon, rare, unique, legendary
