@@ -33,6 +33,7 @@ class GameState
     public void ResetPlayer()
     {
         this._player = new Player(GameConstant.PlayerInitialStat);
+        this._player.money = GameConstant.PlayerInitialMoney;
         this._player.ResetWeaponList();
         this._player.ResetEquipment();
     }

@@ -14,6 +14,7 @@ class GameConstant
         evasion = 0.05f,
         critical = 0.05f,
     };
+    public static int PlayerInitialMoney = 100;
     // 플레이어 초기 장비
     public static string[] PlayerInitialWeapon = new string[10]
     {
