@@ -345,19 +345,21 @@ public class Player : CharacterBase
         HpOver();
     }
 
+    public bool Pay(int rawPrice)
+    {
+        int discountedPrice = (int)(rawPrice * (1 - this.GetStat().discount));
+        bool canPay = money >= discountedPrice;
+        if (canPay)
+            money -= discountedPrice;
+        return canPay;
+    }
+
     public bool BuyItem(Equipment item)
     {
-
-        if (money >= (int)(item.price * (1 - GameState.Instance.player.GetStat().discount)))
-        {
-            money -= (int)(item.price * (1 - GameState.Instance.player.GetStat().discount));
+        var paySuccess = this.Pay(item.price);
+        if (paySuccess)
             this.SetEquipment(item);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return paySuccess;
     }
 
     public override void TakeHit(float rawDamage) 
