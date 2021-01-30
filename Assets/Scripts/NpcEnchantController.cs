@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +13,16 @@ readonly struct EnchantInfo
     public Weapon Weapon { get; }
     public int Index { get; }
 
+    public int Price { get => GameConstant.WeaponEnchantPrice[Weapon.rank][Weapon.prefix]; }
     public Prefix NextPrefix 
     {
-        get => (Prefix)Math.Min((int)(Weapon.prefix + 1), (int)Prefix.amazing);
+        get
+        {
+            if (Weapon.prefix == Prefix.none)
+                return Prefix.none;
+            else
+                return (Prefix)Math.Min((int)(Weapon.prefix + 1), (int)Prefix.amazing);
+        }
     }
     public string NextWeaponId
     {
@@ -31,8 +38,6 @@ readonly struct EnchantInfo
 
 public class NpcEnchantController : MonoBehaviour
 {
-    List<int> enchantWeaponMny = new List<int>(new int[] { 25, 100, 250, 500, 750, 1000, });
-
     GameObject[] WeaponCards = new GameObject[10];
 
     GameObject beforeCard;
@@ -53,8 +58,6 @@ public class NpcEnchantController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"selectedEnchant.Index {selectedEnchant.Index}");
-
         Player player = GameState.Instance.player;
         var weaponList = player.GetWeaponList();
         weaponList[selectedEnchant.Index] = JsonDB.GetWeapon(selectedEnchant.NextWeaponId);
@@ -63,16 +66,10 @@ public class NpcEnchantController : MonoBehaviour
         stageChoice.MoveToNextStage();
     }
 
-    void OnClickWeaponCard(EnchantInfo enchantInfo)
+    void OnClickWeaponCard(EnchantInfo selectedEnchant)
     {
-        this.selectedEnchant = enchantInfo;
+        this.selectedEnchant = selectedEnchant;
         var weapon = selectedEnchant.Weapon;
-
-        if (weapon.id == "bare_fist")
-        {
-            Debug.Log("맨주먹인데..");
-            return;
-        }
 
         beforeImg.GetComponent<Image>().sprite = weapon.weaponImg;
         afterImg.GetComponent<Image>().sprite = weapon.weaponImg;
@@ -80,12 +77,10 @@ public class NpcEnchantController : MonoBehaviour
         beforeCard.GetComponentInChildren<Text>().text = weapon.prefix.ToString();
         afterCard.GetComponentInChildren<Text>().text = selectedEnchant.NextPrefix.ToString();
 
-        if (weapon.prefix == Prefix.amazing)
+        if (weapon.id == "bare_fist" || weapon.prefix == Prefix.amazing)
             enchantButton.GetComponentInChildren<Text>().text = $"강화 불가";
-        else if (weapon.rank == Rank.legendary && weapon.prefix == Prefix.strong)
-            enchantButton.GetComponentInChildren<Text>().text = $"{enchantWeaponMny[5]} Coin  확인";
         else
-            enchantButton.GetComponentInChildren<Text>().text = $"{enchantWeaponMny[(int)weapon.rank]} Coin  확인";
+            enchantButton.GetComponentInChildren<Text>().text = $"{selectedEnchant.Price} Coin  확인";
     }
 
     void Start()
@@ -108,8 +103,8 @@ public class NpcEnchantController : MonoBehaviour
             {
                 var WeaponCard = GameObject.Find($"WeaponSelect/Weapon{i + 1}");
                 var weapon = weaponList[i];
-                var enchangInfo = new EnchantInfo(weapon, i);
-                WeaponCard.GetComponent<Button>().onClick.AddListener(() => OnClickWeaponCard(enchangInfo));
+                var enchant = new EnchantInfo(weapon, i);
+                WeaponCard.GetComponent<Button>().onClick.AddListener(() => OnClickWeaponCard(enchant));
                 WeaponCard.GetComponentInChildren<Text>().text = $"{weapon.statEffect.attack}";
                 WeaponCards[i] = WeaponCard;
             }
