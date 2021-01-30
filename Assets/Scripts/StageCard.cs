@@ -259,10 +259,23 @@ public class World
     
     public StageCard GetRandomCard()
     {
+        List<double> StageCardTypeModified = new List<double> { 0, 0, 0, 0, 0, 0 };
+
+        if(GameState.Instance.player.GetBuff().monsterChanceDecrease != 0 || GameState.Instance.player.GetBuff().monsterChanceIncrease != 0)
+        {
+            StageCardTypeModified[0] = GameState.Instance.player.GetBuff().monsterChanceDecrease + GameState.Instance.player.GetBuff().monsterChanceIncrease;
+            Debug.Log("몬스터 조우 확률 변경!");
+        }
+
+        for(int i = 0; i < StageCardTypeModified.Count; i++)
+        {
+            StageCardTypeModified[i] += GameConstant.StageCardType[i];
+        }
+
         var type = CustomRandom<CardType>.WeightedChoice
         (
             Enum.GetValues(typeof(CardType)).Cast<CardType>().ToList(),
-            GameConstant.StageCardType,
+            StageCardTypeModified,
             this.Random
         );
         

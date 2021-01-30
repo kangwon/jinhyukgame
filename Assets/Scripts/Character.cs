@@ -12,8 +12,8 @@ public class Stat
     public int defense;
     public int speed;
     public int startSpeedGauge;
-    public float critical = 0.05f;
-    public float evasion = 0.05f;
+    public float critical = 0.00f;
+    public float evasion = 0.00f;
     public float hpDrain = 0;       // 흡혈률
     public float stageHpDrain = 0;  // 스테이지 회복량
     public float discount = 0;      // 상점 할인가
@@ -377,16 +377,14 @@ public class Player : CharacterBase
 
     public override float ReturnCritAttack(float rawDamage, bool alwaysCrit) //크리티컬 계산
     {
-        float CRITMULTIPLIER = 2.0f;
-
         if(alwaysCrit == false)
         {
             float critRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
 
             if(critRand < this.GetStat().critical) //크리티컬
             {
-                Debug.Log("크리티컬! : " + rawDamage * CRITMULTIPLIER);
-                return rawDamage * CRITMULTIPLIER;
+                Debug.Log("크리티컬! : " + rawDamage * GameConstant.CRITMULTIPLIER);
+                return rawDamage * GameConstant.CRITMULTIPLIER;
             }
             else
             {
@@ -395,8 +393,8 @@ public class Player : CharacterBase
         }
         else
         {
-            Debug.Log("크리티컬! : " + rawDamage * CRITMULTIPLIER);
-            return rawDamage * CRITMULTIPLIER;
+            Debug.Log("크리티컬! : " + rawDamage * GameConstant.CRITMULTIPLIER);
+            return rawDamage * GameConstant.CRITMULTIPLIER;
         }
     }
 

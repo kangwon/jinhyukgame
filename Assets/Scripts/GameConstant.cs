@@ -9,7 +9,7 @@ class GameConstant
         maxHp = 40,
         attack = 10,
         defense = 0,
-        speed = 14,
+        speed = 10,
         startSpeedGauge = 1,
         evasion = 0.05f,
         critical = 0.05f,
@@ -91,4 +91,6 @@ class GameConstant
     // 상인 NPC 판매 장비 수식어 확률
     // broken, weak, normal, strong, amazing
     public static List<double> MerchantPrefix = new List<double>() { 0.05, 0.25, 0.70, 0, 0 };
+
+    public const float CRITMULTIPLIER = 2.0f; //크리티컬 배수
 }

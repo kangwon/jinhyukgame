@@ -17,6 +17,8 @@ public class RewardPanelController : MonoBehaviour
     Text coinReward;
 
     int rewardGetCoin;
+    
+    public int rewardCount; // 보상 횟수(재화 제외, 아이템만) default = 1 
 
     public void OnClickRewardAbandon()
     {
