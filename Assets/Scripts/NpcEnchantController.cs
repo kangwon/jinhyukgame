@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,11 +59,18 @@ public class NpcEnchantController : MonoBehaviour
         }
 
         Player player = GameState.Instance.player;
-        var weaponList = player.GetWeaponList();
-        weaponList[selectedEnchant.Index] = JsonDB.GetWeapon(selectedEnchant.NextWeaponId);
-        player.SetWeaponList(weaponList);
-
-        stageChoice.MoveToNextStage();
+        if (player.Pay(selectedEnchant.Price))
+        {
+            var weaponList = player.GetWeaponList();
+            weaponList[selectedEnchant.Index] = JsonDB.GetWeapon(selectedEnchant.NextWeaponId);
+            player.SetWeaponList(weaponList);
+            
+            stageChoice.MoveToNextStage();
+        }
+        else
+        {
+            Debug.Log("강화 비용 부족");
+        }
     }
 
     void OnClickWeaponCard(EnchantInfo selectedEnchant)
