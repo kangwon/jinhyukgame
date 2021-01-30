@@ -47,7 +47,7 @@ public class Weapon : Equipment
 {
     public WeaponType weaponType;
 
-    Dictionary<WeaponType, Sprite> weaponImgs = new Dictionary<WeaponType, Sprite>()
+    static Dictionary<WeaponType, Sprite> weaponImgs = new Dictionary<WeaponType, Sprite>()
     {
         { WeaponType.none , Resources.Load("Img/fist", typeof(Sprite)) as Sprite },
         { WeaponType.sword , Resources.Load("Img/sword", typeof(Sprite)) as Sprite },
@@ -57,13 +57,14 @@ public class Weapon : Equipment
         { WeaponType.wand , Resources.Load("Img/wand", typeof(Sprite)) as Sprite }
     };
 
-    public Sprite weaponImg { get => weaponImgs[this.weaponType]; }
+    public Sprite weaponImg { get => Weapon.weaponImgs[this.weaponType]; }
 
 
 }
 public class Armor : Equipment {}
 public class Helmet : Equipment {}
 public class Shoes : Equipment {}
+
 [System.Serializable]
 public class Artifact : JsonItem
 {
@@ -163,7 +164,7 @@ public class EquipmentSlot
         totalStat += armor?.statEffect ?? zeroStat;
         totalStat += helmet?.statEffect ?? zeroStat;
         totalStat += shoes?.statEffect ?? zeroStat;
-       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ³ªÁß¿¡ °ü·ÃµÈ ¾ÆÆ¼ÆåÆ® º¯¼ö(?)¸¦ ³Ö¾î³õÀÚ
+       // totalStat += artifacts?.Aggregate(zeroStat, (stat, equip) => stat + equip.statEffect) ?? zeroStat; //TODO : ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½Æ¼ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½(?)ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
         return totalStat;
     }
 }
