@@ -191,7 +191,7 @@ public class Player : CharacterBase
 {
     public StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
-    public int money = 100;
+    public int money;
     
     public void HpOver()
     {

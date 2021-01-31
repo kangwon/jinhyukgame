@@ -14,6 +14,7 @@ class GameConstant
         evasion = 0.05f,
         critical = 0.05f,
     };
+    public static int PlayerInitialMoney = 100;
     // 플레이어 초기 장비
     public static string[] PlayerInitialWeapon = new string[10]
     {
@@ -24,7 +25,11 @@ class GameConstant
     {
         "helmet", "armor", "shoes",
     };
+  
+    // 크리티컬 배수
+    public const float CRITMULTIPLIER = 2.0f; 
 
+  
     // 시작 월드 ID
     public static WorldId InitialWorldId = WorldId.W1;
 
@@ -91,6 +96,40 @@ class GameConstant
     // 상인 NPC 판매 장비 수식어 확률
     // broken, weak, normal, strong, amazing
     public static List<double> MerchantPrefix = new List<double>() { 0.05, 0.25, 0.70, 0, 0 };
+  
 
-    public const float CRITMULTIPLIER = 2.0f; //크리티컬 배수
+    // 강화 NPC 강화 비용
+    public static Dictionary<Rank, Dictionary<Prefix, int>> WeaponEnchantPrice = new Dictionary<Rank, Dictionary<Prefix, int>>
+    {
+        { 
+            Rank.common, new Dictionary<Prefix, int> 
+            {
+                {Prefix.broken, 25}, {Prefix.weak, 25}, {Prefix.normal, 25}, {Prefix.strong, 25},
+            }
+        },
+        { 
+            Rank.uncommon, new Dictionary<Prefix, int> 
+            {
+                {Prefix.broken, 100}, {Prefix.weak, 100}, {Prefix.normal, 100}, {Prefix.strong, 100},
+            }
+        },
+        { 
+            Rank.rare, new Dictionary<Prefix, int> 
+            {
+                {Prefix.broken, 250}, {Prefix.weak, 250}, {Prefix.normal, 250}, {Prefix.strong, 250},
+            }
+        },
+        { 
+            Rank.unique, new Dictionary<Prefix, int> 
+            {
+                {Prefix.broken, 500}, {Prefix.weak, 500}, {Prefix.normal, 500}, {Prefix.strong, 500},
+            }
+        },
+        { 
+            Rank.legendary, new Dictionary<Prefix, int> 
+            {
+                {Prefix.broken, 750}, {Prefix.weak, 750}, {Prefix.normal, 750}, {Prefix.strong, 1000},
+            }
+        },
+    };
 }
