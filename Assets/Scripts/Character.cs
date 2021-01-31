@@ -12,8 +12,8 @@ public class Stat
     public int defense;
     public int speed;
     public int startSpeedGauge;
-    public float critical = 0.05f;
-    public float evasion = 0.05f;
+    public float critical = 0.00f;
+    public float evasion = 0.00f;
     public float hpDrain = 0;       // 흡혈률
     public float stageHpDrain = 0;  // 스테이지 회복량
     public float discount = 0;      // 상점 할인가
@@ -136,9 +136,9 @@ public class CharacterBase : JsonItem
 
     public virtual float AttackFoe() {return 0;} // 공격하는 함수
 
-    public virtual float ReturnCritAttack(float dmg) {return 0;} // 데미지에 크리티컬 확률 곱해서 돌려줌
+    public virtual float ReturnCritAttack(float dmg, bool alwaysCrit) {return 0;} // 데미지에 크리티컬 확률 곱해서 돌려줌
 
-    public virtual void TakeHit(float rawDamage) {} // 데미지 받는 함수 TODO : IntFloat 해결
+    public virtual void TakeHit(float rawDamage) {} //
 }
 
 [System.Serializable]
@@ -365,29 +365,44 @@ public class Player : CharacterBase
     public override void TakeHit(float rawDamage) 
     {
         int damage = Math.Max((int)rawDamage - this.GetStat().defense, 1);
+        
+        float evasionRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
+
+        if(evasionRand < this.GetStat().evasion) //회피하면
+        {
+            damage = 0; //데미지 0
+            Debug.Log("회피함!");
+        }
+
         this.Damage(damage);
     }
 
-    public override float ReturnCritAttack(float rawDamage) //BattleController에서 받아온 값을 크리확률계산
+    public override float ReturnCritAttack(float rawDamage, bool alwaysCrit) //크리티컬 계산
     {
-        float critRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
-
-        if(critRand < this.GetStat().critical) //크리티컬
+        if(alwaysCrit == false)
         {
-            float CRITMULTIPLIER = 2.0f;
-            Debug.Log("크리티컬! : " + rawDamage * CRITMULTIPLIER);
-            return rawDamage * CRITMULTIPLIER;
+            float critRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
+
+            if(critRand < this.GetStat().critical) //크리티컬
+            {
+                Debug.Log("크리티컬! : " + rawDamage * GameConstant.CRITMULTIPLIER);
+                return rawDamage * GameConstant.CRITMULTIPLIER;
+            }
+            else
+            {
+                return rawDamage;
+            }
         }
         else
         {
-            return rawDamage;
+            Debug.Log("크리티컬! : " + rawDamage * GameConstant.CRITMULTIPLIER);
+            return rawDamage * GameConstant.CRITMULTIPLIER;
         }
     }
 
-    public float ReturnAlwaysCritAttack(float rawDamage) //BattleController에서 받아온 값을 크리확정
+    public float ReturnCritAttack(float rawDamage) //BattleController에서 받아온 값을 크리확률계산
     {
-        float CRITMULTIPLIER = 2.0f;
-        return rawDamage * CRITMULTIPLIER;
+        return ReturnCritAttack(rawDamage, false);
     }
 
     public void Damage(int damage)

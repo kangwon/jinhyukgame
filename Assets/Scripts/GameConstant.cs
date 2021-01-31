@@ -25,7 +25,11 @@ class GameConstant
     {
         "helmet", "armor", "shoes",
     };
+  
+    // 크리티컬 배수
+    public const float CRITMULTIPLIER = 2.0f; 
 
+  
     // 시작 월드 ID
     public static WorldId InitialWorldId = WorldId.W1;
 
@@ -92,7 +96,7 @@ class GameConstant
     // 상인 NPC 판매 장비 수식어 확률
     // broken, weak, normal, strong, amazing
     public static List<double> MerchantPrefix = new List<double>() { 0.05, 0.25, 0.70, 0, 0 };
-
+  
 
     // 강화 NPC 강화 비용
     public static Dictionary<Rank, Dictionary<Prefix, int>> WeaponEnchantPrice = new Dictionary<Rank, Dictionary<Prefix, int>>

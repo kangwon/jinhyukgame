@@ -172,10 +172,11 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         GameOverPanel.SetActive(true);
     }
 
-    public void RewardStage()
+    public void RewardStage(int number = 1)
     {
         var controller = RewardPanel.GetComponent<RewardPanelController>();
         controller.MonsterCard = this.MonsterCard;
+        controller.rewardCount = number;
         RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
         RewardPanel.SetActive(true);
         if (this.monster.isBoss)
@@ -186,7 +187,6 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         {
             stageChoice.MoveToNextStage();
         }
-        
     }
 
     //해당 패널이 활성화 될때 실행되는 메서드
