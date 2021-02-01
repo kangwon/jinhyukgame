@@ -20410,7 +20410,7 @@ MonoBehaviour:
   isMonstersFirstTurn: 0
   hp1Undied: 0
   playerTurnCount: 0
-  battlecalled: 0
+  battleNumber: 0
 --- !u!1 &1675603128
 GameObject:
   m_ObjectHideFlags: 0
@@ -20836,7 +20836,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 600, y: 80}
+  m_SizeDelta: {x: 980, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1720062665
 MonoBehaviour:
@@ -22019,6 +22019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2b227730828e34b8e4a2211d9d9d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardCount: 0
 --- !u!114 &1784660140
 MonoBehaviour:
   m_ObjectHideFlags: 0
