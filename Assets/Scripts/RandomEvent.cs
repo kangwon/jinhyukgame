@@ -144,7 +144,7 @@ public class RandomEvent
                 break;
             case 3:
                 name.text = $"인형 뽑기";
-                description.text = $"\"단 한번의 기회! 실력을 보여주지!\"";
+                description.text = $"\"단 한번의 기회! 실력을 보여주지!\""+$"{randomCard.money}코인 필요";
                 tempInt = randomCard.money;
                 randomPanelController.CreateButtonGamble(tempInt, tempInt, CustomRandom<bool>.Choice(new List<bool> { false, true }, GameState.Instance.World.Random));
                 break;
@@ -155,7 +155,7 @@ public class RandomEvent
     public void NegativeEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 11, 12}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: 
                 name.text = $"갑작스러운 소나기";

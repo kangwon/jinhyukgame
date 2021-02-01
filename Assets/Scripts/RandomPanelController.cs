@@ -69,7 +69,7 @@ public class RandomPanelController : MonoBehaviour
     public void CreateButtonGamble(int requireMoney,int rewardMoney,bool isWin)
     {
         GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
-        button.transform.GetChild(0).GetComponent<Text>().text = $"도전하기";
+        button.transform.GetChild(0).GetComponent<Text>().text = $"도전하기 [성공시 보상:{rewardMoney}코인]";
         button.GetComponent<Button>().onClick.AddListener(() =>
         {
             if (GameState.Instance.player.money >= requireMoney)
