@@ -211,14 +211,22 @@ public class RandomEvent
             case 9://TODO : 코드 구현하기
                 name.text = $"가시덤불";
                 description.text = "\"가시덤불 \"" + "\n\n" + $"[체력 손실]";
+                tempInt=(int)(GameState.Instance.player.GetStat().maxHp * 0.05);
+                GameState.Instance.player.hp -= tempInt;
+
                 break;
             case 10://TODO : 코드 구현하기
+                name.text = $"함정!";
+                description.text = "\"함정 \"" + "\n\n" + $"[체력 손실]";
+                break;
+            case 11://TODO : 코드 구현하기
                 name.text = $"정밀 감정";
                 description.text = "이 장비는 그렇게 좋은 아이템은 아니네요..." + "\n\n" + $"[장비 등급 하락]";
                 break;
-              case 11://TODO : 코드 구현하기
+              case 12://TODO : 코드 구현하기
                 name.text = $"길을 가다가";
                 description.text = "길을 지나가다가 돌부리에 걸려 넘어졌는데 장비에 금이 갔다." + "\n\n" + $"[장비 수식어 하락]";       
+
                 break;
             default:
                 break;
