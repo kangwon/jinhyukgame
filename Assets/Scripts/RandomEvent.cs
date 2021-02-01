@@ -144,7 +144,9 @@ public class RandomEvent
                 break;
             case 3:
                 name.text = $"인형 뽑기";
-                description.text = $"\"단 한번의 기회! 실력을 보여주지!\""; 
+                description.text = $"\"단 한번의 기회! 실력을 보여주지!\"";
+                tempInt = randomCard.money;
+                randomPanelController.CreateButtonGamble(tempInt, tempInt, CustomRandom<bool>.Choice(new List<bool> { false, true }, GameState.Instance.World.Random));
                 break;
             default:
                 break;
