@@ -81,7 +81,7 @@ public class RandomEvent
     public void NeuturalityEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1 ,2 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: //TODO : 4가지의 확률에 맞춰 구현하기(티켓 획득)
                 name.text = $"풍선 다트";
@@ -155,7 +155,7 @@ public class RandomEvent
     public void NegativeEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: 
                 name.text = $"갑작스러운 소나기";
@@ -230,9 +230,38 @@ public class RandomEvent
                 if (GameState.Instance.player.hp == 0)
                     randomPanelController.ShowGameOver();
                 break;
-            case 11://TODO : 코드 구현하기
+            case 11:
                 name.text = $"정밀 감정";
                 description.text = "이 장비는 그렇게 좋은 아이템은 아니네요..." + "\n\n" + $"[장비 등급 하락]";
+                Dictionary<int,Equipment> rankDownEquipments = new Dictionary<int, Equipment>{ };
+                var index = 0;
+                //장비 등급 하락이 가능한 무기,장비들을 dictionary에 모은다.
+                foreach (var weapon in GameState.Instance.player.GetWeaponList()) 
+                {
+                    if (!((weapon.rank == Rank.none) || (weapon.rank == Rank.common)))
+                        rankDownEquipments.Add(index, weapon);
+                    index++;
+                }
+                List<Equipment> tempEquipments =new List<Equipment> { GameState.Instance.player.GetHelmet(), GameState.Instance.player.GetArmor(), GameState.Instance.player.GetShoes() };
+                foreach (var tempEquipment in tempEquipments )
+                {
+                   if(!((tempEquipment.rank == Rank.none) || (tempEquipment.rank == Rank.common)))
+                        rankDownEquipments.Add(index, tempEquipment);
+                    index++;
+                }
+                tempInt =CustomRandom<int>.Choice(new List<int>(rankDownEquipments.Keys), GameState.Instance.World.Random); //dictionary에 있는 장비를 랜덤으로 하나 고른다
+                GetRankDownEquipments(rankDownEquipments[tempInt]);
+                if(tempInt <10) //무기일 때
+                {
+                    var weapons = GameState.Instance.player.GetWeaponList();
+                    weapons.RemoveAt(tempInt);
+                    weapons.Add(GetRankDownEquipments(rankDownEquipments[tempInt].ToWeapon((WeaponType)int.Parse(rankDownEquipments[tempInt].id.Substring(7,1)))));
+                    GameState.Instance.player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
+                }
+                else
+                {
+                    GameState.Instance.player.SetEquipment(GetRankDownEquipments(rankDownEquipments[tempInt]));
+                }
                 break;
               case 12://TODO : 코드 구현하기
                 name.text = $"첨벙!";
@@ -254,5 +283,31 @@ public class RandomEvent
         randomPanelController.CreateButton(GameState.Instance.player.GetHelmet(),isRank);
         randomPanelController.CreateButton(GameState.Instance.player.GetArmor(), isRank);
         randomPanelController.CreateButton(GameState.Instance.player.GetShoes(), isRank);
+    }
+    Equipment GetRankDownEquipments(Equipment nowEquipment)
+    {
+        var tempRank = (int)nowEquipment.rank;
+        var tempPrefix = (int)nowEquipment.prefix;
+        switch (nowEquipment)
+        {
+            case Helmet h:
+                tempRank--;
+                return JsonDB.GetEquipment($"{h.id.Substring(0, 8)}{tempRank}{tempPrefix}");
+            case Armor a:
+                tempRank--;
+                return JsonDB.GetEquipment($"{a.id.Substring(0, 7)}{tempRank}{tempPrefix}");
+            case Shoes s:
+                tempRank--;
+                return JsonDB.GetEquipment($"{s.id.Substring(0, 7)}{tempRank}{tempPrefix}");
+            default:
+                throw new System.NotImplementedException($"Invalid equipment type: {nowEquipment.GetType().ToString()}");
+        }
+    }
+    Weapon GetRankDownEquipments(Weapon nowWeapon)
+    {
+        var tempRank = (int)nowWeapon.rank;
+        var tempPrefix = (int)nowWeapon.prefix;
+        tempRank--;
+        return JsonDB.GetWeapon($"{nowWeapon.id.Substring(0, 8)}{tempRank}{tempPrefix}");
     }
 }
