@@ -155,7 +155,7 @@ public class RandomEvent
     public void NegativeEvent(Text name, Text description, RandomCard randomCard)
     {
         int tempInt;
-        switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
+        switch (CustomRandom<int>.Choice(new List<int> { 11, 12}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
             case 0: 
                 name.text = $"갑작스러운 소나기";
@@ -234,39 +234,73 @@ public class RandomEvent
                 name.text = $"정밀 감정";
                 description.text = "이 장비는 그렇게 좋은 아이템은 아니네요..." + "\n\n" + $"[장비 등급 하락]";
                 Dictionary<int,Equipment> rankDownEquipments = new Dictionary<int, Equipment>{ };
-                var index = 0;
+                var rankIndex = 0;
                 //장비 등급 하락이 가능한 무기,장비들을 dictionary에 모은다.
                 foreach (var weapon in GameState.Instance.player.GetWeaponList()) 
                 {
                     if (!((weapon.rank == Rank.none) || (weapon.rank == Rank.common)))
-                        rankDownEquipments.Add(index, weapon);
-                    index++;
+                        rankDownEquipments.Add(rankIndex, weapon);
+                    rankIndex++;
                 }
                 List<Equipment> tempEquipments =new List<Equipment> { GameState.Instance.player.GetHelmet(), GameState.Instance.player.GetArmor(), GameState.Instance.player.GetShoes() };
                 foreach (var tempEquipment in tempEquipments )
                 {
                    if(!((tempEquipment.rank == Rank.none) || (tempEquipment.rank == Rank.common)))
-                        rankDownEquipments.Add(index, tempEquipment);
-                    index++;
+                        rankDownEquipments.Add(rankIndex, tempEquipment);
+                    rankIndex++;
                 }
-                tempInt =CustomRandom<int>.Choice(new List<int>(rankDownEquipments.Keys), GameState.Instance.World.Random); //dictionary에 있는 장비를 랜덤으로 하나 고른다
-                GetRankDownEquipments(rankDownEquipments[tempInt]);
-                if(tempInt <10) //무기일 때
+                if (rankDownEquipments.Count != 0)
                 {
-                    var weapons = GameState.Instance.player.GetWeaponList();
-                    weapons.RemoveAt(tempInt);
-                    weapons.Add(GetRankDownEquipments(rankDownEquipments[tempInt].ToWeapon((WeaponType)int.Parse(rankDownEquipments[tempInt].id.Substring(7,1)))));
-                    GameState.Instance.player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
-                }
-                else
-                {
-                    GameState.Instance.player.SetEquipment(GetRankDownEquipments(rankDownEquipments[tempInt]));
+                    tempInt = CustomRandom<int>.Choice(new List<int>(rankDownEquipments.Keys), GameState.Instance.World.Random); //dictionary에 있는 장비를 랜덤으로 하나 고른다
+                    if (tempInt < 10) //무기일 때
+                    {
+                        var weapons = GameState.Instance.player.GetWeaponList();
+                        weapons.RemoveAt(tempInt);
+                        weapons.Add(GetDownEquipments(rankDownEquipments[tempInt].ToWeapon((WeaponType)int.Parse(rankDownEquipments[tempInt].id.Substring(7, 1))), true));
+                        GameState.Instance.player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
+                    }
+                    else
+                    {
+                        GameState.Instance.player.SetEquipment(GetDownEquipments(rankDownEquipments[tempInt],true));
+                    }
+                    description.text += $"\n{ rankDownEquipments[tempInt].name}의 등급 하락";
                 }
                 break;
-              case 12://TODO : 코드 구현하기
+              case 12:
                 name.text = $"첨벙!";
-                description.text = "물 웅덩이를 미처 피하지 못했다." + "\n\n" + $"[장비 수식어 하락]";       
-
+                description.text = "물 웅덩이를 미처 피하지 못했다." + "\n\n" + $"[장비 수식어 하락]";
+                Dictionary<int, Equipment> prefixDownEquipments = new Dictionary<int, Equipment> { };
+                var prefixIndex = 0;
+                //장비 수식어 하락이 가능한 무기,장비들을 dictionary에 모은다.
+                foreach (var weapon in GameState.Instance.player.GetWeaponList())
+                {
+                    if (!((weapon.prefix == Prefix.none) || (weapon.prefix == Prefix.broken)))
+                        prefixDownEquipments.Add(prefixIndex, weapon);
+                    prefixIndex++;
+                }
+                List<Equipment> tempEquipments2 = new List<Equipment> { GameState.Instance.player.GetHelmet(), GameState.Instance.player.GetArmor(), GameState.Instance.player.GetShoes() };
+                foreach (var tempEquipment in tempEquipments2)
+                {
+                    if (!((tempEquipment.prefix == Prefix.none) || (tempEquipment.prefix == Prefix.broken)))
+                        prefixDownEquipments.Add(prefixIndex, tempEquipment);
+                    prefixIndex++;
+                }
+                if (prefixDownEquipments.Count != 0)
+                {
+                    tempInt = CustomRandom<int>.Choice(new List<int>(prefixDownEquipments.Keys), GameState.Instance.World.Random); //dictionary에 있는 장비를 랜덤으로 하나 고른다
+                    if (tempInt < 10) //무기일 때
+                    {
+                        var weapons = GameState.Instance.player.GetWeaponList();
+                        weapons.RemoveAt(tempInt);
+                        weapons.Add(GetDownEquipments(prefixDownEquipments[tempInt].ToWeapon((WeaponType)int.Parse(prefixDownEquipments[tempInt].id.Substring(7, 1))), false));
+                        GameState.Instance.player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
+                    }
+                    else
+                    {
+                        GameState.Instance.player.SetEquipment(GetDownEquipments(prefixDownEquipments[tempInt], false));
+                    }
+                    description.text += $"\n{prefixDownEquipments[tempInt].name}의 수식어 하락";
+                }
                 break;
             default:
                 break;
@@ -284,30 +318,30 @@ public class RandomEvent
         randomPanelController.CreateButton(GameState.Instance.player.GetArmor(), isRank);
         randomPanelController.CreateButton(GameState.Instance.player.GetShoes(), isRank);
     }
-    Equipment GetRankDownEquipments(Equipment nowEquipment)
+    Equipment GetDownEquipments(Equipment nowEquipment,bool isRank)
     {
         var tempRank = (int)nowEquipment.rank;
         var tempPrefix = (int)nowEquipment.prefix;
+        if (isRank) tempRank--;
+        else tempPrefix--;
         switch (nowEquipment)
         {
             case Helmet h:
-                tempRank--;
                 return JsonDB.GetEquipment($"{h.id.Substring(0, 8)}{tempRank}{tempPrefix}");
             case Armor a:
-                tempRank--;
                 return JsonDB.GetEquipment($"{a.id.Substring(0, 7)}{tempRank}{tempPrefix}");
             case Shoes s:
-                tempRank--;
                 return JsonDB.GetEquipment($"{s.id.Substring(0, 7)}{tempRank}{tempPrefix}");
             default:
                 throw new System.NotImplementedException($"Invalid equipment type: {nowEquipment.GetType().ToString()}");
         }
     }
-    Weapon GetRankDownEquipments(Weapon nowWeapon)
+    Weapon GetDownEquipments(Weapon nowWeapon, bool isRank)
     {
         var tempRank = (int)nowWeapon.rank;
         var tempPrefix = (int)nowWeapon.prefix;
-        tempRank--;
+        if (isRank) tempRank--;
+        else tempPrefix--;
         return JsonDB.GetWeapon($"{nowWeapon.id.Substring(0, 8)}{tempRank}{tempPrefix}");
     }
 }
