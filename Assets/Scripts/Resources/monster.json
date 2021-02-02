@@ -577,7 +577,7 @@
       }
     },
     {
-      "id": "penguin",
+      "id": "penguin6",
       "name": "펭귄",
       "worldId": 6,
       "isBoss": false,
@@ -589,7 +589,7 @@
       }
     },
     {
-      "id": "polar_bear",
+      "id": "polar_bear6",
       "name": "북극곰",
       "worldId": 6,
       "isBoss": false,
@@ -601,7 +601,7 @@
       }
     },
     {
-      "id": "seal",
+      "id": "seal6",
       "name": "바다표범",
       "worldId": 6,
       "isBoss": false,
