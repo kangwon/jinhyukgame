@@ -85,6 +85,8 @@ public class StageChoice : MonoBehaviour
     
     public void MoveToNextWorld()
     {
+        DeactiveAllPanel();
+
         WorldId[] worldIds = GameState.Instance.World.GetNextWorldIds();
         if (worldIds.Length == 1)
             AfterWorldSelected(worldIds[0]);
@@ -99,7 +101,7 @@ public class StageChoice : MonoBehaviour
             GameState.Instance.StartWorld(selectedWorld);
             GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
             GameState.Instance.player.HpOver();
-            ActivatePannel();
+            UpdateGamePanel();
         }
     }
 
