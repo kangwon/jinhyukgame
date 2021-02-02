@@ -34,7 +34,7 @@ class GameConstant
     public static WorldId InitialWorldId = WorldId.W1;
 
     // 월드별 보스 등장 스테이지
-    public static int[] BossStage = new int[8] { 15, 20, 20, 20, 20 ,20, 20, 20 };
+    public static int[] BossStage = new int[9] { 15, 20, 20, 20, 25 ,25, 30, 30, 30 };
 
     // 스테이지 카드 등장 확률
     // Monster, Chest, Buff, Npc, Random, Boss
