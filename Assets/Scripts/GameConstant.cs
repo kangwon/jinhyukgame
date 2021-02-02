@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 class GameConstant
 {
+    // 크리티컬 배수
+    public const float CRITMULTIPLIER = 2.0f; 
+
+    
     // 플레이어 초기 스탯
     public static Stat PlayerInitialStat = new Stat()
     {
@@ -25,9 +29,6 @@ class GameConstant
     {
         "helmet", "armor", "shoes",
     };
-  
-    // 크리티컬 배수
-    public const float CRITMULTIPLIER = 2.0f; 
 
   
     // 시작 월드 ID
