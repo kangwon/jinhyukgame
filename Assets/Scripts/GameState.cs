@@ -41,6 +41,8 @@ class GameState
     public void StartWorld(WorldId worldId)
     {
         this._world = new World(worldId);
+        WorldSoundController.WSC_instance.SoundState = (int)worldId;
+        WorldSoundController.WSC_instance.WorldSoundControl();
         this._stage = this.World.GetStage(1);
     }
 
