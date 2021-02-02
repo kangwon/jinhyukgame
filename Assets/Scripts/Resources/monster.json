@@ -577,6 +577,78 @@
       }
     },
     {
+      "id": "penguin",
+      "name": "펭귄",
+      "worldId": 6,
+      "isBoss": false,
+      "baseStat": {
+        "maxHp": 400,
+        "attack": 25,
+        "defense": 10,
+        "speed": 60
+      }
+    },
+    {
+      "id": "polar_bear",
+      "name": "북극곰",
+      "worldId": 6,
+      "isBoss": false,
+      "baseStat": {
+        "maxHp": 700,
+        "attack": 60,
+        "defense": 24,
+        "speed": 20
+      }
+    },
+    {
+      "id": "seal",
+      "name": "바다표범",
+      "worldId": 6,
+      "isBoss": false,
+      "baseStat": {
+        "maxHp": 650,
+        "attack": 50,
+        "defense": 20,
+        "speed": 30
+      }
+    },
+    {
+      "id": "teddy_world6",
+      "name": "테디 베어",
+      "worldId": 6,
+      "isBoss": false,
+      "baseStat": {
+        "maxHp": 743,
+        "attack": 29,
+        "defense": 24,
+        "speed": 17
+      }
+    },
+    {
+      "id": "spider_world6",
+      "name": "거미",
+      "worldId": 6,
+      "isBoss": false,
+      "baseStat": {
+        "maxHp": 343,
+        "attack": 41,
+        "defense": 12,
+        "speed": 53
+      }
+    },
+    {
+      "id": "monkey_world6",
+      "name": "심벌치는 원숭이",
+      "worldId": 6,
+      "isBoss": false,
+      "baseStat": {
+        "maxHp": 663,
+        "attack": 49,
+        "defense": 19,
+        "speed": 41
+      }
+    },
+    {
       "id": "fox",
       "name": "여우(삼미호)",
       "worldId": 71,
