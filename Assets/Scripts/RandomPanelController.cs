@@ -13,6 +13,7 @@ public class RandomPanelController : MonoBehaviour
     GameObject selectPanel;
     GameObject buttonPrefab;
     RandomEvent randomEvent;
+    GameObject GameOverPanel;
     public void OnClickRandomButton()
     {
         stageChoice.MoveToNextStage();
@@ -65,6 +66,32 @@ public class RandomPanelController : MonoBehaviour
         });
         buttons.Add(button);
     }
+    public void CreateButtonGamble(int requireMoney,int rewardMoney,bool isWin)
+    {
+        GameObject button = Instantiate(buttonPrefab, selectPanel.transform.GetChild(0).transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = $"도전하기 [성공시 보상:{rewardMoney}코인]";
+        button.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            if (GameState.Instance.player.money >= requireMoney)
+            {
+                GameState.Instance.player.money -= requireMoney;
+                if (isWin)
+                {
+                    GameState.Instance.player.money += requireMoney + rewardMoney;
+                    Debug.Log("성공!");
+                }
+                else
+                    Debug.Log("실패...");
+
+                OnClickRandomButton();
+            }
+            else
+            {
+                Debug.Log($"돈이 부족합니다. 요구 코인 : {requireMoney}");
+            }
+        });
+        buttons.Add(button);
+    }
     void OnClickButtonWeapon(Weapon weapon,bool isRank, int index)
     {
         if (weapon.id != "bare_fist")
@@ -104,8 +131,12 @@ public class RandomPanelController : MonoBehaviour
                 OnClickRandomButton();
             }
         }
+    }  
+    public void ShowGameOver()
+    {
+        GameOverPanel.transform.localPosition = new Vector3(0, 0, 0);
+        GameOverPanel.SetActive(true);
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -114,6 +145,7 @@ public class RandomPanelController : MonoBehaviour
         stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
         selectPanel = GameObject.Find("Canvas/RandomPanel/SelectPanel").gameObject;
         buttonPrefab = Resources.Load<GameObject>("SelectButtonPrefab");
+        GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;
         randomEvent = new RandomEvent();
     }
 
