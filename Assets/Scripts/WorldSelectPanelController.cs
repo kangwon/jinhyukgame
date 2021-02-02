@@ -19,8 +19,18 @@ public class WorldSelectPanelController : MonoBehaviour
 
     public void DisplayPanel(WorldId world1, WorldId world2, WorldSelectCallback callback)
     {
-        WorldButton1.onClick.AddListener(() => callback(world1));
-        WorldButton2.onClick.AddListener(() => callback(world2));
+        WorldButton1.GetComponentInChildren<Text>().text = world1.ToString(); 
+        WorldButton1.onClick.AddListener(() => 
+        {
+            this.gameObject.SetActive(false);
+            callback(world1);
+        });
+        WorldButton2.GetComponentInChildren<Text>().text = world2.ToString();
+        WorldButton2.onClick.AddListener(() => 
+        {
+            this.gameObject.SetActive(false);
+            callback(world2);
+        });
 
         this.transform.localPosition = StageChoice.PanelDisplayPosition;
         this.gameObject.SetActive(true);
