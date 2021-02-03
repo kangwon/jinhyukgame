@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 class GameConstant
 {
+    // 크리티컬 배수
+    public const float CRITMULTIPLIER = 2.0f; 
+
+    
     // 플레이어 초기 스탯
     public static Stat PlayerInitialStat = new Stat()
     {
@@ -25,16 +29,13 @@ class GameConstant
     {
         "helmet", "armor", "shoes",
     };
-  
-    // 크리티컬 배수
-    public const float CRITMULTIPLIER = 2.0f; 
 
   
     // 시작 월드 ID
     public static WorldId InitialWorldId = WorldId.W1;
 
     // 월드별 보스 등장 스테이지
-    public static int[] BossStage = new int[8] { 15, 20, 20, 20, 20 ,20, 20, 20 };
+    public static int[] BossStage = new int[9] { 15, 20, 20, 20, 25 ,25, 30, 30, 30 };
 
     // 스테이지 카드 등장 확률
     // Monster, Chest, Buff, Npc, Random, Boss
@@ -92,6 +93,17 @@ class GameConstant
         new List<double> { 0.01, 0.2,  0.64, 0.15, 0 },
         new List<double> { 0.01, 0.15, 0.64, 0.2,  0 },
     };
+    //월드 보스 보상으로 주는 코인
+    //{월드,코인}
+    public static Dictionary<int, int> bossRewardCoin = new Dictionary<int, int> { { 1, 200 }, { 2, 450 }, { 3, 700 }, { 4, 1000 }, { 5, 1500 }, { 6, 1800 }, { 7, 2000 }, { 8, 2500 }, { 9, 0 }, { 10, 0 } };
+
+    //월드 보스 보상으로 주는 보스아티펙트
+    //{월드id,아티펙트id}
+    public static Dictionary<WorldId, string> bossArtifacts = new Dictionary<WorldId, string> {
+            { WorldId.W1,"artifact0"},{ WorldId.W2, "artifact1" },{ WorldId.W3, "artifact2" },
+            { WorldId.W4, "artifact3" },{ WorldId.W5_1, "artifact4" },{ WorldId.W5_2, "artifact5" },
+            { WorldId.W6,"artifact6"},{ WorldId.W7_1, "artifact7" },{ WorldId.W7_2, "artifact8" },{ WorldId.W8, "artifact9" },
+        };
 
     // 상인 NPC 판매 장비 수식어 확률
     // broken, weak, normal, strong, amazing

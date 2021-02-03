@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class RewardPanelController : MonoBehaviour
 {
-    public MonsterCard MonsterCard;
-
+    public MonsterCard monsterCard;
+    public BossCard bossCard;
     StageChoice stageChoice;
     GameObject weaponChangePanel;
+    GameObject artifactChangePanel;
     EquipmentChangePanelController equipmentChanger;
-
     Button[] rewardButtons = new Button[3];
     Text coinReward;
 
@@ -29,6 +29,7 @@ public class RewardPanelController : MonoBehaviour
     {
         stageChoice = GameObject.Find("Canvas").GetComponent<StageChoice>();
         weaponChangePanel = GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject;
+        artifactChangePanel = GameObject.Find("Canvas").transform.Find("ArtifactChangePanel").gameObject;
         equipmentChanger = GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>();
         coinReward = GameObject.Find("gold_reward").GetComponent<Text>();
 
@@ -40,20 +41,30 @@ public class RewardPanelController : MonoBehaviour
 
     void OnEnable()
     {
-        if (MonsterCard != null)
+        if (monsterCard != null)
         {
-            rewardGetCoin = (int)(MonsterCard.rewardCoin * (1 + GameState.Instance.player.GetStat().rewardCoinPer));
+            rewardGetCoin = (int)(monsterCard.rewardCoin * (1 + GameState.Instance.player.GetStat().rewardCoinPer));
             coinReward.text = $"+ {rewardGetCoin}";
 
             for(int i = 0; i < 3; i++)
             {
                 var rewardButton = rewardButtons[i];
-                var reward = MonsterCard.rewards[i];
-                rewardButton.transform.GetChild(0).GetComponent<Text>().text = reward.title;
-                rewardButton.onClick.RemoveAllListeners();
-                rewardButton.onClick.AddListener(() => OnClickRewardButton(reward));
+                if (monsterCard.monster.isBoss)
+                {
+                    var reward = bossCard.rewards[i];
+                    rewardButton.transform.GetChild(0).GetComponent<Text>().text = reward.title;
+                    rewardButton.onClick.RemoveAllListeners();
+                    rewardButton.onClick.AddListener(() => OnClickRewardButton(reward));
+                }
+                else
+                {
+                    var reward = monsterCard.rewards[i];
+                    rewardButton.transform.GetChild(0).GetComponent<Text>().text = reward.title;
+                    rewardButton.onClick.RemoveAllListeners();
+                    rewardButton.onClick.AddListener(() => OnClickRewardButton(reward));
+                }
             }
-        }
+        }      
     }
 
     void OnClickRewardButton(MonsterReward reward)
@@ -63,23 +74,36 @@ public class RewardPanelController : MonoBehaviour
         {
             case MonsterRewardType.Weapon:
                 player.SetEquipment(reward.equipment);
-                player.money += rewardGetCoin;
-                this.gameObject.SetActive(false);
                 if (player.GetWeaponList().Count > 10)
                     weaponChangePanel.SetActive(true);
+                AfterChooseReward();
                 break;
             case MonsterRewardType.Equipment:
                 equipmentChanger.DisplayPanel(reward.equipment, (e) => 
                 {
                     player.SetEquipment(e);
-                    player.money += rewardGetCoin;
-                    this.gameObject.SetActive(false);
+                    AfterChooseReward();
                 });
                 break;
             case MonsterRewardType.Heal:
                 player.Heal((int)(player.GetStat().maxHp * reward.healPercent));
-                this.gameObject.SetActive(false);
+                AfterChooseReward();
                 break;
         }
+
+        void AfterChooseReward()
+        {
+            player.money += rewardGetCoin;
+            this.gameObject.SetActive(false);
+        }
+    }
+    void OnClickRewardButton(BossReward reward)
+    {
+        Player player = GameState.Instance.player;
+        player.SetEquipment(reward.artifact);
+        player.money += rewardGetCoin;
+        this.gameObject.SetActive(false);
+        if (player.GetArtifacts().Count > 3)
+            artifactChangePanel.SetActive(true);        
     }
 }

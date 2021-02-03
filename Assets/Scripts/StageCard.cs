@@ -29,7 +29,6 @@ public enum MonsterRewardType
 {
     Weapon, Equipment, Heal
 }
-
 public class MonsterReward
 {
     public MonsterRewardType type;
@@ -41,7 +40,14 @@ public class MonsterReward
         get => (type == MonsterRewardType.Heal) ? "힐 20%" : equipment.name; 
     }
 }
-
+public class BossReward
+{
+    public Artifact artifact;
+    public string title
+    {
+        get => artifact.name;
+    }
+}
 public class StageCard
 {
     public CardType Type;
@@ -58,12 +64,26 @@ public class MonsterCard : StageCard
         this.monster = monster;
         this.rewards = rewards;
         this.rewardCoin = coin;
+    } 
+    public MonsterCard(Monster monster)
+    {
+        this.Type = CardType.Monster;
+        this.monster = monster;
+    }
+}
+public class BossCard : MonsterCard
+{
+    new public readonly BossReward[] rewards;
+    public BossCard(Monster monster, BossReward[] rewards, int coin):base(monster)
+    {
+        this.Type = CardType.Boss;
+        this.rewards = rewards;
+        this.rewardCoin = coin;
     }
 }
 public class ChestCard : StageCard 
 {
     public ChestType ChestType;
-
     public Equipment Equipment;
     public float HealPercent;
     public float DamagePercent;
@@ -127,13 +147,6 @@ public class RandomCard : StageCard
         this.equipment = equipment;
         this.artifact = artifact;
         this.money = money;
-    }
-}
-public class BossCard : MonsterCard 
-{    
-    public BossCard(Monster monster, MonsterReward[] rewards, int coin) : base(monster, rewards, coin)
-    {
-        this.Type = CardType.Boss;
     }
 }
 
@@ -202,6 +215,15 @@ public class World
                 reward.equipment = GetRandomEquipment(false, rankIndex, prefixIndex);
                 break;
         }
+        return reward;
+    }
+    BossReward GetBossReward(bool isBossArtifact)
+    {
+        var reward = new BossReward();
+        if(isBossArtifact && GameConstant.bossArtifacts.ContainsKey(this.Id))
+            reward.artifact = JsonDB.GetArtifact(GameConstant.bossArtifacts[this.Id]);
+        else
+            reward.artifact = CustomRandom<Artifact>.Choice(JsonDB.GetNotBossArtifacts(), this.Random);
         return reward;
     }
 
@@ -370,14 +392,13 @@ public class World
         if (stageNum >= this.BossStage)
         {
             var boss = JsonDB.GetWorldBoss(this.Id);
-            // TODO: 보스 보상을 보스에 맞춰 바꿔야 함
-            var rewards = new MonsterReward[3] 
+            var rewards = new BossReward[3] 
             {
-                GetMonsterReward(),
-                GetMonsterReward(),
-                GetMonsterReward(),
+                GetBossReward(false),
+                GetBossReward(true),
+                GetBossReward(false),
             };
-            var rewardCoin = GetRewardCoin();
+            var rewardCoin =GameConstant.bossRewardCoin[this.Number];
             stage.Cards[1] = new BossCard(boss, rewards, rewardCoin);
         }
         return stage;
@@ -387,18 +408,35 @@ public class World
     {
         switch(Id)
         {
-            case WorldId.W4:
+            case WorldId.W4: // default value
                 return WorldId.W5_1;
+            case WorldId.W5_1:
+                return WorldId.W6;
             case WorldId.W5_2:
                 return WorldId.W6;
-            case WorldId.W6:
+            case WorldId.W6: // default value
                 return WorldId.W7_1;
+            case WorldId.W7_1:
+                return WorldId.W8;
             case WorldId.W7_2:
                 return WorldId.W8;
             case WorldId.WX: // TODO: the next world of the last world
                 return WorldId.WX;
             default:
                 return (WorldId)((int)Id + 1);
+        }
+    }
+
+    public WorldId[] GetNextWorldIds()
+    {
+        switch(Id)
+        {
+            case WorldId.W4:
+                return new WorldId[2] { WorldId.W5_1, WorldId.W5_2 };
+            case WorldId.W6:
+                return new WorldId[2] { WorldId.W7_1, WorldId.W7_2 };
+            default:
+                return new WorldId[1] { GetNextWorldId() };
         }
     }
 }
