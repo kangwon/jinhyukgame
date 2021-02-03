@@ -87,6 +87,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
 
     GameObject RewardPanel;
     public MonsterCard MonsterCard;
+    public BossCard BossCard;
     Monster monster;
     Text MonsterName;
     Text MonsterHp;
@@ -175,8 +176,10 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     public void RewardStage(int number = 1)
     {
         var controller = RewardPanel.GetComponent<RewardPanelController>();
-        controller.MonsterCard = this.MonsterCard;
+        controller.monsterCard = this.MonsterCard;
         controller.rewardCount = number;
+        if(this.monster.isBoss)
+        controller.bossCard = this.BossCard;
         RewardPanel.transform.localPosition = StageChoice.PanelDisplayPosition;
         RewardPanel.SetActive(true);
         if (this.monster.isBoss)
