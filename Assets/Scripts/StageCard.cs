@@ -219,14 +219,9 @@ public class World
     }
     BossReward GetBossReward(bool isBossArtifact)
     {
-        //TODO :나중에 GameConstant.cs로 이동시키기
-        Dictionary<WorldId, string> bossArtifacts = new Dictionary<WorldId, string> { 
-            { WorldId.W1,"artifact0"},{ WorldId.W2, "artifact1" },{ WorldId.W3, "artifact2" },{ WorldId.W4, "artifact3" },{ WorldId.W5_1, "artifact4" },{ WorldId.W5_2, "artifact5" },  
-            { WorldId.W6,"artifact6"},{ WorldId.W7_1, "artifact7" },{ WorldId.W7_2, "artifact8" },{ WorldId.W8, "artifact9" }, 
-        };
         var reward = new BossReward();
-        if(isBossArtifact && bossArtifacts.ContainsKey(this.Id))
-            reward.artifact = JsonDB.GetArtifact(bossArtifacts[this.Id]);
+        if(isBossArtifact && GameConstant.bossArtifacts.ContainsKey(this.Id))
+            reward.artifact = JsonDB.GetArtifact(GameConstant.bossArtifacts[this.Id]);
         else
             reward.artifact = CustomRandom<Artifact>.Choice(JsonDB.GetNotBossArtifacts(), this.Random);
         return reward;
@@ -389,8 +384,6 @@ public class World
 
     public WorldStage GetStage(int stageNum)
     {
-        //TODO : 나중에 GameConstant로 이동시키기
-        Dictionary<int, int> bossRewardCoin = new Dictionary<int, int> {{1, 200},{2, 450},{3, 700},{4, 1000},{5, 1500},{6, 1800},{7, 2000},{8, 2500},{9, 0},{10, 0}};
         var stage = new WorldStage(stageNum);
         for (int location = 0; location < WorldStage.NUM_OF_CARDS; location++)
         {
@@ -405,7 +398,7 @@ public class World
                 GetBossReward(true),
                 GetBossReward(false),
             };
-            var rewardCoin = bossRewardCoin[this.Number];
+            var rewardCoin =GameConstant.bossRewardCoin[this.Number];
             stage.Cards[1] = new BossCard(boss, rewards, rewardCoin);
         }
         return stage;

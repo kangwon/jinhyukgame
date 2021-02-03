@@ -45,7 +45,7 @@ public class RandomEvent
             case 5:
                 name.text = $"휴식공간";
                 description.text = "\"들어와서 쉬는건 마음대로지만, 나가는것도 마음대로란다.\"" + "\n\n" + $"[모든 체력 회복]";
-                GameState.Instance.player.Heal(GameState.Instance.player.baseStat.maxHp);
+                GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
                 break;
             case 6: //TODO : 아직 무적이 구현안됬음. 구현하고 내용 집어넣자.
                 name.text = $"네잎클로버";
