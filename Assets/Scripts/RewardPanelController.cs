@@ -74,23 +74,27 @@ public class RewardPanelController : MonoBehaviour
         {
             case MonsterRewardType.Weapon:
                 player.SetEquipment(reward.equipment);
-                player.money += rewardGetCoin;
-                this.gameObject.SetActive(false);
                 if (player.GetWeaponList().Count > 10)
                     weaponChangePanel.SetActive(true);
+                AfterChooseReward();
                 break;
             case MonsterRewardType.Equipment:
                 equipmentChanger.DisplayPanel(reward.equipment, (e) => 
                 {
                     player.SetEquipment(e);
-                    player.money += rewardGetCoin;
-                    this.gameObject.SetActive(false);
+                    AfterChooseReward();
                 });
                 break;
             case MonsterRewardType.Heal:
                 player.Heal((int)(player.GetStat().maxHp * reward.healPercent));
-                this.gameObject.SetActive(false);
+                AfterChooseReward();
                 break;
+        }
+
+        void AfterChooseReward()
+        {
+            player.money += rewardGetCoin;
+            this.gameObject.SetActive(false);
         }
     }
     void OnClickRewardButton(BossReward reward)

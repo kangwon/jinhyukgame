@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class StageChoice : MonoBehaviour
     GameObject RandomPanel;
     GameObject WeaponPopupView;
     GameObject WeaponChangePanel;
+    
+    WorldSelectPanelController WorldSelect;
 
     Text WorldText;
     Text StageText;
@@ -42,6 +45,8 @@ public class StageChoice : MonoBehaviour
         RandomPanel = GameObject.Find("RandomPanel");
         WeaponChangePanel = GameObject.Find("WeaponChangePanel");
         WeaponPopupView = GameObject.Find("WeaponPopupView/WeaponPopupScreen");
+
+        WorldSelect = GameObject.Find("WorldSelectPanel").GetComponent<WorldSelectPanelController>();
 
         WorldText = GameObject.Find("World Text").GetComponent<Text>();
         StageText = GameObject.Find("Stage Text").GetComponent<Text>();
@@ -80,13 +85,25 @@ public class StageChoice : MonoBehaviour
     
     public void MoveToNextWorld()
     {
-        selectedCard = null;
-        GameState.Instance.StartWorld(GameState.Instance.World.GetNextWorldId());
-        GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
-        GameState.Instance.player.HpOver();
-        ActivatePannel();
-    }
+        DeactiveAllPanel();
 
+        WorldId[] worldIds = GameState.Instance.World.GetNextWorldIds();
+        if (worldIds.Length == 1)
+            AfterWorldSelected(worldIds[0]);
+        else if (worldIds.Length == 2)
+            WorldSelect.DisplayPanel(worldIds[0], worldIds[1], AfterWorldSelected);
+        else
+            throw new InvalidOperationException($"Invalid number of world ids; {worldIds.Length}");
+
+        void AfterWorldSelected(WorldId selectedWorld)
+        {
+            selectedCard = null;
+            GameState.Instance.StartWorld(selectedWorld);
+            GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
+            GameState.Instance.player.HpOver();
+            UpdateGamePanel();
+        }
+    }
 
     void ActivatePannel()
     {

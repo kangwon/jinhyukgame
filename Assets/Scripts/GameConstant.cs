@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 class GameConstant
 {
+    // 크리티컬 배수
+    public const float CRITMULTIPLIER = 2.0f; 
+
+    
     // 플레이어 초기 스탯
     public static Stat PlayerInitialStat = new Stat()
     {
@@ -25,16 +29,13 @@ class GameConstant
     {
         "helmet", "armor", "shoes",
     };
-  
-    // 크리티컬 배수
-    public const float CRITMULTIPLIER = 2.0f; 
 
   
     // 시작 월드 ID
     public static WorldId InitialWorldId = WorldId.W1;
 
     // 월드별 보스 등장 스테이지
-    public static int[] BossStage = new int[8] { 15, 20, 20, 20, 25 ,25, 30, 30 };
+    public static int[] BossStage = new int[9] { 15, 20, 20, 20, 25 ,25, 30, 30, 30 };
 
     // 스테이지 카드 등장 확률
     // Monster, Chest, Buff, Npc, Random, Boss

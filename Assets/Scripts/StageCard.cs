@@ -415,18 +415,35 @@ public class World
     {
         switch(Id)
         {
-            case WorldId.W4:
+            case WorldId.W4: // default value
                 return WorldId.W5_1;
+            case WorldId.W5_1:
+                return WorldId.W6;
             case WorldId.W5_2:
                 return WorldId.W6;
-            case WorldId.W6:
+            case WorldId.W6: // default value
                 return WorldId.W7_1;
+            case WorldId.W7_1:
+                return WorldId.W8;
             case WorldId.W7_2:
                 return WorldId.W8;
             case WorldId.WX: // TODO: the next world of the last world
                 return WorldId.WX;
             default:
                 return (WorldId)((int)Id + 1);
+        }
+    }
+
+    public WorldId[] GetNextWorldIds()
+    {
+        switch(Id)
+        {
+            case WorldId.W4:
+                return new WorldId[2] { WorldId.W5_1, WorldId.W5_2 };
+            case WorldId.W6:
+                return new WorldId[2] { WorldId.W7_1, WorldId.W7_2 };
+            default:
+                return new WorldId[1] { GetNextWorldId() };
         }
     }
 }
