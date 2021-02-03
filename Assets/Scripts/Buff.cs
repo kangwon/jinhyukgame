@@ -43,8 +43,13 @@ public class StatBuff :JsonItem
     public float monsterChanceIncrease = 0; //몬스터 조우확룰 ()% 증가 //러비 얼굴 뱃지
 
     //위까지 구현
+
+    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가(공,방,속) //연간 회원권// 일단 야매로구현
+
+    //
+
     public float rewardBonusPercent = 0; //몬스터 처치시 ()% 추가보상기회
-    //RewardPanelController 만줘야함
+    //RewardPanelController 만져야함
 
     public int continueBattleAddDamage = 0; //연속전투시 추가데미지
     public int continueBattleCoin = 0; //연속전투시 추가재화 //분실물 명품 지갑
@@ -55,9 +60,9 @@ public class StatBuff :JsonItem
     public bool chooseBuff = false; //버프 선택 가능(다만, 디버프는 강제)
     public bool resetStageCard = false; // 스테이지 카드 리셋 충전식 (5스테이지마다)
     
-    public float npcPurchasePercent = 0; //마을 할인용 변수
+    public float npcPurchasePercent = 0; //마을 할인용 변수 (상점 할인과 합연산)
     //
-    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가(공,방,속) //연간 회원권
+    
 
     public Stat GetTotalStat(Stat stat)
     {
