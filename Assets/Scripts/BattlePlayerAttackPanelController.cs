@@ -91,6 +91,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     Monster monster;
     Text MonsterName;
     Text MonsterHp;
+    Text ComboText;
 
     private readonly float[] comboList ={0.8f, 0.3f, 0.5f }; //종류,등급,수식어 콤보 배수
     private bool[] comboCheck = new bool[3] { false, false, false };
@@ -119,7 +120,42 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             }
         }
     }
-   
+   float checkCombo()
+    {
+        var comboPercentSum = 0f;
+        var maxCount = (from n in selectCard where n == true select n).Count();
+        var comboCheck = new bool[3] {false, false, false };
+        Weapon[] selectWeapons = new Weapon[3];
+        if (maxCount != 0)
+        {
+            int j = 0;
+            for (int i = HAND_MAX - 1; i >= 0; i--)
+            {
+                if (selectCard[i] == true)
+                {
+                    if (maxCount == 3)
+                    {
+                        selectWeapons[j] = battle.CardHand.ElementAt(i);
+                        j++;
+                    }
+                }
+            }
+        }
+
+        if (maxCount == 3) //콤보 체크
+        {
+            if ((selectWeapons[0].weaponType != WeaponType.none) && (selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
+            if ((selectWeapons[0].rank != Rank.none) && (selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
+            if ((selectWeapons[0].prefix != Prefix.none) && (selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            if (comboCheck[i]) comboPercentSum += comboList[i];
+        }
+
+        return comboPercentSum;
+    }
+
     public void OnClickAttack()
     {
         cardDamageSum = 0;
@@ -146,8 +182,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             }          
         }
         if (maxCount == 3) //콤보 체크
-        {
-            
+        {        
             if ((selectWeapons[0].weaponType != WeaponType.none) && (selectWeapons[0].weaponType == selectWeapons[1].weaponType) && (selectWeapons[1].weaponType == selectWeapons[2].weaponType)) comboCheck[0] = true;
             if ((selectWeapons[0].rank != Rank.none) && (selectWeapons[0].rank == selectWeapons[1].rank) && (selectWeapons[1].rank == selectWeapons[2].rank)) comboCheck[1] = true;
             if ((selectWeapons[0].prefix != Prefix.none) && (selectWeapons[0].prefix == selectWeapons[1].prefix) && (selectWeapons[1].prefix == selectWeapons[2].prefix)) comboCheck[2] = true;
@@ -213,7 +248,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
     {   
         MonsterName = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterName").GetComponent<Text>();
         MonsterHp = GameObject.Find("/Canvas/BattlePlayerAttackPanel/MonsterHp").GetComponent<Text>();
-
+        ComboText = GameObject.Find("/Canvas/BattlePlayerAttackPanel/ComboText").GetComponent<Text>();
         RewardPanel = GameObject.Find("Canvas").transform.Find("RewardPanel").gameObject;
         WorldClearPanel = GameObject.Find("Canvas").transform.Find("WorldClearPanel").gameObject;
         GameOverPanel = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;
@@ -238,5 +273,7 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
             handCard[i].transform.GetChild(0).GetComponent<Text>().text = $"{battle.CardHand.ElementAt(i).name}\n{battle.CardHand.ElementAt(i).rank}\n{battle.CardHand.ElementAt(i).prefix}\n{battle.CardHand.ElementAt(i).statEffect.attack}";
         }
         deckCount.GetComponent<Text>().text = $"남은 덱: {battle.DeckCount()}";
+        ComboText.text =$"x{1+checkCombo()}배";
+
     }
 }

@@ -364,7 +364,7 @@ public class Player : CharacterBase
 
     public override void TakeHit(float rawDamage) 
     {
-        int damage = Math.Max((int)rawDamage - this.GetStat().defense, 1);
+        int damage = Math.Max((int)(rawDamage * GameConstant.DEFENSE_RATIO / (GameConstant.DEFENSE_RATIO + this.GetStat().defense)), 1);
         
         float evasionRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
 

@@ -4,15 +4,17 @@ using System.Collections.Generic;
 class GameConstant
 {
     // 크리티컬 배수
-    public const float CRITMULTIPLIER = 2.0f; 
+    public const float CRITMULTIPLIER = 2.0f;
 
+    //앙기모띠 방어구 기본 상수
+    public const int DEFENSE_RATIO = 40;
     
     // 플레이어 초기 스탯
     public static Stat PlayerInitialStat = new Stat()
     {
         maxHp = 40,
         attack = 10,
-        defense = 0,
+        defense = 3,
         speed = 10,
         startSpeedGauge = 1,
         evasion = 0.05f,
@@ -29,7 +31,6 @@ class GameConstant
     {
         "helmet", "armor", "shoes",
     };
-
   
     // 시작 월드 ID
     public static WorldId InitialWorldId = WorldId.W1;

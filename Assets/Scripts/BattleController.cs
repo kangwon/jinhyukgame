@@ -204,7 +204,6 @@ public class BattleController : MonoBehaviour
           //  player.Heal((int)((tempStat.attack + player.Synergy().attack) * (1f + BattlePanel.comboPercentSum) * player.GetStat().hpDrain));
            
             Debug.Log($"최종데미지 : {finalAttack}");
-            Debug.Log($"x{1f+BattlePanel.comboPercentSum}배");
 
             if(player.GetBuff().doubleAttackPercent != 0) //확률적으로 턴 두번 진행 유물이 있을경우
             {
