@@ -336,6 +336,8 @@ public class Player : CharacterBase
     public override Stat GetStat()
     {
         Stat currentstat = this.baseStat + equipmentSlot.GetTotalStat() + buff.GetTotalStat(this.baseStat+ equipmentSlot.GetTotalStat());
+        if (currentstat.maxHp < 1) currentstat.maxHp = 1;
+        if (currentstat.speed < 1) currentstat.speed = 1;
         return currentstat;
     }
 
