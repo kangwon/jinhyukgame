@@ -9,7 +9,10 @@ public class NpcHealerController : MonoBehaviour
 
     Player player;
     int healAmount;
-    int price { get => healAmount * GameState.Instance.World.Number; }
+    int price 
+    {
+        get => (int)(100.0f * healAmount / player.GetStat().maxHp * GameState.Instance.World.Number);
+    }
 
     public void onClickHealButton() 
     {
