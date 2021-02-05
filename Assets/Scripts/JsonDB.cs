@@ -34,6 +34,8 @@ class JsonDB
     private JsonCollection<Monster> monsterCollection;
     private JsonCollection<MinMaxWeapon> weaponCollection;
     private JsonCollection<Artifact> artifactCollection;
+    private JsonCollection<Achievement> achievementCollection;
+
     private static readonly JsonDB instance = new JsonDB();  
     static JsonDB() {}  
     private JsonDB() 
@@ -43,6 +45,7 @@ class JsonDB
         monsterCollection = new JsonCollection<Monster>("monster");
         weaponCollection = new JsonCollection<MinMaxWeapon>("weapon");
         artifactCollection = new JsonCollection<Artifact>("artifact");
+        achievementCollection = new JsonCollection<Achievement>("achievment");
     }
     public static JsonDB Instance  
     {  
@@ -94,6 +97,9 @@ class JsonDB
         => Instance.monsterCollection.itemList
             .Find(m => m.isBoss && m.worldId == worldId)
             .Spawn();
+
+    public static Achievement GetAchievment(AchievementCode code)
+        => Instance.achievementCollection.itemList.Find(a => a.code == code);
 }
 
 [System.Serializable]
