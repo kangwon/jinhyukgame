@@ -324,6 +324,8 @@ public class BattleController : MonoBehaviour
             {
                 BattlePanel.RewardStage();
             }
+
+            AchievementManager.BeatMonster(monster);
         }    
     }
 }
