@@ -146,4 +146,9 @@ class GameConstant
             }
         },
     };
+
+
+    // 랜덤 이벤트 종류별 확률
+    // 긍정, 중립, 부정
+    public static List<double> RandomEventType = new List<double> { 1, 1, 1 };
 }
