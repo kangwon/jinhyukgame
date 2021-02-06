@@ -20,8 +20,8 @@ public class StatBuff :JsonItem
     public bool isDebuff = false;
     public bool debuffImmune = false;
     public bool iCantUsedCombo = false; // 콤보 불가 디버프용
-    public int preemptiveUserTurn = 0;
-    public int preemptiveMonTurn = 0;
+    public int preemptiveUserTurn = 0; // 플레이어 선제 공격
+    public int preemptiveMonTurn = 0; // 몬스터 선제 공격
     // 아티펙트용 변수------------------------------------------------------
     // 전투관련---------
     public bool firstAttackCritical = false; // 첫타격 확정치명타 //가시박힌 너클
@@ -84,5 +84,4 @@ public class StatBuff :JsonItem
 
     public bool IsDebuff() => this.isDebuff;
     public bool IsBuff() => !this.isDebuff;
-
 }

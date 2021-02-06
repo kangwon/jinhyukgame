@@ -274,6 +274,5 @@ public class BattlePlayerAttackPanelController : MonoBehaviour
         }
         deckCount.GetComponent<Text>().text = $"남은 덱: {battle.DeckCount()}";
         ComboText.text =$"x{1+checkCombo()}배";
-
     }
 }
