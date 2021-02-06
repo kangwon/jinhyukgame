@@ -365,7 +365,7 @@ public class Player : CharacterBase
         return paySuccess;
     }
 
-    public override void TakeHit(float rawDamage) 
+    public void TakeHit(float rawDamage, bool damageImmune) 
     {
         int damage = Math.Max((int)(rawDamage * GameConstant.DEFENSE_RATIO / (GameConstant.DEFENSE_RATIO + this.GetStat().defense)), 1);
         
@@ -375,8 +375,8 @@ public class Player : CharacterBase
             damage = 0; // 데미지 0
             Debug.Log("회피함!");
         }
-        
-        if (GetBuff().damageImmune)
+
+        if (damageImmune) 
             damage = 0;
 
         this.Damage(damage);
