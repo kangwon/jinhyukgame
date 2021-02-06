@@ -4596,7 +4596,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 21e148960e7fb3042b5bdf8829c0c9bd, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -5293,8 +5293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2672, y: -262.75714}
-  m_SizeDelta: {x: 90, y: 90}
+  m_AnchoredPosition: {x: -2671.9993, y: -262.75714}
+  m_SizeDelta: {x: 119.99878, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413368471
 MonoBehaviour:
@@ -5316,7 +5316,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 21e148960e7fb3042b5bdf8829c0c9bd, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
@@ -14697,8 +14697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2462, y: -262.75714}
-  m_SizeDelta: {x: 90, y: 90}
+  m_AnchoredPosition: {x: -2461.9998, y: -262.75714}
+  m_SizeDelta: {x: 120.000275, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047326043
 MonoBehaviour:
@@ -14720,7 +14720,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 21e148960e7fb3042b5bdf8829c0c9bd, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
@@ -14972,8 +14972,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2252, y: -262.75714}
-  m_SizeDelta: {x: 90, y: 90}
+  m_AnchoredPosition: {x: -2251.5, y: -262.75714}
+  m_SizeDelta: {x: 121.024155, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084480611
 MonoBehaviour:
@@ -14995,7 +14995,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 21e148960e7fb3042b5bdf8829c0c9bd, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
