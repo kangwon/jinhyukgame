@@ -1,6 +1,36 @@
 {
   "items": [
     {
+      "id": "CollectFirstLegendary",
+      "name": "심봤다!",
+      "description": "첫[레전더리] 아이템 획득"
+    },
+    {
+      "id": "CollectAllEquipmentBroken",
+      "name": "누더기",
+      "description": "모든 장비의 수식어가 '망가진'"
+    },
+    {
+      "id": "CollectAllEquipmentAmazing",
+      "name": "감별사",
+      "description": "모든 장비의 수식어가 '놀라운'"
+    },
+    {
+      "id": "CollectAllWeaponAtk0",
+      "name": "무딜링 호흡",
+      "description": "공격력이 0인 무기 10개 장착'"
+    },
+    {
+      "id": "CollectAllBossArtifact",
+      "name": "보스 슬레이어",
+      "description": "보스 아티펙트 3개 장착'"
+    },
+    {
+      "id": "CollectLovyLovelyArtifact",
+      "name": "광신도",
+      "description": "러블리 열쇠고리 인형,러비 얼굴 뱃지 같이 장착'"
+    },
+    {
       "id": "ClearLilly",
       "name": "감미로운 자장가",
       "description": "릴리 첫 클리어"

@@ -88,12 +88,14 @@ public class EquipmentSlot
     public void SetWeaponsList(List<Weapon> weapons)
     {
         this.weapons = weapons;
+        OnCheckEquipmentChange();
     }
     public void SetEquipments(Helmet helmet, Armor armor, Shoes shoes)
     {
         this.helmet = helmet;
         this.armor = armor;
         this.shoes = shoes;
+        OnCheckEquipmentChange();
     }
     public void ResetWeaponsList()
     {
@@ -102,9 +104,12 @@ public class EquipmentSlot
     public List<Equipment> GetEquipments()
     {
         List<Equipment> temp = new List<Equipment> { };
-        temp.Add(GetHelmetE());
-        temp.Add(GetArmorE());
-        temp.Add(GetShoesE());
+        if(GetHelmetE() != null) 
+            temp.Add(GetHelmetE());
+        if(GetArmorE() != null) 
+            temp.Add(GetArmorE());
+        if(GetShoesE() != null) 
+            temp.Add(GetShoesE());
         return temp;
     }
     public Armor GetArmorE()
@@ -133,6 +138,7 @@ public class EquipmentSlot
         {
             artifacts.RemoveAt(index);
             artifacts.Add(artifact);
+            OnCheckEquipmentChange();
         }
       
     }
@@ -146,15 +152,19 @@ public class EquipmentSlot
         {
             case Weapon w:
                 this.weapons.Add(w);
+                OnCheckEquipmentChange();
                 break;
             case Armor a:
                 this.armor = a;
+                OnCheckEquipmentChange();
                 break;
             case Helmet h:
                 this.helmet = h;
+                OnCheckEquipmentChange();
                 break;
             case Shoes s:
                 this.shoes = s;
+                OnCheckEquipmentChange();
                 break;
             default:
                 throw new NotImplementedException($"Invalid equipment type: {equip.GetType().ToString()}");
@@ -163,10 +173,11 @@ public class EquipmentSlot
     public void SetEquipment(Artifact artifact)
     {
         this.artifacts.Add(artifact);
+        OnCheckEquipmentChange();
     }
     public void OnCheckEquipmentChange()
     {
-        
+        AchievementManager.CollectEquipments(this);
     }
 
     public Stat GetTotalStat()
