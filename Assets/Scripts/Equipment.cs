@@ -99,6 +99,14 @@ public class EquipmentSlot
     {
         weapons.Clear();
     }
+    public List<Equipment> GetEquipments()
+    {
+        List<Equipment> temp = new List<Equipment> { };
+        temp.Add(GetHelmetE());
+        temp.Add(GetArmorE());
+        temp.Add(GetShoesE());
+        return temp;
+    }
     public Armor GetArmorE()
     {
         return armor;
@@ -155,6 +163,10 @@ public class EquipmentSlot
     public void SetEquipment(Artifact artifact)
     {
         this.artifacts.Add(artifact);
+    }
+    public void OnCheckEquipmentChange()
+    {
+        
     }
 
     public Stat GetTotalStat()
