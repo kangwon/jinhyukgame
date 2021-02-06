@@ -33,7 +33,7 @@ class GameConstant
     };
   
     // 시작 월드 ID
-    public static WorldId InitialWorldId = WorldId.W1;
+    public static WorldId InitialWorldId = WorldId.W4;
 
     // 월드별 보스 등장 스테이지
     public static int[] BossStage = new int[9] { 15, 20, 20, 20, 25 ,25, 30, 30, 30 };
