@@ -11,7 +11,7 @@ public class AchievementPanelController : MonoBehaviour
     Text Title;
     Text Description;
 
-    public AchievementPanelController()
+    public AchievementPanelController() : base()
     {
         AchievementManager.Instance.panelController = this;
     }
