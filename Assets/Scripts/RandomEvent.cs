@@ -6,46 +6,46 @@ using System.Linq;
 public class RandomEvent
 {
     RandomPanelController randomPanelController =GameObject.Find("Canvas").transform.Find("RandomPanel").gameObject.GetComponent<RandomPanelController>();
-    public void PositiveEvent(Text name,Text description,RandomCard randomCard)
+    public void PositiveEvent(Text name, Text description, RandomCard randomCard)
     {
+        Player player = GameState.Instance.player;
         int tempInt;
         switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
-
             case 0:
                 tempInt = 5;
                 name.text = $"모리스 셰프의 격렬한 음식";
                 description.text = "요리대회 우승자 모리스의 특제요리! 먹기만했을 뿐인데... 화가납니다!!" + "\n\n" + $"[공격력 {tempInt} 증가]";
-                GameState.Instance.player.baseStat.attack += tempInt;
+                player.baseStat.attack += tempInt;
                 break;
             case 1:
                 tempInt = 20;
                 name.text = $"모리스 셰프의 든든한 음식";
                 description.text = "요리대회 우승자 모리스의 특제요리! 먹기만하면 체력이 쑥쑥!" + "\n\n"+$"[최대체력 {tempInt} 증가]";
-                GameState.Instance.player.baseStat.maxHp += tempInt;
+                player.baseStat.maxHp += tempInt;
                 break;
             case 2:
                 tempInt = 3;
                 name.text = $"모리스 셰프의 강인한 음식";
                 description.text = "요리대회 우승자 모리스의 특제요리! 먹기만하면 몸이 단단해진다구!" + "\n\n" + $"[방어력 {tempInt} 증가]";
-                GameState.Instance.player.baseStat.defense += tempInt;
+                player.baseStat.defense += tempInt;
                 break;
             case 3:
                 tempInt = 5;
                 name.text = $"모리스 셰프의 민첩한 음식";
                 description.text = "요리대회 우승자 모리스의 특제요리! 먹기만하면 발이 빨라져요!" + "\n\n" + $"[스피드 {tempInt} 증가]";
-                GameState.Instance.player.baseStat.speed += tempInt;
+                player.baseStat.speed += tempInt;
                 break;
             case 4:
                 tempInt = 50;
                 name.text = $"운수 좋은 날";
                 description.text = "햇볕은 쨍쩅, 코인한닢은 반짝! 오늘은 왠지 운수가 좋다!" + "\n\n" + $"[+{tempInt} 코인 ]";
-                GameState.Instance.player.money += tempInt;
+                player.money += tempInt;
                 break;
             case 5:
                 name.text = $"휴식공간";
                 description.text = "\"들어와서 쉬는건 마음대로지만, 나가는것도 마음대로란다.\"" + "\n\n" + $"[모든 체력 회복]";
-                GameState.Instance.player.Heal(GameState.Instance.player.GetStat().maxHp);
+                player.Heal(player.GetStat().maxHp);
                 break;
             case 6: //TODO : 아직 무적이 구현안됬음. 구현하고 내용 집어넣자.
                 name.text = $"네잎클로버";
@@ -54,7 +54,7 @@ public class RandomEvent
             case 7:
                 name.text = $"성스러운 분수";
                 description.text = "넓은 광장 가운데에 있던 분수에서 튄 물방울이 시원하고도 아름답다" + "\n\n" + $"[디버프 제거]";
-                GameState.Instance.player.Dispel();
+                player.Dispel();
                 break; 
             case 8:
                 name.text = $"세계수 카오마이의 은총";
@@ -80,6 +80,7 @@ public class RandomEvent
     }
     public void NeuturalityEvent(Text name, Text description, RandomCard randomCard)
     {
+        Player player = GameState.Instance.player;
         int tempInt;
         switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3 }, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
@@ -92,27 +93,27 @@ public class RandomEvent
                         description.text += $"[장비 획득]";
                         if (randomCard.equipment.type == "weapon")
                         {
-                            GameState.Instance.player.SetEquipment(randomCard.equipment);
-                            if (10 < GameState.Instance.player.GetWeaponList().Count)
+                            player.SetEquipment(randomCard.equipment);
+                            if (10 < player.GetWeaponList().Count)
                                 GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject.SetActive(true);
                         }
                         else
                         {
                             GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>().DisplayPanel(randomCard.equipment, 
                                 (e)=>{ 
-                                    GameState.Instance.player.SetEquipment(e);
+                                    player.SetEquipment(e);
                                 });
                         }
                         break;
                     case 1:
                         description.text += $"[아티펙트 획득]";
-                        GameState.Instance.player.SetEquipment(randomCard.artifact); 
-                        if (3 < GameState.Instance.player.ArtifactsCount())
+                        player.SetEquipment(randomCard.artifact); 
+                        if (3 < player.ArtifactsCount())
                             GameObject.Find("Canvas").transform.Find("ArtifactChangePanel").gameObject.SetActive(true);
                             break;
                     case 2:
                         description.text += $"[{randomCard.money}코인 획득]";
-                        GameState.Instance.player.money += randomCard.money;
+                        player.money += randomCard.money;
                         break;
                     case 3:
                         description.text += $"[티켓  랜덤 획득]";
@@ -120,23 +121,20 @@ public class RandomEvent
                     case 4:
                         description.text += $"[꽝]";
                         break;
-                    default:
-                        break;
                 }
-                ;
                 break;
             case 1:
                 name.text = $"카발라의 잔혹한 장난";
                 description.text = "\"마술 하난 보여줄께! 그거 이리 내!\"" + "\n\n" + $"[아티펙트 강제 랜덤변경]";
-                tempInt = GameState.Instance.player.ArtifactsCount();
+                tempInt = player.ArtifactsCount();
                 if (tempInt != 0)
-                    GameState.Instance.player.ChangeAtArtifact(Random.Range(0, tempInt), randomCard.artifact);
+                    player.ChangeAtArtifact(Random.Range(0, tempInt), randomCard.artifact);
                 break;
             case 2:
                 name.text = $"카발라의 소소한 장난";
                 description.text = "\"마술 하나 보여줄까? 물건 하나만 줘볼래?\"" + "\n\n" + $"[아티펙트 선택 랜덤변경]";
                 var index = 0;
-                foreach(var artifact in GameState.Instance.player.GetArtifacts())
+                foreach(var artifact in player.GetArtifacts())
                 {
                     randomPanelController.CreateButton(artifact,index);
                     index++;
@@ -154,6 +152,7 @@ public class RandomEvent
     }
     public void NegativeEvent(Text name, Text description, RandomCard randomCard)
     {
+        Player player = GameState.Instance.player;
         int tempInt;
         switch (CustomRandom<int>.Choice(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12}, GameState.Instance.World.Random)) //case 추가할때 범위도 늘려주자.
         {
@@ -161,73 +160,73 @@ public class RandomEvent
                 name.text = $"갑작스러운 소나기";
                 description.text = "비를 피해 잠시 건물로 들어가 쉬던 주인공은 옆에 무기를 두고 쉬다가, 비가 그쳐 급히 챙겨나왔다\n\"어... 근데 무기 하나가 어디갔지?\""
                     + "\n\n" + $"[무기 1개 맨주먹으로 변경]";
-                var weaponList = GameState.Instance.player.GetWeaponList();
+                var weaponList = player.GetWeaponList();
                 weaponList.RemoveAt(Random.Range(0, 10)); //장착무기 랜덤 제거
                 weaponList.Add(JsonDB.GetWeapon($"bare_fist")); //맨주먹 추가
                 var sortList =weaponList.OrderBy(x => x.id).ToList();
-                GameState.Instance.player.SetWeaponList(sortList);
+                player.SetWeaponList(sortList);
                 break;
             case 1:
                 name.text = $"사소한 불운";
                 description.text = "\"앗! 길가의 네잎클로버를 밟아버렸다! 괜히 찝찝한걸..\"" + "\n\n" + $"[버프 해제]";
-                GameState.Instance.player.DispelBuff();
+                player.DispelBuff();
                 break;
             case 2:
                 tempInt = 20;
                 name.text = $"식중독";
                 description.text = "식은땀이 난다.. \"아까 먹은 음식이 문제였을까..\"" + "\n\n" + $"[최대 체력 {tempInt} 감소]";
-                GameState.Instance.player.baseStat.maxHp =System.Math.Max(1, GameState.Instance.player.baseStat.maxHp-tempInt);
-                if (GameState.Instance.player.hp > GameState.Instance.player.GetStat().maxHp) GameState.Instance.player.hp = GameState.Instance.player.GetStat().maxHp;
+                player.baseStat.maxHp =System.Math.Max(1, player.baseStat.maxHp-tempInt);
+                if (player.hp > player.GetStat().maxHp) player.hp = player.GetStat().maxHp;
                 break;
             case 3:
                 tempInt = 3;
                 name.text = $"감기몸살";
                 description.text = "몸이 으슬으슬 떨린다.... \"엣취!\"" + "\n\n" + $"[방어력 {tempInt} 감소]";
-                GameState.Instance.player.baseStat.defense = System.Math.Max(0, GameState.Instance.player.baseStat.defense - tempInt);
+                player.baseStat.defense = System.Math.Max(0, player.baseStat.defense - tempInt);
                 break;
             case 4:
                 tempInt = 5;
                 name.text = $"끈적끈적";
                 description.text = "\"에잇! 이게뭐야! 껌을 밟았잖아?!\"" + "\n\n" + $"[스피드 {tempInt} 감소]";
-                GameState.Instance.player.baseStat.speed = System.Math.Max(0, GameState.Instance.player.baseStat.speed - tempInt);
+                player.baseStat.speed = System.Math.Max(0, player.baseStat.speed - tempInt);
                 break;
             case 5:
                 tempInt = 5;
                 name.text = $"환경미화";
                 description.text = "청소를 하다가 손을 다쳤다." + "\n\n" + $"[공격력 {tempInt} 감소]";
-                GameState.Instance.player.baseStat.attack = System.Math.Max(0, GameState.Instance.player.baseStat.attack - tempInt);
+                player.baseStat.attack = System.Math.Max(0, player.baseStat.attack - tempInt);
                 break;
             case 6: 
                 name.text = $"소매치기";
                 description.text = "\"내 아티펙트 돌려줘!\"" + "\n\n" + $"[아티펙트 손실]";
-                tempInt = GameState.Instance.player.ArtifactsCount();
-                GameState.Instance.player.RemoveAtArtifact(Random.Range(0,tempInt));
+                tempInt = player.ArtifactsCount();
+                player.RemoveAtArtifact(Random.Range(0,tempInt));
                 break;
             case 7:
                 name.text = $"소매치기";
                 description.text = "\"내 돈 돌려줘!\"" + "\n\n" + $"[코인 전액 감소]";
-                GameState.Instance.player.money = 0;
+                player.money = 0;
                 break;
             case 8:
                 tempInt = 50;
                 name.text = $"수상한 누군가";
                 description.text = "\"믿어도 되는거죠...?\"" + "\n\n" + $"[-{tempInt} 코인]";
-                GameState.Instance.player.money = System.Math.Max(0, GameState.Instance.player.money - tempInt);
+                player.money = System.Math.Max(0, player.money - tempInt);
                 break;
             case 9:
                 name.text = $"가시덤불";
                 description.text = "\"가시덤불 \"" + "\n\n" + $"[체력 손실]";
-                tempInt=(int)(GameState.Instance.player.GetStat().maxHp * 0.05);
-                GameState.Instance.player.hp = System.Math.Max(0, GameState.Instance.player.hp - tempInt);
-                if (GameState.Instance.player.hp == 0)
+                tempInt=(int)(player.GetStat().maxHp * 0.05);
+                player.hp = System.Math.Max(0, player.hp - tempInt);
+                if (player.hp == 0)
                     randomPanelController.ShowGameOver();
                 break;
             case 10:
                 name.text = $"함정!";
                 description.text = "\"함정 \"" + "\n\n" + $"[체력 손실]";
-                tempInt = System.Math.Max(1, (int)(GameState.Instance.player.hp * 0.15));
-                GameState.Instance.player.hp = System.Math.Max(0, GameState.Instance.player.hp - tempInt);
-                if (GameState.Instance.player.hp == 0)
+                tempInt = System.Math.Max(1, (int)(player.hp * 0.15));
+                player.hp = System.Math.Max(0, player.hp - tempInt);
+                if (player.hp == 0)
                     randomPanelController.ShowGameOver();
                 break;
             case 11:
@@ -236,13 +235,13 @@ public class RandomEvent
                 Dictionary<int,Equipment> rankDownEquipments = new Dictionary<int, Equipment>{ };
                 var rankIndex = 0;
                 //장비 등급 하락이 가능한 무기,장비들을 dictionary에 모은다.
-                foreach (var weapon in GameState.Instance.player.GetWeaponList()) 
+                foreach (var weapon in player.GetWeaponList()) 
                 {
                     if (!((weapon.rank == Rank.none) || (weapon.rank == Rank.common)))
                         rankDownEquipments.Add(rankIndex, weapon);
                     rankIndex++;
                 }
-                List<Equipment> tempEquipments =new List<Equipment> { GameState.Instance.player.GetHelmet(), GameState.Instance.player.GetArmor(), GameState.Instance.player.GetShoes() };
+                List<Equipment> tempEquipments =new List<Equipment> { player.GetHelmet(), player.GetArmor(), player.GetShoes() };
                 foreach (var tempEquipment in tempEquipments )
                 {
                    if(!((tempEquipment.rank == Rank.none) || (tempEquipment.rank == Rank.common)))
@@ -254,14 +253,14 @@ public class RandomEvent
                     tempInt = CustomRandom<int>.Choice(new List<int>(rankDownEquipments.Keys), GameState.Instance.World.Random); //dictionary에 있는 장비를 랜덤으로 하나 고른다
                     if (tempInt < 10) //무기일 때
                     {
-                        var weapons = GameState.Instance.player.GetWeaponList();
+                        var weapons = player.GetWeaponList();
                         weapons.RemoveAt(tempInt);
                         weapons.Add(GetDownEquipments(rankDownEquipments[tempInt].ToWeapon((WeaponType)int.Parse(rankDownEquipments[tempInt].id.Substring(7, 1))), true));
-                        GameState.Instance.player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
+                        player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
                     }
                     else
                     {
-                        GameState.Instance.player.SetEquipment(GetDownEquipments(rankDownEquipments[tempInt],true));
+                        player.SetEquipment(GetDownEquipments(rankDownEquipments[tempInt],true));
                     }
                     description.text += $"\n{ rankDownEquipments[tempInt].name}의 등급 하락";
                 }
@@ -272,13 +271,13 @@ public class RandomEvent
                 Dictionary<int, Equipment> prefixDownEquipments = new Dictionary<int, Equipment> { };
                 var prefixIndex = 0;
                 //장비 수식어 하락이 가능한 무기,장비들을 dictionary에 모은다.
-                foreach (var weapon in GameState.Instance.player.GetWeaponList())
+                foreach (var weapon in player.GetWeaponList())
                 {
                     if (!((weapon.prefix == Prefix.none) || (weapon.prefix == Prefix.broken)))
                         prefixDownEquipments.Add(prefixIndex, weapon);
                     prefixIndex++;
                 }
-                List<Equipment> tempEquipments2 = new List<Equipment> { GameState.Instance.player.GetHelmet(), GameState.Instance.player.GetArmor(), GameState.Instance.player.GetShoes() };
+                List<Equipment> tempEquipments2 = new List<Equipment> { player.GetHelmet(), player.GetArmor(), player.GetShoes() };
                 foreach (var tempEquipment in tempEquipments2)
                 {
                     if (!((tempEquipment.prefix == Prefix.none) || (tempEquipment.prefix == Prefix.broken)))
@@ -290,14 +289,14 @@ public class RandomEvent
                     tempInt = CustomRandom<int>.Choice(new List<int>(prefixDownEquipments.Keys), GameState.Instance.World.Random); //dictionary에 있는 장비를 랜덤으로 하나 고른다
                     if (tempInt < 10) //무기일 때
                     {
-                        var weapons = GameState.Instance.player.GetWeaponList();
+                        var weapons = player.GetWeaponList();
                         weapons.RemoveAt(tempInt);
                         weapons.Add(GetDownEquipments(prefixDownEquipments[tempInt].ToWeapon((WeaponType)int.Parse(prefixDownEquipments[tempInt].id.Substring(7, 1))), false));
-                        GameState.Instance.player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
+                        player.SetWeaponList(weapons.OrderBy(x => x.id).ToList());
                     }
                     else
                     {
-                        GameState.Instance.player.SetEquipment(GetDownEquipments(prefixDownEquipments[tempInt], false));
+                        player.SetEquipment(GetDownEquipments(prefixDownEquipments[tempInt], false));
                     }
                     description.text += $"\n{prefixDownEquipments[tempInt].name}의 수식어 하락";
                 }
@@ -308,15 +307,16 @@ public class RandomEvent
     }
     void CreateButtonEquipments(bool isRank) //랭크올리는거면 true, 수식어면 false
     {
+        Player player = GameState.Instance.player;
         var index = 0;
-        foreach (var weapon in GameState.Instance.player.GetWeaponList())
+        foreach (var weapon in player.GetWeaponList())
         {           
             randomPanelController.CreateButton(weapon,isRank,index);
             index++;
         }
-        randomPanelController.CreateButton(GameState.Instance.player.GetHelmet(),isRank);
-        randomPanelController.CreateButton(GameState.Instance.player.GetArmor(), isRank);
-        randomPanelController.CreateButton(GameState.Instance.player.GetShoes(), isRank);
+        randomPanelController.CreateButton(player.GetHelmet(),isRank);
+        randomPanelController.CreateButton(player.GetArmor(), isRank);
+        randomPanelController.CreateButton(player.GetShoes(), isRank);
     }
     Equipment GetDownEquipments(Equipment nowEquipment,bool isRank)
     {
