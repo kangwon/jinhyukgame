@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,7 +50,12 @@ public class RandomEvent
             case 6:
                 name.text = $"네잎클로버";
                 description.text = "무심코 내려다본 발아래에 네잎클로버가 있었다. \"기분 좋은 하루가 될것 같은걸?\"" + "\n\n" + $"[다음 전투에서 무적(보스제외)]";
-                var damageImmunBuff = new StatBuff() { damageImmune = true };
+                var damageImmunBuff = new StatBuff() 
+                { 
+                    name = "네잎클로버",
+                    description = "다음 전투에서 무적(보스제외)",
+                    damageImmune = true,
+                };
                 player.AddBuff(damageImmunBuff);
                 break;
             case 7:
