@@ -325,6 +325,11 @@ public class BattleController : MonoBehaviour
                 BattlePanel.RewardStage();
             }
 
+            if(player.GetBuff().damageImmune)
+            {
+                player.DispelBuff();
+            }
+
             AchievementManager.BeatMonster(monster);
         }    
     }
