@@ -115,7 +115,9 @@ public class NpcEnchantController : MonoBehaviour
                 WeaponCard.GetComponentInChildren<Text>().text = $"{weapon.statEffect.attack}";
                 WeaponCards[i] = WeaponCard;
             }
-            
+        }
+        if ((beforeCard != null) && (afterCard != null))
+        {
             beforeCard.GetComponentInChildren<Text>().text = "선택된 카드 없음";
             afterCard.GetComponentInChildren<Text>().text = "선택된 카드 없음";
         }
