@@ -29,7 +29,7 @@ class GameConstant
     };
     public static string[] PlayerInitialEquipment = new string[3]
     {
-        "helmet", "armor", "shoes",
+        "helmet0_00", "armor0_00", "shoes0_00",
     };
   
     // 시작 월드 ID

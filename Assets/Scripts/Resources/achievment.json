@@ -16,6 +16,11 @@
       "description": "모든 장비의 수식어가 '놀라운'"
     },
     {
+      "id": "CollectAllEquipmentMascotCostume",
+      "name": "고기방패",
+      "description": "인형탈 세트 모으기"
+    },
+    {
       "id": "CollectAllWeaponAtk0",
       "name": "무딜링 호흡",
       "description": "공격력이 0인 무기 10개 장착'"
