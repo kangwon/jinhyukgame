@@ -51,6 +51,7 @@ public class StatBuff :JsonItem
     public int continueBattleAddDamage = 0; // 연속전투시 추가데미지
     public int continueBattleCoin = 0; // 연속전투시 추가재화 //분실물 명품 지갑
     //---------
+    public bool damageImmune = false;
     public bool statusEffectImmune = false; // 상태이상 면역 //상태이상 면역
     public bool negativeEventImmune = false;// 부정적인 이벤트 면역
     

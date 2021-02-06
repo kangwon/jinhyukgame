@@ -47,9 +47,11 @@ public class RandomEvent
                 description.text = "\"들어와서 쉬는건 마음대로지만, 나가는것도 마음대로란다.\"" + "\n\n" + $"[모든 체력 회복]";
                 player.Heal(player.GetStat().maxHp);
                 break;
-            case 6: //TODO : 아직 무적이 구현안됬음. 구현하고 내용 집어넣자.
+            case 6:
                 name.text = $"네잎클로버";
                 description.text = "무심코 내려다본 발아래에 네잎클로버가 있었다. \"기분 좋은 하루가 될것 같은걸?\"" + "\n\n" + $"[다음 전투에서 무적(보스제외)]";
+                var damageImmunBuff = new StatBuff() { damageImmune = true };
+                player.AddBuff(damageImmunBuff);
                 break;
             case 7:
                 name.text = $"성스러운 분수";
