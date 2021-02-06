@@ -138,7 +138,7 @@ public class CharacterBase : JsonItem
 
     public virtual float ReturnCritAttack(float dmg, bool alwaysCrit) {return 0;} // 데미지에 크리티컬 확률 곱해서 돌려줌
 
-    public virtual void TakeHit(float rawDamage) {} //
+    public virtual void TakeHit(float rawDamage) {}
 }
 
 [System.Serializable]
@@ -365,17 +365,19 @@ public class Player : CharacterBase
         return paySuccess;
     }
 
-    public override void TakeHit(float rawDamage) 
+    public void TakeHit(float rawDamage, bool damageImmune) 
     {
         int damage = Math.Max((int)(rawDamage * GameConstant.DEFENSE_RATIO / (GameConstant.DEFENSE_RATIO + this.GetStat().defense)), 1);
         
-        float evasionRand = UnityEngine.Random.Range(0.0f, 1.0f); //0.0~1.0사이 임의의값
-
-        if(evasionRand < this.GetStat().evasion) //회피하면
+        float evasionRand = UnityEngine.Random.Range(0.0f, 1.0f); // 0.0~1.0사이 임의의값
+        if (evasionRand < this.GetStat().evasion) // 회피하면
         {
-            damage = 0; //데미지 0
+            damage = 0; // 데미지 0
             Debug.Log("회피함!");
         }
+
+        if (damageImmune) 
+            damage = 0;
 
         this.Damage(damage);
     }

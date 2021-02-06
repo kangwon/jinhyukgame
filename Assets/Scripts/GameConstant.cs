@@ -100,11 +100,12 @@ class GameConstant
 
     //월드 보스 보상으로 주는 보스아티펙트
     //{월드id,아티펙트id}
-    public static Dictionary<WorldId, string> bossArtifacts = new Dictionary<WorldId, string> {
-            { WorldId.W1,"artifact0"},{ WorldId.W2, "artifact1" },{ WorldId.W3, "artifact2" },
-            { WorldId.W4, "artifact3" },{ WorldId.W5_1, "artifact4" },{ WorldId.W5_2, "artifact5" },
-            { WorldId.W6,"artifact6"},{ WorldId.W7_1, "artifact7" },{ WorldId.W7_2, "artifact8" },{ WorldId.W8, "artifact9" },
-        };
+    public static Dictionary<WorldId, string> bossArtifacts = new Dictionary<WorldId, string> 
+    {
+        { WorldId.W1,"artifact0" }, { WorldId.W2, "artifact1" }, { WorldId.W3, "artifact2" },
+        { WorldId.W4, "artifact3" }, { WorldId.W5_1, "artifact4" }, { WorldId.W5_2, "artifact5" },
+        { WorldId.W6,"artifact6"}, { WorldId.W7_1, "artifact7" }, { WorldId.W7_2, "artifact8" }, { WorldId.W8, "artifact9" },
+    };
 
     // 상인 NPC 판매 장비 수식어 확률
     // broken, weak, normal, strong, amazing
@@ -145,4 +146,9 @@ class GameConstant
             }
         },
     };
+
+
+    // 랜덤 이벤트 종류별 확률
+    // 긍정, 중립, 부정
+    public static List<double> RandomEventType = new List<double> { 1, 1, 1 };
 }
