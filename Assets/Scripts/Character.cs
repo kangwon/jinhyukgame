@@ -149,15 +149,16 @@ public class Monster : CharacterBase
     public WorldId worldId;
 
     public Monster(Stat stat) : base(stat) { }
-    public Monster(string name, Stat stat,bool isboss) : base(stat)
+    public Monster(string name, Stat stat, WorldId worldId, bool isboss) : base(stat)
     {
         this.name = name;
+        this.worldId = worldId;
         this.isBoss = isboss;
     }
 
     public Monster Spawn()
     {
-       return new Monster(this.name, this.baseStat.DeepCopy(),this.isBoss);
+       return new Monster(this.name, this.baseStat.DeepCopy(), this.worldId, this.isBoss);
     }
 
     public override void TakeHit(float rawDamage) 

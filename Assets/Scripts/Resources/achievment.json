@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "ClearLilly",
+      "name": "감미로운 자장가",
+      "description": "릴리 첫 클리어"
+    },
+    {
+      "id": "ClearHorlyKnight",
+      "name": "명예 기사단장",
+      "description": "홀리나이트 첫 클리어"
+    },
+    {
+      "id": "ClearSpinaRosa",
+      "name": "착하게 살자",
+      "description": "스피나 첫 클리어"
+    },
+    {
+      "id": "ClearSnoopB",
+      "name": "저희와 함께갑시다",
+      "description": "스눕B 첫 클리어"
+    },
+    {
+      "id": "ClearUrePoppung",
+      "name": "람쥐썬더",
+      "description": "우레폭풍 첫 클리어"
+    },
+    {
+      "id": "ClearDeepOcean",
+      "name": "종합검진",
+      "description": "닥터 딥 오션 첫 클리어"
+    },
+    {
+      "id": "ClearDoppelganger",
+      "name": "자강두천",
+      "description": "도플갱어 첫 클리어"
+    },
+    {
+      "id": "ClearMasterTiger",
+      "name": "고얀놈",
+      "description": "호랑이 훈장님 첫 클리어"
+    },
+    {
+      "id": "ClearJupiterQueen",
+      "name": "로봇공학자",
+      "description": "주피터 퀸 첫 클리어"
+    },
+    {
+      "id": "ClearBloodyWulf",
+      "name": "밤의 여왕",
+      "description": "블러디울프 첫 클리어"
+    },
+    {
+      "id": "ClearDragRyan",
+      "name": "화려한 피날레",
+      "description": "드랙 라이언 첫 클리어"
+    },
+    {
+      "id": "ClearHeartHeartz",
+      "name": "흑막",
+      "description": "하트&하츠 첫 클리어"
+    }
+  ]
+}
