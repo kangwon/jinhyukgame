@@ -50,13 +50,13 @@ public class NpcEnchantController : MonoBehaviour
 
     EnchantInfo selectedEnchant;
 
+    bool canEnchant(Weapon weapon)
+        => (weapon.id != "bare_fist") && (weapon.prefix != Prefix.amazing);
+
     void CoinButton()
     {  
-        if (selectedEnchant.Weapon.prefix == Prefix.amazing)
-        {
-            Debug.Log("최대 강화 수식어입니다.");
+        if (!canEnchant(selectedEnchant.Weapon))
             return;
-        }
 
         Player player = GameState.Instance.player;
         if (player.Pay(selectedEnchant.Price))
@@ -84,10 +84,11 @@ public class NpcEnchantController : MonoBehaviour
         beforeCard.GetComponentInChildren<Text>().text = weapon.prefix.ToString();
         afterCard.GetComponentInChildren<Text>().text = selectedEnchant.NextPrefix.ToString();
 
-        if (weapon.id == "bare_fist" || weapon.prefix == Prefix.amazing)
-            enchantButton.GetComponentInChildren<Text>().text = $"강화 불가";
-        else
+        if (canEnchant(weapon))
             enchantButton.GetComponentInChildren<Text>().text = $"{selectedEnchant.Price} Coin  확인";
+        else
+            enchantButton.GetComponentInChildren<Text>().text = $"강화 불가";
+            
     }
 
     void Start()
@@ -115,7 +116,9 @@ public class NpcEnchantController : MonoBehaviour
                 WeaponCard.GetComponentInChildren<Text>().text = $"{weapon.statEffect.attack}";
                 WeaponCards[i] = WeaponCard;
             }
-            
+        }
+        if ((beforeCard != null) && (afterCard != null))
+        {
             beforeCard.GetComponentInChildren<Text>().text = "선택된 카드 없음";
             afterCard.GetComponentInChildren<Text>().text = "선택된 카드 없음";
         }
