@@ -16,6 +16,31 @@
       "description": "모든 장비의 수식어가 '놀라운'"
     },
     {
+      "id": "CollectAllWeaponSword",
+      "name": "플러시[검]",
+      "description": "모든 무기를 검으로 통일"
+    },
+    {
+      "id": "CollectAllWeaponBlunt",
+      "name": "플러시[둔기]",
+      "description": "모든 무기를 둔기로 통일"
+    },
+    {
+      "id": "CollectAllWeaponSpear",
+      "name": "플러시[창]",
+      "description": "모든 무기를 창으로 통일"
+    },
+    {
+      "id": "CollectAllWeaponDagger",
+      "name": "플러시[단검]",
+      "description": "모든 무기를 단검으로 통일"
+    },
+    {
+      "id": "CollectAllWeaponWand",
+      "name": "플러시[지팡이]",
+      "description": "모든 무기를 지팡이로 통일"
+    },
+    {
       "id": "CollectAllEquipmentMascotCostume",
       "name": "고기방패",
       "description": "인형탈 세트 모으기"
