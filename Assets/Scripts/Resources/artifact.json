@@ -13,7 +13,7 @@
       "name": "기사단장의 징표",
       "isBossItem": true,
       "statEffect": {
-        "purchasePercent": 0.1
+        "shopPurchasePercent": 0.1
       }
     },
     {

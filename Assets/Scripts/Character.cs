@@ -11,12 +11,12 @@ public class Stat
     public int attack;
     public int defense;
     public int speed;
-    public int startSpeedGauge;
+    public int startSpeedGauge = 0;
     public float critical = 0.00f;
     public float evasion = 0.00f;
     public float hpDrain = 0;       // 흡혈률
     public float stageHpDrain = 0;  // 스테이지 회복량
-    public float discount = 0;      // 상점 할인가
+    public float discount = 0;      // 마을 할인가(%)
     public float rewardCoinPer = 0; // 전투 재화 보상 증가
 
     public static Stat operator +(Stat a, Stat b)
@@ -187,12 +187,44 @@ public class Monster : CharacterBase
         return incomingDmg; // TODO : 몬스터 데미지 계산식
     }
 }
+
+public enum Location {
+    Monster,
+    Chest,
+    Buff,
+    Random,
+    Npc //마을
+};
+
 public class Player : CharacterBase
 {
     public StatBuff buff = new StatBuff();
     EquipmentSlot equipmentSlot = new EquipmentSlot();
     public int money;
     
+    List<Location> VisitedLocation = new List<Location>();
+    Location NowLocation; //현재위치
+
+    public void AddLocation(Location location)
+    {
+        NowLocation = location;
+        VisitedLocation.Add(NowLocation);
+    }
+
+    public bool CheckConsecutiveLocation(Location callinglocation)
+    {
+        int index = VisitedLocation.Count;
+
+        if(callinglocation == VisitedLocation[index-1]) //이전에도 같은장소 방문했으면
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void HpOver()
     {
         if (this.GetStat().maxHp < this.hp)
@@ -347,7 +379,16 @@ public class Player : CharacterBase
 
     public bool Pay(int rawPrice)
     {
-        int discountedPrice = (int)(rawPrice * (1 - this.GetStat().discount));
+        int discountedPrice = (int)(rawPrice * (1 - (this.GetStat().discount)));
+        bool canPay = money >= discountedPrice;
+        if (canPay)
+            money -= discountedPrice;
+        return canPay;
+    }
+
+    public bool PayShop(int rawPrice)
+    {
+        int discountedPrice = (int)(rawPrice * (1 - (this.GetStat().discount + this.GetBuff().npcPurchasePercent)));
         bool canPay = money >= discountedPrice;
         if (canPay)
             money -= discountedPrice;
@@ -356,7 +397,7 @@ public class Player : CharacterBase
 
     public bool BuyItem(Equipment item)
     {
-        var paySuccess = this.Pay(item.price);
+        var paySuccess = this.PayShop(item.price);
         if (paySuccess)
             this.SetEquipment(item);
         return paySuccess;

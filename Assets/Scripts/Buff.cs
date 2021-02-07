@@ -9,7 +9,7 @@ public class StatBuff :JsonItem
     public string description = "버프 없음"; 
     public Stat baseBuffStat = new Stat(); //절대치 증가
     public StatPercent percentStat = new StatPercent(); // 퍼센트 증가
-    public float discountPercent = 0; // 상점 할인용 변수
+    public float discountPercent = 0; // 마을 할인용 변수 //하바리움
     public float evasionPercent = 0;
     public float criticalPercent = 0;
     public float stageHpDrainPercent = 0; // 스테이지 당 회복량 변수
@@ -41,18 +41,15 @@ public class StatBuff :JsonItem
 
     public float monsterChanceDecrease = 0; //몬스터 조우확률 ()% 감소 //러블리 열쇠고리 인형
     public float monsterChanceIncrease = 0; //몬스터 조우확룰 ()% 증가 //러비 얼굴 뱃지
+    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가(공,방,속) //연간 회원권// 일단 야매로구현.
+
+    public int continueBattleAddDamage = 0; //연속전투시 추가데미지 //미니어처 묠니르
+    public int continueBattleCoin = 0; //연속전투시 추가재화 //분실물 명품 지갑
+
+    public float npcPurchasePercent = 0; //상점 할인용 변수 (마을 할인과 합연산) //기사단장의 징표
 
     //위까지 구현
 
-    public float battleTurnRatioStatUp = 0; //한턴당 스탯증가(공,방,속) //연간 회원권// 일단 야매로구현
-
-    //
-
-    public float rewardBonusPercent = 0; //몬스터 처치시 ()% 추가보상기회
-    //RewardPanelController 만져야함
-
-    public int continueBattleAddDamage = 0; //연속전투시 추가데미지
-    public int continueBattleCoin = 0; //연속전투시 추가재화 //분실물 명품 지갑
     //---------
     public bool statusEffectImmune = false; //상태이상 면역 //상태이상 면역
     public bool negativeEventImmune = false;// 부정적인 이벤트 면역
@@ -60,9 +57,8 @@ public class StatBuff :JsonItem
     public bool chooseBuff = false; //버프 선택 가능(다만, 디버프는 강제)
     public bool resetStageCard = false; // 스테이지 카드 리셋 충전식 (5스테이지마다)
     
-    public float npcPurchasePercent = 0; //마을 할인용 변수 (상점 할인과 합연산)
-    //
-    
+    public float rewardBonusPercent = 0; //몬스터 처치시 ()% 추가보상기회
+    //RewardPanelController 만져야함
 
     public Stat GetTotalStat(Stat stat)
     {

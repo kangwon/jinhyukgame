@@ -41,9 +41,16 @@ public class RewardPanelController : MonoBehaviour
 
     void OnEnable()
     {
+        Player player = GameState.Instance.player;
         if (monsterCard != null)
         {
             rewardGetCoin = (int)(monsterCard.rewardCoin * (1 + GameState.Instance.player.GetStat().rewardCoinPer));
+            
+            if(player.GetBuff().continueBattleCoin != 0 && player.CheckConsecutiveLocation(Location.Monster))
+            {
+                rewardGetCoin += player.GetBuff().continueBattleCoin;
+            }
+            
             coinReward.text = $"+ {rewardGetCoin}";
 
             for(int i = 0; i < 3; i++)
@@ -97,6 +104,7 @@ public class RewardPanelController : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
     void OnClickRewardButton(BossReward reward)
     {
         Player player = GameState.Instance.player;

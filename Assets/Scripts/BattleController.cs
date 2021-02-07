@@ -20,10 +20,13 @@ public class BattleController : MonoBehaviour
     public bool isMonstersFirstTurn; // firstDamagedImmune = false; 첫번째 피격 데미지 무시 관련
 
     public bool hp1Undied; //bool hp1Left 전투마다 체력1에서 버티기 관련
-
     public int playerTurnCount = 0; // 플레이어가 턴 몇번 진행했는지 계산
+    public int battleNumber = 0; //몇 번째 배틀인지. 나서스 q데미지 여기서구현.
 
-    public int battleNumber = 0; //몇 번째 배틀인지. 나서스 q데미지 여기서하면될듯?
+    public bool tempStatAdded; // 전투중에만 지속되는 임시 버프가 달렸었는지(연간회원권 등)
+    float tempTurnUpAttack;
+    float tempTurnUpDefense;
+    float tempTurnUpSpeed;
 
     enum BattleState {
         Sleeping, //시작 안함
@@ -106,6 +109,11 @@ public class BattleController : MonoBehaviour
         playerTurnCount = 0; // 초기화
         battleNumber++;
 
+        tempStatAdded = false;
+        tempTurnUpAttack = 0;
+        tempTurnUpDefense = 0;
+        tempTurnUpSpeed = 0;
+
         battleState = BattleState.Waiting;
     }
 
@@ -142,7 +150,21 @@ public class BattleController : MonoBehaviour
     {
         if(BattlePanel.OnClickAttackPressed)
         {
+
             playerTurnCount++; //플레이어 진행 턴에 1카운트 추가
+
+            if(player.GetBuff().battleTurnRatioStatUp != 0) //한턴당 스탯증가 있다면(연간회원권)
+            {
+                float tempTurnUpAttack = player.GetStat().attack * player.GetBuff().battleTurnRatioStatUp;
+                float tempTurnUpDefense = player.GetStat().defense * player.GetBuff().battleTurnRatioStatUp;
+                float tempTurnUpSpeed = player.GetStat().speed * player.GetBuff().battleTurnRatioStatUp;
+
+                player.baseStat.attack = (int)(player.baseStat.attack + (playerTurnCount - 1) * tempTurnUpAttack);
+                player.baseStat.defense = (int)(player.baseStat.defense + (playerTurnCount - 1) * tempTurnUpDefense);
+                player.baseStat.speed = (int)(player.baseStat.speed + (playerTurnCount - 1) * tempTurnUpSpeed);
+
+                tempStatAdded = true;
+            }
 
             Stat tempStat = new Stat();
             tempStat.attack = BattlePanel.cardDamageSum;
@@ -197,6 +219,11 @@ public class BattleController : MonoBehaviour
             if(player.GetBuff().checkNasusQ) //잡은몬스터 * n 만큼 추가데미지
             {
                 finalAttack += player.GetBuff().nasusQ * battleNumber;
+            }
+
+            if(player.GetBuff().continueBattleAddDamage != 0 && player.CheckConsecutiveLocation(Location.Monster))
+            {
+                finalAttack += player.GetBuff().continueBattleAddDamage;
             }
 
             monster.TakeHit(finalAttack);
@@ -305,6 +332,14 @@ public class BattleController : MonoBehaviour
             if(player.GetBuff().battleEndHealPercent != 0) //전투 종료시 체력 퍼센트 회복
             {
                 player.Heal((int)(player.GetStat().maxHp * player.GetBuff().battleEndHealPercent));
+            }
+
+            if(tempStatAdded)
+            {
+                /*---연간회원권 무효---*/
+                player.baseStat.attack -= (int)((playerTurnCount - 1) * tempTurnUpAttack);
+                player.baseStat.defense -= (int)((playerTurnCount - 1) * tempTurnUpDefense);
+                player.baseStat.speed -= (int)((playerTurnCount - 1) * tempTurnUpSpeed);
             }
 
             if(player.GetBuff().rewardBonusPercent != 0)
