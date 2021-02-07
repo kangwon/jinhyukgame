@@ -7,6 +7,18 @@ using UnityEngine;
 [System.Serializable]
 public enum AchievementCode
 {
+    CollectFirstLegendary,
+    CollectAllEquipmentBroken,
+    CollectAllEquipmentAmazing,
+    CollectAllWeaponSword,
+    CollectAllWeaponBlunt,
+    CollectAllWeaponSpear,
+    CollectAllWeaponDagger,
+    CollectAllWeaponWand,
+    CollectAllWeaponAtk0,
+    CollectAllBossArtifact,
+    CollectLovyLovelyArtifact,
+    CollectAllEquipmentMascotCostume,
     ClearLilly,
     ClearHorlyKnight,
     ClearSpinaRosa,
@@ -71,6 +83,45 @@ public class AchievementManager
 
             Achievement achievment = JsonDB.GetAchievment(code);
             panelController?.Show(achievment);
+        }
+    }
+    
+    public static void CollectEquipments(EquipmentSlot equipmentSlot)
+    {
+        int countEquipmentBroken = 0;
+        int countEquipmentAmazing = 0;
+        if ((equipmentSlot.GetWeaponsList().Count() == 10) && (equipmentSlot.GetArtifacts().Count <=3))
+        {
+            
+            foreach(var w in equipmentSlot.GetWeaponsList())
+            {
+                if (w.rank == Rank.legendary) Instance.CheckAndAchieve(AchievementCode.CollectFirstLegendary);
+                if (w.prefix == Prefix.broken) countEquipmentBroken++;
+                if (w.prefix == Prefix.amazing) countEquipmentAmazing++;
+            }
+           foreach (var e in equipmentSlot.GetEquipments())
+            {
+                if (e.prefix == Prefix.broken) countEquipmentBroken++;
+                if (e.prefix == Prefix.amazing) countEquipmentAmazing++;
+            }
+           foreach(WeaponType weaponType in Enum.GetValues(typeof(WeaponType))) //같은 무기 10개 확인
+            {
+                if (equipmentSlot.GetWeaponsList().Where(w => w.weaponType == weaponType).Count() == 10)
+                {
+                   if (weaponType==WeaponType.sword) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponSword);
+                   if (weaponType==WeaponType.blunt) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponBlunt);
+                   if (weaponType==WeaponType.spear) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponSpear);
+                   if (weaponType==WeaponType.dagger) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponDagger);
+                   if (weaponType==WeaponType.wand) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponWand);
+                }
+            }
+            if (countEquipmentBroken == 13) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentBroken);
+            if (countEquipmentAmazing == 13) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentAmazing);
+            if (equipmentSlot.GetEquipments().Where(e => (e.name == "인형탈 머리") || (e.name == "인형탈 몸통") || (e.name == "인형탈 신발")).Count() == 3) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentMascotCostume);
+            if (equipmentSlot.GetArtifacts().Where(a => (a.id == "artifact30") || (a.id == "artifact31")).Count() == 2) Instance.CheckAndAchieve(AchievementCode.CollectLovyLovelyArtifact);
+            if (equipmentSlot.GetArtifacts().Where(a => a.isBossItem).Count() == 3)  Instance.CheckAndAchieve(AchievementCode.CollectAllBossArtifact);
+            if (equipmentSlot.GetWeaponsList().Where(w=>(w.statEffect.attack==0)&&(w.id != "bare_fist")).Count()==10) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponAtk0);
+
         }
     }
 
