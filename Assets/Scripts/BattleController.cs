@@ -259,6 +259,7 @@ public class BattleController : MonoBehaviour
 
     public void MonsterAttack()
     {
+        bool damageImmune = false;
         float rawMonterInflictingdmg = monster.AttackFoe();
         float finalMonsterDmg = rawMonterInflictingdmg;
 
@@ -267,12 +268,14 @@ public class BattleController : MonoBehaviour
             finalMonsterDmg = (1 - player.GetBuff().bossDamageDecrease) * rawMonterInflictingdmg;
         }
         
-        if(isMonstersFirstTurn && player.GetBuff().firstDamagedImmune) //몬스터 첫타격이고 첫번째 피격 데미지 무시 유물일경우
-        {
-            finalMonsterDmg = 0;
-        }
+        // 몬스터 첫타격이고 첫번째 피격 데미지 무시 유물일경우
+        if(isMonstersFirstTurn && player.GetBuff().firstDamagedImmune)
+            damageImmune = true;
+        // 무적 상태
+        if (!monster.isBoss && player.GetBuff().damageImmune)
+            damageImmune = true;
 
-        player.TakeHit((int)finalMonsterDmg);
+        player.TakeHit((int)finalMonsterDmg, damageImmune);
 
         if(player.GetBuff().reflectionDamage != 0) //플레이어가 반사데미지 있을경우
         {
@@ -359,6 +362,13 @@ public class BattleController : MonoBehaviour
             {
                 BattlePanel.RewardStage();
             }
+
+            if(player.GetBuff().damageImmune)
+            {
+                player.DispelBuff();
+            }
+
+            AchievementManager.BeatMonster(monster);
         }    
     }
 }

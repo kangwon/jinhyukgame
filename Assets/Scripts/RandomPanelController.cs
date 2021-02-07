@@ -166,8 +166,8 @@ public class RandomPanelController : MonoBehaviour
                     break;
             }
         }
-
     }
+    
     private void OnDisable()
     {
         while (buttons.Count != 0)
@@ -176,5 +176,4 @@ public class RandomPanelController : MonoBehaviour
             buttons.RemoveAt(0);
         }
     }
-    // Update is called once per frame
 }

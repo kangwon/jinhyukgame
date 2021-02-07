@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "id": "CollectFirstLegendary",
+      "name": "심봤다!",
+      "description": "첫[레전더리] 아이템 획득"
+    },
+    {
+      "id": "CollectAllEquipmentBroken",
+      "name": "누더기",
+      "description": "모든 장비의 수식어가 '망가진'"
+    },
+    {
+      "id": "CollectAllEquipmentAmazing",
+      "name": "감별사",
+      "description": "모든 장비의 수식어가 '놀라운'"
+    },
+    {
+      "id": "CollectAllWeaponSword",
+      "name": "플러시[검]",
+      "description": "모든 무기를 검으로 통일"
+    },
+    {
+      "id": "CollectAllWeaponBlunt",
+      "name": "플러시[둔기]",
+      "description": "모든 무기를 둔기로 통일"
+    },
+    {
+      "id": "CollectAllWeaponSpear",
+      "name": "플러시[창]",
+      "description": "모든 무기를 창으로 통일"
+    },
+    {
+      "id": "CollectAllWeaponDagger",
+      "name": "플러시[단검]",
+      "description": "모든 무기를 단검으로 통일"
+    },
+    {
+      "id": "CollectAllWeaponWand",
+      "name": "플러시[지팡이]",
+      "description": "모든 무기를 지팡이로 통일"
+    },
+    {
+      "id": "CollectAllEquipmentMascotCostume",
+      "name": "고기방패",
+      "description": "인형탈 세트 모으기"
+    },
+    {
+      "id": "CollectAllWeaponAtk0",
+      "name": "무딜링 호흡",
+      "description": "공격력이 0인 무기 10개 장착'"
+    },
+    {
+      "id": "CollectAllBossArtifact",
+      "name": "보스 슬레이어",
+      "description": "보스 아티펙트 3개 장착'"
+    },
+    {
+      "id": "CollectLovyLovelyArtifact",
+      "name": "광신도",
+      "description": "러블리 열쇠고리 인형,러비 얼굴 뱃지 같이 장착'"
+    },
+    {
+      "id": "ClearLilly",
+      "name": "감미로운 자장가",
+      "description": "릴리 첫 클리어"
+    },
+    {
+      "id": "ClearHorlyKnight",
+      "name": "명예 기사단장",
+      "description": "홀리나이트 첫 클리어"
+    },
+    {
+      "id": "ClearSpinaRosa",
+      "name": "착하게 살자",
+      "description": "스피나 첫 클리어"
+    },
+    {
+      "id": "ClearSnoopB",
+      "name": "저희와 함께갑시다",
+      "description": "스눕B 첫 클리어"
+    },
+    {
+      "id": "ClearUrePoppung",
+      "name": "람쥐썬더",
+      "description": "우레폭풍 첫 클리어"
+    },
+    {
+      "id": "ClearDeepOcean",
+      "name": "종합검진",
+      "description": "닥터 딥 오션 첫 클리어"
+    },
+    {
+      "id": "ClearDoppelganger",
+      "name": "자강두천",
+      "description": "도플갱어 첫 클리어"
+    },
+    {
+      "id": "ClearMasterTiger",
+      "name": "고얀놈",
+      "description": "호랑이 훈장님 첫 클리어"
+    },
+    {
+      "id": "ClearJupiterQueen",
+      "name": "로봇공학자",
+      "description": "주피터 퀸 첫 클리어"
+    },
+    {
+      "id": "ClearBloodyWulf",
+      "name": "밤의 여왕",
+      "description": "블러디울프 첫 클리어"
+    },
+    {
+      "id": "ClearDragRyan",
+      "name": "화려한 피날레",
+      "description": "드랙 라이언 첫 클리어"
+    },
+    {
+      "id": "ClearHeartHeartz",
+      "name": "흑막",
+      "description": "하트&하츠 첫 클리어"
+    }
+  ]
+}

@@ -362,7 +362,12 @@ public class World
                 };
                 return new NpcCard(equipmentsOnSale);
             case CardType.Random:
-                var  randomType = CustomRandom<int>.Choice(new List<int> {0, 1, 2}, this.Random);
+                int randomType = CustomRandom<int>.WeightedChoice
+                (
+                    new List<int> { 0, 1, 2 },
+                    GameConstant.RandomEventType,
+                    this.Random
+                );
                 var equipmentRand = GetMerchantEquipment();
                 var artifactRand = GetRewardArtifact();
                 var money = 5*GetRewardCoin(); // 보상 획득재화의 5배 (임의설정)
