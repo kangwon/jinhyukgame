@@ -143,6 +143,7 @@ public class StageChoice : MonoBehaviour
                 battlePlayerAttackPanelController.MonsterCard = (selectedCard as MonsterCard);
                 BattlePanel.SetActive(true);
                 BattlePanel.transform.localPosition = PanelDisplayPosition;
+                GameState.Instance.player.AddLocation(Location.Monster);
                 break;
             case CardType.Boss:
                 var battleController2 = BattlePanel.GetComponent<BattleController>();
@@ -152,24 +153,28 @@ public class StageChoice : MonoBehaviour
                 battlePlayerAttackPanelController2.BossCard = (selectedCard as BossCard);
                 BattlePanel.SetActive(true);
                 BattlePanel.transform.localPosition = PanelDisplayPosition;
+                GameState.Instance.player.AddLocation(Location.Monster);
                 break;
             case CardType.Chest:
                 var chestController = ChestPanel.GetComponent<ChestPanelController>();
                 chestController.ChestCard = (selectedCard as ChestCard);
                 ChestPanel.SetActive(true);
                 ChestPanel.transform.localPosition = PanelDisplayPosition;
+                GameState.Instance.player.AddLocation(Location.Chest);
                 break;
             case CardType.Buff:
                 var buffController = BuffPanel.GetComponent<BuffPanelController>();
                 buffController.BuffCard = (selectedCard as BuffCard);
                 BuffPanel.SetActive(true);
                 BuffPanel.transform.localPosition = PanelDisplayPosition;
+                GameState.Instance.player.AddLocation(Location.Buff);
                 break;
             case CardType.Random:
                 var RandomController = RandomPanel.GetComponent<RandomPanelController>();
                 RandomController.RandomCard = (selectedCard as RandomCard);
                 RandomPanel.SetActive(true);
                 RandomPanel.transform.localPosition = PanelDisplayPosition;
+                GameState.Instance.player.AddLocation(Location.Random);
                 break;
             case CardType.Npc:
                 var NpcController = NpcPanel.GetComponent<NpcPanelController>();
@@ -179,6 +184,7 @@ public class StageChoice : MonoBehaviour
                 NpcPanel_Merchant.transform.localPosition = PanelDisplayPosition;
                 NpcPanel_Healer.transform.localPosition = PanelDisplayPosition;
                 NpcPanel_Enchanter.transform.localPosition = PanelDisplayPosition;
+                GameState.Instance.player.AddLocation(Location.Npc);
                 break;
         }
     }
