@@ -6,6 +6,11 @@
       "description": "첫[레전더리] 아이템 획득"
     },
     {
+      "id": "CollectLegendaryEquipments",
+      "name": "웨펀마스터",
+      "description": "[레전더리] 아이템 7개 이상 장착"
+    },
+    {
       "id": "CollectAllEquipmentBroken",
       "name": "누더기",
       "description": "모든 장비의 수식어가 '망가진'"
@@ -51,9 +56,19 @@
       "description": "공격력이 0인 무기 10개 장착'"
     },
     {
+      "id": "CollectAllWeaponEqualAtk",
+      "name": "Ten of a kind",
+      "description": "같은 공격력인 무기 10개 장착(0, 1 제외)'"
+    },
+    {
       "id": "CollectAllBossArtifact",
       "name": "보스 슬레이어",
       "description": "보스 아티펙트 3개 장착'"
+    },
+    {
+      "id": "CollectrelatedArm",
+      "name": "주렁주렁",
+      "description": "인형탈 몸통, 문신 팔토시, 잃어버린 손목시계, 미아방지팔찌를 같이 장착'"
     },
     {
       "id": "CollectLovyLovelyArtifact",
