@@ -20,7 +20,8 @@ public enum AchievementCode
     CollectAllWeaponEqualAtk,
     CollectAllBossArtifact,
     CollectAllEquipmentMascotCostume,
-    CollectrelatedArm,
+    CollectRelatedHead,
+    CollectRelatedArm,
     CollectLovyLovelyArtifact,
     ClearLilly,
     ClearHorlyKnight,
@@ -127,8 +128,10 @@ public class AchievementManager
             var tempWeaponAtk = equipmentSlot.GetWeaponsList().ElementAt(0).statEffect.attack;
             if(tempWeaponAtk != 0 && tempWeaponAtk != 1) //atk이 0,1 이 아니고 같은 경우
                 if (equipmentSlot.GetWeaponsList().Where(w=>w.statEffect.attack == tempWeaponAtk).Count()==10) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponEqualAtk);
-            if (equipmentSlot.GetArtifacts().Where(a=>(a.id== "artifact11")||(a.id== "artifact21")||(a.id== "artifact24")).Count()==3) //문신 스티커, 잃어버린 손목시계 ,미아방지팔찌
-                if(equipmentSlot.GetArmorE().name== "인형탈 몸통") Instance.CheckAndAchieve(AchievementCode.CollectrelatedArm);
+            if (equipmentSlot.GetArtifacts().Where(a=>(a.id== "artifact13") ||(a.id== "artifact16") ||(a.id== "artifact22")||(a.id== "artifact23")).Count()==3) //알 없는 안경, 분장용 도구 세트 , 3D 체험 안경, 파라오 가면
+                if (equipmentSlot.GetArmorE().name == "인형탈 머리") Instance.CheckAndAchieve(AchievementCode.CollectRelatedHead);
+            if (equipmentSlot.GetArtifacts().Where(a=>(a.id== "artifact11")||(a.id== "artifact21")||(a.id== "artifact24")).Count()==3) //문신 스티커, 잃어버린 손목시계, 미아방지팔찌
+                if(equipmentSlot.GetArmorE().name== "인형탈 몸통") Instance.CheckAndAchieve(AchievementCode.CollectRelatedArm);
             if (equipmentSlot.GetEquipments().Where(e => (e.name == "인형탈 머리") || (e.name == "인형탈 몸통") || (e.name == "인형탈 신발")).Count() == 3) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentMascotCostume);
             if (equipmentSlot.GetArtifacts().Where(a => (a.id == "artifact30") || (a.id == "artifact31")).Count() == 2) Instance.CheckAndAchieve(AchievementCode.CollectLovyLovelyArtifact);
             if (equipmentSlot.GetArtifacts().Where(a => a.isBossItem).Count() == 3)  Instance.CheckAndAchieve(AchievementCode.CollectAllBossArtifact);

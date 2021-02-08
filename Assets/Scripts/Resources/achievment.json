@@ -66,7 +66,12 @@
       "description": "보스 아티펙트 3개 장착'"
     },
     {
-      "id": "CollectrelatedArm",
+      "id": "CollectRelatedHead",
+      "name": "모자장수",
+      "description": "알 없는 안경, 분장용 도구 세트, 3D 체험 안경, 파라오 가면, 인형탈 머리 중 4개 장착'"
+    }, 
+    {
+      "id": "CollectRelatedArm",
       "name": "주렁주렁",
       "description": "인형탈 몸통, 문신 팔토시, 잃어버린 손목시계, 미아방지팔찌를 같이 장착'"
     },
