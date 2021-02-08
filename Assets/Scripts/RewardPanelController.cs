@@ -9,21 +9,19 @@ public class RewardPanelController : MonoBehaviour
 {
     public MonsterCard monsterCard;
     public BossCard bossCard;
+    
     StageChoice stageChoice;
     GameObject weaponChangePanel;
     GameObject artifactChangePanel;
     EquipmentChangePanelController equipmentChanger;
-    Button[] rewardButtons = new Button[3];
+    
     Text coinReward;
+    Button AbandonButton;
+    Button[] rewardButtons = new Button[3];
 
     int rewardGetCoin;
     
     public int rewardCount; // 보상 횟수(재화 제외, 아이템만) default = 1 
-
-    public void OnClickRewardAbandon()
-    {
-        stageChoice.MoveToNextStage();
-    }
 
     void Start()
     {
@@ -31,7 +29,9 @@ public class RewardPanelController : MonoBehaviour
         weaponChangePanel = GameObject.Find("Canvas").transform.Find("WeaponChangePanel").gameObject;
         artifactChangePanel = GameObject.Find("Canvas").transform.Find("ArtifactChangePanel").gameObject;
         equipmentChanger = GameObject.Find("Canvas").transform.Find("EquipmentChangePanel").gameObject.GetComponent<EquipmentChangePanelController>();
-        coinReward = GameObject.Find("gold_reward").GetComponent<Text>();
+        coinReward = GameObject.Find("RewardPanel/gold_reward").GetComponent<Text>();
+        AbandonButton = GameObject.Find("RewardPanel/AbandonButton").GetComponent<Button>();
+        AbandonButton.onClick.AddListener(OnClickRewardAbandon);
 
         for(int i = 0; i < 3; i++)
             rewardButtons[i] = GameObject.Find($"RewardPanel").transform.Find($"Reward{i+1}").gameObject.GetComponent<Button>();
@@ -90,20 +90,26 @@ public class RewardPanelController : MonoBehaviour
                 AfterChooseReward();
                 break;
         }
-
-        void AfterChooseReward()
-        {
-            player.money += rewardGetCoin;
-            this.gameObject.SetActive(false);
-        }
     }
+
     void OnClickRewardButton(BossReward reward)
     {
         Player player = GameState.Instance.player;
         player.SetEquipment(reward.artifact);
+        if (player.GetArtifacts().Count > 3)
+            artifactChangePanel.SetActive(true);
+        AfterChooseReward();
+    }
+
+    void OnClickRewardAbandon()
+    {
+        AfterChooseReward();
+    }
+
+    void AfterChooseReward()
+    {
+        Player player = GameState.Instance.player;
         player.money += rewardGetCoin;
         this.gameObject.SetActive(false);
-        if (player.GetArtifacts().Count > 3)
-            artifactChangePanel.SetActive(true);        
     }
 }
