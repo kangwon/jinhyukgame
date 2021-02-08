@@ -8,6 +8,7 @@ using UnityEngine;
 public enum AchievementCode
 {
     CollectFirstLegendary,
+    CollectLegendaryEquipments,
     CollectAllEquipmentBroken,
     CollectAllEquipmentAmazing,
     CollectAllWeaponSword,
@@ -16,9 +17,12 @@ public enum AchievementCode
     CollectAllWeaponDagger,
     CollectAllWeaponWand,
     CollectAllWeaponAtk0,
+    CollectAllWeaponEqualAtk,
     CollectAllBossArtifact,
-    CollectLovyLovelyArtifact,
     CollectAllEquipmentMascotCostume,
+    CollectRelatedHead,
+    CollectRelatedArm,
+    CollectLovyLovelyArtifact,
     ClearLilly,
     ClearHorlyKnight,
     ClearSpinaRosa,
@@ -90,17 +94,20 @@ public class AchievementManager
     {
         int countEquipmentBroken = 0;
         int countEquipmentAmazing = 0;
+        int countLegendaryEquipments = 0;
         if ((equipmentSlot.GetWeaponsList().Count() == 10) && (equipmentSlot.GetArtifacts().Count <=3))
         {
             
             foreach(var w in equipmentSlot.GetWeaponsList())
             {
                 if (w.rank == Rank.legendary) Instance.CheckAndAchieve(AchievementCode.CollectFirstLegendary);
+                if (w.rank == Rank.legendary) countLegendaryEquipments++;
                 if (w.prefix == Prefix.broken) countEquipmentBroken++;
                 if (w.prefix == Prefix.amazing) countEquipmentAmazing++;
             }
            foreach (var e in equipmentSlot.GetEquipments())
             {
+                if (e.rank == Rank.legendary) countLegendaryEquipments++;
                 if (e.prefix == Prefix.broken) countEquipmentBroken++;
                 if (e.prefix == Prefix.amazing) countEquipmentAmazing++;
             }
@@ -117,11 +124,18 @@ public class AchievementManager
             }
             if (countEquipmentBroken == 13) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentBroken);
             if (countEquipmentAmazing == 13) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentAmazing);
+            if (countEquipmentAmazing >= 7) Instance.CheckAndAchieve(AchievementCode.CollectLegendaryEquipments);
+            var tempWeaponAtk = equipmentSlot.GetWeaponsList().ElementAt(0).statEffect.attack;
+            if(tempWeaponAtk != 0 && tempWeaponAtk != 1) //atk이 0,1 이 아니고 같은 경우
+                if (equipmentSlot.GetWeaponsList().Where(w=>w.statEffect.attack == tempWeaponAtk).Count()==10) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponEqualAtk);
+            if (equipmentSlot.GetArtifacts().Where(a=>(a.id== "artifact13") ||(a.id== "artifact16") ||(a.id== "artifact22")||(a.id== "artifact23")).Count()==3) //알 없는 안경, 분장용 도구 세트 , 3D 체험 안경, 파라오 가면
+                if (equipmentSlot.GetArmorE().name == "인형탈 머리") Instance.CheckAndAchieve(AchievementCode.CollectRelatedHead);
+            if (equipmentSlot.GetArtifacts().Where(a=>(a.id== "artifact11")||(a.id== "artifact21")||(a.id== "artifact24")).Count()==3) //문신 스티커, 잃어버린 손목시계, 미아방지팔찌
+                if(equipmentSlot.GetArmorE().name== "인형탈 몸통") Instance.CheckAndAchieve(AchievementCode.CollectRelatedArm);
             if (equipmentSlot.GetEquipments().Where(e => (e.name == "인형탈 머리") || (e.name == "인형탈 몸통") || (e.name == "인형탈 신발")).Count() == 3) Instance.CheckAndAchieve(AchievementCode.CollectAllEquipmentMascotCostume);
             if (equipmentSlot.GetArtifacts().Where(a => (a.id == "artifact30") || (a.id == "artifact31")).Count() == 2) Instance.CheckAndAchieve(AchievementCode.CollectLovyLovelyArtifact);
             if (equipmentSlot.GetArtifacts().Where(a => a.isBossItem).Count() == 3)  Instance.CheckAndAchieve(AchievementCode.CollectAllBossArtifact);
             if (equipmentSlot.GetWeaponsList().Where(w=>(w.statEffect.attack==0)&&(w.id != "bare_fist")).Count()==10) Instance.CheckAndAchieve(AchievementCode.CollectAllWeaponAtk0);
-
         }
     }
 
