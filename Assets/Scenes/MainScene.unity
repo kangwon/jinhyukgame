@@ -6203,7 +6203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f5598de7410c0a4429f5ae1d4aa573f2, type: 3}
+    m_Font: {fileID: 12800000, guid: 3b93c47283e904b99bd6e4a46a8bdd74, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -26459,7 +26459,7 @@ GameObject:
   - component: {fileID: 2097241291}
   - component: {fileID: 2097241290}
   m_Layer: 5
-  m_Name: Button
+  m_Name: AbandonButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26527,18 +26527,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2097241291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1784660137}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2097241291
 MonoBehaviour:
   m_ObjectHideFlags: 0
